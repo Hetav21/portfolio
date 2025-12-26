@@ -180,7 +180,7 @@ export default function TerminalApp() {
   return (
     <div 
       ref={terminalRef} 
-      className="h-full w-full bg-[#1a1b1e] p-1"
+      className="h-full w-full bg-card p-1"
       onClick={() => xtermRef.current?.focus()} 
     />
   );

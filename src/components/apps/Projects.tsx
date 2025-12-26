@@ -26,10 +26,10 @@ export default function Projects() {
   ];
 
   return (
-    <div className="h-full bg-[#1e1e2e] text-gray-200 p-6 overflow-auto">
+    <div className="h-full bg-card text-foreground p-6 overflow-auto">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {projects.map((project, i) => (
-            <div key={i} className="bg-[#313244] rounded-xl overflow-hidden hover:shadow-xl transition-shadow border border-white/5 flex flex-col h-full group">
+            <div key={i} className="bg-secondary rounded-xl overflow-hidden hover:shadow-xl transition-shadow border border-border flex flex-col h-full group">
                 <div className={`h-48 w-full bg-gradient-to-br ${project.color} flex items-center justify-center`}>
                     <span className="text-white text-opacity-50 font-bold text-4xl transform group-hover:scale-110 transition-transform duration-300">
                         {project.title[0]}
@@ -37,20 +37,20 @@ export default function Projects() {
                 </div>
                 <div className="p-5 flex-1 flex flex-col">
                     <h3 className="text-xl font-bold mb-2 text-white">{project.title}</h3>
-                    <p className="text-gray-400 text-sm mb-4 flex-1 leading-relaxed">
+                    <p className="text-muted-foreground text-sm mb-4 flex-1 leading-relaxed">
                         {project.description}
                     </p>
                     
                     <div className="flex flex-wrap gap-2 mb-6">
                         {project.tags.map(tag => (
-                            <span key={tag} className="text-xs px-2 py-1 bg-[#1e1e2e] rounded text-gray-300 border border-white/5">
+                            <span key={tag} className="text-xs px-2 py-1 bg-card rounded text-foreground border border-border">
                                 {tag}
                             </span>
                         ))}
                     </div>
 
                     <div className="flex items-center gap-3 mt-auto">
-                        <button className="flex-1 flex items-center justify-center gap-2 bg-[#45475a] hover:bg-[#585b70] text-white py-2 rounded-lg transition-colors text-sm font-medium">
+                        <button className="flex-1 flex items-center justify-center gap-2 bg-muted hover:bg-muted text-white py-2 rounded-lg transition-colors text-sm font-medium">
                             <Github size={16} />
                             Code
                         </button>

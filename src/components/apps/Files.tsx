@@ -47,22 +47,22 @@ export default function Files() {
   const breadcrumbs = currentPath.split('/').filter(Boolean);
 
   return (
-    <div className="flex flex-col h-full bg-[#1e1e2e] text-gray-200">
+    <div className="flex flex-col h-full bg-card text-foreground">
       {/* Toolbar */}
-      <div className="flex items-center justify-between p-4 border-b border-white/10 bg-[#181825]">
+      <div className="flex items-center justify-between p-4 border-b border-border bg-background">
         <div className="flex items-center space-x-2">
             <button 
                 onClick={handleUp} 
                 disabled={currentPath === '/'}
-                className="p-1.5 hover:bg-white/10 rounded-full disabled:opacity-30 transition-colors"
+                className="p-1.5 hover:bg-muted rounded-full disabled:opacity-30 transition-colors"
             >
                 <ArrowLeft size={18} />
             </button>
             
-            <div className="flex items-center space-x-1 px-2 py-1 bg-[#313244] rounded-md text-sm">
+            <div className="flex items-center space-x-1 px-2 py-1 bg-secondary rounded-md text-sm">
                 <button 
                     onClick={() => setCurrentPath('/')}
-                    className="p-1 hover:bg-white/10 rounded-md"
+                    className="p-1 hover:bg-muted rounded-md"
                 >
                     <Home size={14} />
                 </button>
@@ -70,7 +70,7 @@ export default function Files() {
                     const path = '/' + breadcrumbs.slice(0, index + 1).join('/');
                     return (
                         <div key={path} className="flex items-center">
-                            <ChevronRight size={14} className="text-gray-500 mx-1" />
+                            <ChevronRight size={14} className="text-muted-foreground mx-1" />
                             <button 
                                 onClick={() => handleNavigate(path)}
                                 className="hover:text-white transition-colors"
@@ -84,12 +84,12 @@ export default function Files() {
         </div>
 
         <div className="flex items-center space-x-2">
-            <div className="flex bg-[#313244] rounded-lg p-1">
+            <div className="flex bg-secondary rounded-lg p-1">
                 <button
                     onClick={() => setViewMode('grid')}
                     className={cn(
                         "p-1.5 rounded-md transition-all",
-                        viewMode === 'grid' ? "bg-[#45475a] text-white shadow-sm" : "text-gray-400 hover:text-white"
+                        viewMode === 'grid' ? "bg-muted text-white shadow-sm" : "text-muted-foreground hover:text-white"
                     )}
                 >
                     <LayoutGrid size={16} />
@@ -98,13 +98,13 @@ export default function Files() {
                     onClick={() => setViewMode('list')}
                     className={cn(
                         "p-1.5 rounded-md transition-all",
-                        viewMode === 'list' ? "bg-[#45475a] text-white shadow-sm" : "text-gray-400 hover:text-white"
+                        viewMode === 'list' ? "bg-muted text-white shadow-sm" : "text-muted-foreground hover:text-white"
                     )}
                 >
                     <ListIcon size={16} />
                 </button>
             </div>
-            <button className="p-2 hover:bg-white/10 rounded-full transition-colors">
+            <button className="p-2 hover:bg-muted rounded-full transition-colors">
                 <Search size={18} />
             </button>
         </div>
@@ -113,7 +113,7 @@ export default function Files() {
       {/* Content */}
       <div className="flex-1 overflow-auto p-4">
         {files.length === 0 ? (
-            <div className="flex flex-col items-center justify-center h-full text-gray-500">
+            <div className="flex flex-col items-center justify-center h-full text-muted-foreground">
                 <Folder size={48} className="mb-4 opacity-20" />
                 <p>Empty directory</p>
             </div>
@@ -123,16 +123,16 @@ export default function Files() {
                     <button
                         key={i}
                         onClick={() => handleFileClick(file)}
-                        className="group flex flex-col items-center p-4 rounded-xl hover:bg-white/5 transition-colors focus:bg-white/10 focus:outline-none"
+                        className="group flex flex-col items-center p-4 rounded-xl hover:bg-muted transition-colors focus:bg-white/10 focus:outline-none"
                     >
-                        <div className="mb-3 text-blue-400 group-hover:scale-110 transition-transform duration-200">
+                        <div className="mb-3 text-primary group-hover:scale-110 transition-transform duration-200">
                             {file.type === 'directory' ? (
                                 <Folder size={48} fill="currentColor" fillOpacity={0.2} />
                             ) : (
-                                <FileText size={48} className="text-gray-400" />
+                                <FileText size={48} className="text-muted-foreground" />
                             )}
                         </div>
-                        <span className="text-sm text-center truncate w-full px-2 text-gray-300 group-hover:text-white">
+                        <span className="text-sm text-center truncate w-full px-2 text-foreground group-hover:text-white">
                             {file.name}
                         </span>
                     </button>
@@ -140,7 +140,7 @@ export default function Files() {
             </div>
         ) : (
             <div className="flex flex-col">
-                <div className="grid grid-cols-12 px-4 py-2 text-xs font-medium text-gray-500 border-b border-white/5">
+                <div className="grid grid-cols-12 px-4 py-2 text-xs font-medium text-muted-foreground border-b border-border">
                     <div className="col-span-6">Name</div>
                     <div className="col-span-4">Type</div>
                     <div className="col-span-2 text-right">Size</div>
@@ -149,20 +149,20 @@ export default function Files() {
                     <button
                         key={i}
                         onClick={() => handleFileClick(file)}
-                        className="grid grid-cols-12 items-center px-4 py-3 hover:bg-white/5 transition-colors border-b border-white/5 last:border-0 text-left group"
+                        className="grid grid-cols-12 items-center px-4 py-3 hover:bg-muted transition-colors border-b border-border last:border-0 text-left group"
                     >
                         <div className="col-span-6 flex items-center space-x-3">
                             {file.type === 'directory' ? (
-                                <Folder size={18} className="text-blue-400" fill="currentColor" fillOpacity={0.2} />
+                                <Folder size={18} className="text-primary" fill="currentColor" fillOpacity={0.2} />
                             ) : (
-                                <FileText size={18} className="text-gray-400" />
+                                <FileText size={18} className="text-muted-foreground" />
                             )}
-                            <span className="text-sm text-gray-300 group-hover:text-white">{file.name}</span>
+                            <span className="text-sm text-foreground group-hover:text-white">{file.name}</span>
                         </div>
-                        <div className="col-span-4 text-xs text-gray-500">
+                        <div className="col-span-4 text-xs text-muted-foreground">
                             {file.type === 'directory' ? 'Folder' : 'Text File'}
                         </div>
-                        <div className="col-span-2 text-xs text-gray-500 text-right">
+                        <div className="col-span-2 text-xs text-muted-foreground text-right">
                             {file.type === 'directory' ? '--' : '4 KB'}
                         </div>
                     </button>

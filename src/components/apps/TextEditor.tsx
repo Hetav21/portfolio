@@ -8,10 +8,10 @@ export default function TextEditor() {
   const lines = (content || '// No file open').split('\n');
 
   return (
-    <div className="h-full bg-[#1e1e2e] text-[#a6accd] flex flex-col font-mono text-sm">
+    <div className="h-full bg-card text-foreground flex flex-col font-mono text-sm">
       <div className="flex-1 overflow-auto flex">
         {/* Line Numbers */}
-        <div className="py-4 px-3 bg-[#1e1e2e] text-gray-600 text-right select-none border-r border-white/5 min-w-[3rem]">
+        <div className="py-4 px-3 bg-card text-muted-foreground text-right select-none border-r border-border min-w-[3rem]">
             {lines.map((_, i) => (
                 <div key={i} className="leading-6">{i + 1}</div>
             ))}
@@ -28,7 +28,7 @@ export default function TextEditor() {
       </div>
       
       {/* Status Bar */}
-      <div className="h-8 bg-[#181825] flex items-center px-4 text-xs text-gray-500 justify-between border-t border-white/5">
+      <div className="h-8 bg-background flex items-center px-4 text-xs text-muted-foreground justify-between border-t border-border">
         <div className="flex items-center space-x-4">
             <span>NORMAL</span>
             <span>master*</span>

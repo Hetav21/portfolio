@@ -28,7 +28,7 @@ export const WindowManager = () => {
             title={window.title} 
             constraintsRef={containerRef}
         >
-            <div className="h-full w-full bg-[#1e1e2e] text-gray-200 overflow-hidden">
+            <div className="h-full w-full bg-card text-foreground overflow-hidden">
                 {window.id === 'terminal' && <Terminal />}
                 {window.id === 'files' && <Files />}
                 {window.id === 'about' && <AboutMe />}

@@ -50,11 +50,11 @@ export const BootSequence = () => {
       
       <div className="w-64 h-2 bg-gray-800 rounded-full overflow-hidden">
         <motion.div 
-          className="h-full bg-[#7ebae4]"
+          className="h-full bg-primary"
           style={{ width: `${progress}%` }}
         />
       </div>
-      <p className="mt-4 font-mono text-sm text-gray-400">Starting Hetav&apos;s Portfolio...</p>
+      <p className="mt-4 font-mono text-sm text-muted-foreground">Starting Hetav&apos;s Portfolio...</p>
     </motion.div>
   );
 };

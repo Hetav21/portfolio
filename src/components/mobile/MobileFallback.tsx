@@ -10,13 +10,13 @@ export const MobileFallback: React.FC<MobileFallbackProps> = ({ onContinue }) =>
   return (
     <div className="flex h-screen w-screen flex-col items-center justify-center bg-gradient-to-br from-blue-900 via-slate-900 to-black p-6 text-center text-white">
       <div className="mb-8 animate-pulse">
-        <NixosLogo className="h-24 w-24 text-blue-400" />
+        <NixosLogo className="h-24 w-24 text-primary" />
       </div>
       
       <h1 className="mb-2 text-4xl font-bold tracking-tight">Hetav Shah</h1>
       <h2 className="mb-6 text-xl text-blue-300">AI Engineer</h2>
       
-      <p className="mb-8 max-w-md text-gray-300">
+      <p className="mb-8 max-w-md text-foreground">
         This experience is designed for desktop browsers to fully showcase the NixOS GNOME environment.
       </p>
       
@@ -44,7 +44,7 @@ export const MobileFallback: React.FC<MobileFallbackProps> = ({ onContinue }) =>
       
       <button 
         onClick={onContinue}
-        className="mt-8 text-sm text-gray-500 underline decoration-dotted transition-colors hover:text-gray-300"
+        className="mt-8 text-sm text-muted-foreground underline decoration-dotted transition-colors hover:text-foreground"
       >
         Continue anyway (experience may be degraded)
       </button>
