@@ -3,7 +3,7 @@
 import React from 'react';
 import { TopBar } from './TopBar';
 import { Dock } from './Dock';
-// WindowManager will be implemented in the next task, keeping placeholder for now
+import { WindowManager } from '../window/WindowManager';
 
 export const Desktop = () => {
   return (
@@ -16,7 +16,7 @@ export const Desktop = () => {
       
       {/* Window Manager Area (Z-0 to allow windows to be below topbar/dock if needed, but usually windows are between) */}
       <div className="absolute inset-0 pt-8 pb-20 z-0">
-        {/* Windows will be rendered here */}
+        <WindowManager />
       </div>
 
       <Dock />
