@@ -14,10 +14,6 @@ interface WindowProps {
   constraintsRef?: React.RefObject<Element | null>;
 }
 
-// TopBar height (h-8 = 32px) and Dock area (pb-20 = 80px)
-const TOPBAR_HEIGHT = 32;
-const DOCK_HEIGHT = 80;
-
 export const Window = ({ id, title, children, constraintsRef }: WindowProps) => {
   const { windows, focusWindow, updateWindowPosition, closeWindow, minimizeWindow, maximizeWindow } = useSystemStore();
   const windowState = windows[id];
@@ -54,14 +50,12 @@ export const Window = ({ id, title, children, constraintsRef }: WindowProps) => 
         x: isMaximized ? 0 : position.x,
         y: isMaximized ? 0 : position.y,
         width: isMaximized ? '100%' : size.width,
-        height: isMaximized ? `calc(100vh - ${TOPBAR_HEIGHT}px - ${DOCK_HEIGHT}px)` : size.height,
+        height: isMaximized ? '100%' : size.height,
         zIndex: zIndex,
       }}
       transition={{ duration: 0.2 }}
       style={{
         position: 'absolute',
-        top: isMaximized ? 0 : undefined,
-        left: isMaximized ? 0 : undefined,
       }}
       className={cn(
         "flex flex-col overflow-hidden bg-[#1e1e2e] text-white shadow-2xl transition-shadow pointer-events-auto",
