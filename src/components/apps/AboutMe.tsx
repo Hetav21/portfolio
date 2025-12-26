@@ -1,7 +1,7 @@
 "use client";
 
 import React from 'react';
-import { Monitor, Cpu, Box, Github, Linkedin, Globe } from 'lucide-react';
+import { Github, Linkedin } from 'lucide-react';
 
 export default function AboutMe() {
   return (
@@ -32,7 +32,7 @@ export default function AboutMe() {
                     </div>
                     <div className="flex items-center justify-between p-3 hover:bg-muted rounded-lg transition-colors">
                         <span className="text-foreground">Kernel</span>
-                        <span className="font-medium">Next.js 14</span>
+                        <span className="font-medium">Next.js 16</span>
                     </div>
                     <div className="flex items-center justify-between p-3 hover:bg-muted rounded-lg transition-colors">
                         <span className="text-foreground">Window Manager</span>
