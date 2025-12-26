@@ -48,9 +48,9 @@ export const Window = ({ id, title, children, constraintsRef }: WindowProps) => 
       initial={false}
       animate={{
         x: isMaximized ? 0 : position.x,
-        y: isMaximized ? 0 : position.y,
+        y: isMaximized ? 32 : position.y,
         width: isMaximized ? '100%' : size.width,
-        height: isMaximized ? '100%' : size.height,
+        height: isMaximized ? 'calc(100% - 32px)' : size.height,
         zIndex: zIndex,
       }}
       transition={{ duration: 0.2 }}
