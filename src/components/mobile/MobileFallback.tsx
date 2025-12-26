@@ -8,15 +8,18 @@ interface MobileFallbackProps {
 
 export const MobileFallback: React.FC<MobileFallbackProps> = ({ onContinue }) => {
   return (
-    <div className="flex h-screen w-screen flex-col items-center justify-center bg-gradient-to-br from-blue-900 via-slate-900 to-black p-6 text-center text-white">
+    <div className="flex h-screen w-screen flex-col items-center justify-center bg-background p-6 text-center text-foreground">
+      {/* Rose Pine gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-br from-[#191724] via-[#1f1d2e] to-[#26233a] -z-10" />
+      
       <div className="mb-8 animate-pulse">
         <NixosLogo className="h-24 w-24 text-primary" />
       </div>
       
-      <h1 className="mb-2 text-4xl font-bold tracking-tight">Hetav Shah</h1>
-      <h2 className="mb-6 text-xl text-blue-300">AI Engineer</h2>
+      <h1 className="mb-2 text-4xl font-bold tracking-tight text-foreground">Hetav Shah</h1>
+      <h2 className="mb-6 text-xl text-primary">AI Engineer</h2>
       
-      <p className="mb-8 max-w-md text-foreground">
+      <p className="mb-8 max-w-md text-muted-foreground">
         This experience is designed for desktop browsers to fully showcase the NixOS GNOME environment.
       </p>
       
@@ -25,7 +28,7 @@ export const MobileFallback: React.FC<MobileFallbackProps> = ({ onContinue }) =>
           href="https://github.com/Hetav21" 
           target="_blank" 
           rel="noopener noreferrer"
-          className="flex items-center justify-center space-x-2 rounded-lg bg-gray-800 px-6 py-3 font-medium transition-colors hover:bg-gray-700"
+          className="flex items-center justify-center space-x-2 rounded-lg bg-secondary px-6 py-3 font-medium text-secondary-foreground transition-colors hover:bg-muted"
         >
           <Github size={20} />
           <span>View on GitHub</span>
@@ -35,7 +38,7 @@ export const MobileFallback: React.FC<MobileFallbackProps> = ({ onContinue }) =>
           href="https://www.linkedin.com/in/hetav2106/" 
           target="_blank" 
           rel="noopener noreferrer"
-          className="flex items-center justify-center space-x-2 rounded-lg bg-[#0077b5] px-6 py-3 font-medium transition-colors hover:bg-[#006097]"
+          className="flex items-center justify-center space-x-2 rounded-lg bg-primary px-6 py-3 font-medium text-primary-foreground transition-colors hover:bg-primary/80"
         >
           <Linkedin size={20} />
           <span>Connect on LinkedIn</span>

@@ -8,6 +8,31 @@ import { executeCommand, isNixShell, commandHistory } from '@/lib/commands';
 import { currentPath } from '@/lib/filesystem';
 import 'xterm/css/xterm.css';
 
+// Rose Pine terminal theme
+const rosePineTheme = {
+  background: '#191724',     // Rose Pine base
+  foreground: '#e0def4',     // Rose Pine text
+  cursor: '#524f67',         // Rose Pine highlight med
+  cursorAccent: '#e0def4',
+  selectionBackground: '#403d52',
+  black: '#26233a',          // Rose Pine overlay
+  red: '#eb6f92',            // Rose Pine love
+  green: '#9ccfd8',          // Rose Pine foam
+  yellow: '#f6c177',         // Rose Pine gold
+  blue: '#31748f',           // Rose Pine pine
+  magenta: '#c4a7e7',        // Rose Pine iris
+  cyan: '#9ccfd8',           // Rose Pine foam
+  white: '#e0def4',          // Rose Pine text
+  brightBlack: '#6e6a86',    // Rose Pine muted
+  brightRed: '#eb6f92',
+  brightGreen: '#9ccfd8',
+  brightYellow: '#f6c177',
+  brightBlue: '#31748f',
+  brightMagenta: '#c4a7e7',
+  brightCyan: '#9ccfd8',
+  brightWhite: '#e0def4',
+};
+
 export default function TerminalApp() {
   const terminalRef = useRef<HTMLDivElement>(null);
   const xtermRef = useRef<Terminal | null>(null);
@@ -15,16 +40,8 @@ export default function TerminalApp() {
   const commandRef = useRef('');
   const historyIndexRef = useRef(-1);
   
-  // Access store directly using the hook
   const store = useSystemStore();
   
-  // We need to access the store in the event listener, but the listener is created once.
-  // We can use a ref to hold the latest store or just use useSystemStore.getState() if we weren't using the hook.
-  // But since we are inside a component, we can use the store from the hook if we reconstruct the listener, 
-  // or better, pass the store to executeCommand.
-  // But executeCommand needs the store state (for openWindow).
-  // I will just pass the current store object from the hook to the execute function.
-  // However, the event listener closes over the scope.
   const storeRef = useRef(store);
   useEffect(() => {
     storeRef.current = store;
@@ -35,16 +52,9 @@ export default function TerminalApp() {
 
     const term = new Terminal({
       cursorBlink: true,
-      fontFamily: '"Fira Code", monospace',
+      fontFamily: '"Fira Code", "JetBrains Mono", monospace',
       fontSize: 14,
-      theme: {
-        background: '#1a1b1e',
-        foreground: '#ffffff',
-        cursor: '#7ebae4',
-        green: '#65b86e',
-        blue: '#5277c3',
-        magenta: '#ce4a89'
-      }
+      theme: rosePineTheme,
     });
 
     const fitAddon = new FitAddon();
@@ -57,16 +67,17 @@ export default function TerminalApp() {
     fitAddonRef.current = fitAddon;
 
     const getPrompt = () => {
-      // Shorten home path for display
       let displayPath = currentPath;
       if (displayPath.startsWith('/home/hetav')) {
         displayPath = displayPath.replace('/home/hetav', '~');
       }
       
       if (isNixShell) {
-        return `\x1b[1;32m[nix-shell:${displayPath}]$\x1b[0m `;
+        // Rose Pine foam (green-ish) for nix-shell
+        return `\x1b[1;38;2;156;207;216m[nix-shell:${displayPath}]$\x1b[0m `;
       }
-      return `\x1b[1;34mhetav@portfolio\x1b[0m:\x1b[1;32m${displayPath}\x1b[0m$ `;
+      // Rose Pine iris for user, foam for path
+      return `\x1b[1;38;2;196;167;231mhetav@portfolio\x1b[0m:\x1b[1;38;2;156;207;216m${displayPath}\x1b[0m$ `;
     };
 
     const prompt = () => {
@@ -95,9 +106,6 @@ export default function TerminalApp() {
             term.write('\r\n');
           }
           
-          commandHistory.push(command); // executeCommand handles pushing to history too? 
-          // executeCommand pushes to export commandHistory. 
-          // But we also need to reset index.
           historyIndexRef.current = -1;
         }
         
@@ -113,7 +121,6 @@ export default function TerminalApp() {
           historyIndexRef.current++;
           const historyCmd = commandHistory[commandHistory.length - 1 - historyIndexRef.current];
           
-          // Clear current line
           const currentLen = commandRef.current.length;
           for (let i = 0; i < currentLen; i++) {
             term.write('\b \b');
@@ -126,7 +133,6 @@ export default function TerminalApp() {
         if (historyIndexRef.current > -1) {
           historyIndexRef.current--;
           
-          // Clear current line
           const currentLen = commandRef.current.length;
           for (let i = 0; i < currentLen; i++) {
             term.write('\b \b');
@@ -146,12 +152,10 @@ export default function TerminalApp() {
       }
     });
 
-    // Handle resize
     const handleResize = () => {
       fitAddon.fit();
     };
     
-    // Observe resize of the container
     const resizeObserver = new ResizeObserver(() => {
         fitAddon.fit();
     });
@@ -164,13 +168,11 @@ export default function TerminalApp() {
       window.removeEventListener('resize', handleResize);
       resizeObserver.disconnect();
     };
-  }, []); // Empty dependency array means this runs once on mount
+  }, []);
 
-  // Watch for window size changes from store to refit
   const windowState = store.windows['terminal'];
   useEffect(() => {
     if (windowState.isOpen && fitAddonRef.current) {
-        // slight delay to allow transition
         setTimeout(() => {
             fitAddonRef.current?.fit();
         }, 50);
@@ -180,7 +182,7 @@ export default function TerminalApp() {
   return (
     <div 
       ref={terminalRef} 
-      className="h-full w-full bg-card p-1"
+      className="h-full w-full bg-[#191724] p-1"
       onClick={() => xtermRef.current?.focus()} 
     />
   );

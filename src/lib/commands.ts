@@ -5,27 +5,32 @@ import { AppId } from './types';
 export let isNixShell = false;
 export const commandHistory: string[] = [];
 
+// Rose Pine colors for fastfetch:
+// Iris (purple): #c4a7e7 -> RGB(196,167,231)
+// Foam (cyan): #9ccfd8 -> RGB(156,207,216)
+// Text: #e0def4 -> RGB(224,222,244)
+
 const FASTFETCH_OUTPUT = `
-          \x1b[38;2;126;186;228m▗▄▄▄       ▗▄▄▄▄    ▄▄▄▖\x1b[0m            \x1b[38;2;82;119;195mhetav@portfolio\x1b[0m
-          \x1b[38;2;126;186;228m▜███▙       ▜███▙  ▟███▛\x1b[0m            \x1b[38;2;82;119;195m────────────────\x1b[0m
-           \x1b[38;2;126;186;228m▜███▙       ▜███▙▟███▛\x1b[0m             \x1b[38;2;82;119;195mOS: NixOS (Portfolio Edition)\x1b[0m
-            \x1b[38;2;126;186;228m▜███▙       ▜██████▛\x1b[0m              \x1b[38;2;82;119;195mHost: Hetav Shah\x1b[0m
-     \x1b[38;2;126;186;228m▟█████████████████▙ ▜████▛     ▟▙\x1b[0m        \x1b[38;2;82;119;195mKernel: Next.js 14\x1b[0m
-    \x1b[38;2;126;186;228m▟███████████████████▙ ▜███▙    ▟██▙\x1b[0m       \x1b[38;2;82;119;195mUptime: since 2021\x1b[0m
-           \x1b[38;2;126;186;228m▄▄▄▄▖           ▜███▙  ▟███▛\x1b[0m       \x1b[38;2;82;119;195mPackages: TypeScript, Python, Nix, Docker\x1b[0m
-          \x1b[38;2;126;186;228m▟███▛             ▜██▛ ▟███▛\x1b[0m        \x1b[38;2;82;119;195mShell: nix-shell\x1b[0m
-         \x1b[38;2;126;186;228m▟███▛               ▜▛ ▟███▛\x1b[0m         \x1b[38;2;82;119;195mTerminal: xterm.js\x1b[0m
-\x1b[38;2;126;186;228m▟███████████▛                  ▟██████████▙\x1b[0m   \x1b[38;2;82;119;195mDE: GNOME (Web Edition)\x1b[0m
-\x1b[38;2;126;186;228m▜██████████▛                  ▟███████████▛\x1b[0m   \x1b[38;2;82;119;195mTheme: Adwaita Dark\x1b[0m
-      \x1b[38;2;126;186;228m▟███▛ ▟▙               ▟███▛\x1b[0m            \x1b[38;2;82;119;195mRole: AI Engineer\x1b[0m
-     \x1b[38;2;126;186;228m▟███▛ ▟██▙             ▟███▛\x1b[0m             \x1b[38;2;82;119;195mContact: github.com/Hetav21\x1b[0m
-    \x1b[38;2;126;186;228m▟███▛  ▜███▙           ▝▀▀▀▀\x1b[0m
-    \x1b[38;2;126;186;228m▜██▛    ▜███▙ ▜██████████████████▛\x1b[0m
-     \x1b[38;2;126;186;228m▜▛     ▟████▙ ▜████████████████▛\x1b[0m
-           \x1b[38;2;126;186;228m▟██████▙       ▜███▙\x1b[0m
-          \x1b[38;2;126;186;228m▟███▛▜███▙       ▜███▙\x1b[0m
-         \x1b[38;2;126;186;228m▟███▛  ▜███▙       ▜███▙\x1b[0m
-         \x1b[38;2;126;186;228m▝▀▀▀    ▀▀▀▀▘       ▀▀▀▘\x1b[0m
+          \x1b[38;2;196;167;231m▗▄▄▄       ▗▄▄▄▄    ▄▄▄▖\x1b[0m            \x1b[38;2;156;207;216mhetav@portfolio\x1b[0m
+          \x1b[38;2;196;167;231m▜███▙       ▜███▙  ▟███▛\x1b[0m            \x1b[38;2;156;207;216m────────────────\x1b[0m
+           \x1b[38;2;196;167;231m▜███▙       ▜███▙▟███▛\x1b[0m             \x1b[38;2;224;222;244mOS:\x1b[0m NixOS (Portfolio Edition)
+            \x1b[38;2;196;167;231m▜███▙       ▜██████▛\x1b[0m              \x1b[38;2;224;222;244mHost:\x1b[0m Hetav Shah
+     \x1b[38;2;196;167;231m▟█████████████████▙ ▜████▛     ▟▙\x1b[0m        \x1b[38;2;224;222;244mKernel:\x1b[0m Next.js 14
+    \x1b[38;2;196;167;231m▟███████████████████▙ ▜███▙    ▟██▙\x1b[0m       \x1b[38;2;224;222;244mUptime:\x1b[0m since 2021
+           \x1b[38;2;196;167;231m▄▄▄▄▖           ▜███▙  ▟███▛\x1b[0m       \x1b[38;2;224;222;244mPackages:\x1b[0m TypeScript, Python, Nix, Docker
+          \x1b[38;2;196;167;231m▟███▛             ▜██▛ ▟███▛\x1b[0m        \x1b[38;2;224;222;244mShell:\x1b[0m nix-shell
+         \x1b[38;2;196;167;231m▟███▛               ▜▛ ▟███▛\x1b[0m         \x1b[38;2;224;222;244mTerminal:\x1b[0m xterm.js
+\x1b[38;2;196;167;231m▟███████████▛                  ▟██████████▙\x1b[0m   \x1b[38;2;224;222;244mDE:\x1b[0m GNOME (Web Edition)
+\x1b[38;2;196;167;231m▜██████████▛                  ▟███████████▛\x1b[0m   \x1b[38;2;224;222;244mTheme:\x1b[0m Rosé Pine
+      \x1b[38;2;196;167;231m▟███▛ ▟▙               ▟███▛\x1b[0m            \x1b[38;2;224;222;244mRole:\x1b[0m AI Engineer
+     \x1b[38;2;196;167;231m▟███▛ ▟██▙             ▟███▛\x1b[0m             \x1b[38;2;224;222;244mContact:\x1b[0m github.com/Hetav21
+    \x1b[38;2;196;167;231m▟███▛  ▜███▙           ▝▀▀▀▀\x1b[0m
+    \x1b[38;2;196;167;231m▜██▛    ▜███▙ ▜██████████████████▛\x1b[0m
+     \x1b[38;2;196;167;231m▜▛     ▟████▙ ▜████████████████▛\x1b[0m
+           \x1b[38;2;196;167;231m▟██████▙       ▜███▙\x1b[0m
+          \x1b[38;2;196;167;231m▟███▛▜███▙       ▜███▙\x1b[0m
+         \x1b[38;2;196;167;231m▟███▛  ▜███▙       ▜███▙\x1b[0m
+         \x1b[38;2;196;167;231m▝▀▀▀    ▀▀▀▀▘       ▀▀▀▘\x1b[0m
 `;
 
 export const executeCommand = (input: string, store: SystemState): string => {
@@ -46,7 +51,8 @@ export const executeCommand = (input: string, store: SystemState): string => {
       const files = listDirectory(currentPath);
       if (!files) return `Error: Cannot access '${currentPath}'`;
       return files.map(f => {
-        if (f.type === 'directory') return `\x1b[1;34m${f.name}\x1b[0m`;
+        // Rose Pine foam for directories
+        if (f.type === 'directory') return `\x1b[38;2;156;207;216m${f.name}\x1b[0m`;
         return f.name;
       }).join('  ');
 
@@ -60,28 +66,10 @@ export const executeCommand = (input: string, store: SystemState): string => {
       if (!node) return `cd: no such file or directory: ${targetPath}`;
       if (node.type !== 'directory') return `cd: not a directory: ${targetPath}`;
       
-      // We need to resolve the absolute path to set it correctly
-      // getNode handles resolution internally but doesn't return the path string.
-      // We can rely on a hack: reconstruct it or update filesystem to return path.
-      // For now, let's just rely on the fact that getNode uses resolvePath internally
-      // but we need the string.
-      // Actually, we can just use the internal logic of resolvePath if we exported it,
-      // or we can implement a simple 'resolve' here or in filesystem.
-      // Better: Update filesystem to export resolvePath.
-      // Or just assume it works for now? No, we need to set the string.
-      
-      // Let's modify filesystem to export resolvePath or implement a simple one here.
-      // I'll implement a simple resolver here reusing the logic from filesystem (conceptually)
-      // Wait, I can't import resolvePath as I didn't export it.
-      // I'll fix this by checking if the path starts with /, if so use it.
-      // If relative, join with currentPath.
-      // Then normalize.
-      
       let newPath = targetPath.startsWith('/') ? targetPath : `${currentPath}/${targetPath}`;
-      // Normalize path
-      const parts = newPath.split('/').filter(p => p && p !== '.');
+      const pathParts = newPath.split('/').filter(p => p && p !== '.');
       const stack: string[] = [];
-      for (const p of parts) {
+      for (const p of pathParts) {
         if (p === '..') {
           if (stack.length > 0) stack.pop();
         } else {
