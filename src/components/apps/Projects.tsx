@@ -9,19 +9,19 @@ export default function Projects() {
         title: "Project 1",
         description: "A wonderful project that does amazing things with AI and simple logic. It revolutionizes how we interact with data.",
         tags: ["React", "AI", "Python"],
-        color: "from-blue-500 to-cyan-500"
+        color: "from-primary to-rose"
     },
     {
         title: "Project 2",
         description: "Another cool project that solves real world problems efficiently. Built with performance and scalability in mind.",
         tags: ["TypeScript", "Next.js", "Tailwind"],
-        color: "from-purple-500 to-pink-500"
+        color: "from-gold to-love"
     },
     {
         title: "Project 3",
         description: "A masterpiece of engineering and design. Leveraging low-level technologies for maximum speed.",
         tags: ["Rust", "WASM", "WebGL"],
-        color: "from-green-500 to-emerald-500"
+        color: "from-foam to-pine"
     }
   ];
 
@@ -36,7 +36,7 @@ export default function Projects() {
                     </span>
                 </div>
                 <div className="p-5 flex-1 flex flex-col">
-                    <h3 className="text-xl font-bold mb-2 text-white">{project.title}</h3>
+                    <h3 className="text-xl font-bold mb-2 text-foreground">{project.title}</h3>
                     <p className="text-muted-foreground text-sm mb-4 flex-1 leading-relaxed">
                         {project.description}
                     </p>
@@ -50,11 +50,11 @@ export default function Projects() {
                     </div>
 
                     <div className="flex items-center gap-3 mt-auto">
-                        <button className="flex-1 flex items-center justify-center gap-2 bg-muted hover:bg-muted text-white py-2 rounded-lg transition-colors text-sm font-medium">
+                        <button className="flex-1 flex items-center justify-center gap-2 bg-muted hover:bg-muted/80 text-foreground py-2 rounded-lg transition-colors text-sm font-medium">
                             <Github size={16} />
                             Code
                         </button>
-                         <button className="flex-1 flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg transition-colors text-sm font-medium">
+                         <button className="flex-1 flex items-center justify-center gap-2 bg-primary hover:bg-primary/90 text-primary-foreground py-2 rounded-lg transition-colors text-sm font-medium">
                             <ExternalLink size={16} />
                             Demo
                         </button>

@@ -284,11 +284,6 @@ function TerminalInstance({ theme }: { theme: 'dark' | 'light' }) {
 
 export default function TerminalApp() {
   const theme = useSystemStore((state) => state.theme);
-  const [key, setKey] = useState(0);
   
-  useEffect(() => {
-    setKey(prev => prev + 1);
-  }, [theme]);
-
-  return <TerminalInstance key={key} theme={theme} />;
+  return <TerminalInstance key={theme} theme={theme} />;
 }

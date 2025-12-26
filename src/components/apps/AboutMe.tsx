@@ -19,7 +19,7 @@ export default function AboutMe() {
                 />
             </div>
             <h1 className="text-2xl font-bold mb-1">Hetav Shah</h1>
-            <p className="text-muted-foreground">AI Engineer</p>
+            <p className="text-muted-foreground">Software Developer</p>
         </div>
 
         <div className="w-full max-w-md space-y-6">

@@ -59,7 +59,7 @@ const fileSystem: FileSystemNode = {
                 {
                   name: 'resume.txt',
                   type: 'file',
-                  content: 'Hetav Shah\nAI Engineer\n\nSkills: TypeScript, Python, Nix, Docker'
+                  content: 'Hetav Shah\nSoftware Developer\n\nSkills: TypeScript, Python, Nix, Docker'
                 }
               ]
             },
@@ -70,7 +70,7 @@ const fileSystem: FileSystemNode = {
                 {
                   name: 'about.txt',
                   type: 'file',
-                  content: 'Name: Hetav Shah\nRole: AI Engineer\nGitHub: github.com/Hetav21'
+                  content: 'Name: Hetav Shah\nRole: Software Developer\nGitHub: github.com/Hetav21'
                 }
               ]
             }

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useMemo } from 'react';
 import { Folder, FileText, ChevronRight, LayoutGrid, List as ListIcon, ArrowLeft, Search, Home } from 'lucide-react';
 import { listDirectory } from '@/lib/filesystem';
 import { useSystemStore } from '@/lib/store';
@@ -10,18 +10,14 @@ import { cn } from '@/lib/utils';
 export default function Files() {
   const [currentPath, setCurrentPath] = useState('/home/hetav');
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
-  const [files, setFiles] = useState<FileSystemNode[]>([]);
+  
+  const files = useMemo(() => {
+      const contents = listDirectory(currentPath);
+      return contents || [];
+  }, [currentPath]);
+
   const openWindow = useSystemStore((state) => state.openWindow);
   const setEditorContent = useSystemStore((state) => state.setEditorContent);
-
-  useEffect(() => {
-    const contents = listDirectory(currentPath);
-    if (contents) {
-      setFiles(contents);
-    } else {
-        setFiles([]);
-    }
-  }, [currentPath]);
 
   const handleNavigate = (path: string) => {
     setCurrentPath(path);

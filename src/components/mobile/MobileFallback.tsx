@@ -17,7 +17,7 @@ export const MobileFallback: React.FC<MobileFallbackProps> = ({ onContinue }) =>
       </div>
       
       <h1 className="mb-2 text-4xl font-bold tracking-tight text-foreground">Hetav Shah</h1>
-      <h2 className="mb-6 text-xl text-primary">AI Engineer</h2>
+      <h2 className="mb-6 text-xl text-primary">Software Developer</h2>
       
       <p className="mb-8 max-w-md text-muted-foreground">
         This experience is designed for desktop browsers to fully showcase the NixOS GNOME environment.
