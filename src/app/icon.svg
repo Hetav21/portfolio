@@ -1,0 +1,27 @@
+<svg width="535" height="535" viewBox="0 0 501.56251 501.56249" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="lightBlue" x1="200.6" y1="351.4" x2="290.1" y2="506.2" gradientUnits="userSpaceOnUse" gradientTransform="translate(70.65,-1055.15)">
+      <stop offset="0" stop-color="#699ad7"/>
+      <stop offset="0.24" stop-color="#7eb1dd"/>
+      <stop offset="1" stop-color="#7ebae4"/>
+    </linearGradient>
+    <linearGradient id="darkBlue" x1="-584.2" y1="782.3" x2="-496.3" y2="937.7" gradientUnits="userSpaceOnUse" gradientTransform="translate(864.7,-1491.34)">
+      <stop offset="0" stop-color="#415e9a"/>
+      <stop offset="0.23" stop-color="#4a6baf"/>
+      <stop offset="1" stop-color="#5277c3"/>
+    </linearGradient>
+  </defs>
+  <g transform="translate(-156.41,933.31)">
+    <g transform="matrix(1,0,0,1,-0.06,33.19)">
+      <!-- Light blue lambdas -->
+      <path d="m 309.55,-710.39 122.2,211.68 -56.16,0.53 -32.62,-56.87 -32.86,56.57 -27.9,-0.01 -14.29,-24.69 46.81,-80.49 -33.23,-57.83 z" fill="url(#lightBlue)"/>
+      <path d="m 309.55,-710.39 122.2,211.68 -56.16,0.53 -32.62,-56.87 -32.86,56.57 -27.9,-0.01 -14.29,-24.69 46.81,-80.49 -33.23,-57.83 z" fill="url(#lightBlue)" transform="rotate(60,407.11,-715.79)"/>
+      <path d="m 309.55,-710.39 122.2,211.68 -56.16,0.53 -32.62,-56.87 -32.86,56.57 -27.9,-0.01 -14.29,-24.69 46.81,-80.49 -33.23,-57.83 z" fill="url(#lightBlue)" transform="rotate(-60,407.31,-715.7)"/>
+      <path d="m 309.55,-710.39 122.2,211.68 -56.16,0.53 -32.62,-56.87 -32.86,56.57 -27.9,-0.01 -14.29,-24.69 46.81,-80.49 -33.23,-57.83 z" fill="url(#lightBlue)" transform="rotate(180,407.42,-715.76)"/>
+      <!-- Dark blue lambdas -->
+      <path d="m 309.55,-710.39 122.2,211.68 -56.16,0.53 -32.62,-56.87 -32.86,56.57 -27.9,-0.01 -14.29,-24.69 46.81,-80.49 -33.23,-57.83 z" fill="url(#darkBlue)"/>
+      <path d="m 309.55,-710.39 122.2,211.68 -56.16,0.53 -32.62,-56.87 -32.86,56.57 -27.9,-0.01 -14.29,-24.69 46.81,-80.49 -33.23,-57.83 z" fill="url(#darkBlue)" transform="rotate(120,407.34,-716.08)"/>
+      <path d="m 309.55,-710.39 122.2,211.68 -56.16,0.53 -32.62,-56.87 -32.86,56.57 -27.9,-0.01 -14.29,-24.69 46.81,-80.49 -33.23,-57.83 z" fill="url(#darkBlue)" transform="rotate(-120,407.29,-715.87)"/>
+    </g>
+  </g>
+</svg>

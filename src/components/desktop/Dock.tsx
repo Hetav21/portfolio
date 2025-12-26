@@ -4,35 +4,30 @@ import React from 'react';
 import { useSystemStore } from '@/lib/store';
 import { AppId } from '@/lib/types';
 import { motion } from 'framer-motion';
-import { 
-  Terminal, 
-  Folder, 
-  User, 
-  Code, 
-  Mail, 
-  FileText, 
-  Globe 
-} from 'lucide-react';
+import Image from 'next/image';
 
 interface DockItem {
   id: AppId;
-  icon: React.ElementType;
+  filename: string;
   label: string;
 }
 
 const dockItems: DockItem[] = [
-  { id: 'terminal', icon: Terminal, label: 'Terminal' },
-  { id: 'files', icon: Folder, label: 'Files' },
-  { id: 'browser', icon: Globe, label: 'Web Browser' },
-  { id: 'projects', icon: Code, label: 'Projects' },
-  { id: 'editor', icon: FileText, label: 'Text Editor' },
-  { id: 'about', icon: User, label: 'About' },
-  { id: 'contact', icon: Mail, label: 'Contact' },
+  { id: 'terminal', filename: 'terminal.svg', label: 'Terminal' },
+  { id: 'files', filename: 'files.svg', label: 'Files' },
+  { id: 'browser', filename: 'browser.svg', label: 'Browser' },
+  { id: 'projects', filename: 'code.svg', label: 'Projects' },
+  { id: 'editor', filename: 'editor.svg', label: 'Text Editor' },
+  { id: 'about', filename: 'user.svg', label: 'About' },
+  { id: 'contact', filename: 'contact.svg', label: 'Contact' },
 ];
 
 export const Dock = () => {
   const openWindow = useSystemStore((state) => state.openWindow);
   const windows = useSystemStore((state) => state.windows);
+  const theme = useSystemStore((state) => state.theme);
+
+  const iconTheme = theme === 'dark' ? 'dark' : 'light';
 
   return (
     <div className="fixed bottom-4 left-1/2 transform -translate-x-1/2 z-50">
@@ -48,10 +43,14 @@ export const Dock = () => {
               whileHover={{ scale: 1.2, y: -5 }}
               whileTap={{ scale: 0.95 }}
             >
-              <item.icon 
-                size={24} 
-                className="text-foreground opacity-90 group-hover:opacity-100" 
-              />
+              <div className="w-10 h-10 relative">
+                <Image
+                  src={`/icons/${iconTheme}/${item.filename}`}
+                  alt={item.label}
+                  fill
+                  className="object-contain drop-shadow-lg"
+                />
+              </div>
               
               {/* Tooltip */}
               <span className="absolute -top-10 left-1/2 transform -translate-x-1/2 px-2 py-1 bg-popover text-xs text-popover-foreground rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none border border-border">

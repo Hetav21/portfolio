@@ -1,6 +1,7 @@
 "use client";
 
 import React from 'react';
+import Image from 'next/image';
 import { Github, Linkedin } from 'lucide-react';
 
 export default function AboutMe() {
@@ -8,8 +9,14 @@ export default function AboutMe() {
     <div className="h-full bg-card text-foreground overflow-auto p-8 flex flex-col items-center">
         {/* Header */}
         <div className="flex flex-col items-center mb-8">
-            <div className="w-24 h-24 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-3xl font-bold text-white shadow-lg mb-4">
-                HS
+            <div className="w-24 h-24 rounded-full overflow-hidden shadow-lg mb-4">
+                <Image
+                    src="/avatar.png"
+                    alt="Hetav Shah"
+                    width={96}
+                    height={96}
+                    className="object-cover"
+                />
             </div>
             <h1 className="text-2xl font-bold mb-1">Hetav Shah</h1>
             <p className="text-muted-foreground">AI Engineer</p>
@@ -58,11 +65,11 @@ export default function AboutMe() {
             {/* Links */}
              <div className="flex justify-center space-x-4 pt-4">
                 <a href="https://github.com/Hetav21" target="_blank" rel="noopener noreferrer" 
-                   className="p-3 bg-secondary rounded-full hover:bg-muted transition-colors text-white">
+                   className="p-3 bg-secondary rounded-full hover:bg-muted transition-colors text-foreground">
                     <Github size={20} />
                 </a>
                 <a href="https://linkedin.com/in/hetav2106/" target="_blank" rel="noopener noreferrer"
-                   className="p-3 bg-secondary rounded-full hover:bg-muted transition-colors text-white">
+                   className="p-3 bg-secondary rounded-full hover:bg-muted transition-colors text-foreground">
                     <Linkedin size={20} />
                 </a>
             </div>

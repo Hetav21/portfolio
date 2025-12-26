@@ -1,6 +1,7 @@
 "use client";
 
 import React from 'react';
+import Image from 'next/image';
 import { RotateCw, ChevronLeft, ChevronRight, Lock, Star, Search } from 'lucide-react';
 
 export default function Browser() {
@@ -20,21 +21,27 @@ export default function Browser() {
              </button>
         </div>
         
-        <div className="flex-1 bg-secondary rounded-full px-4 py-1.5 flex items-center space-x-2 text-sm border border-transparent focus-within:border-blue-500/50 focus-within:ring-2 focus-within:ring-blue-500/20 transition-all">
-            <Lock size={14} className="text-green-500" />
+        <div className="flex-1 bg-secondary rounded-full px-4 py-1.5 flex items-center space-x-2 text-sm border border-transparent focus-within:border-primary/50 focus-within:ring-2 focus-within:ring-primary/20 transition-all">
+            <Lock size={14} className="text-pine" />
             <input 
                 type="text" 
                 value="https://hetav.dev" 
                 readOnly
                 className="bg-transparent border-none focus:outline-none w-full text-foreground"
             />
-            <Star size={14} className="text-muted-foreground hover:text-yellow-400 cursor-pointer transition-colors" />
+            <Star size={14} className="text-muted-foreground hover:text-gold cursor-pointer transition-colors" />
         </div>
 
         <div className="flex items-center space-x-2">
-             <div className="w-8 h-8 bg-gradient-to-tr from-blue-500 to-purple-500 rounded-full flex items-center justify-center text-xs font-bold text-white">
-                HS
-            </div>
+             <div className="w-8 h-8 rounded-full overflow-hidden">
+                <Image
+                    src="/avatar.png"
+                    alt="Profile"
+                    width={32}
+                    height={32}
+                    className="object-cover"
+                />
+             </div>
         </div>
       </div>
 
