@@ -36,7 +36,7 @@ export const Dock = () => {
 
   return (
     <div className="fixed bottom-4 left-1/2 transform -translate-x-1/2 z-50">
-      <div className="flex items-center gap-2 px-4 py-2 bg-black/40 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl">
+      <div className="flex items-center gap-2 px-4 py-2 bg-card/80 backdrop-blur-xl border border-border rounded-2xl shadow-2xl">
         {dockItems.map((item) => {
           const isOpen = windows[item.id]?.isOpen;
           
@@ -50,17 +50,17 @@ export const Dock = () => {
             >
               <item.icon 
                 size={24} 
-                className="text-white opacity-90 group-hover:opacity-100" 
+                className="text-foreground opacity-90 group-hover:opacity-100" 
               />
               
               {/* Tooltip */}
-              <span className="absolute -top-10 left-1/2 transform -translate-x-1/2 px-2 py-1 bg-black/80 text-xs text-white rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none border border-white/10">
+              <span className="absolute -top-10 left-1/2 transform -translate-x-1/2 px-2 py-1 bg-popover text-xs text-popover-foreground rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none border border-border">
                 {item.label}
               </span>
 
               {/* Active Indicator */}
               {isOpen && (
-                <div className="absolute bottom-1 left-1/2 transform -translate-x-1/2 w-1 h-1 bg-blue-400 rounded-full" />
+                <div className="absolute bottom-1 left-1/2 transform -translate-x-1/2 w-1 h-1 bg-primary rounded-full" />
               )}
             </motion.button>
           );

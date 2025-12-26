@@ -45,82 +45,96 @@
   --radius-3xl: calc(var(--radius) + 12px);
   --radius-4xl: calc(var(--radius) + 16px);
   
-  /* NixOS Colors */
-  --color-nix-blue: var(--nix-blue);
-  --color-nix-blue-dark: var(--nix-blue-dark);
-  --color-nix-green: var(--nix-green);
+  /* Rose Pine accent colors */
+  --color-love: var(--love);
+  --color-gold: var(--gold);
+  --color-rose: var(--rose);
+  --color-pine: var(--pine);
+  --color-foam: var(--foam);
+  --color-iris: var(--iris);
 }
 
 :root {
-  /* Adwaita Dark (Default) */
-  --background: hsl(240 4% 14%);
-  --foreground: hsl(0 0% 100%);
-  --card: hsl(240 4% 19%);
-  --card-foreground: hsl(0 0% 100%);
-  --popover: hsl(240 4% 19%);
-  --popover-foreground: hsl(0 0% 100%);
-  --primary: hsl(211 65% 69%);
-  --primary-foreground: hsl(222 47% 11%);
-  --secondary: hsl(240 4% 19%);
-  --secondary-foreground: hsl(0 0% 100%);
-  --muted: hsl(240 4% 19%);
-  --muted-foreground: hsl(240 5% 65%);
-  --accent: hsl(211 65% 69%);
-  --accent-foreground: hsl(222 47% 11%);
-  --destructive: hsl(337 57% 55%);
-  --destructive-foreground: hsl(0 0% 100%);
-  --border: hsl(240 4% 24%);
-  --input: hsl(240 4% 24%);
-  --ring: hsl(211 65% 69%);
+  /* Rose Pine (Dark) - Default */
+  --background: #191724;
+  --foreground: #e0def4;
+  --card: #1f1d2e;
+  --card-foreground: #e0def4;
+  --popover: #26233a;
+  --popover-foreground: #e0def4;
+  --primary: #c4a7e7;
+  --primary-foreground: #191724;
+  --secondary: #26233a;
+  --secondary-foreground: #e0def4;
+  --muted: #26233a;
+  --muted-foreground: #6e6a86;
+  --accent: #c4a7e7;
+  --accent-foreground: #191724;
+  --destructive: #eb6f92;
+  --destructive-foreground: #e0def4;
+  --border: #403d52;
+  --input: #403d52;
+  --ring: #c4a7e7;
   --radius: 0.75rem;
 
-  /* NixOS Colors */
-  --nix-blue: hsl(211 65% 69%);
-  --nix-blue-dark: hsl(222 47% 54%);
-  --nix-green: hsl(127 36% 56%);
+  /* Rose Pine Accent Colors */
+  --love: #eb6f92;
+  --gold: #f6c177;
+  --rose: #ebbcba;
+  --pine: #31748f;
+  --foam: #9ccfd8;
+  --iris: #c4a7e7;
 
-  /* Sidebar/Charts defaults for dark */
-  --sidebar: hsl(240 4% 14%);
-  --sidebar-foreground: hsl(0 0% 100%);
-  --sidebar-primary: hsl(211 65% 69%);
-  --sidebar-primary-foreground: hsl(0 0% 100%);
-  --sidebar-accent: hsl(240 4% 19%);
-  --sidebar-accent-foreground: hsl(0 0% 100%);
-  --sidebar-border: hsl(240 4% 24%);
-  --sidebar-ring: hsl(211 65% 69%);
+  /* Sidebar defaults for Rose Pine Dark */
+  --sidebar: #1f1d2e;
+  --sidebar-foreground: #e0def4;
+  --sidebar-primary: #c4a7e7;
+  --sidebar-primary-foreground: #191724;
+  --sidebar-accent: #26233a;
+  --sidebar-accent-foreground: #e0def4;
+  --sidebar-border: #403d52;
+  --sidebar-ring: #c4a7e7;
 }
 
 .light {
-  /* Adwaita Light */
-  --background: hsl(0 0% 98%);
-  --foreground: hsl(240 4% 12%);
-  --card: hsl(0 0% 100%);
-  --card-foreground: hsl(240 4% 12%);
-  --popover: hsl(0 0% 100%);
-  --popover-foreground: hsl(240 4% 12%);
-  --primary: hsl(222 47% 54%);
-  --primary-foreground: hsl(210 40% 98%);
-  --secondary: hsl(0 0% 96%);
-  --secondary-foreground: hsl(240 4% 12%);
-  --muted: hsl(0 0% 96%);
-  --muted-foreground: hsl(240 4% 45%);
-  --accent: hsl(0 0% 96%);
-  --accent-foreground: hsl(240 4% 12%);
-  --destructive: hsl(0 84% 60%);
-  --destructive-foreground: hsl(0 0% 98%);
-  --border: hsl(240 5% 90%);
-  --input: hsl(240 5% 90%);
-  --ring: hsl(222 47% 54%);
+  /* Rose Pine Dawn (Light) */
+  --background: #faf4ed;
+  --foreground: #575279;
+  --card: #fffaf3;
+  --card-foreground: #575279;
+  --popover: #f2e9e1;
+  --popover-foreground: #575279;
+  --primary: #907aa9;
+  --primary-foreground: #faf4ed;
+  --secondary: #f2e9e1;
+  --secondary-foreground: #575279;
+  --muted: #f2e9e1;
+  --muted-foreground: #9893a5;
+  --accent: #907aa9;
+  --accent-foreground: #faf4ed;
+  --destructive: #b4637a;
+  --destructive-foreground: #faf4ed;
+  --border: #dfdad9;
+  --input: #dfdad9;
+  --ring: #907aa9;
+
+  /* Rose Pine Dawn Accent Colors */
+  --love: #b4637a;
+  --gold: #ea9d34;
+  --rose: #d7827e;
+  --pine: #286983;
+  --foam: #56949f;
+  --iris: #907aa9;
   
-  /* Sidebar/Charts defaults for light */
-  --sidebar: hsl(0 0% 98%);
-  --sidebar-foreground: hsl(240 4% 12%);
-  --sidebar-primary: hsl(222 47% 54%);
-  --sidebar-primary-foreground: hsl(210 40% 98%);
-  --sidebar-accent: hsl(0 0% 96%);
-  --sidebar-accent-foreground: hsl(240 4% 12%);
-  --sidebar-border: hsl(240 5% 90%);
-  --sidebar-ring: hsl(222 47% 54%);
+  /* Sidebar defaults for Rose Pine Dawn */
+  --sidebar: #fffaf3;
+  --sidebar-foreground: #575279;
+  --sidebar-primary: #907aa9;
+  --sidebar-primary-foreground: #faf4ed;
+  --sidebar-accent: #f2e9e1;
+  --sidebar-accent-foreground: #575279;
+  --sidebar-border: #dfdad9;
+  --sidebar-ring: #907aa9;
 }
 
 @layer base {
