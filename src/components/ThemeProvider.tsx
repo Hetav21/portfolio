@@ -8,11 +8,19 @@ export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
 
   useEffect(() => {
     const root = document.documentElement;
+    
+    // Remove both classes first
+    root.classList.remove('light', 'dark');
+    
+    // Add the appropriate class
     if (theme === 'light') {
       root.classList.add('light');
     } else {
-      root.classList.remove('light');
+      root.classList.add('dark');
     }
+    
+    // Also set the color-scheme for native elements
+    root.style.colorScheme = theme;
   }, [theme]);
 
   return <>{children}</>;
