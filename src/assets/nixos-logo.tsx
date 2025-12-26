@@ -1,6 +1,36 @@
 export const NixosLogo = ({ className }: { className?: string }) => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" className={className}>
-    {/* Simplified snowflake path placeholder - replace with actual path later */}
-    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+  <svg 
+    viewBox="0 0 500 500" 
+    fill="none" 
+    className={className}
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    {/* NixOS Snowflake/Lambda Logo - 6 interlocking lambdas */}
+    {/* Light blue lambdas */}
+    <path
+      d="M 203.24 289.75 L 81.04 78.08 L 137.2 77.55 L 169.82 134.42 L 202.68 77.86 L 230.58 77.87 L 244.87 102.56 L 198.06 183.05 L 231.29 240.88 Z"
+      fill="#7ebae4"
+    />
+    <path
+      d="M 247.35 202.56 L 369.55 414.22 L 341.02 463.12 L 275.46 463.3 L 242.9 406.43 L 308.32 406.26 L 322.26 381.88 L 229.15 381.59 L 195.69 323.9 Z"
+      fill="#7ebae4"
+    />
+    <path
+      d="M 296.72 210.27 L 540.32 210.29 L 512.71 259.18 L 447.15 259.0 L 479.71 315.87 L 465.75 340.03 L 437.22 340.07 L 390.92 259.28 L 324.22 259.41 Z"
+      fill="#7ebae4"
+    />
+    {/* Dark blue lambdas */}
+    <path
+      d="M 296.76 289.75 L 418.96 78.08 L 362.8 77.55 L 330.18 134.42 L 297.32 77.86 L 269.42 77.87 L 255.13 102.56 L 301.94 183.05 L 268.71 240.88 Z"
+      fill="#5277c3"
+    />
+    <path
+      d="M 252.65 202.56 L 130.45 414.22 L 158.98 463.12 L 224.54 463.3 L 257.1 406.43 L 191.68 406.26 L 177.74 381.88 L 270.85 381.59 L 304.31 323.9 Z"
+      fill="#5277c3"
+    />
+    <path
+      d="M 203.28 210.27 L -40.32 210.29 L -12.71 259.18 L 52.85 259.0 L 20.29 315.87 L 34.25 340.03 L 62.78 340.07 L 109.08 259.28 L 175.78 259.41 Z"
+      fill="#5277c3"
+    />
   </svg>
 );
