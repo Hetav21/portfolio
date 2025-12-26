@@ -8,22 +8,22 @@ export const commandHistory: string[] = [];
 // Rose Pine colors for fastfetch:
 // Iris (purple): #c4a7e7 -> RGB(196,167,231)
 // Foam (cyan): #9ccfd8 -> RGB(156,207,216)
-// Text: #e0def4 -> RGB(224,222,244)
+// Using darker text color for labels: #575279 (works on both themes)
 
 const FASTFETCH_OUTPUT = `
           \x1b[38;2;196;167;231m▗▄▄▄       ▗▄▄▄▄    ▄▄▄▖\x1b[0m            \x1b[38;2;156;207;216mhetav@portfolio\x1b[0m
           \x1b[38;2;196;167;231m▜███▙       ▜███▙  ▟███▛\x1b[0m            \x1b[38;2;156;207;216m────────────────\x1b[0m
-           \x1b[38;2;196;167;231m▜███▙       ▜███▙▟███▛\x1b[0m             \x1b[38;2;224;222;244mOS:\x1b[0m NixOS (Portfolio Edition)
-            \x1b[38;2;196;167;231m▜███▙       ▜██████▛\x1b[0m              \x1b[38;2;224;222;244mHost:\x1b[0m Hetav Shah
-     \x1b[38;2;196;167;231m▟█████████████████▙ ▜████▛     ▟▙\x1b[0m        \x1b[38;2;224;222;244mKernel:\x1b[0m Next.js 14
-    \x1b[38;2;196;167;231m▟███████████████████▙ ▜███▙    ▟██▙\x1b[0m       \x1b[38;2;224;222;244mUptime:\x1b[0m since 2021
-           \x1b[38;2;196;167;231m▄▄▄▄▖           ▜███▙  ▟███▛\x1b[0m       \x1b[38;2;224;222;244mPackages:\x1b[0m TypeScript, Python, Nix, Docker
-          \x1b[38;2;196;167;231m▟███▛             ▜██▛ ▟███▛\x1b[0m        \x1b[38;2;224;222;244mShell:\x1b[0m nix-shell
-         \x1b[38;2;196;167;231m▟███▛               ▜▛ ▟███▛\x1b[0m         \x1b[38;2;224;222;244mTerminal:\x1b[0m xterm.js
-\x1b[38;2;196;167;231m▟███████████▛                  ▟██████████▙\x1b[0m   \x1b[38;2;224;222;244mDE:\x1b[0m GNOME (Web Edition)
-\x1b[38;2;196;167;231m▜██████████▛                  ▟███████████▛\x1b[0m   \x1b[38;2;224;222;244mTheme:\x1b[0m Rosé Pine
-      \x1b[38;2;196;167;231m▟███▛ ▟▙               ▟███▛\x1b[0m            \x1b[38;2;224;222;244mRole:\x1b[0m AI Engineer
-     \x1b[38;2;196;167;231m▟███▛ ▟██▙             ▟███▛\x1b[0m             \x1b[38;2;224;222;244mContact:\x1b[0m github.com/Hetav21
+           \x1b[38;2;196;167;231m▜███▙       ▜███▙▟███▛\x1b[0m             \x1b[1;38;2;87;82;121mOS:\x1b[0m NixOS (Portfolio Edition)
+            \x1b[38;2;196;167;231m▜███▙       ▜██████▛\x1b[0m              \x1b[1;38;2;87;82;121mHost:\x1b[0m Hetav Shah
+     \x1b[38;2;196;167;231m▟█████████████████▙ ▜████▛     ▟▙\x1b[0m        \x1b[1;38;2;87;82;121mKernel:\x1b[0m Next.js 16
+    \x1b[38;2;196;167;231m▟███████████████████▙ ▜███▙    ▟██▙\x1b[0m       \x1b[1;38;2;87;82;121mUptime:\x1b[0m since 2021
+           \x1b[38;2;196;167;231m▄▄▄▄▖           ▜███▙  ▟███▛\x1b[0m       \x1b[1;38;2;87;82;121mPackages:\x1b[0m TypeScript, Python, Nix, Docker
+          \x1b[38;2;196;167;231m▟███▛             ▜██▛ ▟███▛\x1b[0m        \x1b[1;38;2;87;82;121mShell:\x1b[0m nix-shell
+         \x1b[38;2;196;167;231m▟███▛               ▜▛ ▟███▛\x1b[0m         \x1b[1;38;2;87;82;121mTerminal:\x1b[0m Ghostty
+\x1b[38;2;196;167;231m▟███████████▛                  ▟██████████▙\x1b[0m   \x1b[1;38;2;87;82;121mDE:\x1b[0m GNOME (Web Edition)
+\x1b[38;2;196;167;231m▜██████████▛                  ▟███████████▛\x1b[0m   \x1b[1;38;2;87;82;121mTheme:\x1b[0m Rosé Pine
+      \x1b[38;2;196;167;231m▟███▛ ▟▙               ▟███▛\x1b[0m            \x1b[1;38;2;87;82;121mRole:\x1b[0m AI Engineer
+     \x1b[38;2;196;167;231m▟███▛ ▟██▙             ▟███▛\x1b[0m             \x1b[1;38;2;87;82;121mContact:\x1b[0m github.com/Hetav21
     \x1b[38;2;196;167;231m▟███▛  ▜███▙           ▝▀▀▀▀\x1b[0m
     \x1b[38;2;196;167;231m▜██▛    ▜███▙ ▜██████████████████▛\x1b[0m
      \x1b[38;2;196;167;231m▜▛     ▟████▙ ▜████████████████▛\x1b[0m
@@ -32,6 +32,10 @@ const FASTFETCH_OUTPUT = `
          \x1b[38;2;196;167;231m▟███▛  ▜███▙       ▜███▙\x1b[0m
          \x1b[38;2;196;167;231m▝▀▀▀    ▀▀▀▀▘       ▀▀▀▘\x1b[0m
 `;
+
+const foam = '\x1b[38;2;156;207;216m';
+const reset = '\x1b[0m';
+const bold = '\x1b[1m';
 
 export const executeCommand = (input: string, store: SystemState): string => {
   const parts = input.trim().split(' ');
@@ -51,8 +55,7 @@ export const executeCommand = (input: string, store: SystemState): string => {
       const files = listDirectory(currentPath);
       if (!files) return `Error: Cannot access '${currentPath}'`;
       return files.map(f => {
-        // Rose Pine foam for directories
-        if (f.type === 'directory') return `\x1b[38;2;156;207;216m${f.name}\x1b[0m`;
+        if (f.type === 'directory') return `${foam}${f.name}${reset}`;
         return f.name;
       }).join('  ');
 
@@ -91,19 +94,19 @@ export const executeCommand = (input: string, store: SystemState): string => {
       return '__CLEAR__';
 
     case 'help':
-      return `Available commands:
-  fastfetch, neofetch  Display system info
-  ls                   List directory contents
-  cd <dir>             Change directory
-  cat <file>           Display file contents
-  clear                Clear terminal
-  open <app>           Open an application
-  nix-shell            Toggle shell prompt style
-  whoami               Display current user
-  pwd                  Print working directory
-  echo <text>          Display text
-  history              Show command history
-  exit                 Close terminal`;
+      return `${bold}Available commands:${reset}
+  ${foam}fastfetch, neofetch${reset}  Display system info
+  ${foam}ls${reset}                   List directory contents
+  ${foam}cd${reset} <dir>             Change directory
+  ${foam}cat${reset} <file>           Display file contents
+  ${foam}clear${reset}                Clear terminal
+  ${foam}open${reset} <app>           Open an application
+  ${foam}nix-shell${reset}            Toggle nix-shell mode
+  ${foam}whoami${reset}               Display current user
+  ${foam}pwd${reset}                  Print working directory
+  ${foam}echo${reset} <text>          Display text
+  ${foam}history${reset}              Show command history
+  ${foam}exit${reset}                 Close terminal`;
 
     case 'open':
       if (args.length === 0) return 'open: missing application name';
@@ -129,7 +132,7 @@ export const executeCommand = (input: string, store: SystemState): string => {
       return args.join(' ');
 
     case 'history':
-      return commandHistory.join('\r\n');
+      return commandHistory.join('\n');
 
     case 'exit':
       store.closeWindow('terminal');
