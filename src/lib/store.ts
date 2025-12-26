@@ -1,7 +1,7 @@
 import { create } from 'zustand';
 import { AppId, WindowState } from './types';
 
-interface SystemState {
+export interface SystemState {
   windows: Record<AppId, WindowState>;
   activeWindowId: AppId | null;
   maxZIndex: number;
