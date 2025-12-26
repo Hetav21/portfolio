@@ -8,6 +8,10 @@ export interface SystemState {
   theme: 'dark' | 'light';
   isBooting: boolean;
   
+  // Editor State
+  editorContent: string;
+  setEditorContent: (content: string) => void;
+  
   // Actions
   setBooting: (isBooting: boolean) => void;
   toggleTheme: () => void;
@@ -36,7 +40,9 @@ export const useSystemStore = create<SystemState>((set) => ({
   maxZIndex: 10,
   theme: 'dark',
   isBooting: true,
+  editorContent: '',
 
+  setEditorContent: (content) => set({ editorContent: content }),
   setBooting: (isBooting) => set({ isBooting }),
   toggleTheme: () => set((state) => ({ theme: state.theme === 'dark' ? 'light' : 'dark' })),
   
