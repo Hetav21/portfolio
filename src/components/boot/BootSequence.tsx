@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { useSystemStore } from '@/lib/store';
-import { NixosLogo } from '@/assets/nixos-logo';
+import Image from 'next/image';
 
 export const BootSequence = () => {
   const { isBooting, setBooting } = useSystemStore();
@@ -36,13 +36,21 @@ export const BootSequence = () => {
         initial={{ scale: 0.8, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         transition={{ duration: 0.5 }}
+        className="mb-8"
       >
-        <NixosLogo className="w-32 h-32 text-nix-blue mb-8 animate-pulse" />
+        <Image 
+          src="/nixos-logo.svg" 
+          alt="NixOS Logo" 
+          width={128} 
+          height={128}
+          className="animate-pulse"
+          priority
+        />
       </motion.div>
       
       <div className="w-64 h-2 bg-gray-800 rounded-full overflow-hidden">
         <motion.div 
-          className="h-full bg-nix-blue"
+          className="h-full bg-[#7ebae4]"
           style={{ width: `${progress}%` }}
         />
       </div>
