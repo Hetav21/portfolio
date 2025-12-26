@@ -44,7 +44,7 @@ export const Dock = () => {
             <motion.button
               key={item.id}
               onClick={() => openWindow(item.id)}
-              className="relative p-3 rounded-xl hover:bg-white/10 transition-colors group"
+              className="relative p-3 rounded-xl transition-colors group"
               whileHover={{ scale: 1.2, y: -5 }}
               whileTap={{ scale: 0.95 }}
             >
