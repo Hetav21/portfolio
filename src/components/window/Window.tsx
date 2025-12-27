@@ -15,7 +15,7 @@ interface WindowProps {
 }
 
 export const Window = ({ id, title, children, constraintsRef }: WindowProps) => {
-  const { windows, focusWindow, updateWindowPosition, closeWindow, minimizeWindow, maximizeWindow } = useSystemStore();
+  const { windows, focusWindow, updateWindowPosition, closeWindow, minimizeWindow, maximizeWindow, theme } = useSystemStore();
   const windowState = windows[id];
   const dragControls = useDragControls();
   
@@ -102,7 +102,11 @@ export const Window = ({ id, title, children, constraintsRef }: WindowProps) => 
         <div className="w-20" />
       </div>
 
-      <div className="flex-1 overflow-auto bg-card p-1 cursor-default" onPointerDown={(e) => e.stopPropagation()}>
+      <div 
+        className="flex-1 overflow-auto bg-card p-1 cursor-default" 
+        style={{ colorScheme: theme }}
+        onPointerDown={(e) => e.stopPropagation()}
+      >
         {children}
       </div>
     </motion.div>

@@ -3,6 +3,7 @@
 import React, { useState, useRef, useCallback, useEffect } from 'react';
 import Image from 'next/image';
 import { RotateCw, ChevronLeft, ChevronRight, Lock, Star, ExternalLink, ShieldAlert } from 'lucide-react';
+import { useSystemStore } from '@/lib/store';
 
 const DEFAULT_URL = process.env.NEXT_PUBLIC_BROWSER_DEFAULT_URL || 'https://blog.hetav.dev';
 const LOAD_TIMEOUT_MS = 5000;
@@ -16,6 +17,7 @@ export default function Browser() {
   const [loadFailed, setLoadFailed] = useState(false);
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const theme = useSystemStore((state) => state.theme);
 
   const clearLoadTimeout = useCallback(() => {
     if (timeoutRef.current) {
@@ -173,8 +175,11 @@ export default function Browser() {
         </div>
       </div>
 
-      {/* Content */}
-      <div className="flex-1 relative bg-white">
+      {/* Content - overflow-hidden to clip the iframe's scrollbar */}
+      <div 
+        className="flex-1 relative overflow-hidden bg-card"
+        style={{ colorScheme: theme }}
+      >
         {/* Loading State */}
         {isLoading && !loadFailed && (
           <div className="absolute inset-0 flex items-center justify-center bg-card z-10">
@@ -213,15 +218,26 @@ export default function Browser() {
           </div>
         )}
 
-        {/* Iframe - always rendered but may be hidden by overlay */}
-        <iframe
-          ref={iframeRef}
-          src={url}
-          onLoad={handleIframeLoad}
-          className="w-full h-full border-0"
-          sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox"
-          title="Browser"
-        />
+        {/* Iframe wrapper - hides the iframe's native scrollbar */}
+        <div 
+          className="absolute inset-0 overflow-y-scroll overflow-x-hidden"
+          style={{ colorScheme: theme }}
+        >
+          {/* Iframe - made slightly wider to push its scrollbar outside the visible area */}
+          <iframe
+            ref={iframeRef}
+            src={url}
+            onLoad={handleIframeLoad}
+            className="border-0 h-full"
+            style={{ 
+              width: 'calc(100% + 20px)',
+              marginRight: '-20px',
+              colorScheme: theme 
+            }}
+            sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox"
+            title="Browser"
+          />
+        </div>
       </div>
     </div>
   );
