@@ -171,3 +171,28 @@
 *::-webkit-scrollbar-thumb:hover {
   background: var(--foreground);
 }
+
+/* Bibata Modern Ice Cursor Theme */
+/* Matching NixOS cursor configuration from github.com/Hetav21/nixos */
+html, body, * {
+  cursor: url('/cursors/default.svg') 4 4, default;
+}
+
+a, button, [role="button"],
+input[type="submit"], input[type="button"], input[type="reset"],
+label[for], select, summary,
+.cursor-pointer {
+  cursor: url('/cursors/pointer.svg') 10 4, pointer !important;
+}
+
+input[type="text"], input[type="email"], input[type="password"],
+input[type="search"], input[type="tel"], input[type="url"],
+input[type="number"], textarea, [contenteditable="true"],
+.cursor-text {
+  cursor: url('/cursors/text.svg') 12 12, text !important;
+}
+
+*:disabled, .cursor-not-allowed,
+button:disabled, input:disabled, select:disabled {
+  cursor: not-allowed !important;
+}

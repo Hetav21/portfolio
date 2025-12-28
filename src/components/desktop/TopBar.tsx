@@ -2,16 +2,13 @@
 
 import React, { useState, useEffect } from 'react';
 import { useSystemStore } from '@/lib/store';
-import { 
-  Wifi, 
-  Volume2, 
-  Battery, 
-  Power, 
-  Github, 
-  Linkedin, 
-  Sun, 
-  Moon 
-} from 'lucide-react';
+import { Github, Linkedin, Sun, Moon } from 'lucide-react';
+import {
+  NetworkWirelessSymbolic,
+  AudioVolumeHighSymbolic,
+  BatteryFullSymbolic,
+  SystemShutdownSymbolic,
+} from '@/components/icons/GnomeIcons';
 
 export const TopBar = () => {
   const { toggleTheme, theme, setBooting } = useSystemStore();
@@ -44,52 +41,59 @@ export const TopBar = () => {
       </div>
 
       {/* Right: System Tray */}
-      <div className="flex items-center gap-3">
+      <div className="flex items-center gap-2">
         {/* Social Links */}
-        <div className="flex items-center gap-2 mr-2 border-r border-border pr-4">
+        <div className="flex items-center gap-1 mr-1 border-r border-border pr-3">
           <a 
             href="https://github.com/Hetav21" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="p-1.5 hover:bg-muted rounded-full transition-colors"
+            className="p-1.5 opacity-80 hover:opacity-100 hover:bg-muted/50 rounded-full transition-all duration-150"
             title="GitHub"
           >
-            <Github size={16} />
+            <Github size={15} strokeWidth={1.75} />
           </a>
           <a 
             href="https://www.linkedin.com/in/hetav2106/" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="p-1.5 hover:bg-muted rounded-full transition-colors"
+            className="p-1.5 opacity-80 hover:opacity-100 hover:bg-muted/50 rounded-full transition-all duration-150"
             title="LinkedIn"
           >
-            <Linkedin size={16} />
+            <Linkedin size={15} strokeWidth={1.75} />
           </a>
         </div>
 
-        {/* Theme Toggle */}
+        {/* Theme Toggle - lucide-react icons */}
         <button 
           onClick={toggleTheme}
-          className="p-1.5 hover:bg-muted rounded-full transition-colors"
+          className="p-1.5 opacity-80 hover:opacity-100 hover:bg-muted/50 rounded-full transition-all duration-150"
           title="Toggle Theme"
         >
-          {theme === 'dark' ? <Moon size={16} /> : <Sun size={16} />}
+          {theme === 'dark' ? (
+            <Moon size={15} strokeWidth={1.75} />
+          ) : (
+            <Sun size={15} strokeWidth={1.75} />
+          )}
         </button>
 
-        {/* Status Icons */}
-        <div className="flex items-center gap-2 px-2">
-          <Wifi size={16} />
-          <Volume2 size={16} />
-          <Battery size={16} />
-        </div>
+        {/* Status Icons Group - GNOME symbolic icons with grouped hover */}
+        <button 
+          className="flex items-center gap-3 px-3 py-1 opacity-80 hover:opacity-100 hover:bg-muted/50 rounded-full transition-all duration-150"
+          title="System Status"
+        >
+          <NetworkWirelessSymbolic size={14} />
+          <AudioVolumeHighSymbolic size={14} />
+          <BatteryFullSymbolic size={14} />
+        </button>
 
-        {/* Power Menu */}
+        {/* Power Menu - GNOME symbolic icon */}
         <div className="relative">
           <button 
             onClick={() => setIsPowerMenuOpen(!isPowerMenuOpen)}
-            className="p-1.5 hover:bg-muted rounded-full transition-colors"
+            className="p-1.5 opacity-80 hover:opacity-100 hover:bg-muted/50 rounded-full transition-all duration-150"
           >
-            <Power size={16} />
+            <SystemShutdownSymbolic size={15} />
           </button>
 
           {isPowerMenuOpen && (
@@ -103,7 +107,7 @@ export const TopBar = () => {
                   onClick={() => setBooting(true)}
                   className="w-full text-left px-4 py-2 hover:bg-muted flex items-center gap-2 text-destructive"
                 >
-                  <Power size={14} />
+                  <SystemShutdownSymbolic size={14} />
                   Restart System
                 </button>
               </div>
