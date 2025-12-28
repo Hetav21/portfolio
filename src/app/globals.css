@@ -173,18 +173,23 @@
 }
 
 /* Bibata Modern Ice Cursor Theme */
+/* Authentic Bibata cursors from github.com/ful1e5/Bibata_Cursor */
 /* Matching NixOS cursor configuration from github.com/Hetav21/nixos */
+
+/* Default cursor for all elements */
 html, body, * {
   cursor: url('/cursors/default.svg') 4 4, default;
 }
 
+/* Pointer cursor for interactive elements */
 a, button, [role="button"],
 input[type="submit"], input[type="button"], input[type="reset"],
-label[for], select, summary,
+label[for], select, summary, option,
 .cursor-pointer {
-  cursor: url('/cursors/pointer.svg') 10 4, pointer !important;
+  cursor: url('/cursors/pointer.svg') 11 2, pointer !important;
 }
 
+/* Text cursor for text input areas */
 input[type="text"], input[type="email"], input[type="password"],
 input[type="search"], input[type="tel"], input[type="url"],
 input[type="number"], textarea, [contenteditable="true"],
@@ -192,7 +197,50 @@ input[type="number"], textarea, [contenteditable="true"],
   cursor: url('/cursors/text.svg') 12 12, text !important;
 }
 
+/* Grab cursor for draggable elements */
+[draggable="true"], .cursor-grab,
+.react-draggable, [data-draggable] {
+  cursor: url('/cursors/grab.svg') 12 8, grab !important;
+}
+
+/* Grabbing cursor for active drag state */
+[draggable="true"]:active, .cursor-grabbing,
+.react-draggable-dragging, [data-dragging="true"] {
+  cursor: url('/cursors/grabbing.svg') 12 8, grabbing !important;
+}
+
+/* Move cursor for movable elements */
+.cursor-move, [data-movable] {
+  cursor: url('/cursors/move.svg') 12 12, move !important;
+}
+
+/* Not-allowed cursor for disabled elements */
 *:disabled, .cursor-not-allowed,
-button:disabled, input:disabled, select:disabled {
-  cursor: not-allowed !important;
+button:disabled, input:disabled, select:disabled, textarea:disabled,
+[aria-disabled="true"] {
+  cursor: url('/cursors/not-allowed.svg') 12 12, not-allowed !important;
+}
+
+/* Wait cursor for loading states */
+.cursor-wait, [aria-busy="true"] {
+  cursor: url('/cursors/wait.svg') 12 12, wait !important;
+}
+
+/* Progress cursor for background operations */
+.cursor-progress {
+  cursor: url('/cursors/progress.svg') 4 4, progress !important;
+}
+
+/* Crosshair cursor for precision selection */
+.cursor-crosshair {
+  cursor: url('/cursors/crosshair.svg') 12 12, crosshair !important;
+}
+
+/* Zoom cursors */
+.cursor-zoom-in {
+  cursor: url('/cursors/zoom-in.svg') 11 11, zoom-in !important;
+}
+
+.cursor-zoom-out {
+  cursor: url('/cursors/zoom-out.svg') 11 11, zoom-out !important;
 }
