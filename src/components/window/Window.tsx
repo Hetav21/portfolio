@@ -14,6 +14,8 @@ interface WindowProps {
   constraintsRef?: React.RefObject<Element | null>;
 }
 
+const TOPBAR_HEIGHT = 32;
+
 export const Window = ({ id, title, children, constraintsRef }: WindowProps) => {
   const { windows, focusWindow, updateWindowPosition, closeWindow, minimizeWindow, maximizeWindow, theme } = useSystemStore();
   const windowState = windows[id];
@@ -36,6 +38,19 @@ export const Window = ({ id, title, children, constraintsRef }: WindowProps) => 
     }
   };
 
+  // When maximized, use fixed pixel values based on viewport to avoid animation interpolation issues
+  const windowStyle = isMaximized ? {
+    x: 0,
+    y: TOPBAR_HEIGHT,
+    width: '100vw',
+    height: `calc(100vh - ${TOPBAR_HEIGHT}px)`,
+  } : {
+    x: position.x,
+    y: position.y,
+    width: size.width,
+    height: size.height,
+  };
+
   return (
     <motion.div
       drag={!isMaximized}
@@ -47,10 +62,7 @@ export const Window = ({ id, title, children, constraintsRef }: WindowProps) => 
       onPointerDown={handleFocus}
       initial={false}
       animate={{
-        x: isMaximized ? 0 : position.x,
-        y: isMaximized ? 32 : position.y,
-        width: isMaximized ? '100%' : size.width,
-        height: isMaximized ? 'calc(100% - 32px)' : size.height,
+        ...windowStyle,
         zIndex: zIndex,
       }}
       transition={{ duration: 0.2 }}
