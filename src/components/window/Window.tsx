@@ -20,8 +20,6 @@ export const Window = ({ id, title, children, constraintsRef }: WindowProps) => 
   const { windows, focusWindow, updateWindowPosition, closeWindow, minimizeWindow, maximizeWindow, theme } = useSystemStore();
   const windowState = windows[id];
   const dragControls = useDragControls();
-  const lastPointerDownTime = React.useRef<number>(0);
-  const dragStartTimeout = React.useRef<ReturnType<typeof setTimeout> | null>(null);
   
   if (!windowState) return null;
 
@@ -53,36 +51,6 @@ export const Window = ({ id, title, children, constraintsRef }: WindowProps) => 
     height: size.height,
   };
 
-  const handleTitleBarPointerDown = (e: React.PointerEvent) => {
-    handleFocus();
-    if (isMaximized) return;
-
-    const now = Date.now();
-    const timeSinceLastClick = now - lastPointerDownTime.current;
-    lastPointerDownTime.current = now;
-
-    // If this might be the second click of a double-click (within 300ms), don't start drag
-    // The double-click handler will fire instead
-    if (timeSinceLastClick < 300) {
-      return;
-    }
-
-    // Delay drag start slightly to allow double-click detection
-    // This prevents drag from interfering with maximize animation
-    dragStartTimeout.current = setTimeout(() => {
-      dragControls.start(e);
-    }, 150);
-  };
-
-  const handleTitleBarDoubleClick = () => {
-    // Cancel any pending drag start
-    if (dragStartTimeout.current) {
-      clearTimeout(dragStartTimeout.current);
-      dragStartTimeout.current = null;
-    }
-    maximizeWindow(id);
-  };
-
   return (
     <motion.div
       drag={!isMaximized}
@@ -108,8 +76,11 @@ export const Window = ({ id, title, children, constraintsRef }: WindowProps) => 
     >
       <div 
         className="flex h-10 items-center justify-between bg-secondary px-3 select-none"
-        onPointerDown={handleTitleBarPointerDown}
-        onDoubleClick={handleTitleBarDoubleClick}
+        onPointerDown={(e) => {
+           handleFocus();
+           if (!isMaximized) dragControls.start(e);
+        }}
+        onDoubleClick={() => maximizeWindow(id)}
       >
         <div className="flex gap-2 items-center w-20">
           <button 
