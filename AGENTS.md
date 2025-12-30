@@ -1,13 +1,13 @@
 # AGENTS.md
 
 ## Commands
-- `npm run dev` - Start dev server (localhost:3000)
-- `npm run build` - Production build
-- `npm run lint` - ESLint check
-- `npm test` - Run all Playwright tests
-- `npm test -- tests/file.spec.ts` - Run single test
-- `npm run test:debug` - Debug tests
-- `npm run test:headed` - Run tests with browser UI
+- `bun run dev` - Start dev server (localhost:3000)
+- `bun run build` - Production build
+- `bun run lint` - ESLint check
+- `bun test` - Run all Playwright tests
+- `bun test tests/file.spec.ts` - Run single test
+- `bun run test:debug` - Debug tests
+- `bun run test:headed` - Run tests with browser UI
 
 ## Code Style
 - **TypeScript**: Strict mode. No `any` or `@ts-ignore`.
