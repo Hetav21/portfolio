@@ -43,7 +43,7 @@ export const BootSequence = () => {
           alt="NixOS Logo" 
           width={128} 
           height={128}
-          className="animate-pulse"
+          className=""
           priority
         />
       </motion.div>

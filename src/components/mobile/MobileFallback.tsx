@@ -1,5 +1,5 @@
 import React from 'react';
-import { NixosLogo } from '@/assets/nixos-logo';
+import Image from 'next/image';
 import { Github, Linkedin } from 'lucide-react';
 
 interface MobileFallbackProps {
@@ -12,8 +12,14 @@ export const MobileFallback: React.FC<MobileFallbackProps> = ({ onContinue }) =>
       {/* Rose Pine gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-br from-[#191724] via-[#1f1d2e] to-[#26233a] -z-10" />
       
-      <div className="mb-8 animate-pulse">
-        <NixosLogo className="h-24 w-24 text-primary" />
+      <div className="mb-8">
+        <Image 
+          src="/nixos-logo.svg" 
+          alt="NixOS Logo" 
+          width={96} 
+          height={96}
+          priority
+        />
       </div>
       
       <h1 className="mb-2 text-4xl font-bold tracking-tight text-foreground">Hetav Shah</h1>
