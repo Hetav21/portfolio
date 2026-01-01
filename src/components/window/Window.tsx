@@ -1,7 +1,7 @@
 "use client";
 
-import React from 'react';
-import { motion, useDragControls, PanInfo } from 'framer-motion';
+import React, { useEffect, useRef } from 'react';
+import { motion, useDragControls, PanInfo, useMotionValue, animate } from 'framer-motion';
 import { Minus, X, Maximize2, Minimize2 } from 'lucide-react';
 import { useSystemStore } from '@/lib/store';
 import { AppId } from '@/lib/types';
@@ -21,9 +21,42 @@ export const Window = ({ id, title, children, constraintsRef }: WindowProps) => 
   const windowState = windows[id];
   const dragControls = useDragControls();
   
-  if (!windowState) return null;
+  const motionX = useMotionValue(windowState?.position.x ?? 0);
+  const motionY = useMotionValue(windowState?.position.y ?? 0);
+  const motionWidth = useMotionValue(windowState?.size.width ?? 800);
+  const motionHeight = useMotionValue(windowState?.size.height ?? 600);
+  
+  const isFirstRender = useRef(true);
+  const prevMaximized = useRef(windowState?.isMaximized ?? false);
 
-  const { isMaximized, zIndex, position, size } = windowState;
+  const isMaximized = windowState?.isMaximized ?? false;
+  const zIndex = windowState?.zIndex ?? 0;
+  const position = windowState?.position ?? { x: 0, y: 0 };
+  const size = windowState?.size ?? { width: 800, height: 600 };
+
+  useEffect(() => {
+    if (!windowState) return;
+    
+    const duration = isFirstRender.current ? 0 : 0.2;
+    isFirstRender.current = false;
+    
+    if (isMaximized) {
+      animate(motionX, 0, { duration });
+      animate(motionY, TOPBAR_HEIGHT, { duration });
+      animate(motionWidth, window.innerWidth, { duration });
+      animate(motionHeight, window.innerHeight - TOPBAR_HEIGHT, { duration });
+    } else {
+      const restoreDuration = prevMaximized.current ? duration : 0;
+      animate(motionX, position.x, { duration: restoreDuration });
+      animate(motionY, position.y, { duration: restoreDuration });
+      animate(motionWidth, size.width, { duration: restoreDuration });
+      animate(motionHeight, size.height, { duration: restoreDuration });
+    }
+    
+    prevMaximized.current = isMaximized;
+  }, [windowState, isMaximized, position.x, position.y, size.width, size.height, motionX, motionY, motionWidth, motionHeight]);
+
+  if (!windowState) return null;
 
   const handleFocus = () => {
     focusWindow(id);
@@ -31,24 +64,12 @@ export const Window = ({ id, title, children, constraintsRef }: WindowProps) => 
 
   const handleDragEnd = (_: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => {
     if (!isMaximized) {
-        updateWindowPosition(id, {
-            x: position.x + info.offset.x,
-            y: position.y + info.offset.y
-        });
+      const newX = position.x + info.offset.x;
+      const newY = position.y + info.offset.y;
+      updateWindowPosition(id, { x: newX, y: newY });
+      motionX.set(newX);
+      motionY.set(newY);
     }
-  };
-
-  // When maximized, use fixed pixel values based on viewport to avoid animation interpolation issues
-  const windowStyle = isMaximized ? {
-    x: 0,
-    y: TOPBAR_HEIGHT,
-    width: '100vw',
-    height: `calc(100vh - ${TOPBAR_HEIGHT}px)`,
-  } : {
-    x: position.x,
-    y: position.y,
-    width: size.width,
-    height: size.height,
   };
 
   return (
@@ -60,14 +81,13 @@ export const Window = ({ id, title, children, constraintsRef }: WindowProps) => 
       dragControls={dragControls}
       onDragEnd={handleDragEnd}
       onPointerDown={handleFocus}
-      initial={false}
-      animate={{
-        ...windowStyle,
-        zIndex: zIndex,
-      }}
-      transition={{ duration: 0.2 }}
       style={{
         position: 'absolute',
+        x: motionX,
+        y: motionY,
+        width: motionWidth,
+        height: motionHeight,
+        zIndex,
       }}
       className={cn(
         "flex flex-col overflow-hidden bg-card text-card-foreground shadow-2xl transition-shadow pointer-events-auto",
