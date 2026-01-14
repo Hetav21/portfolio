@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import React from 'react';
 import { useSystemStore } from '@/lib/store';
@@ -34,7 +34,7 @@ export const Dock = () => {
       <div className="flex items-center gap-2 px-4 py-2 bg-card/80 backdrop-blur-xl border border-border rounded-2xl shadow-2xl">
         {dockItems.map((item) => {
           const isOpen = windows[item.id]?.isOpen;
-          
+
           return (
             <motion.button
               key={item.id}
@@ -42,6 +42,7 @@ export const Dock = () => {
               className="relative p-3 rounded-xl transition-colors group"
               whileHover={{ scale: 1.2, y: -5 }}
               whileTap={{ scale: 0.95 }}
+              aria-label={item.label}
             >
               <div className="w-10 h-10 relative">
                 <Image
@@ -51,7 +52,7 @@ export const Dock = () => {
                   className="object-contain drop-shadow-lg"
                 />
               </div>
-              
+
               {/* Tooltip */}
               <span className="absolute -top-10 left-1/2 transform -translate-x-1/2 px-2 py-1 bg-popover text-xs text-popover-foreground rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none border border-border">
                 {item.label}

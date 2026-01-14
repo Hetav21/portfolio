@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import React, { useRef } from 'react';
 import { useSystemStore } from '@/lib/store';
@@ -17,26 +17,21 @@ export const WindowManager = () => {
   const windows = useSystemStore((state) => state.windows);
   const containerRef = useRef<HTMLDivElement>(null);
 
-  const openWindows = Object.values(windows).filter(w => w.isOpen && !w.isMinimized);
+  const openWindows = Object.values(windows).filter((w) => w.isOpen && !w.isMinimized);
 
   return (
     <div ref={containerRef} className="absolute inset-0 pointer-events-none overflow-hidden">
       {openWindows.map((window) => (
-        <Window 
-            key={window.id} 
-            id={window.id} 
-            title={window.title} 
-            constraintsRef={containerRef}
-        >
-            <div className="h-full w-full bg-card text-foreground overflow-hidden">
-                {window.id === 'terminal' && <Terminal />}
-                {window.id === 'files' && <Files />}
-                {window.id === 'about' && <AboutMe />}
-                {window.id === 'projects' && <Projects />}
-                {window.id === 'contact' && <Contact />}
-                {window.id === 'editor' && <TextEditor />}
-                {window.id === 'browser' && <Browser />}
-            </div>
+        <Window key={window.id} id={window.id} title={window.title} constraintsRef={containerRef}>
+          <div className="h-full w-full bg-card text-foreground overflow-hidden">
+            {window.id === 'terminal' && <Terminal />}
+            {window.id === 'files' && <Files />}
+            {window.id === 'about' && <AboutMe />}
+            {window.id === 'projects' && <Projects />}
+            {window.id === 'contact' && <Contact />}
+            {window.id === 'editor' && <TextEditor />}
+            {window.id === 'browser' && <Browser />}
+          </div>
         </Window>
       ))}
     </div>

@@ -4,9 +4,11 @@
 **Context:** `apps/blog`
 
 ## OVERVIEW
+
 A static blog platform optimized for reading. Uses **Velite** for content management and shares the **Rose Pine** theme with the desktop app.
 
 ## STRUCTURE
+
 ```
 .
 ├── content/
@@ -19,23 +21,27 @@ A static blog platform optimized for reading. Uses **Velite** for content manage
 ```
 
 ## CONTENT ENGINE (Velite)
-*   **Config**: `velite.config.ts` defines the `posts` collection.
-*   **Generation**: Runs automatically during `bun dev`. Outputs to `.velite/`.
-*   **Usage**: `import { posts } from '@/velite'`.
-*   **Schema**:
-    *   `slug`: Computed from filename (e.g., `hello-world.mdx` -> `hello-world`).
-    *   `tags`: Array of strings.
-    *   `cover`: Optional image path.
+
+- **Config**: `velite.config.ts` defines the `posts` collection.
+- **Generation**: Runs automatically during `bun dev`. Outputs to `.velite/`.
+- **Usage**: `import { posts } from '@/velite'`.
+- **Schema**:
+  - `slug`: Computed from filename (e.g., `hello-world.mdx` -> `hello-world`).
+  - `tags`: Array of strings.
+  - `cover`: Optional image path.
 
 ## ROUTING
-*   **Index**: `src/app/page.tsx` - Lists all published posts.
-*   **Post**: `src/app/[slug]/page.tsx` - Renders individual post using `MDXContent`.
+
+- **Index**: `src/app/page.tsx` - Lists all published posts.
+- **Post**: `src/app/[slug]/page.tsx` - Renders individual post using `MDXContent`.
 
 ## COMMANDS
+
 ```bash
 bun dev   # Runs `velite --watch & next dev`
 ```
 
 ## NOTES
-*   **Theme Sync**: Uses `next-themes` independently from the desktop app, but defaults to system/dark to match.
-*   **Integration**: This app is embedded in `apps/web` via iframe. Ensure `X-Frame-Options` allows this if deploying headers manually.
+
+- **Theme Sync**: Uses `next-themes` independently from the desktop app, but defaults to system/dark to match.
+- **Integration**: This app is embedded in `apps/web` via iframe. Ensure `X-Frame-Options` allows this if deploying headers manually.

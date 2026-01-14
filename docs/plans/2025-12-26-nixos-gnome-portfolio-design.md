@@ -12,15 +12,15 @@ A full desktop OS simulation portfolio website styled after GNOME + NixOS. The e
 
 ## Tech Stack
 
-| Layer | Technology |
-|-------|------------|
-| Framework | Next.js 14 (App Router) |
-| Styling | Tailwind CSS + Adwaita CSS variables |
+| Layer      | Technology                               |
+| ---------- | ---------------------------------------- |
+| Framework  | Next.js 14 (App Router)                  |
+| Styling    | Tailwind CSS + Adwaita CSS variables     |
 | Components | shadcn/ui (Dialog, DropdownMenu, Button) |
-| Animation | Framer Motion |
-| Terminal | xterm.js |
-| State | Zustand |
-| Icons | Lucide React + custom Adwaita-style SVGs |
+| Animation  | Framer Motion                            |
+| Terminal   | xterm.js                                 |
+| State      | Zustand                                  |
+| Icons      | Lucide React + custom Adwaita-style SVGs |
 
 ---
 
@@ -83,25 +83,30 @@ src/
 ## Desktop Shell
 
 ### Top Bar
+
 - **Left:** "Activities" button
 - **Center:** Clock
 - **Right:** Theme toggle, GitHub/LinkedIn icons, power menu (with "Restart" to replay boot)
 
 ### Activities Overview
+
 - Triggered by clicking "Activities" or pressing `Super`
 - Shows all open windows in a grid + app launcher at bottom
 - Animated with Framer Motion scale/opacity
 
 ### Wallpaper
+
 - NixOS-branded gradient (dark blue → purple)
 - Changes with light/dark theme
 
 ### Dock (Dash)
+
 - Fixed bottom dock
 - Apps: Files, Terminal, Projects, About, Contact, Text Editor, Browser
 - Icons styled like Adwaita
 
 ### Window Behavior
+
 - Draggable by title bar
 - Resizable from edges/corners
 - Close/minimize/maximize buttons (Adwaita style: left side)
@@ -113,27 +118,28 @@ src/
 ## Apps
 
 ### Terminal (Core Experience)
+
 - Uses `xterm.js` with NixOS theme
 - On open: Displays `fastfetch` output automatically
 - Prompt style: `[nix-shell:~]$ ` (green, bold)
 
 **Supported Commands:**
 
-| Command | Behavior |
-|---------|----------|
-| `fastfetch` / `neofetch` | Shows NixOS ASCII logo + system specs |
-| `ls` | Lists contents of current virtual directory |
-| `cd <dir>` | Navigate virtual filesystem |
-| `cat <file>` | Display file contents |
-| `clear` | Clears terminal |
-| `help` | Lists available commands |
-| `open <app>` | Opens a desktop app |
-| `nix-shell` | Simulated shell change (changes prompt style) |
-| `whoami` | Returns "hetav" |
-| `pwd` | Print working directory |
-| `echo` | Basic echo support |
-| `history` | Show command history |
-| `exit` | Closes the terminal window |
+| Command                  | Behavior                                      |
+| ------------------------ | --------------------------------------------- |
+| `fastfetch` / `neofetch` | Shows NixOS ASCII logo + system specs         |
+| `ls`                     | Lists contents of current virtual directory   |
+| `cd <dir>`               | Navigate virtual filesystem                   |
+| `cat <file>`             | Display file contents                         |
+| `clear`                  | Clears terminal                               |
+| `help`                   | Lists available commands                      |
+| `open <app>`             | Opens a desktop app                           |
+| `nix-shell`              | Simulated shell change (changes prompt style) |
+| `whoami`                 | Returns "hetav"                               |
+| `pwd`                    | Print working directory                       |
+| `echo`                   | Basic echo support                            |
+| `history`                | Show command history                          |
+| `exit`                   | Closes the terminal window                    |
 
 **Virtual Filesystem:**
 
@@ -151,12 +157,14 @@ src/
 ```
 
 ### Files App (Nautilus-style)
+
 - Grid/list view toggle
 - Breadcrumb navigation
 - Click folders to navigate, click files to open in Text Editor
 - Icons match file types
 
 ### About Me App
+
 - Photo/avatar at top
 - Name: Hetav Shah
 - Role: AI Engineer
@@ -164,19 +172,23 @@ src/
 - Machine: "Portfolio v1.0"
 
 ### Projects App
+
 - Grid of project cards (thumbnail, title, description)
 - Click to open detailed view
 - Links to GitHub repos
 
 ### Contact App
+
 - Form with Name, Email, Message fields
 - Direct links: GitHub, LinkedIn
 
 ### Text Editor
+
 - Read-only code/text viewer with syntax highlighting
 - Opens when you `cat` a file or click in Files
 
 ### Web Browser
+
 - Simple iframe wrapper with URL bar
 - Loads external links
 
@@ -215,26 +227,29 @@ src/
 
 ### Color Palette (NixOS + Adwaita)
 
-| Color Name | Hex Code | Usage |
-|------------|----------|-------|
-| Argentinian Blue | `#7ebae4` | Primary brand blue (lighter) |
-| Afghani Blue | `#5277c3` | Secondary brand blue (darker) |
-| Italian Violet | `#9e73c8` | Accent (buttons, indicators) |
-| Zambian Green | `#65b86e` | Success states / Terminal prompt |
-| Chinese Magenta | `#ce4a89` | Error states / Accent |
-| Indian Gold | `#cbaa4b` | Warning states |
+| Color Name       | Hex Code  | Usage                            |
+| ---------------- | --------- | -------------------------------- |
+| Argentinian Blue | `#7ebae4` | Primary brand blue (lighter)     |
+| Afghani Blue     | `#5277c3` | Secondary brand blue (darker)    |
+| Italian Violet   | `#9e73c8` | Accent (buttons, indicators)     |
+| Zambian Green    | `#65b86e` | Success states / Terminal prompt |
+| Chinese Magenta  | `#ce4a89` | Error states / Accent            |
+| Indian Gold      | `#cbaa4b` | Warning states                   |
 
 ### Theme Toggle
+
 - Available in Top Bar and Settings app
 - Default: Dark theme
 - Persisted in localStorage
 
 ### Adwaita Dark
+
 - Background: `#242424`
 - Surface: `#303030`
 - Text: `#ffffff`
 
 ### Adwaita Light
+
 - Background: `#fafafa`
 - Surface: `#ffffff`
 - Text: `#1e1e1e`
@@ -246,6 +261,7 @@ src/
 **Breakpoint:** `< 1024px` width
 
 **Fallback Page:**
+
 - Centered NixOS logo (static)
 - Heading: "Hetav Shah — AI Engineer"
 - Subtext: "This experience is designed for desktop browsers."
@@ -259,6 +275,7 @@ src/
 ## Reference Resources
 
 ### Libraries & Inspiration
+
 - [GNOME-online](https://github.com/Bluebaritone21/GNOME-online) — Full GNOME shell simulation
 - [web-toolkit](https://github.com/romgrk/web-toolkit) — Adwaita React components
 - [xterm.js](https://xtermjs.org/) — Terminal emulator
@@ -266,5 +283,6 @@ src/
 - [fastfetch](https://github.com/fastfetch-cli/fastfetch) — ASCII logo source
 
 ### Contact Links
+
 - GitHub: https://github.com/Hetav21
 - LinkedIn: https://www.linkedin.com/in/hetav2106/

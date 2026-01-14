@@ -12,19 +12,24 @@ A dual-application monorepo containing a NixOS-themed Desktop Portfolio (`apps/w
 ## Projects
 
 ### Desktop (`apps/web`)
+
 A portfolio website designed as an interactive NixOS GNOME desktop environment.
+
 - **Boot Sequence** — Authentic NixOS-style boot animation
 - **GNOME Desktop** — Faithful recreation of GNOME shell
 - **Interactive Apps** — Terminal, File Manager, Browser (embeds blog)
 
 ### Blog (`apps/blog`)
+
 A content site powered by Velite and MDX.
+
 - **MDX Content** — Type-safe content management with Velite
 - **Static Generation** — Fast, static blog posts
 
 ## Getting Started
 
 ### Prerequisites
+
 - [Bun](https://bun.sh/) runtime (recommended)
 - Node.js 18+
 
@@ -41,6 +46,7 @@ bun install
 # Start development server (runs both apps)
 bun dev
 ```
+
 - **Web App**: [http://localhost:3000](http://localhost:3000)
 - **Blog App**: [http://localhost:3001](http://localhost:3001)
 
@@ -56,13 +62,13 @@ bun dev
 
 ## Commands
 
-| Command | Description |
-|---------|-------------|
-| `bun dev` | Start both apps in parallel |
-| `bun --filter web dev` | Start only Desktop app |
-| `bun --filter blog dev` | Start only Blog app |
-| `bun run build` | Build all apps |
-| `bun run lint` | Lint all apps |
+| Command                 | Description                 |
+| ----------------------- | --------------------------- |
+| `bun dev`               | Start both apps in parallel |
+| `bun --filter web dev`  | Start only Desktop app      |
+| `bun --filter blog dev` | Start only Blog app         |
+| `bun run build`         | Build all apps              |
+| `bun run lint`          | Lint all apps               |
 
 ## Project Structure
 
@@ -88,23 +94,23 @@ bun dev
 
 ### Design System
 
-| Resource | Source | License |
-|----------|--------|---------|
-| **Rose Pine** color theme | [rosepinetheme.com](https://rosepinetheme.com/) | MIT |
-| **JetBrains Mono** font | [JetBrains](https://www.jetbrains.com/lp/mono/) | OFL-1.1 |
+| Resource                  | Source                                          | License |
+| ------------------------- | ----------------------------------------------- | ------- |
+| **Rose Pine** color theme | [rosepinetheme.com](https://rosepinetheme.com/) | MIT     |
+| **JetBrains Mono** font   | [JetBrains](https://www.jetbrains.com/lp/mono/) | OFL-1.1 |
 
 ### Icons
 
-| Resource | Source | License |
-|----------|--------|---------|
+| Resource                         | Source                                                     | License                 |
+| -------------------------------- | ---------------------------------------------------------- | ----------------------- |
 | **GNOME Adwaita Symbolic** icons | [GNOME](https://gitlab.gnome.org/GNOME/adwaita-icon-theme) | LGPL-3.0 / CC-BY-SA-3.0 |
-| **Lucide** icons | [lucide.dev](https://lucide.dev/) | ISC |
-| **NixOS** logo | [NixOS](https://github.com/NixOS/nixos-artwork) | CC-BY-4.0 |
+| **Lucide** icons                 | [lucide.dev](https://lucide.dev/)                          | ISC                     |
+| **NixOS** logo                   | [NixOS](https://github.com/NixOS/nixos-artwork)            | CC-BY-4.0               |
 
 ### Cursors
 
-| Resource | Source | License |
-|----------|--------|---------|
+| Resource                                         | Source                                                          | License |
+| ------------------------------------------------ | --------------------------------------------------------------- | ------- |
 | **Bibata Modern Ice** cursor theme (inspiration) | [ful1e5/Bibata_Cursor](https://github.com/ful1e5/Bibata_Cursor) | GPL-3.0 |
 
 ### Inspiration
@@ -117,16 +123,16 @@ bun dev
 
 ### Libraries & Tools
 
-| Package | Purpose |
-|---------|---------|
-| [next](https://nextjs.org/) | React framework |
-| [react](https://react.dev/) | UI library |
-| [tailwindcss](https://tailwindcss.com/) | CSS framework |
+| Package                                         | Purpose           |
+| ----------------------------------------------- | ----------------- |
+| [next](https://nextjs.org/)                     | React framework   |
+| [react](https://react.dev/)                     | UI library        |
+| [tailwindcss](https://tailwindcss.com/)         | CSS framework     |
 | [framer-motion](https://www.framer.com/motion/) | Animation library |
-| [zustand](https://zustand-demo.pmnd.rs/) | State management |
-| [xterm](https://xtermjs.org/) | Terminal emulator |
-| [lucide-react](https://lucide.dev/) | Icon library |
-| [playwright](https://playwright.dev/) | E2E testing |
+| [zustand](https://zustand-demo.pmnd.rs/)        | State management  |
+| [xterm](https://xtermjs.org/)                   | Terminal emulator |
+| [lucide-react](https://lucide.dev/)             | Icon library      |
+| [playwright](https://playwright.dev/)           | E2E testing       |
 
 ## License
 

@@ -1,8 +1,16 @@
-"use client";
+'use client';
 
 import React, { useState, useRef, useCallback, useEffect } from 'react';
 import Image from 'next/image';
-import { RotateCw, ChevronLeft, ChevronRight, Lock, Star, ExternalLink, ShieldAlert } from 'lucide-react';
+import {
+  RotateCw,
+  ChevronLeft,
+  ChevronRight,
+  Lock,
+  Star,
+  ExternalLink,
+  ShieldAlert,
+} from 'lucide-react';
 import { useSystemStore } from '@/lib/store';
 
 const DEFAULT_URL = process.env.NEXT_PUBLIC_BROWSER_DEFAULT_URL || 'https://blog.hetav.dev';
@@ -42,24 +50,27 @@ export default function Browser() {
     return clearLoadTimeout;
   }, [url, startLoadTimeout, clearLoadTimeout]);
 
-  const navigateTo = useCallback((newUrl: string) => {
-    let finalUrl = newUrl.trim();
-    if (finalUrl && !finalUrl.startsWith('http://') && !finalUrl.startsWith('https://')) {
-      finalUrl = 'https://' + finalUrl;
-    }
-    
-    if (finalUrl && finalUrl !== url) {
-      setUrl(finalUrl);
-      setInputValue(finalUrl);
-      setIsLoading(true);
-      setLoadFailed(false);
-      
-      const newHistory = history.slice(0, historyIndex + 1);
-      newHistory.push(finalUrl);
-      setHistory(newHistory);
-      setHistoryIndex(newHistory.length - 1);
-    }
-  }, [url, history, historyIndex]);
+  const navigateTo = useCallback(
+    (newUrl: string) => {
+      let finalUrl = newUrl.trim();
+      if (finalUrl && !finalUrl.startsWith('http://') && !finalUrl.startsWith('https://')) {
+        finalUrl = 'https://' + finalUrl;
+      }
+
+      if (finalUrl && finalUrl !== url) {
+        setUrl(finalUrl);
+        setInputValue(finalUrl);
+        setIsLoading(true);
+        setLoadFailed(false);
+
+        const newHistory = history.slice(0, historyIndex + 1);
+        newHistory.push(finalUrl);
+        setHistory(newHistory);
+        setHistoryIndex(newHistory.length - 1);
+      }
+    },
+    [url, history, historyIndex]
+  );
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
@@ -116,7 +127,7 @@ export default function Browser() {
       {/* Chrome / Toolbar */}
       <div className="flex items-center space-x-3 p-3 bg-background border-b border-border">
         <div className="flex items-center space-x-1 text-muted-foreground">
-          <button 
+          <button
             onClick={goBack}
             disabled={!canGoBack}
             className={`p-1.5 rounded-full transition-colors ${
@@ -125,7 +136,7 @@ export default function Browser() {
           >
             <ChevronLeft size={18} />
           </button>
-          <button 
+          <button
             onClick={goForward}
             disabled={!canGoForward}
             className={`p-1.5 rounded-full transition-colors ${
@@ -134,25 +145,25 @@ export default function Browser() {
           >
             <ChevronRight size={18} />
           </button>
-          <button 
-            onClick={refresh}
-            className="p-1.5 hover:bg-muted rounded-full transition-colors"
-          >
+          <button onClick={refresh} className="p-1.5 hover:bg-muted rounded-full transition-colors">
             <RotateCw size={16} className={isLoading ? 'animate-spin' : ''} />
           </button>
         </div>
-        
+
         <div className="flex-1 bg-secondary rounded-full px-4 py-1.5 flex items-center space-x-2 text-sm border border-transparent focus-within:border-primary/50 focus-within:ring-2 focus-within:ring-primary/20 transition-all">
           <Lock size={14} className="text-pine flex-shrink-0" />
-          <input 
-            type="text" 
+          <input
+            type="text"
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}
             onKeyDown={handleKeyDown}
             className="bg-transparent border-none focus:outline-none w-full text-foreground"
             placeholder="Enter URL..."
           />
-          <Star size={14} className="text-muted-foreground hover:text-gold cursor-pointer transition-colors flex-shrink-0" />
+          <Star
+            size={14}
+            className="text-muted-foreground hover:text-gold cursor-pointer transition-colors flex-shrink-0"
+          />
         </div>
 
         <div className="flex items-center space-x-2">
@@ -176,10 +187,7 @@ export default function Browser() {
       </div>
 
       {/* Content - overflow-hidden to clip the iframe's scrollbar */}
-      <div 
-        className="flex-1 relative overflow-hidden bg-card"
-        style={{ colorScheme: theme }}
-      >
+      <div className="flex-1 relative overflow-hidden bg-card" style={{ colorScheme: theme }}>
         {/* Loading State */}
         {isLoading && !loadFailed && (
           <div className="absolute inset-0 flex items-center justify-center bg-card z-10">
@@ -197,12 +205,10 @@ export default function Browser() {
               <div className="w-20 h-20 rounded-full bg-secondary flex items-center justify-center">
                 <ShieldAlert size={40} className="text-muted-foreground" />
               </div>
-              <h3 className="text-xl font-medium text-foreground">
-                This site cannot be displayed
-              </h3>
+              <h3 className="text-xl font-medium text-foreground">This site cannot be displayed</h3>
               <p className="text-sm text-muted-foreground">
-                <span className="font-medium text-foreground">{new URL(url).hostname}</span> refused to connect. 
-                Many websites block embedding for security reasons.
+                <span className="font-medium text-foreground">{new URL(url).hostname}</span> refused
+                to connect. Many websites block embedding for security reasons.
               </p>
               <button
                 onClick={openInNewTab}
@@ -219,7 +225,7 @@ export default function Browser() {
         )}
 
         {/* Iframe wrapper - hides the iframe's native scrollbar */}
-        <div 
+        <div
           className="absolute inset-0 overflow-y-scroll overflow-x-hidden"
           style={{ colorScheme: theme }}
         >
@@ -229,10 +235,10 @@ export default function Browser() {
             src={url}
             onLoad={handleIframeLoad}
             className="border-0 h-full"
-            style={{ 
+            style={{
               width: 'calc(100% + 20px)',
               marginRight: '-20px',
-              colorScheme: theme 
+              colorScheme: theme,
             }}
             sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox"
             title="Browser"

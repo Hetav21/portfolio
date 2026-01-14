@@ -5,6 +5,7 @@ import { Terminal } from '@xterm/xterm';
 import { FitAddon } from '@xterm/addon-fit';
 import { useSystemStore } from '@/lib/store';
 import { executeCommand, isNixShell, commandHistory } from '@/lib/commands';
+import { getSuggestions } from '@/lib/autocomplete';
 import { currentPath } from '@/lib/filesystem';
 import '@xterm/xterm/css/xterm.css';
 
@@ -65,11 +66,11 @@ export default function TerminalApp() {
   const commandRef = useRef('');
   const historyIndexRef = useRef(-1);
   const isInitializedRef = useRef(false);
-  
+
   const store = useSystemStore();
   const theme = useSystemStore((state) => state.theme);
   const storeRef = useRef(store);
-  
+
   useEffect(() => {
     storeRef.current = store;
   }, [store]);
@@ -84,10 +85,10 @@ export default function TerminalApp() {
     if (!isInitializedRef.current) return;
     if (!fitAddonRef.current || !terminalRef.current || !xtermRef.current) return;
     if (!xtermRef.current.element) return;
-    
+
     const { clientWidth, clientHeight } = terminalRef.current;
     if (clientWidth === 0 || clientHeight === 0) return;
-    
+
     try {
       fitAddonRef.current.fit();
     } catch {
@@ -106,9 +107,9 @@ export default function TerminalApp() {
   // Main terminal initialization - runs once
   useEffect(() => {
     if (!terminalRef.current) return;
-    
+
     const container = terminalRef.current;
-    
+
     // Wait for container to have dimensions before initializing
     if (container.clientWidth === 0 || container.clientHeight === 0) {
       const observer = new ResizeObserver((entries) => {
@@ -122,10 +123,10 @@ export default function TerminalApp() {
       observer.observe(container);
       return () => observer.disconnect();
     }
-    
+
     function initTerminal() {
       if (isInitializedRef.current || !terminalRef.current) return;
-      
+
       const initialTheme = useSystemStore.getState().theme;
       const termTheme = initialTheme === 'dark' ? rosePineDarkTheme : rosePineLightTheme;
 
@@ -140,9 +141,9 @@ export default function TerminalApp() {
 
       const fitAddon = new FitAddon();
       term.loadAddon(fitAddon);
-      
+
       term.open(terminalRef.current);
-      
+
       xtermRef.current = term;
       fitAddonRef.current = fitAddon;
       isInitializedRef.current = true;
@@ -150,27 +151,27 @@ export default function TerminalApp() {
       // Initial fit and focus
       requestAnimationFrame(() => {
         if (!isInitializedRef.current) return;
-        
+
         try {
           fitAddon.fit();
         } catch {
           // Ignore
         }
-        
+
         term.focus();
-        
+
         // Starship-style prompt colors
         const foam = '\x1b[38;2;156;207;216m';
         const green = '\x1b[38;2;156;207;216m';
         const reset = '\x1b[0m';
         const bold = '\x1b[1m';
-        
+
         const getPrompt = () => {
           let displayPath = currentPath;
           if (displayPath.startsWith('/home/hetav')) {
             displayPath = displayPath.replace('/home/hetav', '~');
           }
-          
+
           if (isNixShell) {
             return `${foam}${bold}${displayPath}${reset} ${bold}[nix]${reset}\r\n${green}❯${reset} `;
           }
@@ -188,26 +189,26 @@ export default function TerminalApp() {
 
         term.onKey(({ key, domEvent }) => {
           if (!isInitializedRef.current) return;
-          
+
           const char = domEvent.key;
 
           if (char === 'Enter') {
             term.write('\r\n');
             const command = commandRef.current.trim();
-            
+
             if (command) {
               const output = executeCommand(command, storeRef.current);
-              
+
               if (output === '__CLEAR__') {
                 term.clear();
               } else if (output) {
                 term.write(output.replace(/\n/g, '\r\n'));
                 term.write('\r\n');
               }
-              
+
               historyIndexRef.current = -1;
             }
-            
+
             commandRef.current = '';
             prompt();
           } else if (char === 'Backspace') {
@@ -218,41 +219,74 @@ export default function TerminalApp() {
           } else if (char === 'ArrowUp') {
             if (historyIndexRef.current < commandHistory.length - 1) {
               historyIndexRef.current++;
-              const historyCmd = commandHistory[commandHistory.length - 1 - historyIndexRef.current];
-              
+              const historyCmd =
+                commandHistory[commandHistory.length - 1 - historyIndexRef.current];
+
               const currentLen = commandRef.current.length;
               for (let i = 0; i < currentLen; i++) {
                 term.write('\b \b');
               }
-              
+
               commandRef.current = historyCmd;
               term.write(historyCmd);
             }
           } else if (char === 'ArrowDown') {
             if (historyIndexRef.current > -1) {
               historyIndexRef.current--;
-              
+
               const currentLen = commandRef.current.length;
               for (let i = 0; i < currentLen; i++) {
                 term.write('\b \b');
               }
-              
+
               if (historyIndexRef.current === -1) {
-                 commandRef.current = '';
+                commandRef.current = '';
               } else {
-                 const historyCmd = commandHistory[commandHistory.length - 1 - historyIndexRef.current];
-                 commandRef.current = historyCmd;
-                 term.write(historyCmd);
+                const historyCmd =
+                  commandHistory[commandHistory.length - 1 - historyIndexRef.current];
+                commandRef.current = historyCmd;
+                term.write(historyCmd);
               }
             }
-          } else if (char.length === 1 && !domEvent.altKey && !domEvent.ctrlKey && !domEvent.metaKey) {
+          } else if (char === 'Tab') {
+            domEvent.preventDefault();
+            const suggestions = getSuggestions(commandRef.current);
+
+            if (suggestions.length === 1) {
+              const parts = commandRef.current.split(' ');
+              const lastPart = parts[parts.length - 1];
+
+              let completion = '';
+              const suggestion = suggestions[0];
+
+              if (lastPart.includes('/')) {
+                const lastSlash = lastPart.lastIndexOf('/');
+                const prefix = lastPart.slice(lastSlash + 1);
+                completion = suggestion.slice(prefix.length);
+              } else {
+                completion = suggestion.slice(lastPart.length);
+              }
+
+              commandRef.current += completion;
+              term.write(completion);
+            } else if (suggestions.length > 1) {
+              term.write('\r\n' + suggestions.join('  ') + '\r\n');
+              prompt();
+              term.write(commandRef.current);
+            }
+          } else if (
+            char.length === 1 &&
+            !domEvent.altKey &&
+            !domEvent.ctrlKey &&
+            !domEvent.metaKey
+          ) {
             commandRef.current += key;
             term.write(key);
           }
         });
       });
     }
-    
+
     initTerminal();
 
     let resizeTimeout: NodeJS.Timeout;
@@ -261,9 +295,9 @@ export default function TerminalApp() {
       clearTimeout(resizeTimeout);
       resizeTimeout = setTimeout(safeFit, 50);
     });
-    
+
     resizeObserver.observe(container);
-    
+
     const handleResize = () => {
       if (!isInitializedRef.current) return;
       clearTimeout(resizeTimeout);
@@ -273,11 +307,11 @@ export default function TerminalApp() {
 
     return () => {
       isInitializedRef.current = false;
-      
+
       clearTimeout(resizeTimeout);
       window.removeEventListener('resize', handleResize);
       resizeObserver.disconnect();
-      
+
       if (xtermRef.current) {
         try {
           xtermRef.current.dispose();
@@ -285,7 +319,7 @@ export default function TerminalApp() {
           // Ignore disposal errors
         }
       }
-      
+
       xtermRef.current = null;
       fitAddonRef.current = null;
     };
@@ -305,8 +339,8 @@ export default function TerminalApp() {
   const bgColor = theme === 'dark' ? '#191724' : '#faf4ed';
 
   return (
-    <div 
-      ref={terminalRef} 
+    <div
+      ref={terminalRef}
       className="h-full w-full p-1 cursor-text"
       style={{ backgroundColor: bgColor }}
       onMouseDown={focusTerminal}

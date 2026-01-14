@@ -24,9 +24,9 @@ const fileSystem: FileSystemNode = {
                     {
                       name: 'README.md',
                       type: 'file',
-                      content: '# Project 1\n\nLorem ipsum dolor sit amet...'
-                    }
-                  ]
+                      content: '# Project 1\n\nLorem ipsum dolor sit amet...',
+                    },
+                  ],
                 },
                 {
                   name: 'project-2',
@@ -35,9 +35,9 @@ const fileSystem: FileSystemNode = {
                     {
                       name: 'README.md',
                       type: 'file',
-                      content: '# Project 2\n\nAnother cool project...'
-                    }
-                  ]
+                      content: '# Project 2\n\nAnother cool project...',
+                    },
+                  ],
                 },
                 {
                   name: 'project-3',
@@ -46,11 +46,11 @@ const fileSystem: FileSystemNode = {
                     {
                       name: 'README.md',
                       type: 'file',
-                      content: '# Project 3\n\nYet another masterpiece.'
-                    }
-                  ]
-                }
-              ]
+                      content: '# Project 3\n\nYet another masterpiece.',
+                    },
+                  ],
+                },
+              ],
             },
             {
               name: 'documents',
@@ -59,9 +59,10 @@ const fileSystem: FileSystemNode = {
                 {
                   name: 'resume.txt',
                   type: 'file',
-                  content: 'Hetav Shah\nSoftware Developer\n\nSkills: TypeScript, Python, Nix, Docker'
-                }
-              ]
+                  content:
+                    'Hetav Shah\nSoftware Developer\n\nSkills: TypeScript, Python, Nix, Docker',
+                },
+              ],
             },
             {
               name: '.config',
@@ -70,15 +71,15 @@ const fileSystem: FileSystemNode = {
                 {
                   name: 'about.txt',
                   type: 'file',
-                  content: 'Name: Hetav Shah\nRole: Software Developer\nGitHub: github.com/Hetav21'
-                }
-              ]
-            }
-          ]
-        }
-      ]
-    }
-  ]
+                  content: 'Name: Hetav Shah\nRole: Software Developer\nGitHub: github.com/Hetav21',
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+  ],
 };
 
 export let currentPath = '/home/hetav';
@@ -90,19 +91,19 @@ export const setCurrentPath = (path: string) => {
 // Helper to resolve path
 const resolvePath = (path: string): string => {
   if (path === '/') return '/';
-  
+
   let parts: string[];
-  
+
   if (path.startsWith('/')) {
-    parts = path.split('/').filter(p => p);
+    parts = path.split('/').filter((p) => p);
   } else {
-    const currentParts = currentPath.split('/').filter(p => p);
-    const pathParts = path.split('/').filter(p => p);
+    const currentParts = currentPath.split('/').filter((p) => p);
+    const pathParts = path.split('/').filter((p) => p);
     parts = [...currentParts, ...pathParts];
   }
-  
+
   const stack: string[] = [];
-  
+
   for (const part of parts) {
     if (part === '.') continue;
     if (part === '..') {
@@ -111,26 +112,26 @@ const resolvePath = (path: string): string => {
       stack.push(part);
     }
   }
-  
+
   return '/' + stack.join('/');
 };
 
 export const getNode = (path: string): FileSystemNode | null => {
   const resolvedPath = resolvePath(path);
-  
+
   if (resolvedPath === '/') return fileSystem;
-  
-  const parts = resolvedPath.split('/').filter(p => p);
+
+  const parts = resolvedPath.split('/').filter((p) => p);
   let current: FileSystemNode = fileSystem;
-  
+
   for (const part of parts) {
     if (current.type !== 'directory' || !current.children) return null;
-    
-    const found = current.children.find(child => child.name === part);
+
+    const found = current.children.find((child) => child.name === part);
     if (!found) return null;
     current = found;
   }
-  
+
   return current;
 };
 

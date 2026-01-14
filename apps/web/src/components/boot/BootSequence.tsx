@@ -1,4 +1,4 @@
-"use client";
+'use client';
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { useSystemStore } from '@/lib/store';
@@ -11,7 +11,7 @@ export const BootSequence = () => {
   useEffect(() => {
     if (!isBooting) return;
     const interval = setInterval(() => {
-      setProgress(prev => {
+      setProgress((prev) => {
         if (prev >= 100) {
           clearInterval(interval);
           setTimeout(() => setBooting(false), 500);
@@ -26,7 +26,7 @@ export const BootSequence = () => {
   if (!isBooting) return null;
 
   return (
-    <motion.div 
+    <motion.div
       initial={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       className="fixed inset-0 bg-black z-50 flex flex-col items-center justify-center text-white"
@@ -38,23 +38,22 @@ export const BootSequence = () => {
         transition={{ duration: 0.5 }}
         className="mb-8"
       >
-        <Image 
-          src="/nixos-logo.svg" 
-          alt="NixOS Logo" 
-          width={128} 
+        <Image
+          src="/nixos-logo.svg"
+          alt="NixOS Logo"
+          width={128}
           height={128}
           className=""
           priority
         />
       </motion.div>
-      
+
       <div className="w-64 h-2 bg-gray-800 rounded-full overflow-hidden">
-        <motion.div 
-          className="h-full bg-primary"
-          style={{ width: `${progress}%` }}
-        />
+        <motion.div className="h-full bg-primary" style={{ width: `${progress}%` }} />
       </div>
-      <p className="mt-4 font-mono text-sm text-muted-foreground">Starting Hetav&apos;s Portfolio...</p>
+      <p className="mt-4 font-mono text-sm text-muted-foreground">
+        Starting Hetav&apos;s Portfolio...
+      </p>
     </motion.div>
   );
 };

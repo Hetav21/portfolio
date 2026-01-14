@@ -1,10 +1,10 @@
-import { defineConfig, defineCollection, s } from 'velite'
-import rehypePrettyCode from 'rehype-pretty-code'
+import { defineConfig, defineCollection, s } from 'velite';
+import rehypePrettyCode from 'rehype-pretty-code';
 
 const computedFields = <T extends { slug: string }>(data: T) => ({
   ...data,
   slugAsParams: data.slug.split('/').slice(1).join('/'),
-})
+});
 
 const posts = defineCollection({
   name: 'Post',
@@ -21,12 +21,12 @@ const posts = defineCollection({
       body: s.mdx(),
     })
     .transform(computedFields),
-})
+});
 
 const rehypePrettyCodeOptions = {
   theme: 'rose-pine',
   keepBackground: false,
-}
+};
 
 export default defineConfig({
   root: 'content',
@@ -42,4 +42,4 @@ export default defineConfig({
     rehypePlugins: [[rehypePrettyCode, rehypePrettyCodeOptions]],
     remarkPlugins: [],
   },
-})
+});

@@ -13,6 +13,7 @@
 ### Task 1: Project Scaffold & Dependencies
 
 **Files:**
+
 - Create: `package.json` (via init)
 - Create: `tsconfig.json` (via init)
 - Create: `tailwind.config.ts` (via init)
@@ -22,14 +23,17 @@
 **Step 1: Initialize Next.js project**
 
 Run:
+
 ```bash
 npx create-next-app@latest . --typescript --tailwind --eslint --app --src-dir src --import-alias "@/*" --use-npm --no-git
 ```
+
 (Note: Using `.` to install in current directory. If that fails due to existing files, use a temp dir and move).
 
 **Step 2: Install additional dependencies**
 
 Run:
+
 ```bash
 npm install framer-motion zustand xterm xterm-addon-fit xterm-addon-web-links lucide-react clsx tailwind-merge
 npm install -D @types/node @types/react @types/react-dom postcss autoprefixer
@@ -38,6 +42,7 @@ npm install -D @types/node @types/react @types/react-dom postcss autoprefixer
 **Step 3: Initialize shadcn-ui**
 
 Run:
+
 ```bash
 npx shadcn-ui@latest init
 # Settings: Default, Slate, CSS variables: yes
@@ -46,6 +51,7 @@ npx shadcn-ui@latest init
 **Step 4: Configure Adwaita Colors in globals.css**
 
 Modify `src/app/globals.css`:
+
 ```css
 @tailwind base;
 @tailwind components;
@@ -74,7 +80,7 @@ Modify `src/app/globals.css`:
     --input: 240 4% 24%;
     --ring: 211 65% 69%;
     --radius: 0.75rem;
-    
+
     /* NixOS Colors */
     --nix-blue: 211 65% 69%;
     --nix-blue-dark: 222 47% 54%;
@@ -106,6 +112,7 @@ Modify `src/app/globals.css`:
 ```
 
 **Step 5: Commit**
+
 ```bash
 git add .
 git commit -m "chore: scaffold Next.js project with Tailwind, shadcn, and Adwaita theme"
@@ -116,12 +123,14 @@ git commit -m "chore: scaffold Next.js project with Tailwind, shadcn, and Adwait
 ### Task 2: State Management (Zustand)
 
 **Files:**
+
 - Create: `src/lib/store.ts`
 - Create: `src/lib/types.ts`
 
 **Step 1: Define Types**
 
 Create `src/lib/types.ts`:
+
 ```typescript
 export type AppId = 'terminal' | 'files' | 'about' | 'projects' | 'contact' | 'editor' | 'browser';
 
@@ -147,6 +156,7 @@ export interface FileSystemNode {
 **Step 2: Create Store**
 
 Create `src/lib/store.ts`:
+
 ```typescript
 import { create } from 'zustand';
 import { AppId, WindowState } from './types';
@@ -157,7 +167,7 @@ interface SystemState {
   maxZIndex: number;
   theme: 'dark' | 'light';
   isBooting: boolean;
-  
+
   // Actions
   setBooting: (isBooting: boolean) => void;
   toggleTheme: () => void;
@@ -166,18 +176,81 @@ interface SystemState {
   minimizeWindow: (id: AppId) => void;
   maximizeWindow: (id: AppId) => void;
   focusWindow: (id: AppId) => void;
-  updateWindowPosition: (id: AppId, pos: { x: number, y: number }) => void;
-  updateWindowSize: (id: AppId, size: { width: number, height: number }) => void;
+  updateWindowPosition: (id: AppId, pos: { x: number; y: number }) => void;
+  updateWindowSize: (id: AppId, size: { width: number; height: number }) => void;
 }
 
 const defaultWindows: Record<AppId, WindowState> = {
-  terminal: { id: 'terminal', title: 'Terminal', isOpen: false, isMinimized: false, isMaximized: false, zIndex: 0, position: { x: 100, y: 100 }, size: { width: 800, height: 500 } },
-  files: { id: 'files', title: 'Files', isOpen: false, isMinimized: false, isMaximized: false, zIndex: 0, position: { x: 150, y: 150 }, size: { width: 900, height: 600 } },
-  about: { id: 'about', title: 'About', isOpen: false, isMinimized: false, isMaximized: false, zIndex: 0, position: { x: 200, y: 200 }, size: { width: 500, height: 600 } },
-  projects: { id: 'projects', title: 'Projects', isOpen: false, isMinimized: false, isMaximized: false, zIndex: 0, position: { x: 100, y: 100 }, size: { width: 1000, height: 700 } },
-  contact: { id: 'contact', title: 'Contact', isOpen: false, isMinimized: false, isMaximized: false, zIndex: 0, position: { x: 300, y: 200 }, size: { width: 400, height: 500 } },
-  editor: { id: 'editor', title: 'Text Editor', isOpen: false, isMinimized: false, isMaximized: false, zIndex: 0, position: { x: 100, y: 100 }, size: { width: 800, height: 600 } },
-  browser: { id: 'browser', title: 'Web Browser', isOpen: false, isMinimized: false, isMaximized: false, zIndex: 0, position: { x: 50, y: 50 }, size: { width: 1024, height: 768 } },
+  terminal: {
+    id: 'terminal',
+    title: 'Terminal',
+    isOpen: false,
+    isMinimized: false,
+    isMaximized: false,
+    zIndex: 0,
+    position: { x: 100, y: 100 },
+    size: { width: 800, height: 500 },
+  },
+  files: {
+    id: 'files',
+    title: 'Files',
+    isOpen: false,
+    isMinimized: false,
+    isMaximized: false,
+    zIndex: 0,
+    position: { x: 150, y: 150 },
+    size: { width: 900, height: 600 },
+  },
+  about: {
+    id: 'about',
+    title: 'About',
+    isOpen: false,
+    isMinimized: false,
+    isMaximized: false,
+    zIndex: 0,
+    position: { x: 200, y: 200 },
+    size: { width: 500, height: 600 },
+  },
+  projects: {
+    id: 'projects',
+    title: 'Projects',
+    isOpen: false,
+    isMinimized: false,
+    isMaximized: false,
+    zIndex: 0,
+    position: { x: 100, y: 100 },
+    size: { width: 1000, height: 700 },
+  },
+  contact: {
+    id: 'contact',
+    title: 'Contact',
+    isOpen: false,
+    isMinimized: false,
+    isMaximized: false,
+    zIndex: 0,
+    position: { x: 300, y: 200 },
+    size: { width: 400, height: 500 },
+  },
+  editor: {
+    id: 'editor',
+    title: 'Text Editor',
+    isOpen: false,
+    isMinimized: false,
+    isMaximized: false,
+    zIndex: 0,
+    position: { x: 100, y: 100 },
+    size: { width: 800, height: 600 },
+  },
+  browser: {
+    id: 'browser',
+    title: 'Web Browser',
+    isOpen: false,
+    isMinimized: false,
+    isMaximized: false,
+    zIndex: 0,
+    position: { x: 50, y: 50 },
+    size: { width: 1024, height: 768 },
+  },
 };
 
 export const useSystemStore = create<SystemState>((set) => ({
@@ -189,50 +262,67 @@ export const useSystemStore = create<SystemState>((set) => ({
 
   setBooting: (isBooting) => set({ isBooting }),
   toggleTheme: () => set((state) => ({ theme: state.theme === 'dark' ? 'light' : 'dark' })),
-  
-  openWindow: (id) => set((state) => {
-    const newZ = state.maxZIndex + 1;
-    return {
-      windows: { ...state.windows, [id]: { ...state.windows[id], isOpen: true, zIndex: newZ, isMinimized: false } },
-      activeWindowId: id,
-      maxZIndex: newZ,
-    };
-  }),
 
-  closeWindow: (id) => set((state) => ({
-    windows: { ...state.windows, [id]: { ...state.windows[id], isOpen: false } }
-  })),
+  openWindow: (id) =>
+    set((state) => {
+      const newZ = state.maxZIndex + 1;
+      return {
+        windows: {
+          ...state.windows,
+          [id]: { ...state.windows[id], isOpen: true, zIndex: newZ, isMinimized: false },
+        },
+        activeWindowId: id,
+        maxZIndex: newZ,
+      };
+    }),
 
-  minimizeWindow: (id) => set((state) => ({
-    windows: { ...state.windows, [id]: { ...state.windows[id], isMinimized: true } },
-    activeWindowId: null // simplistic logic, ideally focus next top window
-  })),
+  closeWindow: (id) =>
+    set((state) => ({
+      windows: { ...state.windows, [id]: { ...state.windows[id], isOpen: false } },
+    })),
 
-  maximizeWindow: (id) => set((state) => ({
-    windows: { ...state.windows, [id]: { ...state.windows[id], isMaximized: !state.windows[id].isMaximized } }
-  })),
+  minimizeWindow: (id) =>
+    set((state) => ({
+      windows: { ...state.windows, [id]: { ...state.windows[id], isMinimized: true } },
+      activeWindowId: null, // simplistic logic, ideally focus next top window
+    })),
 
-  focusWindow: (id) => set((state) => {
-    if (state.activeWindowId === id) return {};
-    const newZ = state.maxZIndex + 1;
-    return {
-      windows: { ...state.windows, [id]: { ...state.windows[id], zIndex: newZ, isMinimized: false } },
-      activeWindowId: id,
-      maxZIndex: newZ,
-    };
-  }),
-  
-  updateWindowPosition: (id, pos) => set((state) => ({
-     windows: { ...state.windows, [id]: { ...state.windows[id], position: pos } }
-  })),
+  maximizeWindow: (id) =>
+    set((state) => ({
+      windows: {
+        ...state.windows,
+        [id]: { ...state.windows[id], isMaximized: !state.windows[id].isMaximized },
+      },
+    })),
 
-  updateWindowSize: (id, size) => set((state) => ({
-     windows: { ...state.windows, [id]: { ...state.windows[id], size: size } }
-  })),
+  focusWindow: (id) =>
+    set((state) => {
+      if (state.activeWindowId === id) return {};
+      const newZ = state.maxZIndex + 1;
+      return {
+        windows: {
+          ...state.windows,
+          [id]: { ...state.windows[id], zIndex: newZ, isMinimized: false },
+        },
+        activeWindowId: id,
+        maxZIndex: newZ,
+      };
+    }),
+
+  updateWindowPosition: (id, pos) =>
+    set((state) => ({
+      windows: { ...state.windows, [id]: { ...state.windows[id], position: pos } },
+    })),
+
+  updateWindowSize: (id, size) =>
+    set((state) => ({
+      windows: { ...state.windows, [id]: { ...state.windows[id], size: size } },
+    })),
 }));
 ```
 
 **Step 3: Commit**
+
 ```bash
 git add src/lib/store.ts src/lib/types.ts
 git commit -m "feat: implement zustand store for window management"
@@ -243,6 +333,7 @@ git commit -m "feat: implement zustand store for window management"
 ### Task 3: Boot Sequence Component
 
 **Files:**
+
 - Create: `src/components/boot/BootSequence.tsx`
 - Create: `src/assets/nixos-logo.tsx` (SVG Component)
 - Modify: `src/app/page.tsx`
@@ -250,11 +341,17 @@ git commit -m "feat: implement zustand store for window management"
 **Step 1: Create NixOS Logo Component**
 
 Create `src/assets/nixos-logo.tsx`:
+
 ```tsx
 export const NixosLogo = ({ className }: { className?: string }) => (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" className={className}>
     {/* Simplified snowflake path placeholder - replace with actual path later */}
-    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth={2}
+      d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"
+    />
   </svg>
 );
 ```
@@ -262,8 +359,9 @@ export const NixosLogo = ({ className }: { className?: string }) => (
 **Step 2: Create Boot Sequence**
 
 Create `src/components/boot/BootSequence.tsx`:
+
 ```tsx
-"use client";
+'use client';
 import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useSystemStore } from '@/lib/store';
@@ -276,7 +374,7 @@ export const BootSequence = () => {
   useEffect(() => {
     if (!isBooting) return;
     const interval = setInterval(() => {
-      setProgress(prev => {
+      setProgress((prev) => {
         if (prev >= 100) {
           clearInterval(interval);
           setTimeout(() => setBooting(false), 500);
@@ -291,7 +389,7 @@ export const BootSequence = () => {
   if (!isBooting) return null;
 
   return (
-    <motion.div 
+    <motion.div
       initial={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       className="fixed inset-0 bg-black z-50 flex flex-col items-center justify-center text-white"
@@ -304,12 +402,9 @@ export const BootSequence = () => {
       >
         <NixosLogo className="w-32 h-32 text-nix-blue mb-8 animate-pulse" />
       </motion.div>
-      
+
       <div className="w-64 h-2 bg-gray-800 rounded-full overflow-hidden">
-        <motion.div 
-          className="h-full bg-nix-blue"
-          style={{ width: `${progress}%` }}
-        />
+        <motion.div className="h-full bg-nix-blue" style={{ width: `${progress}%` }} />
       </div>
       <p className="mt-4 font-mono text-sm text-gray-400">Starting Hetav's Portfolio...</p>
     </motion.div>
@@ -320,23 +415,22 @@ export const BootSequence = () => {
 **Step 3: Implement Page Entry**
 
 Modify `src/app/page.tsx`:
+
 ```tsx
-"use client";
+'use client';
 import { BootSequence } from '@/components/boot/BootSequence';
 import { useSystemStore } from '@/lib/store';
 
 export default function Home() {
-  const isBooting = useSystemStore(state => state.isBooting);
+  const isBooting = useSystemStore((state) => state.isBooting);
 
   return (
     <main className="h-screen w-screen overflow-hidden bg-background">
-      <AnimatePresence>
-        {isBooting && <BootSequence key="boot" />}
-      </AnimatePresence>
+      <AnimatePresence>{isBooting && <BootSequence key="boot" />}</AnimatePresence>
       {!isBooting && (
         <div className="h-full w-full">
-           {/* Desktop Component will go here */}
-           <div className="flex items-center justify-center h-full">Desktop Placeholder</div>
+          {/* Desktop Component will go here */}
+          <div className="flex items-center justify-center h-full">Desktop Placeholder</div>
         </div>
       )}
     </main>
@@ -345,6 +439,7 @@ export default function Home() {
 ```
 
 **Step 4: Commit**
+
 ```bash
 git add src/components/boot src/assets src/app/page.tsx
 git commit -m "feat: implement boot sequence animation"
@@ -355,6 +450,7 @@ git commit -m "feat: implement boot sequence animation"
 ### Task 4: Desktop Shell Components (TopBar, Dock)
 
 **Files:**
+
 - Create: `src/components/desktop/TopBar.tsx`
 - Create: `src/components/desktop/Dock.tsx`
 - Create: `src/components/desktop/Desktop.tsx`
@@ -373,6 +469,7 @@ Combine them in `Desktop.tsx`.
 Replace placeholder in `src/app/page.tsx` with `<Desktop />`.
 
 **Step 5: Commit**
+
 ```bash
 git add src/components/desktop src/app/page.tsx
 git commit -m "feat: implement desktop shell with topbar and dock"
@@ -383,11 +480,13 @@ git commit -m "feat: implement desktop shell with topbar and dock"
 ### Task 5: Window Manager System
 
 **Files:**
+
 - Create: `src/components/window/Window.tsx`
 - Create: `src/components/window/WindowManager.tsx`
 
 **Step 1: Window Container**
 Create `src/components/window/Window.tsx`.
+
 - Props: `id`, `title`, `children`
 - Use `framer-motion` for drag constraints (ref to desktop constraint).
 - Use `useSystemStore` to read position/size/zIndex.
@@ -396,10 +495,12 @@ Create `src/components/window/Window.tsx`.
 
 **Step 2: Window Manager**
 Create `src/components/window/WindowManager.tsx`.
+
 - Map over `useSystemStore().windows`.
 - If `isOpen`, render `<Window id={id} ...><AppContent id={id} /></Window>`.
 
 **Step 3: Commit**
+
 ```bash
 git add src/components/window
 git commit -m "feat: implement draggable window system"
@@ -410,6 +511,7 @@ git commit -m "feat: implement draggable window system"
 ### Task 6: Terminal App (xterm.js)
 
 **Files:**
+
 - Create: `src/components/apps/Terminal.tsx`
 - Create: `src/lib/commands.ts`
 - Create: `src/lib/filesystem.ts`
@@ -422,6 +524,7 @@ Create `src/lib/commands.ts` to parse input string and execute actions (cd, ls, 
 
 **Step 3: Terminal UI**
 Create `src/components/apps/Terminal.tsx`.
+
 - Use `xterm` and `xterm-addon-fit`.
 - Initialize xterm ref.
 - Handle `onData` to capture keystrokes.
@@ -430,6 +533,7 @@ Create `src/components/apps/Terminal.tsx`.
 - Render `fastfetch` on mount.
 
 **Step 4: Commit**
+
 ```bash
 git add src/components/apps/Terminal.tsx src/lib/commands.ts src/lib/filesystem.ts
 git commit -m "feat: implement fully functional terminal app"
@@ -440,26 +544,32 @@ git commit -m "feat: implement fully functional terminal app"
 ### Task 7: Content Apps (Files, About, Projects, Contact)
 
 **Files:**
+
 - Create: `src/components/apps/Files.tsx`
 - Create: `src/components/apps/AboutMe.tsx`
 - Create: `src/components/apps/Projects.tsx`
 - Create: `src/components/apps/Contact.tsx`
 
 **Step 1: Files App**
+
 - Breadcrumb nav.
 - List view of `filesystem` nodes.
 
 **Step 2: About Me**
+
 - Static layout with Tailwind.
 - Avatar, stats.
 
 **Step 3: Projects**
+
 - Grid of cards.
 
 **Step 4: Contact**
+
 - Simple form layout.
 
 **Step 5: Commit**
+
 ```bash
 git add src/components/apps
 git commit -m "feat: implement content apps"
@@ -470,6 +580,7 @@ git commit -m "feat: implement content apps"
 ### Task 8: Mobile Fallback & Polish
 
 **Files:**
+
 - Create: `src/components/mobile/MobileFallback.tsx`
 - Modify: `src/app/page.tsx`
 
@@ -480,6 +591,7 @@ Create component that shows "Desktop Only" message.
 In `page.tsx`, check screen width. If mobile, show Fallback. Else show Boot/Desktop.
 
 **Step 3: Commit**
+
 ```bash
 git add src/components/mobile src/app/page.tsx
 git commit -m "feat: add mobile fallback and final polish"

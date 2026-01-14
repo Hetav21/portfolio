@@ -1,11 +1,13 @@
-import { posts } from '@/velite'
-import Link from 'next/link'
-import { format, parseISO } from 'date-fns'
+import { posts } from '@/velite';
+import Link from 'next/link';
+import { format, parseISO } from 'date-fns';
 
 export default function BlogIndex() {
-  const publishedPosts = posts.filter(post => post.published).sort((a, b) => {
-    return new Date(b.date).getTime() - new Date(a.date).getTime()
-  })
+  const publishedPosts = posts
+    .filter((post) => post.published)
+    .sort((a, b) => {
+      return new Date(b.date).getTime() - new Date(a.date).getTime();
+    });
 
   return (
     <div className="space-y-8">
@@ -26,12 +28,13 @@ export default function BlogIndex() {
                     {format(parseISO(post.date), 'MMMM d, yyyy')}
                   </time>
                 </div>
-                {post.description && (
-                  <p className="text-muted-foreground">{post.description}</p>
-                )}
+                {post.description && <p className="text-muted-foreground">{post.description}</p>}
                 <div className="flex gap-2 mt-2">
-                  {post.tags.map(tag => (
-                    <span key={tag} className="text-xs font-medium px-2 py-0.5 rounded-full bg-secondary text-secondary-foreground">
+                  {post.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="text-xs font-medium px-2 py-0.5 rounded-full bg-secondary text-secondary-foreground"
+                    >
                       #{tag}
                     </span>
                   ))}
@@ -42,5 +45,5 @@ export default function BlogIndex() {
         ))}
       </div>
     </div>
-  )
+  );
 }

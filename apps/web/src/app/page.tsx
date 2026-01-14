@@ -1,4 +1,4 @@
-"use client";
+'use client';
 import { useState, useEffect } from 'react';
 import { BootSequence } from '@/components/boot/BootSequence';
 import { Desktop } from '@/components/desktop/Desktop';
@@ -7,8 +7,8 @@ import { useSystemStore } from '@/lib/store';
 import { AnimatePresence } from 'framer-motion';
 
 export default function Home() {
-  const isBooting = useSystemStore(state => state.isBooting);
-  const theme = useSystemStore(state => state.theme);
+  const isBooting = useSystemStore((state) => state.isBooting);
+  const theme = useSystemStore((state) => state.theme);
   const [isMounted, setIsMounted] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const [forceDesktop, setForceDesktop] = useState(false);
@@ -42,11 +42,7 @@ export default function Home() {
   return (
     <main className="h-screen w-screen overflow-hidden bg-background font-sans">
       <AnimatePresence mode="wait">
-        {isBooting ? (
-          <BootSequence key="boot" />
-        ) : (
-          <Desktop key="desktop" />
-        )}
+        {isBooting ? <BootSequence key="boot" /> : <Desktop key="desktop" />}
       </AnimatePresence>
     </main>
   );

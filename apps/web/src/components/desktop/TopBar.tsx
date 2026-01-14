@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import React, { useState, useEffect } from 'react';
 import { useSystemStore } from '@/lib/store';
@@ -19,7 +19,11 @@ export const TopBar = () => {
     const updateTime = () => {
       const now = new Date();
       const dateStr = now.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
-      const timeStr = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: false });
+      const timeStr = now.toLocaleTimeString('en-US', {
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: false,
+      });
       setTime(`${dateStr} ${timeStr}`);
     };
 
@@ -44,18 +48,18 @@ export const TopBar = () => {
       <div className="flex items-center gap-2">
         {/* Social Links */}
         <div className="flex items-center gap-1 mr-1 border-r border-border pr-3">
-          <a 
-            href="https://github.com/Hetav21" 
-            target="_blank" 
+          <a
+            href="https://github.com/Hetav21"
+            target="_blank"
             rel="noopener noreferrer"
             className="p-1.5 opacity-80 hover:opacity-100 hover:bg-muted/50 rounded-full transition-all duration-150"
             title="GitHub"
           >
             <Github width={15} height={15} strokeWidth={1.75} />
           </a>
-          <a 
-            href="https://www.linkedin.com/in/hetav2106/" 
-            target="_blank" 
+          <a
+            href="https://www.linkedin.com/in/hetav2106/"
+            target="_blank"
             rel="noopener noreferrer"
             className="p-1.5 opacity-80 hover:opacity-100 hover:bg-muted/50 rounded-full transition-all duration-150"
             title="LinkedIn"
@@ -65,7 +69,7 @@ export const TopBar = () => {
         </div>
 
         {/* Theme Toggle - lucide-react icons */}
-        <button 
+        <button
           onClick={toggleTheme}
           className="p-1.5 opacity-80 hover:opacity-100 hover:bg-muted/50 rounded-full transition-all duration-150"
           title="Toggle Theme"
@@ -78,7 +82,7 @@ export const TopBar = () => {
         </button>
 
         {/* Status Icons Group - GNOME symbolic icons with grouped hover */}
-        <button 
+        <button
           className="flex items-center gap-3 px-3 py-1 opacity-80 hover:opacity-100 hover:bg-muted/50 rounded-full transition-all duration-150"
           title="System Status"
         >
@@ -89,7 +93,7 @@ export const TopBar = () => {
 
         {/* Power Menu - GNOME symbolic icon */}
         <div className="relative">
-          <button 
+          <button
             onClick={() => setIsPowerMenuOpen(!isPowerMenuOpen)}
             className="p-1.5 opacity-80 hover:opacity-100 hover:bg-muted/50 rounded-full transition-all duration-150"
           >
@@ -98,10 +102,7 @@ export const TopBar = () => {
 
           {isPowerMenuOpen && (
             <>
-              <div 
-                className="fixed inset-0 z-40" 
-                onClick={() => setIsPowerMenuOpen(false)} 
-              />
+              <div className="fixed inset-0 z-40" onClick={() => setIsPowerMenuOpen(false)} />
               <div className="absolute right-0 top-full mt-2 w-48 bg-popover border border-border rounded-lg shadow-xl overflow-hidden z-50 py-1">
                 <button
                   onClick={() => setBooting(true)}

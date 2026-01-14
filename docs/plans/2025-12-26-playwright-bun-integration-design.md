@@ -16,6 +16,7 @@ Integrate Playwright testing framework into the existing Bun development environ
 ### flake.nix
 
 Merge Playwright template configuration:
+
 - Add `nodejs` package
 - Add `playwright-driver.browsers` package
 - Add environment variables for Playwright browser paths
@@ -24,11 +25,13 @@ Merge Playwright template configuration:
 ### New Files
 
 **package.json**
+
 - Name: gnome-nixos
 - Bun-based test scripts
 - Dependencies: @playwright/test, @types/bun, typescript
 
 **playwright.config.ts**
+
 - Standard Playwright configuration
 - Test directory: ./tests
 - Browsers: chromium, firefox, webkit
