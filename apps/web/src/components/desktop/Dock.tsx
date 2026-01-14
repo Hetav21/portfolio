@@ -27,10 +27,18 @@ export const Dock = () => {
   const windows = useSystemStore((state) => state.windows);
   const theme = useSystemStore((state) => state.theme);
 
+  const isAnyWindowMaximized = Object.values(windows).some(
+    (w) => w.isOpen && w.isMaximized && !w.isMinimized
+  );
+
   const iconTheme = theme === 'dark' ? 'dark' : 'light';
 
   return (
-    <div className="fixed bottom-4 left-1/2 transform -translate-x-1/2 z-50">
+    <div
+      className={`fixed bottom-4 left-1/2 transform -translate-x-1/2 z-50 transition-transform duration-300 ${
+        isAnyWindowMaximized ? 'translate-y-32' : ''
+      }`}
+    >
       <div className="flex items-center gap-2 px-4 py-2 bg-card/80 backdrop-blur-xl border border-border rounded-2xl shadow-2xl">
         {dockItems.map((item) => {
           const isOpen = windows[item.id]?.isOpen;
