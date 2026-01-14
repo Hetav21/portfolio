@@ -1,4 +1,30 @@
 import { FileSystemNode } from './types';
+import { projects } from '../data/projects';
+
+// Helper to convert project title to directory-friendly name
+const toDirName = (title: string) => title.toLowerCase().replace(/\s+/g, '-');
+
+// Generate project nodes from data source
+const projectNodes: FileSystemNode[] = projects.map((p) => ({
+  name: toDirName(p.title),
+  type: 'directory',
+  children: [
+    {
+      name: 'README.md',
+      type: 'file',
+      content: `# ${p.title}
+
+${p.description}
+
+Stack: ${p.tags.join(', ')}
+
+Links:
+- Repo: ${p.links.repo}
+${p.links.demo ? `- Demo: ${p.links.demo}` : ''}
+`,
+    },
+  ],
+}));
 
 // Virtual File System Structure
 const fileSystem: FileSystemNode = {
@@ -16,41 +42,7 @@ const fileSystem: FileSystemNode = {
             {
               name: 'projects',
               type: 'directory',
-              children: [
-                {
-                  name: 'project-1',
-                  type: 'directory',
-                  children: [
-                    {
-                      name: 'README.md',
-                      type: 'file',
-                      content: '# Project 1\n\nLorem ipsum dolor sit amet...',
-                    },
-                  ],
-                },
-                {
-                  name: 'project-2',
-                  type: 'directory',
-                  children: [
-                    {
-                      name: 'README.md',
-                      type: 'file',
-                      content: '# Project 2\n\nAnother cool project...',
-                    },
-                  ],
-                },
-                {
-                  name: 'project-3',
-                  type: 'directory',
-                  children: [
-                    {
-                      name: 'README.md',
-                      type: 'file',
-                      content: '# Project 3\n\nYet another masterpiece.',
-                    },
-                  ],
-                },
-              ],
+              children: projectNodes,
             },
             {
               name: 'documents',
