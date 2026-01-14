@@ -20,6 +20,7 @@ const dockItems: DockItem[] = [
   { id: 'editor', filename: 'editor.svg', label: 'Text Editor' },
   { id: 'about', filename: 'user.svg', label: 'About' },
   { id: 'contact', filename: 'contact.svg', label: 'Contact' },
+  { id: 'resume', filename: 'resume.svg', label: 'PDF Viewer' },
 ];
 
 export const Dock = () => {

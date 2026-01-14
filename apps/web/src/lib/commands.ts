@@ -45,6 +45,7 @@ export const VALID_APPS: AppId[] = [
   'contact',
   'editor',
   'browser',
+  'resume',
 ];
 
 // Microfetch-style colors (matching real microfetch output):
@@ -143,6 +144,10 @@ export const executeCommand = (input: string, store: SystemState): string => {
       if (args.length === 0) return 'cat: missing file operand';
       const content = getFileContent(args[0]);
       if (content === null) return `cat: ${args[0]}: No such file or directory`;
+      if (content === '__PDF_RESUME__') {
+        store.openWindow('resume');
+        return 'Opening PDF Viewer...';
+      }
       return content;
 
     case 'clear':
@@ -166,6 +171,11 @@ export const executeCommand = (input: string, store: SystemState): string => {
     case 'open':
       if (args.length === 0) return 'open: missing application name';
       const appName = args[0].toLowerCase();
+
+      if (appName === 'resume.pdf' || appName === 'resume') {
+        store.openWindow('resume');
+        return 'Opening PDF Viewer...';
+      }
 
       if (VALID_APPS.includes(appName as AppId)) {
         store.openWindow(appName as AppId);

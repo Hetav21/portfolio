@@ -95,6 +95,16 @@ const defaultWindows: Record<AppId, WindowState> = {
     position: { x: 50, y: 50 },
     size: { width: 1024, height: 768 },
   },
+  resume: {
+    id: 'resume',
+    title: 'PDF Viewer',
+    isOpen: false,
+    isMinimized: false,
+    isMaximized: false,
+    zIndex: 0,
+    position: { x: 150, y: 100 },
+    size: { width: 900, height: 800 },
+  },
 };
 
 const getNextFocusId = (windows: Record<AppId, WindowState>, ignoreId: AppId): AppId | null => {

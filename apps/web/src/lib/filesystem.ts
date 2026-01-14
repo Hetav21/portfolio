@@ -49,10 +49,9 @@ const fileSystem: FileSystemNode = {
               type: 'directory',
               children: [
                 {
-                  name: 'resume.txt',
+                  name: 'resume.pdf',
                   type: 'file',
-                  content:
-                    'Hetav Shah\nSoftware Developer\n\nSkills: TypeScript, Python, Nix, Docker',
+                  content: '__PDF_RESUME__',
                 },
               ],
             },

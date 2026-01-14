@@ -42,6 +42,10 @@ export default function Files() {
       const newPath = currentPath === '/' ? `/${file.name}` : `${currentPath}/${file.name}`;
       setCurrentPath(newPath);
     } else {
+      if (file.name === 'resume.pdf' || file.content === '__PDF_RESUME__') {
+        openWindow('resume');
+        return;
+      }
       if (file.content) {
         setEditorContent(file.content);
       }
@@ -134,6 +138,13 @@ export default function Files() {
                 <div className="mb-3 text-primary group-hover:scale-110 transition-transform duration-200">
                   {file.type === 'directory' ? (
                     <Folder size={48} fill="currentColor" fillOpacity={0.2} />
+                  ) : file.name === 'resume.pdf' ? (
+                    <FileText
+                      size={48}
+                      className="text-rose"
+                      fill="currentColor"
+                      fillOpacity={0.1}
+                    />
                   ) : (
                     <FileText size={48} className="text-muted-foreground" />
                   )}

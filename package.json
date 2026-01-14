@@ -28,6 +28,8 @@
   },
   "packageManager": "bun@1.2.0",
   "dependencies": {
-    "@mielo-ui/adwaita-symbolic-icons-react": "^1.0.5"
+    "@mielo-ui/adwaita-symbolic-icons-react": "^1.0.5",
+    "pdfjs-dist": "4.4.168",
+    "react-pdf": "9.1.1"
   }
 }

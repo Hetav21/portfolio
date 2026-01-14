@@ -1,4 +1,12 @@
-export type AppId = 'terminal' | 'files' | 'about' | 'projects' | 'contact' | 'editor' | 'browser';
+export type AppId =
+  | 'terminal'
+  | 'files'
+  | 'about'
+  | 'projects'
+  | 'contact'
+  | 'editor'
+  | 'browser'
+  | 'resume';
 
 export interface WindowState {
   id: AppId;

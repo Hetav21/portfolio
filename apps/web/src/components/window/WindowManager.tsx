@@ -12,6 +12,7 @@ const Projects = dynamic(() => import('@/components/apps/Projects'), { ssr: fals
 const Contact = dynamic(() => import('@/components/apps/Contact'), { ssr: false });
 const TextEditor = dynamic(() => import('@/components/apps/TextEditor'), { ssr: false });
 const Browser = dynamic(() => import('@/components/apps/Browser'), { ssr: false });
+const Resume = dynamic(() => import('@/components/apps/Resume'), { ssr: false });
 
 export const WindowManager = () => {
   const windows = useSystemStore((state) => state.windows);
@@ -31,6 +32,7 @@ export const WindowManager = () => {
             {window.id === 'contact' && <Contact />}
             {window.id === 'editor' && <TextEditor />}
             {window.id === 'browser' && <Browser />}
+            {window.id === 'resume' && <Resume />}
           </div>
         </Window>
       ))}
