@@ -11,7 +11,13 @@ export function Header() {
           className="flex items-center gap-2 font-bold hover:text-primary transition-colors"
         >
           <div className="relative h-8 w-8 overflow-hidden rounded-full border border-border">
-            <Image src="/avatar.png" alt="Avatar" fill className="object-cover" />
+            <Image
+              src="/avatar.png"
+              alt="Avatar"
+              fill
+              className="object-cover"
+              suppressHydrationWarning
+            />
           </div>
           <span>Hetav's Blog</span>
         </Link>
