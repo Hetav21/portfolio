@@ -1,0 +1,273 @@
+%-------------------------
+% Resume in Latex
+% Author : Jake Gutierrez
+% Based off of: https://github.com/sb2nov/resume
+% License : MIT
+%------------------------
+
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+
+\usepackage[english]{babel}
+
+\usepackage{tabularx}
+\usepackage{multicol}
+\setlength{\multicolsep}{-3.0pt}
+\setlength{\columnsep}{-1pt}
+% \input{glyphtounicode}
+
+%----------IMAGE CONFIGURATION----------
+\usepackage{graphicx} % for image
+\usepackage{adjustbox} % for vertical alignment fixes
+\setlength{\fboxsep}{1pt}   % Padding between image and border
+\setlength{\fboxrule}{0.5pt} % Border thickness
+
+%----------HYPERLINK OPTIONS----------
+
+%% Hide Hyperlinks
+\usepackage[hidelinks]{hyperref}
+
+%% Show Hyperlinks
+% \usepackage[colorlinks=true, urlcolor=blue]{hyperref}
+% \usepackage[normalem]{ulem} % for underline in text
+% \newcommand{\myhref}[2]{\href{#1}{\uline{#2}}}
+
+%----------FONT OPTIONS----------
+% sans-serif
+\usepackage[sfdefault]{FiraSans}
+% \usepackage[sfdefault]{roboto}
+% \usepackage[sfdefault]{noto-sans}
+% \usepackage[default]{sourcesanspro}
+
+% serif
+% \usepackage{CormorantGaramond}
+% \usepackage{charter}
+
+
+\pagestyle{fancy}
+\fancyhf{} % clear all header and footer fields
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+
+% Adjust margins
+\addtolength{\oddsidemargin}{-0.5in}
+
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1in}
+
+\addtolength{\topmargin}{-.5in}
+\addtolength{\textheight}{1.0in}
+
+
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+
+% Sections formatting
+\titleformat{\section}{
+	\vspace{-4pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+% Ensure that generate pdf is machine readable/ATS parsable
+% \pdfgentounicode=1
+
+%-------------------------
+% Custom commands
+
+\newcommand{\resumeItem}[1]{
+	\item\small{
+		{#1 \vspace{-2pt}}
+
+	}
+}
+
+\newcommand{\resumeSubheading}[4]{
+	\vspace{-2pt}\item
+	\begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+		\textbf{#1} & #2 \\
+		\textit{\small#3} & \textit{\small #4} \\
+	\end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubSubheading}[2]{
+	\item
+
+	\begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+		\textit{\small#1} & \textit{\small #2} \\
+	\end{tabular*}\vspace{-7pt}
+}
+
+
+\newcommand{\resumeProjectHeading}[2]{
+	\item
+	\begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+		\small#1 & #2 \\
+	\end{tabular*}\vspace{-7pt}
+
+}
+
+
+\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
+
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+	\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+	\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+
+%-------------------------------------------
+%%%%%%  RESUME STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{document}
+
+	
+	%----------HEADING----------
+	
+
+	\begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
+		\textbf{\Large Hetav Shah} & Email: \href{mailto:shahhetav2106@gmail.com}{shahhetav2106@gmail.com}\\
+		\href{https://github.com/Hetav21}{github.com/Hetav21} & Mobile: \href{tel:+91 8780031872}{+918780031872} \\
+		\href{https://www.linkedin.com/in/hetav2106/}{linkedin.com/in/hetav2106} & {} \\
+	\end{tabular*}
+	
+	%-----------EDUCATION-----------
+	\section{Education}
+	\resumeSubHeadingListStart
+	\resumeSubheading
+	{Adani University}{Ahmedabad, Gujarat, India}
+	{Computer Science Engineering -- 8.53 CGPA (Sem-5)}{2022 --  2026}
+	\resumeSubheading
+	{Senior School Certificate Examination}{Ahmedabad, Gujarat, India}
+	{New Tulip International School -- 92.2\%}{2022}
+	\resumeSubheading
+	{Secondary School Examination}{Ahmedabad, Gujarat, India}
+	{Udgam School for Children  -- 93.2\%}{2020}
+	\resumeSubHeadingListEnd
+	
+
+	% %-----------CERTIFICATIONS-----------
+	\section{Certifications}
+	\resumeSubHeadingListStart
+	\resumeSubheading
+	{\href{https://www.credly.com/badges/9fe72cc6-cbc3-45cf-bc70-428bf01e2f1d/public_url}{AWS Academy Graduate - AWS Academy Cloud Developing}} {2024}
+	{issued by Amazon Web Services Training and Certification}{}
+	\resumeSubheading
+	{\href{https://www.udemy.com/certificate/UC-c2213db6-f5a5-4510-8c26-07276730fcd7/}{Web Developer Bootcamp}} {2023}
+	{issued by Udemy instructed by \href{https://www.udemy.com/user/coltsteele/}{Colt Steele}}{}
+	\resumeSubHeadingListEnd    
+
+	
+	%-----------PROGRAMMING SKILLS-----------
+	\section{Technical Skills}
+	\begin{itemize}[leftmargin=0.15in, label={}]
+		\small{\item{
+				\textbf{Languages}{: JavaScript, TypeScript, Java} \\
+				\textbf{Frameworks}{: React, NextJS, ElectronJS, ExressJS, HonoJS, TailwindCSS} \\
+				\textbf{Developer Tools}{: Git, Postman, Bruno, AWS, Cloudflare, Linux, npm} \\
+				% \textbf{Databases}{: MySQL, MongoDB} \\
+				
+		}}
+	\end{itemize}
+	
+	
+	%-----------Internship-----------
+	\section{Internship}
+	\resumeSubHeadingListStart
+	\resumeSubheading
+	{Meru Fintech $|$ \emph{ElectronJS, Microservices, gRPC, TypeScript, React, TailwindCSS}}{8 Weeks}
+	{Full Stack Intern}{}
+	\resumeItemListStart
+	\resumeItem{Engineered a full-stack Tally integration solution with a desktop application and backend microservice, solving Tally's lack of a cloud-based API for hellobooks.ai.}
+	\resumeItem{Architected a custom OAuth2-like authentication framework with PKCE to ensure secure communication between the web, desktop client, and backend services.}
+	\resumeItem{Managed the full software development lifecycle for the desktop application, including establishing a CI/CD pipeline and building advanced CLI tools for dynamic configuration, logging, and performance optimization .}
+	\resumeItemListEnd
+	\resumeSubheading
+	{iAnanya datalytix $|$ \emph{TypeScript, AI Sdk, HonoJS, ReactJS, TailwindCSS, Cloudflare}}{6 Weeks}
+	{Software Engineer Intern}{}
+	\resumeItemListStart
+
+	\resumeItem{Developed a collaborative project management dashboard with a simple frontend and backend hosted on Cloudflare Workers, streamlining task management for internal teams.}
+	\resumeItem{Designed and implemented a secure authentication system with role-based access control and a custom AI chatbot to enhance user experience and workflow efficiency.}
+
+	\resumeItemListEnd  
+	\resumeSubHeadingListEnd
+	
+	%-----------PROJECTS-----------
+	\section{Projects}
+	\resumeSubHeadingListStart
+	
+	\resumeProjectHeading
+	{\textbf{QnA Social – Ask Questions Anonymously} $|$ \emph{TypeScript, NextJS, AI Sdk, TailwindCSS}}{}
+	\resumeItem{Deployment: \href{https://www.qna.social/}{\underline{https://www.qna.social/}}}
+	\resumeItem{GitHub: \href{https://github.com/Hetav21/QnA-app}{\underline{https://github.com/Hetav21/QnA-app}}}
+
+	\resumeItemListStart
+	\resumeItem{Developed a full-stack anonymous questioning platform with AI-powered question suggestions, enabling users to receive and manage anonymous messages.}
+	\resumeItem{Implemented a public profile system, robust user authentication with email verification and google oauth support, and a comprehensive dashboard for message management.}
+	\resumeItemListEnd
+	\vspace{8pt}
+	
+	\newpage
+	
+	\resumeProjectHeading
+	{\textbf{Clickify – URL Shortener with Analytics} $|$ \emph{TypeScript, ReactJS, Prisma, Docker}}{}
+	\resumeItem{Deployment: \href{https://clickify-client.vercel.app/}{\underline{https://clickify-client.vercel.app/}}}
+	\resumeItem{GitHub: \href{https://github.com/Hetav21/clickify}{\underline{https://github.com/Hetav21/clickify}}}
+	\resumeItemListStart
+
+	\resumeItem{Built a full-stack URL shortener with a comprehensive analytics dashboard that tracks clicks and user device information.}
+	\resumeItem{Developed a backend with custom URL generation and a secure authentication system, leveraging Docker to simplify the development workflow.}
+	\resumeItemListEnd
+	\vspace{8pt}
+	
+	\resumeProjectHeading
+	{\textbf{Classroom Desktop – Google Classroom on Desktop} $|$ \emph{TypeScript, ElectronJS, Yargs, logging}}{}
+	\resumeItem{GitHub: \href{https://github.com/Hetav21/classroom-desktop}{\underline{https://github.com/Hetav21/classroom-desktop}}}
+	\resumeItemListStart
+
+	\resumeItem{Developed a cross-platform desktop application that provides an enhanced Google Classroom experience, featuring a command-line interface for flexible configuration and deployment.}
+	\resumeItem{Implemented an advanced logging and configuration management system that supports environment-based settings, file rotation, and dynamic flag handling to ensure robust and debuggable production deployments.}
+	\resumeItemListEnd
+	
+	\resumeSubHeadingListEnd
+	
+	% %------RELEVANT COURSEWORK-------
+	% \section{Relevant Coursework}
+	%     %\resumeSubHeadingListStart
+	%         \begin{multicols}{4}
+	%             \begin{itemize}[itemsep=-5pt, parsep=3pt]
+	%                 \item\small Data Structures
+
+	%                 \item C Programming
+	%                 \item Algorithms Analysis
+	%                 \item Database Management
+	%                 \item OOP (Java)
+	%                 \item Operating Systems
+	%                 \item Computer Networks
+	%                 \item Theory of computation
+	%                 \item Digital Logic
+	%             \end{itemize}
+
+	%         \end{multicols}
+	%         \vspace*{2.0\multicolsep}
+	%     %\resumeSubHeadingListEnd
+	
+	%-------------------------------------------
+\end{document}
