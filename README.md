@@ -1,6 +1,6 @@
 # NixOS GNOME Portfolio Monorepo
 
-A dual-application monorepo containing a NixOS-themed Desktop Portfolio (`apps/web`) and a static Blog (`apps/blog`). Powered by Next.js, Tailwind v4, and Bun.
+A dual-application monorepo containing a NixOS-themed Desktop Portfolio (`apps/web`), a static Blog (`apps/blog`), and a Resume Viewer (`apps/resume`). Powered by Next.js, Tailwind v4, and Bun.
 
 ![NixOS](https://img.shields.io/badge/NixOS-5277C3?style=flat&logo=nixos&logoColor=white)
 ![Next.js](https://img.shields.io/badge/Next.js_16-000000?style=flat&logo=next.js&logoColor=white)
@@ -17,7 +17,7 @@ A portfolio website designed as an interactive NixOS GNOME desktop environment.
 
 - **Boot Sequence** — Authentic NixOS-style boot animation
 - **GNOME Desktop** — Faithful recreation of GNOME shell
-- **Interactive Apps** — Terminal, File Manager, Browser (embeds blog)
+- **Interactive Apps** — Terminal, File Manager, PDF Viewer, Browser (embeds blog)
 
 ### Blog (`apps/blog`)
 
@@ -25,6 +25,14 @@ A content site powered by Velite and MDX.
 
 - **MDX Content** — Type-safe content management with Velite
 - **Static Generation** — Fast, static blog posts
+
+### Resume (`apps/resume`)
+
+A dedicated micro-application for rendering the resume PDF.
+
+- **PDF Rendering** — High-fidelity canvas rendering via `react-pdf`
+- **Dual Mode** — Simplified view for embedding, full view for direct access
+- **LaTeX Source** — Source-controlled LaTeX files for PDF generation
 
 ## Getting Started
 
@@ -43,12 +51,13 @@ cd portfolio
 # Install dependencies (from root)
 bun install
 
-# Start development server (runs both apps)
+# Start development server (runs all apps)
 bun dev
 ```
 
 - **Web App**: [http://localhost:3000](http://localhost:3000)
 - **Blog App**: [http://localhost:3001](http://localhost:3001)
+- **Resume App**: [http://localhost:3002](http://localhost:3002)
 
 ### Using Nix
 
@@ -62,13 +71,14 @@ bun dev
 
 ## Commands
 
-| Command                 | Description                 |
-| ----------------------- | --------------------------- |
-| `bun dev`               | Start both apps in parallel |
-| `bun --filter web dev`  | Start only Desktop app      |
-| `bun --filter blog dev` | Start only Blog app         |
-| `bun run build`         | Build all apps              |
-| `bun run lint`          | Lint all apps               |
+| Command                   | Description                |
+| ------------------------- | -------------------------- |
+| `bun dev`                 | Start all apps in parallel |
+| `bun --filter web dev`    | Start only Desktop app     |
+| `bun --filter blog dev`   | Start only Blog app        |
+| `bun --filter resume dev` | Start only Resume app      |
+| `bun run build`           | Build all apps             |
+| `bun run lint`            | Lint all apps              |
 
 ## Project Structure
 
@@ -76,7 +86,8 @@ bun dev
 .
 ├── apps/
 │   ├── web/     # Desktop Environment (Next.js 16)
-│   └── blog/    # Content Site (Next.js 15, Velite)
+│   ├── blog/    # Content Site (Next.js 15, Velite)
+│   └── resume/  # PDF Viewer (Next.js 15, React-PDF)
 ├── docs/        # Architecture plans
 ├── flake.nix    # Nix environment
 └── turbo.json   # Build pipeline configuration
@@ -85,10 +96,11 @@ bun dev
 ## Tech Stack
 
 - **Monorepo**: Turbo + Bun workspaces
-- **Framework**: Next.js 16 (Web) / 15 (Blog)
+- **Framework**: Next.js 16 (Web) / 15 (Blog, Resume)
 - **Styling**: Tailwind CSS 4
 - **State**: Zustand (Web)
 - **Content**: Velite (Blog)
+- **PDF**: React-PDF (Resume)
 
 ## Acknowledgements
 
@@ -133,6 +145,7 @@ bun dev
 | [xterm](https://xtermjs.org/)                   | Terminal emulator |
 | [lucide-react](https://lucide.dev/)             | Icon library      |
 | [playwright](https://playwright.dev/)           | E2E testing       |
+| [react-pdf](https://react-pdf.org/)             | PDF rendering     |
 
 ## License
 

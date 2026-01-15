@@ -1,61 +1,27 @@
-# WEB APP KNOWLEDGE BASE
+# WEB KNOWLEDGE BASE
 
-**Type:** Next.js 16 Desktop Simulation
-**Context:** `apps/web`
-
-## OVERVIEW
-
-Simulates a NixOS/GNOME desktop environment in the browser. Features a Window Manager, virtual filesystem, and interactive apps.
+**Context**: Desktop Simulator (Next.js 16 + Zustand).
 
 ## STRUCTURE
 
-```
-src/
-├── app/
-│   ├── globals.css  # Tailwind v4 Theme + Cursor definitions
-│   └── page.tsx     # Main entry (Desktop/Boot logic)
-├── components/
-│   ├── apps/        # Individual "Apps" (Terminal, Browser, Files)
-│   ├── desktop/     # Shell UI (Dock, TopBar)
-│   └── window/      # WindowManager & Window frames
-└── lib/
-    ├── store.ts     # Global State (Zustand) - Windows, Boot, Theme
-    ├── filesystem.ts # Virtual VFS logic
-    └── commands.ts   # Terminal command registry
-```
+- `components/apps`: UI for individual applications.
+- `lib/store.ts`: Central Zustand state (windows, focus, boot).
+- `lib/filesystem.ts`: Virtual File System (VFS) logic.
 
-## KEY PATTERNS
+## PATTERNS
 
-### Window System
-
-- **State**: Managed in `useSystemStore` (windows array, focusedWindowId).
-- **Registration**: To add an app:
-  1.  Create component in `components/apps/`.
-  2.  Register in `components/desktop/Dock.tsx` and `lib/store.ts` (AppID).
-  3.  Add to `WindowManager.tsx` switch case (lazy load recommended).
-
-### Terminal
-
-- **Commands**: Defined in `lib/commands.ts`.
-- **Output**: Returns HTML string or React component.
-- **Execution**: `handleCommand` parses input -> calls function -> updates history.
-
-### Styling (Rose Pine)
-
-- **Colors**: Defined in `globals.css` via `@theme`.
-- **Cursors**: Custom SVG cursors are enforced globally.
-- **Animations**: `framer-motion` used for window open/close/minimize.
+- **Window Manager**: Zustand-driven. Apps open via `useSystemStore`.
+- **VFS**: Tree-based in-memory filesystem.
+- **Terminal**: Command registry in `lib/commands.ts`. Returns React/HTML.
 
 ## ANTI-PATTERNS
 
-- **SSR**: `xterm.js` and window logic MUST be client-side (`"use client"`).
-- **Direct DOM**: Use `useSystemStore` to manipulate windows, not DOM selectors.
+- **SSR**: No SSR for `xterm.js`. Always use `"use client"` and client-only logic.
+- **DOM**: No direct DOM manipulation for windowing. Use the store.
+- **State**: Avoid local state for window properties; keep in central store.
 
-## TESTING
+## NOTES
 
-```bash
-bun run test         # Run Playwright E2E
-bun run test:headed  # Visual debugging
-```
-
-Tests located in `tests/` (to be created).
+- **Stack**: Next.js 16 Canary + React 19.
+- **Metadata**: `.serena/` contains hidden VFS/system metadata.
+- **Theme**: Tailwind v4 `@theme`. Global cursor system in `globals.css`.

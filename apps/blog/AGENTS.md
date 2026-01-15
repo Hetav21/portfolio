@@ -1,47 +1,33 @@
-# BLOG APP KNOWLEDGE BASE
+# BLOG AGENT GUIDE
 
-**Type:** Next.js 15 Content Site
-**Context:** `apps/blog`
+**Context**: Static Content Site (Next.js 15 + Velite)
+**Location**: `apps/blog`
 
-## OVERVIEW
+## CONTENT
 
-A static blog platform optimized for reading. Uses **Velite** for content management and shares the **Rose Pine** theme with the desktop app.
+- **Engine**: Velite handles MDX processing.
+- **Source**: `content/posts/**/*.mdx`.
+- **Schema** (`velite.config.ts`):
+  - `title`, `description`, `date` (ISO), `published` (bool).
+  - `slug`: Path-based.
+  - `body`: Compiled MDX.
+- **Build**: `bun dev` triggers auto-generation to `.velite/`.
 
-## STRUCTURE
+## STYLING
 
-```
-.
-├── content/
-│   └── posts/       # MDX Source Files
-├── src/
-│   ├── app/         # Routes: / (index), /[slug] (post)
-│   ├── components/  # UI: Header, MDXContent, ThemeToggle
-│   └── app/globals.css # Shared theme tokens
-└── velite.config.ts # Content Schema Definition
-```
+- **Theme**: Independent Rose Pine implementation (Dark/Dawn).
+- **Provider**: `next-themes` via `ThemeProvider`.
+- **CSS**: Tailwind v4 with `--color-*` variables in `globals.css`.
+- **Accents**: Custom Rose Pine tokens (`love`, `gold`, `rose`, etc).
 
-## CONTENT ENGINE (Velite)
+## ANTI-PATTERNS
 
-- **Config**: `velite.config.ts` defines the `posts` collection.
-- **Generation**: Runs automatically during `bun dev`. Outputs to `.velite/`.
-- **Usage**: `import { posts } from '@/velite'`.
-- **Schema**:
-  - `slug`: Computed from filename (e.g., `hello-world.mdx` -> `hello-world`).
-  - `tags`: Array of strings.
-  - `cover`: Optional image path.
-
-## ROUTING
-
-- **Index**: `src/app/page.tsx` - Lists all published posts.
-- **Post**: `src/app/[slug]/page.tsx` - Renders individual post using `MDXContent`.
+- **Missing Frontmatter**: All MDX files MUST have `title`, `date`, and `published`.
+- **Manual HTML**: Avoid `<div>` or `<span>` in MDX; use standard Markdown.
+- **Direct Next Links**: Use `Link` from `next/link` for internal routing.
+- **Absolute Imports**: Always use `@/` alias for `src/`.
 
 ## COMMANDS
 
-```bash
-bun dev   # Runs `velite --watch & next dev`
-```
-
-## NOTES
-
-- **Theme Sync**: Uses `next-themes` independently from the desktop app, but defaults to system/dark to match.
-- **Integration**: This app is embedded in `apps/web` via iframe. Ensure `X-Frame-Options` allows this if deploying headers manually.
+- `bun dev`: Start dev server + Velite watcher.
+- `bun run build`: Static export generation.
