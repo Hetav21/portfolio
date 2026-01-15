@@ -17,16 +17,15 @@ interface WindowProps {
 const TOPBAR_HEIGHT = 32;
 
 export const Window = ({ id, title, children, constraintsRef }: WindowProps) => {
+  // Select state pieces individually to avoid creating new object references on every render
+  // which causes "result of getSnapshot should be cached" error in React 18+
   const windowState = useSystemStore((state) => state.windows[id]);
-  const { focusWindow, updateWindowPosition, closeWindow, minimizeWindow, maximizeWindow, theme } =
-    useSystemStore((state) => ({
-      focusWindow: state.focusWindow,
-      updateWindowPosition: state.updateWindowPosition,
-      closeWindow: state.closeWindow,
-      minimizeWindow: state.minimizeWindow,
-      maximizeWindow: state.maximizeWindow,
-      theme: state.theme,
-    }));
+  const focusWindow = useSystemStore((state) => state.focusWindow);
+  const updateWindowPosition = useSystemStore((state) => state.updateWindowPosition);
+  const closeWindow = useSystemStore((state) => state.closeWindow);
+  const minimizeWindow = useSystemStore((state) => state.minimizeWindow);
+  const maximizeWindow = useSystemStore((state) => state.maximizeWindow);
+  const theme = useSystemStore((state) => state.theme);
 
   const dragControls = useDragControls();
 

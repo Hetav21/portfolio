@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect } from 'react';
 import { Document, Page, pdfjs } from 'react-pdf';
 import { ZoomIn, ZoomOut, Download, Loader2 } from 'lucide-react';
 
@@ -9,13 +9,16 @@ import { ZoomIn, ZoomOut, Download, Loader2 } from 'lucide-react';
 // We copied it earlier to public/pdf.worker.min.mjs
 pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.mjs`;
 
+const SIMPLIFIED_STYLE = {};
+const FULL_STYLE = { display: 'flex', justifyContent: 'center' };
+
 interface PdfViewerProps {
   simplified?: boolean;
 }
 
 export default function PdfViewer({ simplified = false }: PdfViewerProps) {
   const [numPages, setNumPages] = useState<number | null>(null);
-  const [scale, setScale] = useState(() => (simplified ? 1.0 : 1.2));
+  const [scale, setScale] = useState(1.0);
   const [containerWidth, setContainerWidth] = useState<number>(800);
 
   // Handle container width on resize
@@ -36,11 +39,13 @@ export default function PdfViewer({ simplified = false }: PdfViewerProps) {
     return () => window.removeEventListener('resize', updateWidth);
   }, [simplified]);
 
-  // Reset scale when mode changes
+  // Set initial scale based on mode
   useEffect(() => {
     if (simplified) {
-      setScale(1.0);
+      // Fit width in simplified mode
+      setScale(1.0); // We'll rely on page width calculation in simplified
     } else {
+      // Slightly larger default for root view
       setScale(1.2);
     }
   }, [simplified]);
@@ -52,10 +57,7 @@ export default function PdfViewer({ simplified = false }: PdfViewerProps) {
   const zoomIn = () => setScale((prev) => Math.min(prev + 0.2, 3.0));
   const zoomOut = () => setScale((prev) => Math.max(prev - 0.2, 0.5));
 
-  const containerStyle = useMemo(
-    () => (simplified ? {} : { display: 'flex' as const, justifyContent: 'center' as const }),
-    [simplified]
-  );
+  const containerStyle = simplified ? SIMPLIFIED_STYLE : FULL_STYLE;
 
   return (
     <div
