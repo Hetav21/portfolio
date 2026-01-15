@@ -23,6 +23,9 @@ const dockItems: DockItem[] = [
   { id: 'resume', filename: 'resume.svg', label: 'PDF Viewer' },
 ];
 
+const hoverAnim = { scale: 1.2, y: -5 };
+const tapAnim = { scale: 0.95 };
+
 export const Dock = () => {
   const openWindow = useSystemStore((state) => state.openWindow);
   const windows = useSystemStore((state) => state.windows);
@@ -49,8 +52,8 @@ export const Dock = () => {
               key={item.id}
               onClick={() => openWindow(item.id)}
               className="relative p-3 rounded-xl transition-colors group"
-              whileHover={{ scale: 1.2, y: -5 }}
-              whileTap={{ scale: 0.95 }}
+              whileHover={hoverAnim}
+              whileTap={tapAnim}
               aria-label={item.label}
             >
               <div className="w-10 h-10 relative">

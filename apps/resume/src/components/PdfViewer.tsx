@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { Document, Page, pdfjs } from 'react-pdf';
 import { ZoomIn, ZoomOut, Download, Loader2 } from 'lucide-react';
 
@@ -15,7 +15,7 @@ interface PdfViewerProps {
 
 export default function PdfViewer({ simplified = false }: PdfViewerProps) {
   const [numPages, setNumPages] = useState<number | null>(null);
-  const [scale, setScale] = useState(1.0);
+  const [scale, setScale] = useState(() => (simplified ? 1.0 : 1.2));
   const [containerWidth, setContainerWidth] = useState<number>(800);
 
   // Handle container width on resize
@@ -36,13 +36,11 @@ export default function PdfViewer({ simplified = false }: PdfViewerProps) {
     return () => window.removeEventListener('resize', updateWidth);
   }, [simplified]);
 
-  // Set initial scale based on mode
+  // Reset scale when mode changes
   useEffect(() => {
     if (simplified) {
-      // Fit width in simplified mode
-      setScale(1.0); // We'll rely on page width calculation in simplified
+      setScale(1.0);
     } else {
-      // Slightly larger default for root view
       setScale(1.2);
     }
   }, [simplified]);
@@ -53,6 +51,11 @@ export default function PdfViewer({ simplified = false }: PdfViewerProps) {
 
   const zoomIn = () => setScale((prev) => Math.min(prev + 0.2, 3.0));
   const zoomOut = () => setScale((prev) => Math.max(prev - 0.2, 0.5));
+
+  const containerStyle = useMemo(
+    () => (simplified ? {} : { display: 'flex' as const, justifyContent: 'center' as const }),
+    [simplified]
+  );
 
   return (
     <div
@@ -113,12 +116,12 @@ export default function PdfViewer({ simplified = false }: PdfViewerProps) {
           </div>
         }
       >
-        {numPages &&
+        {!!numPages &&
           Array.from(new Array(numPages), (el, index) => (
             <div
               key={`page_${index + 1}`}
               className={simplified ? 'w-full' : 'mb-8'}
-              style={simplified ? {} : { display: 'flex', justifyContent: 'center' }}
+              style={containerStyle}
             >
               <Page
                 pageNumber={index + 1}

@@ -1,10 +1,14 @@
 'use client';
 import { useState, useEffect } from 'react';
 import { BootSequence } from '@/components/boot/BootSequence';
-import { Desktop } from '@/components/desktop/Desktop';
+import dynamic from 'next/dynamic';
 import { MobileFallback } from '@/components/mobile/MobileFallback';
 import { useSystemStore } from '@/lib/store';
 import { AnimatePresence } from 'framer-motion';
+
+const Desktop = dynamic(() => import('@/components/desktop/Desktop').then((mod) => mod.Desktop), {
+  ssr: false,
+});
 
 export default function Home() {
   const isBooting = useSystemStore((state) => state.isBooting);

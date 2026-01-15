@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useRef, useCallback, useEffect } from 'react';
+import React, { useState, useRef, useCallback, useEffect, useMemo } from 'react';
 import Image from 'next/image';
 import {
   RotateCw,
@@ -78,6 +78,10 @@ export default function Browser() {
     }
   };
 
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setInputValue(e.target.value);
+  };
+
   const goBack = useCallback(() => {
     if (historyIndex > 0) {
       const newIndex = historyIndex - 1;
@@ -122,6 +126,17 @@ export default function Browser() {
   const canGoBack = historyIndex > 0;
   const canGoForward = historyIndex < history.length - 1;
 
+  const contentStyle = useMemo(() => ({ colorScheme: theme }), [theme]);
+  const iframeWrapperStyle = useMemo(() => ({ colorScheme: theme }), [theme]);
+  const iframeStyle = useMemo(
+    () => ({
+      width: 'calc(100% + 20px)',
+      marginRight: '-20px',
+      colorScheme: theme,
+    }),
+    [theme]
+  );
+
   return (
     <div className="flex flex-col h-full bg-card text-foreground">
       {/* Chrome / Toolbar */}
@@ -155,7 +170,7 @@ export default function Browser() {
           <input
             type="text"
             value={inputValue}
-            onChange={(e) => setInputValue(e.target.value)}
+            onChange={handleInputChange}
             onKeyDown={handleKeyDown}
             className="bg-transparent border-none focus:outline-none w-full text-foreground"
             placeholder="Enter URL..."
@@ -187,7 +202,7 @@ export default function Browser() {
       </div>
 
       {/* Content - overflow-hidden to clip the iframe's scrollbar */}
-      <div className="flex-1 relative overflow-hidden bg-card" style={{ colorScheme: theme }}>
+      <div className="flex-1 relative overflow-hidden bg-card" style={contentStyle}>
         {/* Loading State */}
         {isLoading && !loadFailed && (
           <div className="absolute inset-0 flex items-center justify-center bg-card z-10">
@@ -227,7 +242,7 @@ export default function Browser() {
         {/* Iframe wrapper - hides the iframe's native scrollbar */}
         <div
           className="absolute inset-0 overflow-y-scroll overflow-x-hidden"
-          style={{ colorScheme: theme }}
+          style={iframeWrapperStyle}
         >
           {/* Iframe - made slightly wider to push its scrollbar outside the visible area */}
           <iframe
@@ -235,11 +250,7 @@ export default function Browser() {
             src={url}
             onLoad={handleIframeLoad}
             className="border-0 h-full"
-            style={{
-              width: 'calc(100% + 20px)',
-              marginRight: '-20px',
-              colorScheme: theme,
-            }}
+            style={iframeStyle}
             sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox"
             title="Browser"
           />

@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useMemo } from 'react';
 import { motion, useDragControls, PanInfo, useMotionValue, animate } from 'framer-motion';
 import { Minus, X, Maximize2, Minimize2 } from 'lucide-react';
 import { useSystemStore } from '@/lib/store';
@@ -17,16 +17,17 @@ interface WindowProps {
 const TOPBAR_HEIGHT = 32;
 
 export const Window = ({ id, title, children, constraintsRef }: WindowProps) => {
-  const {
-    windows,
-    focusWindow,
-    updateWindowPosition,
-    closeWindow,
-    minimizeWindow,
-    maximizeWindow,
-    theme,
-  } = useSystemStore();
-  const windowState = windows[id];
+  const windowState = useSystemStore((state) => state.windows[id]);
+  const { focusWindow, updateWindowPosition, closeWindow, minimizeWindow, maximizeWindow, theme } =
+    useSystemStore((state) => ({
+      focusWindow: state.focusWindow,
+      updateWindowPosition: state.updateWindowPosition,
+      closeWindow: state.closeWindow,
+      minimizeWindow: state.minimizeWindow,
+      maximizeWindow: state.maximizeWindow,
+      theme: state.theme,
+    }));
+
   const dragControls = useDragControls();
 
   const motionX = useMotionValue(windowState?.position.x ?? 0);
@@ -74,6 +75,8 @@ export const Window = ({ id, title, children, constraintsRef }: WindowProps) => 
     motionWidth,
     motionHeight,
   ]);
+
+  const style = useMemo(() => ({ colorScheme: theme }), [theme]);
 
   if (!windowState) return null;
 
@@ -183,7 +186,7 @@ export const Window = ({ id, title, children, constraintsRef }: WindowProps) => 
 
       <div
         className="flex-1 overflow-auto bg-card p-1 cursor-default"
-        style={{ colorScheme: theme }}
+        style={style}
         onPointerDown={(e) => e.stopPropagation()}
       >
         {children}
