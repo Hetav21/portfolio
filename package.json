@@ -20,6 +20,9 @@
       "prettier --write"
     ]
   },
+  "resolutions": {
+    "canvas": "file:./packages/mock-canvas"
+  },
   "devDependencies": {
     "husky": "^9.1.7",
     "lint-staged": "^16.2.7",
