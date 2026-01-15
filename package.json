@@ -21,7 +21,7 @@
     ]
   },
   "resolutions": {
-    "canvas": "file:./packages/mock-canvas"
+    "canvas": "npm:empty-npm-package@1.0.0"
   },
   "devDependencies": {
     "husky": "^9.1.7",
