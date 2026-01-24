@@ -142,10 +142,18 @@ export const useSystemStore = create<SystemState>((set) => ({
   openWindow: (id) =>
     set((state) => {
       const newZ = state.maxZIndex + 1;
+      const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+
       return {
         windows: {
           ...state.windows,
-          [id]: { ...state.windows[id], isOpen: true, zIndex: newZ, isMinimized: false },
+          [id]: {
+            ...state.windows[id],
+            isOpen: true,
+            zIndex: newZ,
+            isMinimized: false,
+            isMaximized: isMobile ? true : state.windows[id].isMaximized,
+          },
         },
         activeWindowId: id,
         maxZIndex: newZ,

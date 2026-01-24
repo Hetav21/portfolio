@@ -32,7 +32,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <Header />
-          <main className="flex-1 container max-w-screen-md mx-auto py-10 px-4">{children}</main>
+          <main className="flex-1 w-full max-w-screen-md mx-auto py-10 px-4">{children}</main>
         </ThemeProvider>
       </body>
     </html>

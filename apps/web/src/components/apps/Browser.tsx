@@ -130,8 +130,7 @@ export default function Browser() {
   const iframeWrapperStyle = useMemo(() => ({ colorScheme: theme }), [theme]);
   const iframeStyle = useMemo(
     () => ({
-      width: 'calc(100% + 20px)',
-      marginRight: '-20px',
+      width: '100%',
       colorScheme: theme,
     }),
     [theme]
@@ -239,17 +238,14 @@ export default function Browser() {
           </div>
         )}
 
-        {/* Iframe wrapper - hides the iframe's native scrollbar */}
-        <div
-          className="absolute inset-0 overflow-y-scroll overflow-x-hidden"
-          style={iframeWrapperStyle}
-        >
-          {/* Iframe - made slightly wider to push its scrollbar outside the visible area */}
+        {/* Iframe wrapper */}
+        <div className="absolute inset-0 overflow-hidden" style={iframeWrapperStyle}>
+          {/* Iframe */}
           <iframe
             ref={iframeRef}
             src={url}
             onLoad={handleIframeLoad}
-            className="border-0 h-full"
+            className="border-0 w-full h-full bg-card"
             style={iframeStyle}
             sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox"
             title="Browser"

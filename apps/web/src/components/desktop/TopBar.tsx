@@ -13,41 +13,46 @@ import {
 export const TopBar = () => {
   const { toggleTheme, theme, setBooting } = useSystemStore();
   const [time, setTime] = useState<string>('');
+  const [date, setDate] = useState<string>('');
   const [isPowerMenuOpen, setIsPowerMenuOpen] = useState(false);
 
   useEffect(() => {
     const updateTime = () => {
       const now = new Date();
-      const dateStr = now.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
-      const timeStr = now.toLocaleTimeString('en-US', {
-        hour: '2-digit',
-        minute: '2-digit',
-        hour12: false,
-      });
-      setTime(`${dateStr} ${timeStr}`);
+      setDate(now.toLocaleDateString('en-US', { month: 'short', day: 'numeric' }));
+      setTime(
+        now.toLocaleTimeString('en-US', {
+          hour: '2-digit',
+          minute: '2-digit',
+          hour12: false,
+        })
+      );
     };
 
     updateTime();
-    const interval = setInterval(updateTime, 1000 * 60);
+    // Update every second to catch minute changes accurately
+    const interval = setInterval(updateTime, 1000);
     return () => clearInterval(interval);
   }, []);
 
   return (
-    <div className="fixed top-0 left-0 right-0 h-8 bg-card/95 text-foreground flex items-center justify-between px-4 z-50 select-none backdrop-blur-sm border-b border-border shadow-md text-sm font-medium">
+    <div className="fixed top-0 left-0 right-0 h-8 bg-card/95 text-foreground flex items-center justify-between px-2 md:px-4 z-50 select-none backdrop-blur-sm border-b border-border shadow-md text-sm font-medium">
       {/* Left: Activities */}
       <button className="px-3 py-1 rounded-full hover:bg-muted transition-colors duration-200">
-        Activities
+        <span className="hidden md:inline">Activities</span>
+        <span className="md:hidden font-bold">Activities</span>
       </button>
 
       {/* Center: Clock */}
-      <div className="absolute left-1/2 transform -translate-x-1/2">
+      <div className="absolute left-1/2 transform -translate-x-1/2 flex items-center gap-2">
+        <span className="hidden md:inline cursor-default">{date}</span>
         <span className="cursor-default">{time}</span>
       </div>
 
       {/* Right: System Tray */}
-      <div className="flex items-center gap-2">
-        {/* Social Links */}
-        <div className="flex items-center gap-1 mr-1 border-r border-border pr-3">
+      <div className="flex items-center gap-1 md:gap-2">
+        {/* Social Links - Hidden on mobile */}
+        <div className="hidden md:flex items-center gap-1 mr-1 border-r border-border pr-3">
           <a
             href="https://github.com/Hetav21"
             target="_blank"
@@ -83,7 +88,7 @@ export const TopBar = () => {
 
         {/* Status Icons Group - GNOME symbolic icons with grouped hover */}
         <button
-          className="flex items-center gap-3 px-3 py-1 opacity-80 hover:opacity-100 hover:bg-muted/50 rounded-full transition-all duration-150"
+          className="flex items-center gap-2 md:gap-3 px-2 md:px-3 py-1 opacity-80 hover:opacity-100 hover:bg-muted/50 rounded-full transition-all duration-150"
           title="System Status"
         >
           <NetworkWirelessSymbolic width={14} height={14} />

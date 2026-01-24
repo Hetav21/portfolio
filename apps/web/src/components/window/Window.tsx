@@ -116,14 +116,20 @@ export const Window = ({ id, title, children, constraintsRef }: WindowProps) => 
       )}
     >
       <div
-        className="flex h-10 items-center justify-between bg-secondary px-3 select-none"
+        className="relative flex h-10 items-center bg-secondary px-3 select-none"
         onPointerDown={(e) => {
           handleFocus();
           if (!isMaximized) dragControls.start(e);
         }}
-        onDoubleClick={() => maximizeWindow(id)}
+        onDoubleClick={() => {
+          // Disable double-click maximize on mobile
+          if (window.innerWidth >= 768) {
+            maximizeWindow(id);
+          }
+        }}
       >
-        <div className="flex gap-2 items-center w-20">
+        {/* Buttons Container */}
+        <div className="flex gap-2 items-center z-10">
           <button
             onClick={(e) => {
               e.stopPropagation();
@@ -143,7 +149,7 @@ export const Window = ({ id, title, children, constraintsRef }: WindowProps) => 
               e.stopPropagation();
               minimizeWindow(id);
             }}
-            className="group flex h-3 w-3 items-center justify-center rounded-full bg-[#f6c177] text-[#4c2f00] hover:bg-[#f6c177]/80"
+            className="group hidden md:flex h-3 w-3 items-center justify-center rounded-full bg-[#f6c177] text-[#4c2f00] hover:bg-[#f6c177]/80"
             aria-label="Minimize window"
           >
             <Minus
@@ -157,7 +163,7 @@ export const Window = ({ id, title, children, constraintsRef }: WindowProps) => 
               e.stopPropagation();
               maximizeWindow(id);
             }}
-            className="group flex h-3 w-3 items-center justify-center rounded-full bg-[#9ccfd8] text-[#004d16] hover:bg-[#9ccfd8]/80"
+            className="group hidden md:flex h-3 w-3 items-center justify-center rounded-full bg-[#9ccfd8] text-[#004d16] hover:bg-[#9ccfd8]/80"
             aria-label={isMaximized ? 'Restore window' : 'Maximize window'}
           >
             {isMaximized ? (
@@ -176,11 +182,10 @@ export const Window = ({ id, title, children, constraintsRef }: WindowProps) => 
           </button>
         </div>
 
-        <div className="flex-1 text-center text-sm font-medium text-muted-foreground pointer-events-none">
-          {title}
+        {/* Centered Title */}
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+          <span className="text-sm font-medium text-muted-foreground">{title}</span>
         </div>
-
-        <div className="w-20" />
       </div>
 
       <div
