@@ -68,7 +68,7 @@ const FASTFETCH_OUTPUT = `
 \x1b[34m         ▟███▛               \x1b[36m▜▛ ▟███▛\x1b[0m         \x1b[36mTerminal\x1b[0m \x1b[34m→\x1b[0m Ghostty
 \x1b[34m▟███████████▛                  \x1b[36m▟██████████▙\x1b[0m   \x1b[36mDE\x1b[0m \x1b[34m→\x1b[0m GNOME (Web Edition)
 \x1b[34m▜██████████▛                  \x1b[36m▟███████████▛\x1b[0m   \x1b[36mTheme\x1b[0m \x1b[34m→\x1b[0m Rosé Pine
-\x1b[34m      ▟███▛ ▟▙               \x1b[36m▟███▛\x1b[0m            \x1b[36mRole\x1b[0m \x1b[34m→\x1b[0m Software Developer
+\x1b[34m      ▟███▛ ▟▙               \x1b[36m▟███▛\x1b[0m            \x1b[36mRole\x1b[0m \x1b[34m→\x1b[0m Associate AI Engineer
 \x1b[34m     ▟███▛ ▟██▙             \x1b[36m▟███▛\x1b[0m             \x1b[36mContact\x1b[0m \x1b[34m→\x1b[0m github.com/Hetav21
 \x1b[34m    ▟███▛  ▜███▙           \x1b[36m▝▀▀▀▀\x1b[0m
 \x1b[34m    ▜██▛    ▜███▙ \x1b[36m▜██████████████████▛\x1b[0m        \x1b[36mColors\x1b[0m \x1b[34m→\x1b[0m \x1b[40m  \x1b[41m  \x1b[42m  \x1b[43m  \x1b[44m  \x1b[45m  \x1b[46m  \x1b[47m  \x1b[0m

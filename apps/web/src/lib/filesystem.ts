@@ -62,7 +62,8 @@ const fileSystem: FileSystemNode = {
                 {
                   name: 'about.txt',
                   type: 'file',
-                  content: 'Name: Hetav Shah\nRole: Software Developer\nGitHub: github.com/Hetav21',
+                  content:
+                    'Name: Hetav Shah\nRole: Associate AI Engineer\nGitHub: github.com/Hetav21',
                 },
               ],
             },

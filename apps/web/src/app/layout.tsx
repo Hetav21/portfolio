@@ -9,8 +9,8 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'Hetav Shah | Software Developer',
-  description: 'NixOS-themed portfolio of Hetav Shah, Software Developer',
+  title: 'Hetav Shah | Associate AI Engineer',
+  description: 'NixOS-themed portfolio of Hetav Shah, Associate AI Engineer',
 };
 
 export default function RootLayout({
