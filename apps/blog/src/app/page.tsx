@@ -30,7 +30,7 @@ export default function BlogIndex() {
         '@id': `${siteUrl}/#person`,
         name: 'Hetav Shah',
         url: siteUrl,
-        sameAs: [],
+        sameAs: ['https://github.com/hetav'],
         jobTitle: 'Software Engineer',
       },
     ],

@@ -1,20 +1,43 @@
 ---
 title: Hello World
 date: 2026-01-14
-description: The first post on my new blog system.
-tags: ["meta", "blog"]
+description: Welcome to my new blog system built with Next.js 15, Velite, MDX, and Tailwind CSS.
+tags: ["meta", "blog", "nextjs"]
 published: true
 ---
 
-This is my new blog, running on **Next.js** and **Velite**.
+Welcome to my personal engineering blog! This site serves as a space where I share technical deep-dives into software engineering, web performance, Linux system administration, and modern web application development.
+
+## Core Tech Stack
+
+When designing this publishing platform, I focused on high performance, clean typography, static pre-rendering, and automated search engine optimization (SEO):
+
+- **Next.js 15 App Router:** Leveraging Server Components for zero-bundle static site generation (SSG).
+- **Velite:** Type-safe content layer that validates MDX schema using Zod at build time.
+- **Tailwind CSS v4:** Modern utility-first styling with native CSS variable color tokens.
+- **Shiki & Rehype Pretty Code:** Server-side syntax highlighting for code blocks.
+- **Automated Metadata & Open Graph:** Native Next.js 15 `sitemap.ts`, `robots.ts`, and dynamic `next/og` preview image generation.
 
 ## Code Example
 
+Here is a quick preview of how code blocks render with syntax highlighting and custom theme styling:
+
 ```typescript
-console.log("Hello from the Rose Pine theme!");
+export async function getBlogStats(slug: string) {
+  console.log(`Loading blog metrics for: ${slug}`);
+  return {
+    views: 1240,
+    likes: 89,
+    status: 'published',
+  };
+}
 ```
 
-It supports:
-- MDX
-- Tailwind CSS
-- Syntax Highlighting
+## What to Expect Next
+
+Moving forward, I'll be publishing articles detailing:
+1. Advanced Next.js performance tuning and Core Web Vitals optimization.
+2. Building local AI developer workflows and custom agent tools.
+3. Linux system configuration, dotfiles, and shell productivity scripts.
+
+Stay tuned for upcoming technical posts!

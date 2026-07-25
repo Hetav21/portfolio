@@ -63,7 +63,7 @@ export default async function PostPage({ params }: PostPageProps) {
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://blog.hetav.dev';
   const postUrl = `${siteUrl}/${slug}`;
 
-  const jsonLd = {
+  const blogPostingJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'BlogPosting',
     headline: post.title,
@@ -75,6 +75,7 @@ export default async function PostPage({ params }: PostPageProps) {
       '@type': 'Person',
       name: 'Hetav Shah',
       url: siteUrl,
+      sameAs: ['https://github.com/hetav'],
     },
     publisher: {
       '@type': 'Organization',
@@ -92,11 +93,34 @@ export default async function PostPage({ params }: PostPageProps) {
     keywords: post.tags ? post.tags.join(', ') : '',
   };
 
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Home',
+        item: siteUrl,
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: post.title,
+        item: postUrl,
+      },
+    ],
+  };
+
   return (
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(blogPostingJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
       <article className="prose prose-zinc dark:prose-invert max-w-none pb-20">
         <div className="mb-8 not-prose border-b border-border pb-8">
