@@ -4,6 +4,7 @@ import './globals.css';
 import { ThemeProvider } from '@/components/theme-provider';
 import { Header } from '@/components/header';
 import { Footer } from '@/components/footer';
+import { DotPattern } from '@/components/ui/dot-pattern';
 
 const jetbrainsMono = JetBrains_Mono({
   subsets: ['latin'],
@@ -32,8 +33,13 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+          {/* Subtle dot pattern background */}
+          <div className="fixed inset-0 z-0">
+            <DotPattern className="mask-radial-faded opacity-60" />
+          </div>
+
           <Header />
-          <main className="flex-1 w-full max-w-screen-md mx-auto px-6 py-12 space-y-32">
+          <main className="relative z-10 flex-1 w-full max-w-screen-md mx-auto px-6 py-12 space-y-32">
             {children}
           </main>
           <Footer />

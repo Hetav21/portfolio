@@ -2,7 +2,10 @@ import { RssCopyButton } from './rss-copy-button';
 
 export function Footer() {
   return (
-    <footer className="w-full border-t border-border mt-20 py-8">
+    <footer className="relative z-10 w-full mt-20 py-8">
+      {/* Gradient separator line */}
+      <div className="w-full h-px bg-gradient-to-r from-transparent via-border to-transparent mb-8" />
+
       <div className="max-w-screen-md mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
         <p className="text-sm text-muted-foreground">© {new Date().getFullYear()} Hetav Shah</p>
 

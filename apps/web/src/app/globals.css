@@ -148,6 +148,22 @@
   }
 }
 
+/* Aceternity-inspired animation keyframes */
+@keyframes border-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Radial fade mask for dot pattern edges */
+.mask-radial-faded {
+  mask-image: radial-gradient(ellipse 80% 60% at 50% 50%, black 40%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 50%, black 40%, transparent 100%);
+}
+
 /* Custom scrollbar styling for theme support */
 * {
   scrollbar-width: thin;
