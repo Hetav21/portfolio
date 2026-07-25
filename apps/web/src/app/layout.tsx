@@ -19,7 +19,9 @@ export const metadata: Metadata = {
       { url: '/favicon.svg', type: 'image/svg+xml' },
       { url: '/favicon.ico', type: 'image/x-icon' },
     ],
+    apple: [{ url: '/apple-touch-icon.png', sizes: '180x180' }],
   },
+  manifest: '/site.webmanifest',
 };
 
 export const viewport: Viewport = {
