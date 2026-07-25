@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   description: 'Associate AI Engineer. Portfolio and Experience.',
   icons: {
     icon: [
-      { url: '/favicon.svg', type: 'image/svg+xml' },
+      { url: '/favicon.svg', type: 'image/svg+xml', sizes: 'any' },
       { url: '/favicon.ico', type: 'image/x-icon' },
     ],
     apple: [{ url: '/apple-touch-icon.png', sizes: '180x180' }],

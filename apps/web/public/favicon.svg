@@ -1,9 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
   <style>
-    .icon { fill: #000000; font-family: 'JetBrains Mono', monospace; font-weight: bold; font-size: 22px; }
+    text { fill: #000000; font-family: 'JetBrains Mono', monospace; font-weight: bold; font-size: 22px; }
     @media (prefers-color-scheme: dark) {
-      .icon { fill: #ffffff; }
+      text { fill: #ffffff; }
     }
   </style>
-  <text x="16" y="24" class="icon" text-anchor="middle">&gt;_</text>
+  <text x="16" y="24" text-anchor="middle">&gt;_</text>
 </svg>
