@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from 'next';
+import { headers } from 'next/headers';
 import { JetBrains_Mono } from 'next/font/google';
 import './globals.css';
 import { ThemeProvider } from '@/components/theme-provider';
@@ -77,11 +78,14 @@ export const viewport: Viewport = {
   themeColor: '#c4a7e7',
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const headerList = await headers();
+  const nonce = headerList.get('x-nonce') || undefined;
+
   return (
     <html lang="en" className="scroll-smooth" suppressHydrationWarning>
       <body
@@ -93,9 +97,11 @@ export default function RootLayout({
           defaultTheme="system"
           enableSystem
           disableTransitionOnChange
+          nonce={nonce}
         >
           <script
             type="application/ld+json"
+            nonce={nonce}
             dangerouslySetInnerHTML={{
               __html: JSON.stringify({
                 '@context': 'https://schema.org',
@@ -198,7 +204,7 @@ export default function RootLayout({
                     publisher: { '@id': 'https://www.hetav.dev/#person' },
                   },
                 ],
-              }),
+              }).replace(/</g, '\\u003c'),
             }}
           />
           {/* Subtle dot pattern background */}

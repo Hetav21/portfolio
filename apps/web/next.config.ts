@@ -35,16 +35,6 @@ const config: NextConfig = {
             key: 'Permissions-Policy',
             value: 'camera=(), microphone=(), geolocation=()',
           },
-          {
-            key: 'Content-Security-Policy',
-            // TODO(tech-debt): unsafe-inline and unsafe-eval are required by
-            // Next.js ThemeProvider (next-themes) and React hydration. Industry
-            // best practice is nonce-based CSP via middleware.ts. Low risk for a
-            // static portfolio with no user input. Migrate when Next.js offers
-            // built-in nonce support for static pages.
-            value:
-              "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https: blob:; font-src 'self' data:; connect-src 'self' https:; frame-ancestors 'none';",
-          },
         ],
       },
     ];
