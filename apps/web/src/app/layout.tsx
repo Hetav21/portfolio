@@ -51,7 +51,7 @@ export default function RootLayout({
           </div>
 
           <Header />
-          <main className="relative z-10 flex-1 w-full max-w-screen-md mx-auto px-6 py-12 space-y-32">
+          <main className="relative z-10 flex-1 w-full max-w-5xl mx-auto px-6 py-12 space-y-32">
             {children}
           </main>
           <Footer />
