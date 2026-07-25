@@ -12,7 +12,7 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   title: "Hetav's Blog",
   description: 'Writing about code, Linux, and web development.',
-  metadataBase: new URL('https://blog.hetav.dev'),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://blog.hetav.dev'),
   alternates: {
     types: {
       'application/rss+xml': '/rss',

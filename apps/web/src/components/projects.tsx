@@ -1,0 +1,73 @@
+import { projects } from '../../.velite';
+import { Github, ExternalLink } from 'lucide-react';
+import { MDXContent } from './mdx-content';
+
+export function Projects() {
+  const sortedProjects = [...projects].sort((a, b) => b.order - a.order);
+
+  return (
+    <section id="projects" className="scroll-mt-24 relative">
+      <h2 className="sticky top-14 z-40 bg-background/95 backdrop-blur py-3 text-2xl font-bold tracking-tight w-full">
+        Selected Projects
+      </h2>
+      <div className="space-y-8 mt-1">
+        <p className="text-muted-foreground">Some of the things I&apos;ve built recently.</p>
+        <div className="grid gap-6 sm:grid-cols-2">
+          {sortedProjects.map((project, index) => (
+            <div
+              key={index}
+              className="group flex flex-col justify-between bg-card border border-border rounded-xl p-6 transition-all hover:border-primary/50"
+            >
+              <div className="space-y-4">
+                <div className="flex items-center justify-between">
+                  <h3 className="text-xl font-bold text-foreground group-hover:text-primary transition-colors">
+                    {project.title}
+                  </h3>
+                  <div className="flex items-center gap-3">
+                    {project.repoUrl && (
+                      <a
+                        href={project.repoUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-muted-foreground hover:text-foreground transition-colors"
+                        title="View Source Code"
+                      >
+                        <Github size={18} />
+                      </a>
+                    )}
+                    {project.demoUrl && (
+                      <a
+                        href={project.demoUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-muted-foreground hover:text-primary transition-colors"
+                        title="View Live Demo"
+                      >
+                        <ExternalLink size={18} />
+                      </a>
+                    )}
+                  </div>
+                </div>
+
+                <div className="prose prose-sm dark:prose-invert max-w-none text-muted-foreground leading-relaxed">
+                  <MDXContent code={project.content} />
+                </div>
+              </div>
+
+              <div className="mt-6 flex flex-wrap gap-2">
+                {project.tags.map((tag) => (
+                  <span
+                    key={tag}
+                    className="px-2 py-0.5 bg-secondary/50 text-secondary-foreground text-xs rounded-md font-medium border border-border/50"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}

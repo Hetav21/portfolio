@@ -7,7 +7,7 @@ Always prioritize writing elegant, maintainable code. Use `bun` as the package m
 
 - `nix develop` - Enter environment
 - `bun install` - Install all dependencies
-- `bun dev` - Start both apps (Web:3000, Blog:3001)
+- `bun dev` - Start all apps (Web:3000, Blog:3001, Desktop:3003)
 - `bun --filter <app> dev` - Run specific app
 - `bun run lint` - Run lint on all apps
 

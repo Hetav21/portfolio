@@ -2,7 +2,8 @@
 
 ## Structure
 
-- `apps/web/`: Desktop Environment (Next.js 16, Zustand, Framer Motion)
+- `apps/web/`: Portfolio Website (Next.js 15, Velite, MDX)
+- `apps/desktop/`: Desktop Environment (Next.js 16, Zustand, Framer Motion)
 - `apps/blog/`: Content Site (Next.js 15, Velite, MDX)
 - `docs/`: Architecture plans and design docs
 - `flake.nix`: Nix environment (Bun, Playwright)
@@ -24,5 +25,5 @@
 
 ## Notes
 
-- **Browser Integration**: `apps/web` embeds `apps/blog` via iframe. Changes to blog URL must update Browser component.
+- **Browser Integration**: `apps/desktop` embeds `apps/blog` via iframe. Changes to blog URL must update Browser component.
 - **Velite**: Blog content is compiled via Velite.

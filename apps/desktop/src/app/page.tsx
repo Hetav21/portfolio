@@ -2,7 +2,6 @@
 import { useState, useEffect } from 'react';
 import { BootSequence } from '@/components/boot/BootSequence';
 import dynamic from 'next/dynamic';
-import { MobileFallback } from '@/components/mobile/MobileFallback';
 import { useSystemStore } from '@/lib/store';
 import { AnimatePresence } from 'framer-motion';
 
@@ -15,10 +14,9 @@ export default function Home() {
   const theme = useSystemStore((state) => state.theme);
   const [isMounted, setIsMounted] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
-  const [forceDesktop, setForceDesktop] = useState(false);
 
   useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect
+    // eslint-disable-next-line
     setIsMounted(true);
     const checkMobile = () => {
       setIsMobile(window.innerWidth < 1024);
@@ -38,9 +36,15 @@ export default function Home() {
     }
   }, [theme]);
 
-  // Show mobile fallback only after mount to avoid hydration mismatch
-  if (isMounted && isMobile && !forceDesktop) {
-    return <MobileFallback onContinue={() => setForceDesktop(true)} />;
+  useEffect(() => {
+    if (isMounted && isMobile) {
+      window.location.assign(process.env.NEXT_PUBLIC_PORTFOLIO_URL || 'https://hetav.dev');
+    }
+  }, [isMounted, isMobile]);
+
+  // Redirect to mobile-friendly portfolio if on mobile
+  if (isMounted && isMobile) {
+    return null;
   }
 
   return (
