@@ -73,6 +73,8 @@ export function Header() {
               src="/avatar.png"
               alt="Hetav Shah"
               fill
+              sizes="28px"
+              priority
               className="object-cover"
               suppressHydrationWarning
             />

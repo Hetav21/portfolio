@@ -12,8 +12,48 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'Hetav Shah | Associate AI Engineer',
-  description: 'Associate AI Engineer. Portfolio and Experience.',
+  metadataBase: new URL('https://www.hetav.dev'),
+  title: 'Hetav Shah | Associate AI Engineer & Agentic AI Specialist',
+  description:
+    'Hetav Shah is an Associate AI Engineer at ProductSquads specializing in Agentic AI solutions, AWS cloud architecture, multi-modal RAG pipelines, and serverless AI.',
+  alternates: {
+    canonical: 'https://www.hetav.dev/',
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  openGraph: {
+    title: 'Hetav Shah | Associate AI Engineer & Agentic AI Specialist',
+    description:
+      'Hetav Shah is an Associate AI Engineer at ProductSquads specializing in Agentic AI solutions, AWS cloud architecture, multi-modal RAG pipelines, and serverless AI.',
+    url: 'https://www.hetav.dev/',
+    siteName: 'Hetav Shah Portfolio',
+    locale: 'en_US',
+    type: 'website',
+    images: [
+      {
+        url: '/avatar.png',
+        width: 800,
+        height: 800,
+        alt: 'Hetav Shah - Associate AI Engineer',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Hetav Shah | Associate AI Engineer & Agentic AI Specialist',
+    description:
+      'Hetav Shah is an Associate AI Engineer at ProductSquads specializing in Agentic AI solutions, AWS cloud architecture, multi-modal RAG pipelines, and serverless AI.',
+    images: ['/avatar.png'],
+  },
   icons: {
     icon: [
       { url: '/favicon.svg', type: 'image/svg+xml', sizes: 'any' },
@@ -45,6 +85,62 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify({
+                '@context': 'https://schema.org',
+                '@graph': [
+                  {
+                    '@type': 'ProfilePage',
+                    '@id': 'https://www.hetav.dev/#webpage',
+                    url: 'https://www.hetav.dev/',
+                    name: 'Hetav Shah | Associate AI Engineer & Agentic AI Specialist',
+                    description:
+                      'Associate AI Engineer portfolio and experience of Hetav Shah.',
+                    mainEntity: { '@id': 'https://www.hetav.dev/#person' },
+                  },
+                  {
+                    '@type': 'Person',
+                    '@id': 'https://www.hetav.dev/#person',
+                    name: 'Hetav Shah',
+                    jobTitle: 'Associate AI Engineer',
+                    worksFor: {
+                      '@type': 'Organization',
+                      name: 'ProductSquads',
+                    },
+                    'alumniOf': {
+                      '@type': 'EducationalOrganization',
+                      name: 'Adani University',
+                    },
+                    url: 'https://www.hetav.dev/',
+                    image: 'https://www.hetav.dev/avatar.png',
+                    sameAs: [
+                      'https://github.com/Hetav21',
+                      'https://www.linkedin.com/in/hetav2106/',
+                      'https://blog.hetav.dev',
+                      'https://cv.hetav.dev',
+                    ],
+                    knowAbout: [
+                      'Agentic AI Solutions',
+                      'AWS Cloud Architecture',
+                      'Multi-modal RAG',
+                      'Model Context Protocol (MCP)',
+                      'Next.js',
+                      'Python',
+                    ],
+                  },
+                  {
+                    '@type': 'WebSite',
+                    '@id': 'https://www.hetav.dev/#website',
+                    url: 'https://www.hetav.dev/',
+                    name: 'Hetav Shah Portfolio',
+                    publisher: { '@id': 'https://www.hetav.dev/#person' },
+                  },
+                ],
+              }),
+            }}
+          />
           {/* Subtle dot pattern background */}
           <div className="fixed inset-0 z-0">
             <DotPattern className="mask-radial-faded opacity-60" />

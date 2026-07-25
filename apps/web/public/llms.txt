@@ -1,0 +1,20 @@
+# Hetav Shah - Associate AI Engineer
+
+> Portfolio: https://www.hetav.dev/
+> Blog: https://blog.hetav.dev/
+> GitHub: https://github.com/Hetav21
+> LinkedIn: https://www.linkedin.com/in/hetav2106/
+
+## Summary
+Hetav Shah is an Associate AI Engineer at ProductSquads and a CS student at Adani University. He specializes in building production-grade Agentic AI solutions, multi-modal document extraction pipelines, and serverless event-driven AI assistants on AWS.
+
+## Core Technical Skills
+- Agentic AI & RAG: LangChain, LlamaIndex, MCP (Model Context Protocol), Vector Databases
+- Languages & Frameworks: Python, TypeScript, Next.js, React, Node.js
+- Cloud & DevOps: AWS (Cloud Architecting & Developing certified), Docker, NixOS, Serverless
+
+## Key Projects
+- Deep Research Agent: Autonomous AI research workflow system
+- GDPR RAG: Compliant RAG pipeline for data privacy regulations
+- QnA App: Interactive question-answering system
+- Clickify: Web automation & utilities

@@ -44,6 +44,7 @@ export function Projects() {
                               rel="noopener noreferrer"
                               className="text-muted-foreground hover:text-foreground transition-colors"
                               title="View Source Code"
+                              aria-label={`View ${project.title} source code on GitHub`}
                             >
                               <Github size={18} />
                             </a>
@@ -55,6 +56,7 @@ export function Projects() {
                               rel="noopener noreferrer"
                               className="text-muted-foreground hover:text-primary transition-colors"
                               title="View Live Demo"
+                              aria-label={`View ${project.title} live demo`}
                             >
                               <ExternalLink size={18} />
                             </a>

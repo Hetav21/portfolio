@@ -451,7 +451,7 @@ export const AsciiArt: React.FC<AsciiArtProps> = ({
       id={`ascii-canvas-${uniqueId}`}
       ref={canvasRef}
       className="block w-full h-full"
-      aria-label="ASCII art rendering of image"
+      aria-label="Hetav Shah - Associate AI Engineer ASCII portrait"
       role="img"
     />
   );

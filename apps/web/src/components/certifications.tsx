@@ -62,7 +62,7 @@ export function Certifications() {
                           target="_blank"
                           rel="noopener noreferrer"
                           className="absolute top-4 right-4 text-muted-foreground hover:text-primary transition-colors"
-                          aria-label="Verify credential"
+                          aria-label={`Verify ${cert.title} credential from ${cert.issuer}`}
                         >
                           <ExternalLink size={14} />
                         </a>
@@ -96,7 +96,7 @@ export function Certifications() {
                             target="_blank"
                             rel="noopener noreferrer"
                             className={`absolute top-5 text-muted-foreground hover:text-primary transition-colors ${isEven ? 'left-5' : 'right-5'}`}
-                            aria-label="Verify credential"
+                            aria-label={`Verify ${cert.title} credential from ${cert.issuer}`}
                           >
                             <ExternalLink size={16} />
                           </a>
