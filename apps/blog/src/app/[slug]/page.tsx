@@ -75,7 +75,11 @@ export default async function PostPage({ params }: PostPageProps) {
       '@type': 'Person',
       name: 'Hetav Shah',
       url: siteUrl,
-      sameAs: ['https://github.com/Hetav21', 'https://www.linkedin.com/in/hetav2106/'],
+      sameAs: [
+        'https://github.com/Hetav21',
+        'https://www.linkedin.com/in/hetav2106/',
+        'https://x.com/Hetav_21',
+      ],
     },
     publisher: {
       '@type': 'Organization',

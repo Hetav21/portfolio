@@ -113,6 +113,8 @@ export default function RootLayout({
                     '@type': 'Person',
                     '@id': 'https://www.hetav.dev/#person',
                     name: 'Hetav Shah',
+                    description:
+                      'Associate AI Engineer specializing in Agentic AI, RAG pipelines, Model Context Protocol (MCP), and serverless AI on AWS.',
                     jobTitle: 'Associate AI Engineer',
                     worksFor: {
                       '@type': 'Organization',
@@ -129,6 +131,7 @@ export default function RootLayout({
                     sameAs: [
                       'https://github.com/Hetav21',
                       'https://www.linkedin.com/in/hetav2106/',
+                      'https://x.com/Hetav_21',
                       'https://blog.hetav.dev',
                       'https://cv.hetav.dev',
                     ],
