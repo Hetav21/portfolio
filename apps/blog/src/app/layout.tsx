@@ -12,6 +12,12 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   title: "Hetav's Blog",
   description: 'Writing about code, Linux, and web development.',
+  metadataBase: new URL('https://blog.hetav.dev'),
+  alternates: {
+    types: {
+      'application/rss+xml': '/feed.xml',
+    },
+  },
 };
 
 export default function RootLayout({
