@@ -12,7 +12,7 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'Hetav Shah - Portfolio',
+  title: 'Hetav Shah | Associate AI Engineer',
   description: 'Associate AI Engineer. Portfolio and Experience.',
   icons: {
     icon: [
