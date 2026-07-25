@@ -1,20 +1,25 @@
 # Hetav Shah - Associate AI Engineer
 
-> Portfolio: https://www.hetav.dev/
-> Blog: https://blog.hetav.dev/
-> GitHub: https://github.com/Hetav21
-> LinkedIn: https://www.linkedin.com/in/hetav2106/
-
-## Summary
-Hetav Shah is an Associate AI Engineer at ProductSquads and a CS student at Adani University. He specializes in building production-grade Agentic AI solutions, multi-modal document extraction pipelines, and serverless event-driven AI assistants on AWS.
+> Hetav Shah is an Associate AI Engineer at ProductSquads and a final-year B.Tech CS student at Adani University specializing in building production-grade Agentic AI solutions, multi-modal RAG pipelines, Model Context Protocol (MCP) tools, and serverless AI infrastructure on AWS.
 
 ## Core Technical Skills
-- Agentic AI & RAG: LangChain, LlamaIndex, MCP (Model Context Protocol), Vector Databases
-- Languages & Frameworks: Python, TypeScript, Next.js, React, Node.js
-- Cloud & DevOps: AWS (Cloud Architecting & Developing certified), Docker, NixOS, Serverless
+- Agentic AI & RAG: LangChain, LlamaIndex, Model Context Protocol (MCP), Vector Databases (pgvector, Qdrant), vLLM, Bedrock
+- Languages & Frameworks: Python, TypeScript, Next.js, React, Node.js, NixOS
+- Cloud & DevOps: AWS (Cloud Architecting & Developing certified), Docker, Serverless, EventBridge
 
-## Key Projects
-- Deep Research Agent: Autonomous AI research workflow system
-- GDPR RAG: Compliant RAG pipeline for data privacy regulations
-- QnA App: Interactive question-answering system
-- Clickify: Web automation & utilities
+## Primary Links & Platforms
+- [Portfolio](https://www.hetav.dev/): Official website and portfolio of Hetav Shah
+- [Blog](https://blog.hetav.dev/): Technical articles and deep dives on Agentic AI, MCP, and Cloud Architecture
+- [CV / Resume](https://cv.hetav.dev/): Interactive resume and experience background
+- [Desktop Workspace](https://desktop.hetav.dev/): Web desktop environment simulation
+- [GitHub](https://github.com/Hetav21): Open-source repositories and AI projects
+- [LinkedIn](https://www.linkedin.com/in/hetav2106/): Professional networking profile
+
+## Key Open Source Projects
+- [Deep Research Agent](https://github.com/Hetav21/deep-research-agent): Autonomous multi-step AI research workflow system
+- [GDPR RAG](https://github.com/Hetav21/gdpr-rag): Compliant RAG pipeline for data privacy regulations
+- [QnA App](https://github.com/Hetav21/qna-app): Interactive question-answering system
+- [Clickify](https://github.com/Hetav21/clickify): Web automation & developer productivity utilities
+- [NixOS Config](https://github.com/Hetav21/nixos-config): Declarative system configurations
+
+

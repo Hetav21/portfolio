@@ -120,6 +120,8 @@ export default function RootLayout({
                     },
                     url: 'https://www.hetav.dev/',
                     image: 'https://www.hetav.dev/avatar.png',
+                    email: 'mailto:shahhetav2106@gmail.com',
+                    knowsLanguage: ['English', 'Gujarati', 'Hindi'],
                     sameAs: [
                       'https://github.com/Hetav21',
                       'https://www.linkedin.com/in/hetav2106/',
