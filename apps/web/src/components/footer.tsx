@@ -1,3 +1,5 @@
+import { RssCopyButton } from './rss-copy-button';
+
 export function Footer() {
   return (
     <footer className="w-full border-t border-border mt-20 py-8">
@@ -27,14 +29,7 @@ export function Footer() {
           >
             Email
           </a>
-          <a
-            href="https://blog.hetav.dev/rss"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-sm text-muted-foreground hover:text-primary transition-colors"
-          >
-            RSS
-          </a>
+          <RssCopyButton />
         </div>
       </div>
     </footer>
