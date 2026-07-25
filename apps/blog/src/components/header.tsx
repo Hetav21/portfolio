@@ -19,7 +19,7 @@ export function Header() {
               suppressHydrationWarning
             />
           </div>
-          <span>Hetav's Blog</span>
+          <span>Hetav&apos;s Blog</span>
         </Link>
         <div className="flex items-center gap-4">
           <ThemeToggle />

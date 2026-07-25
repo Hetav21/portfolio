@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://blog.hetav.dev'),
   alternates: {
     types: {
-      'application/rss+xml': '/feed.xml',
+      'application/rss+xml': '/rss',
     },
   },
 };
