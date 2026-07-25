@@ -13,8 +13,9 @@ export function Header() {
           <div className="relative h-8 w-8 overflow-hidden rounded-full border border-border">
             <Image
               src="/avatar.png"
-              alt="Avatar"
+              alt="Hetav Shah Avatar"
               fill
+              sizes="32px"
               className="object-cover"
               suppressHydrationWarning
             />

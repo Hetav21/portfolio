@@ -1,0 +1,15 @@
+# Hetav's Blog
+
+> Writing about code, Linux, and web development.
+
+## About
+Hetav's Blog (hetav.dev) is a technical blog covering software engineering, Linux, web development, AI tooling, and modern frameworks.
+
+## Featured Posts
+- [Hello World](https://blog.hetav.dev/hello-world): Overview of the blog system and tech stack.
+
+## Feeds & Resources
+- RSS Feed: https://blog.hetav.dev/rss
+- Atom Feed: https://blog.hetav.dev/atom
+- JSON Feed: https://blog.hetav.dev/feed.json
+- XML Sitemap: https://blog.hetav.dev/sitemap.xml

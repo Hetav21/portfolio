@@ -9,15 +9,45 @@ const jetbrainsMono = JetBrains_Mono({
   variable: '--font-jetbrains-mono',
 });
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://blog.hetav.dev';
+
 export const metadata: Metadata = {
-  title: "Hetav's Blog",
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: "Hetav's Blog",
+    template: "%s | Hetav's Blog",
+  },
   description: 'Writing about code, Linux, and web development.',
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://blog.hetav.dev'),
   alternates: {
+    canonical: siteUrl,
     types: {
       'application/rss+xml': '/rss',
       'application/atom+xml': '/atom',
       'application/feed+json': '/feed.json',
+    },
+  },
+  openGraph: {
+    title: "Hetav's Blog",
+    description: 'Writing about code, Linux, and web development.',
+    url: siteUrl,
+    siteName: "Hetav's Blog",
+    locale: 'en_US',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: "Hetav's Blog",
+    description: 'Writing about code, Linux, and web development.',
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
     },
   },
 };
