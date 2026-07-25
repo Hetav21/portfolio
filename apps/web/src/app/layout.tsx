@@ -105,8 +105,7 @@ export default function RootLayout({
                     '@id': 'https://www.hetav.dev/#webpage',
                     url: 'https://www.hetav.dev/',
                     name: 'Hetav Shah | Associate AI Engineer & Agentic AI Specialist',
-                    description:
-                      'Associate AI Engineer portfolio and experience of Hetav Shah.',
+                    description: 'Associate AI Engineer portfolio and experience of Hetav Shah.',
                     author: { '@id': 'https://www.hetav.dev/#person' },
                     mainEntity: { '@id': 'https://www.hetav.dev/#person' },
                   },
@@ -119,8 +118,8 @@ export default function RootLayout({
                       '@type': 'Organization',
                       name: 'ProductSquads',
                     },
-                    'alumniOf': {
-                      '@type': 'EducationalOrganization',
+                    alumniOf: {
+                      '@type': 'CollegeOrUniversity',
                       name: 'Adani University',
                     },
                     url: 'https://www.hetav.dev/',
@@ -133,7 +132,7 @@ export default function RootLayout({
                       'https://blog.hetav.dev',
                       'https://cv.hetav.dev',
                     ],
-                    knowAbout: [
+                    knowsAbout: [
                       'Agentic AI Solutions',
                       'AWS Cloud Architecture',
                       'Multi-modal RAG',

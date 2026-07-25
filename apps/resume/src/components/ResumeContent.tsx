@@ -106,14 +106,14 @@ export default function ResumeContent() {
               <div className="absolute top-0 right-0 w-96 h-96 bg-[#eb6f92]/5 rounded-full filter blur-3xl pointer-events-none" />
               <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
                 <div>
-                  <h2 className="text-3xl font-extrabold text-white tracking-tight">
-                    Hetav Shah
-                  </h2>
+                  <h2 className="text-3xl font-extrabold text-white tracking-tight">Hetav Shah</h2>
                   <p className="text-lg text-[#cba6f7] font-medium mt-1">
                     Associate AI Engineer &amp; Full Stack Systems Architect
                   </p>
                   <p className="text-sm text-[#a6adc8] mt-3 max-w-2xl leading-relaxed">
-                    Specializing in Agentic AI architectures, LLM Integration (OpenSource &amp; Proprietary), RAG Pipelines, Model Context Protocol (MCP), Multi-Agent Orchestration, and scalable full-stack web applications.
+                    Specializing in Agentic AI architectures, LLM Integration (OpenSource &amp;
+                    Proprietary), RAG Pipelines, Model Context Protocol (MCP), Multi-Agent
+                    Orchestration, and scalable full-stack web applications.
                   </p>
                 </div>
 
@@ -164,7 +164,8 @@ export default function ResumeContent() {
                     Agentic AI &amp; LLM Engineering
                   </span>
                   <p className="text-sm text-[#cdd6f4] mt-2 leading-relaxed">
-                    LLM Integration (OpenSource LLMs), Agent-to-Agent (A2A), RAG Pipelines, Dense &amp; Sparse Embeddings, Model Context Protocol (MCP), Multi-Agent Orchestration
+                    LLM Integration (OpenSource LLMs), Agent-to-Agent (A2A), RAG Pipelines, Dense
+                    &amp; Sparse Embeddings, Model Context Protocol (MCP), Multi-Agent Orchestration
                   </p>
                 </div>
                 <div className="p-4 rounded-2xl bg-[#181825] border border-[#313244]">
@@ -188,7 +189,8 @@ export default function ResumeContent() {
                     Data, Cloud &amp; Infrastructure
                   </span>
                   <p className="text-sm text-[#cdd6f4] mt-2 leading-relaxed">
-                    PostgreSQL, pgvector, Redis, BM25, Vector Search, AWS, Docker, CI/CD, Cloudflare, NixOS, Git
+                    PostgreSQL, pgvector, Redis, BM25, Vector Search, AWS, Docker, CI/CD,
+                    Cloudflare, NixOS, Git
                   </p>
                 </div>
               </div>
@@ -204,33 +206,69 @@ export default function ResumeContent() {
                 <div className="p-5 rounded-2xl bg-[#181825] border border-[#313244] relative pl-6 border-l-4 border-l-[#eb6f92]">
                   <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-1 mb-3">
                     <div>
-                      <h3 className="text-lg font-bold text-white">
-                        Associate AI Engineer
-                      </h3>
+                      <h3 className="text-lg font-bold text-white">Associate AI Engineer</h3>
                       <p className="text-xs text-[#cba6f7] font-semibold">
-                        ProductSquads <span className="text-[#6c7086]">•</span> A2A, LLMs, Agentic RAG, MCP, Agentic AI
+                        ProductSquads <span className="text-[#6c7086]">•</span> A2A, LLMs, Agentic
+                        RAG, MCP, Agentic AI
                       </p>
                     </div>
                     <span className="text-xs font-medium px-2.5 py-1 rounded-full bg-[#313244] text-[#f9e2af]">
-                      Jan 2025 – Present
+                      Apr 2026 – Present
                     </span>
                   </div>
                   <ul className="space-y-2 text-sm text-[#a6adc8] list-disc list-inside">
-                    <li>Won Jury Special Award at Praveg × ProductSquads Codeathon for an A2A-compatible Intelligent Document Processing (IDP) Agent.</li>
-                    <li>Productionized the IDP agent on AWS Lambda using GPT-4V for automated OCR, document classification, and metadata extraction.</li>
-                    <li>Built a containerized financial data-extraction pipeline (Python, FastAPI) with a taxonomy-mapping engine that reconstructs complex tables into semantic HTML, achieving high recall across 200+ accounting concepts at 90%+ field-level accuracy.</li>
-                    <li>Implemented server-side persistence across distributed streaming Lambda agents powering the AI Assistant micro-frontend and its BFF.</li>
+                    <li>
+                      Won Jury Special Award at Praveg × ProductSquads Codeathon for an
+                      A2A-compatible Intelligent Document Processing (IDP) Agent.
+                    </li>
+                    <li>
+                      Productionized the IDP agent on AWS Lambda using GPT-4V for automated OCR,
+                      document classification, and metadata extraction.
+                    </li>
+                    <li>
+                      Built a containerized financial data-extraction pipeline (Python, FastAPI)
+                      with a taxonomy-mapping engine that reconstructs complex tables into semantic
+                      HTML, achieving high recall across 200+ accounting concepts at 90%+
+                      field-level accuracy.
+                    </li>
+                    <li>
+                      Implemented server-side persistence across distributed streaming Lambda agents
+                      powering the AI Assistant micro-frontend and its BFF.
+                    </li>
+                  </ul>
+                </div>
+
+                <div className="p-5 rounded-2xl bg-[#181825] border border-[#313244] relative pl-6 border-l-4 border-l-[#a6e3a1]">
+                  <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-1 mb-3">
+                    <div>
+                      <h3 className="text-lg font-bold text-white">AI Intern</h3>
+                      <p className="text-xs text-[#a6e3a1] font-semibold">
+                        ProductSquads <span className="text-[#6c7086]">•</span> Python, LangChain,
+                        Vector Databases, RAG
+                      </p>
+                    </div>
+                    <span className="text-xs font-medium px-2.5 py-1 rounded-full bg-[#313244] text-[#f9e2af]">
+                      Nov 2025 – Apr 2026
+                    </span>
+                  </div>
+                  <ul className="space-y-2 text-sm text-[#a6adc8] list-disc list-inside">
+                    <li>
+                      Developed custom RAG pipelines and integrated LLMs via Bedrock and vLLM
+                      runtimes.
+                    </li>
+                    <li>
+                      Built vector search interfaces with LangChain and custom embedding pipelines.
+                    </li>
                   </ul>
                 </div>
 
                 <div className="p-5 rounded-2xl bg-[#181825] border border-[#313244] relative pl-6 border-l-4 border-l-[#89b4fa]">
                   <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-1 mb-3">
                     <div>
-                      <h3 className="text-lg font-bold text-white">
-                        Full Stack Intern
-                      </h3>
+                      <h3 className="text-lg font-bold text-white">Full Stack Intern</h3>
                       <p className="text-xs text-[#89b4fa] font-semibold">
-                        Meru Fintech <span className="text-[#6c7086]">•</span> Electron.js, Microservices, gRPC, TypeScript, React
+                        Meru Technosoft <span className="text-[#6c7086]">•</span> Electron.js,
+                        Microservices, gRPC, TypeScript, React
                       </p>
                     </div>
                     <span className="text-xs font-medium px-2.5 py-1 rounded-full bg-[#313244] text-[#f9e2af]">
@@ -238,9 +276,19 @@ export default function ResumeContent() {
                     </span>
                   </div>
                   <ul className="space-y-2 text-sm text-[#a6adc8] list-disc list-inside">
-                    <li>Engineered a full-stack Tally integration solution with a desktop application and backend microservice, solving Tally&apos;s lack of a cloud-based API for hellobooks.ai.</li>
-                    <li>Architected a custom OAuth2-like authentication framework with PKCE for secure communication between web, desktop client, and backend microservices.</li>
-                    <li>Established CI/CD pipeline with automated builds and releases; built developer CLI tools for configuration management and real-time diagnostics.</li>
+                    <li>
+                      Engineered a full-stack Tally integration solution with a desktop application
+                      and backend microservice, solving Tally&apos;s lack of a cloud-based API for
+                      hellobooks.ai.
+                    </li>
+                    <li>
+                      Architected a custom OAuth2-like authentication framework with PKCE for secure
+                      communication between web, desktop client, and backend microservices.
+                    </li>
+                    <li>
+                      Established CI/CD pipeline with automated builds and releases; built developer
+                      CLI tools for configuration management and real-time diagnostics.
+                    </li>
                   </ul>
                 </div>
               </div>
@@ -256,9 +304,7 @@ export default function ResumeContent() {
                 <div className="p-5 rounded-2xl bg-[#181825] border border-[#313244] flex flex-col justify-between">
                   <div>
                     <div className="flex items-center justify-between mb-2">
-                      <h3 className="text-base font-bold text-white">
-                        Deep Research Agent
-                      </h3>
+                      <h3 className="text-base font-bold text-white">Deep Research Agent</h3>
                       <a
                         href="https://github.com/Hetav21/deep-research-agent"
                         target="_blank"
@@ -272,7 +318,9 @@ export default function ResumeContent() {
                       Autonomous Multi-Agent System, Recursive Research Loops, Chain-of-Thoughts
                     </p>
                     <p className="text-xs text-[#a6adc8] leading-relaxed">
-                      Engineered an autonomous multi-agent system using Python and FastAPI performing recursive web research and synthesis using OpenAI Agents SDK to coordinate specialized Query, Search, and Synthesis agents.
+                      Engineered an autonomous multi-agent system using Python and FastAPI
+                      performing recursive web research and synthesis using OpenAI Agents SDK to
+                      coordinate specialized Query, Search, and Synthesis agents.
                     </p>
                   </div>
                 </div>
@@ -296,7 +344,9 @@ export default function ResumeContent() {
                       Hybrid Retrieval (Dense+Sparse), RRF, Multi-Query Expansion, Multi-Modal ETL
                     </p>
                     <p className="text-xs text-[#a6adc8] leading-relaxed">
-                      Architected a Multi-Modal RAG system combining dense vector search (pgvector) + BM25 sparse retrieval with Reciprocal Rank Fusion, utilizing GPT-4o Vision for document ETL and Redis for query scaling.
+                      Architected a Multi-Modal RAG system combining dense vector search (pgvector)
+                      + BM25 sparse retrieval with Reciprocal Rank Fusion, utilizing GPT-4o Vision
+                      for document ETL and Redis for query scaling.
                     </p>
                   </div>
                 </div>
@@ -314,7 +364,8 @@ export default function ResumeContent() {
                   <h3 className="text-base font-bold text-white">Adani University</h3>
                   <p className="text-xs text-[#89b4fa]">Ahmedabad, India</p>
                   <p className="text-xs text-[#a6adc8] mt-2 font-medium">
-                    B.Tech Computer Science Engineering — <span className="text-[#a6e3a1]">CGPA: 8.50/10</span>
+                    B.Tech Computer Science Engineering —{' '}
+                    <span className="text-[#a6e3a1]">CGPA: 8.30/10</span>
                   </p>
                   <p className="text-xs text-[#6c7086] mt-1">Expected Graduation: June 2026</p>
                 </div>
@@ -336,7 +387,9 @@ export default function ResumeContent() {
                     <h3 className="text-xs font-bold text-white">
                       AWS Academy Graduate - AWS Academy Cloud Developing
                     </h3>
-                    <p className="text-xs text-[#f9e2af]">Issued by Amazon Web Services • Nov 2024</p>
+                    <p className="text-xs text-[#f9e2af]">
+                      Issued by Amazon Web Services • Nov 2024
+                    </p>
                   </div>
                 </div>
               </section>

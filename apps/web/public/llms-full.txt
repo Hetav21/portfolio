@@ -56,8 +56,8 @@
   - Implementing multi-modal document extraction pipelines and serverless event-driven AI assistants on AWS.
 - **AI Intern** — *ProductSquads*
   - Developed custom RAG pipelines and integrated LLMs via Bedrock and vLLM runtimes.
-- **Full Stack Intern** — *Technical Solutions*
-  - Built high-performance web interfaces and API integrations with Next.js and TypeScript.
+- **Full Stack Intern** — *Meru Technosoft*
+  - Engineered a full-stack Tally integration solution with desktop application (Electron.js) and backend microservice, architected custom OAuth2-like authentication with PKCE.
 
 ---
 

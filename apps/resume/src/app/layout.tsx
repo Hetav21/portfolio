@@ -59,7 +59,7 @@ export const metadata: Metadata = {
     title: 'Hetav Shah | Software & AI Engineer CV',
     description:
       'Curriculum Vitae of Hetav Shah. Associate AI Engineer specializing in Agentic AI, RAG Pipelines, MCP, and Full-Stack Engineering.',
-    creator: '@Hetav21',
+    creator: '@Hetav_21',
   },
   robots: {
     index: true,
