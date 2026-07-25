@@ -3,7 +3,6 @@ import { defineConfig, s } from 'velite';
 const iconMap = {
   work: 'briefcase',
   education: 'graduation-cap',
-  certification: 'award',
 } as const;
 
 export default defineConfig({
@@ -21,7 +20,7 @@ export default defineConfig({
       pattern: 'experience/**/*.mdx',
       schema: s
         .object({
-          type: s.enum(['work', 'education', 'certification']),
+          type: s.enum(['work', 'education']),
           role: s.string().max(99),
           company: s.string().max(99),
           startDate: s.string(),
@@ -50,6 +49,19 @@ export default defineConfig({
         featured: s.boolean().default(false),
         order: s.number().default(0),
         content: s.mdx(),
+      }),
+    },
+    certifications: {
+      name: 'Certification',
+      pattern: 'certifications/**/*.mdx',
+      schema: s.object({
+        title: s.string().max(99),
+        issuer: s.string().max(99),
+        date: s.string(),
+        tags: s.array(s.string()).default([]),
+        link: s.string().url().optional(),
+        order: s.number().default(0),
+        credentialId: s.string().optional(),
       }),
     },
   },

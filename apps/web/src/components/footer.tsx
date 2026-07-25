@@ -27,6 +27,14 @@ export function Footer() {
           >
             Email
           </a>
+          <a
+            href="https://blog.hetav.dev/rss"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-sm text-muted-foreground hover:text-primary transition-colors"
+          >
+            RSS
+          </a>
         </div>
       </div>
     </footer>

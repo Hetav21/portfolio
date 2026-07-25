@@ -10,6 +10,7 @@ import { ExternalLink } from 'lucide-react';
 const navItems = [
   { name: 'About', href: '#about' },
   { name: 'Experience', href: '#experience' },
+  { name: 'Certifications', href: '#certifications' },
   { name: 'Projects', href: '#projects' },
 ];
 

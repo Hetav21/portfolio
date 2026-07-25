@@ -11,8 +11,6 @@ export function Experience() {
         return <Briefcase size={16} className="text-primary" />;
       case 'education':
         return <GraduationCap size={16} className="text-primary" />;
-      case 'certification':
-        return <Award size={16} className="text-primary" />;
       default:
         return <Briefcase size={16} className="text-primary" />;
     }
@@ -24,9 +22,7 @@ export function Experience() {
         Experience
       </h2>
       <div className="space-y-8 mt-1">
-        <p className="text-muted-foreground">
-          My professional journey, education, and certifications.
-        </p>
+        <p className="text-muted-foreground">My professional journey and education.</p>
         <div className="relative border-l border-border ml-3 space-y-12 pb-4">
           {sortedExperience.map((item, index) => (
             <div key={index} className="relative pl-8">
