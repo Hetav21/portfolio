@@ -1,0 +1,47 @@
+# Hetav Shah - Curriculum Vitae
+
+> Associate AI Engineer & Full Stack Engineer
+> Website: https://hetav.dev | CV: https://cv.hetav.dev | GitHub: https://github.com/Hetav21 | LinkedIn: https://www.linkedin.com/in/hetav2106/
+> Email: shahhetav2106@gmail.com | Location: Ahmedabad, India
+
+## Professional Summary
+Associate AI Engineer specializing in Agentic AI architectures, LLM Integrations, Multi-Agent Orchestration, RAG Pipelines, and Model Context Protocol (MCP). Experienced in building high-performance full-stack web applications, backend microservices, and automated document intelligence platforms.
+
+## Core Technical Skills
+- **Languages:** Python, TypeScript, JavaScript, SQL
+- **Agentic AI & ML:** LLM Integration (OpenSource & Proprietary), Agent-to-Agent (A2A), RAG Pipelines, Dense & Sparse Embeddings, MCP, Multi-Agent Orchestration
+- **Frameworks:** React, Next.js, FastAPI, Express.js, Hono, Electron.js, Tailwind CSS, Zod
+- **Data & Vector Databases:** PostgreSQL, pgvector, Redis, BM25, Vector Search
+- **Cloud & Infrastructure:** AWS (Lambda, S3, CloudWatch), Docker, CI/CD, Cloudflare, NixOS, Git
+
+## Work Experience
+
+### ProductSquads — Associate AI Engineer
+*Jan 2025 – Present | Remote / Ahmedabad*
+- Won Jury Special Award at Praveg × ProductSquads Codeathon for an A2A-compatible Intelligent Document Processing (IDP) Agent.
+- Productionized IDP agent on AWS Lambda using GPT-4V for automated OCR, document classification, and metadata extraction.
+- Built a containerized financial data-extraction pipeline (Python, FastAPI) with a taxonomy-mapping engine reconstructing complex tables into semantic HTML (90%+ field-level accuracy across 200+ accounting concepts).
+- Implemented server-side persistence across distributed streaming Lambda agents powering the AI Assistant micro-frontend and BFF.
+
+### Meru Fintech — Full Stack Intern
+*Jun 2025 – Jul 2025 | Remote / Ahmedabad*
+- Engineered a full-stack Tally integration solution with a desktop application (Electron.js) and backend microservice (gRPC, TypeScript, React).
+- Architected custom OAuth2-like authentication framework with PKCE for secure cross-client communication.
+- Established CI/CD pipeline with automated builds and developer CLI tools.
+
+## Key Projects
+
+### Deep Research Agent
+- *Tech Stack:* Autonomous Multi-Agent System, OpenAI Agents SDK, Python, FastAPI, Recursive Loops.
+- *GitHub:* https://github.com/Hetav21/deep-research-agent
+- *Description:* Autonomous multi-agent system executing recursive web research and synthesis with configurable depth/breadth controls and asynchronous query/synthesis agents.
+
+### GDPR Compliance Intelligence Platform
+- *Tech Stack:* Hybrid Retrieval (Dense pgvector + Sparse BM25), RRF, Multi-Query Expansion, Redis, GPT-4o Vision.
+- *GitHub:* https://github.com/Hetav21/gdpr-rag
+- *Description:* Multi-Modal RAG system combining dense vector search and sparse BM25 retrieval with Reciprocal Rank Fusion for legal compliance queries.
+
+## Education & Certifications
+- **B.Tech in Computer Science Engineering** — Adani University, Ahmedabad (Expected Jun 2026, CGPA: 8.50/10)
+- **Anthropic Model Context Protocol (Intro & Advanced)** — Dec 2025
+- **AWS Academy Graduate - AWS Academy Cloud Developing** — Nov 2024
