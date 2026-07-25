@@ -23,6 +23,9 @@ export const metadata: Metadata = {
         { url: '/llms.txt', title: 'LLM Summary' },
         { url: '/llms-full.txt', title: 'Full LLM Documentation' },
       ],
+      'application/rss+xml': [
+        { url: 'https://blog.hetav.dev/rss', title: "Hetav's Blog RSS Feed" },
+      ],
     },
   },
   robots: {
