@@ -1,5 +1,3 @@
 {
-  "git": {
-    "ignoreCommand": "bunx turbo-ignore"
-  }
+  "ignoreCommand": "bunx turbo-ignore"
 }
