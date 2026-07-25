@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://www.hetav.dev/',
     types: {
-      'text/markdown': [
+      'text/plain': [
         { url: '/llms.txt', title: 'LLM Summary' },
         { url: '/llms-full.txt', title: 'Full LLM Documentation' },
       ],
@@ -48,21 +48,12 @@ export const metadata: Metadata = {
     siteName: 'Hetav Shah Portfolio',
     locale: 'en_US',
     type: 'website',
-    images: [
-      {
-        url: '/og-image.png',
-        width: 1200,
-        height: 630,
-        alt: 'Hetav Shah - Associate AI Engineer & Agentic AI Specialist',
-      },
-    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Hetav Shah | Associate AI Engineer & Agentic AI Specialist',
     description:
       'Hetav Shah is an Associate AI Engineer at ProductSquads specializing in Agentic AI, AWS cloud architecture, multi-modal RAG, and serverless AI.',
-    images: ['/og-image.png'],
   },
   icons: {
     icon: [
@@ -173,24 +164,28 @@ export default async function RootLayout({
                       {
                         '@type': 'SoftwareSourceCode',
                         name: 'Deep Research Agent',
+                        author: { '@id': 'https://www.hetav.dev/#person' },
                         codeRepository: 'https://github.com/Hetav21/deep-research-agent',
                         programmingLanguage: 'Python',
                       },
                       {
                         '@type': 'SoftwareSourceCode',
                         name: 'GDPR RAG',
+                        author: { '@id': 'https://www.hetav.dev/#person' },
                         codeRepository: 'https://github.com/Hetav21/gdpr-rag',
                         programmingLanguage: 'Python',
                       },
                       {
                         '@type': 'SoftwareSourceCode',
                         name: 'QnA App',
+                        author: { '@id': 'https://www.hetav.dev/#person' },
                         codeRepository: 'https://github.com/Hetav21/qna-app',
                         programmingLanguage: 'TypeScript',
                       },
                       {
                         '@type': 'SoftwareSourceCode',
                         name: 'Clickify',
+                        author: { '@id': 'https://www.hetav.dev/#person' },
                         codeRepository: 'https://github.com/Hetav21/clickify',
                         programmingLanguage: 'TypeScript',
                       },

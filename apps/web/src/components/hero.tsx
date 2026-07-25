@@ -43,14 +43,14 @@ export function Hero() {
               Hetav Shah
             </motion.h1>
 
-            <motion.h2
+            <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
               className="text-xl md:text-2xl text-primary font-medium mb-6 h-8"
             >
               <FlipWords words={roles} duration={3000} />
-            </motion.h2>
+            </motion.p>
 
             <motion.div
               initial={{ opacity: 0, y: 20 }}
