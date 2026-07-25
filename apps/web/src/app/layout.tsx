@@ -18,6 +18,11 @@ export const metadata: Metadata = {
     'Hetav Shah is an Associate AI Engineer at ProductSquads specializing in Agentic AI solutions, AWS cloud architecture, multi-modal RAG pipelines, and serverless AI.',
   alternates: {
     canonical: 'https://www.hetav.dev/',
+    types: {
+      'text/markdown': [
+        { url: '/llms.txt', title: 'LLM Summary' },
+      ],
+    },
   },
   robots: {
     index: true,
@@ -128,6 +133,52 @@ export default function RootLayout({
                       'Model Context Protocol (MCP)',
                       'Next.js',
                       'Python',
+                    ],
+                    hasCredential: [
+                      {
+                        '@type': 'EducationalOccupationalCredential',
+                        name: 'AWS Academy Cloud Architecting',
+                        recognizedBy: {
+                          '@type': 'Organization',
+                          name: 'Amazon Web Services',
+                        },
+                        url: 'https://www.credly.com/badges/f6802249-ee52-43c3-bac2-104dadcd8718/public_url',
+                      },
+                      {
+                        '@type': 'EducationalOccupationalCredential',
+                        name: 'Model Context Protocol: Advanced Topics',
+                        recognizedBy: {
+                          '@type': 'Organization',
+                          name: 'Anthropic',
+                        },
+                        url: 'https://verify.skilljar.com/c/zdrivh9gxyyc',
+                      },
+                    ],
+                    subjectOf: [
+                      {
+                        '@type': 'SoftwareSourceCode',
+                        name: 'Deep Research Agent',
+                        codeRepository: 'https://github.com/Hetav21/deep-research-agent',
+                        programmingLanguage: 'Python',
+                      },
+                      {
+                        '@type': 'SoftwareSourceCode',
+                        name: 'GDPR RAG',
+                        codeRepository: 'https://github.com/Hetav21/gdpr-rag',
+                        programmingLanguage: 'Python',
+                      },
+                      {
+                        '@type': 'SoftwareSourceCode',
+                        name: 'QnA App',
+                        codeRepository: 'https://github.com/Hetav21/qna-app',
+                        programmingLanguage: 'TypeScript',
+                      },
+                      {
+                        '@type': 'SoftwareSourceCode',
+                        name: 'Clickify',
+                        codeRepository: 'https://github.com/Hetav21/clickify',
+                        programmingLanguage: 'TypeScript',
+                      },
                     ],
                   },
                   {

@@ -75,9 +75,9 @@ export function Certifications() {
                           {cert.date}
                         </span>
                       </div>
-                      <h3 className="text-sm font-bold text-foreground leading-tight">
+                      <span className="block text-sm font-bold text-foreground leading-tight">
                         {cert.title}
-                      </h3>
+                      </span>
                     </div>
                   </div>
 
