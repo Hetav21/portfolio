@@ -1,58 +1,29 @@
-# PROJECT KNOWLEDGE BASE
+# Agent Persona & Knowledge Base
 
-**Generated:** 2026-01-14
-**Type:** Monorepo (Bun + Turbo)
+You are an expert AI software engineer assisting Hetav Shah in developing a dual-application monorepo.
+Always prioritize writing elegant, maintainable code. Use `bun` as the package manager and `turbo` for monorepo tasks.
 
-## OVERVIEW
+## Commands
 
-A dual-application monorepo containing a NixOS-themed Desktop Portfolio (`apps/web`) and a static Blog (`apps/blog`). Powered by Next.js, Tailwind v4, and Bun.
+- `nix develop` - Enter environment
+- `bun install` - Install all dependencies
+- `bun dev` - Start both apps (Web:3000, Blog:3001)
+- `bun --filter <app> dev` - Run specific app
+- `bun run lint` - Run lint on all apps
 
-## STRUCTURE
+## Rules & Specs
 
-```
-.
-├── apps/
-│   ├── web/     # Desktop Environment (Next.js 16, Zustand, Framer Motion)
-│   └── blog/    # Content Site (Next.js 15, Velite, MDX)
-├── docs/        # Architecture plans and design docs
-├── flake.nix    # Nix environment (Bun, Playwright)
-└── turbo.json   # Build pipeline configuration
-```
+- [Conventions & Structure](docs/specs/conventions.md) — Project layout, conventions, and where to look for features.
+- [Workflow Orchestration](docs/specs/workflow.md) — How to plan, execute, and verify changes.
+- [Architecture](docs/specs/architecture.md) — Monorepo setup and Next.js + Velite blog integration.
+- [Playwright Testing](docs/specs/testing-playwright.md) — Nix + Bun + Playwright integration details.
+- [Terminal Autocomplete](docs/specs/terminal-autocomplete.md) — Bash-style tab completion logic for the web terminal.
+- [Portfolio Desktop](docs/specs/portfolio-desktop.md) — The UI/UX design and state management of the NixOS GNOME desktop simulation.
 
-## WHERE TO LOOK
+## Verification
 
-| Task              | Location                     | Notes                                                 |
-| ----------------- | ---------------------------- | ----------------------------------------------------- |
-| **Add Feature**   | `apps/{app}/src`             | Apps are isolated; shared logic is minimal currently. |
-| **New Blog Post** | `apps/blog/content/posts`    | See `apps/blog/content/AGENTS.md` for writing guide.  |
-| **Theme Config**  | `apps/*/src/app/globals.css` | Tailwind v4 `@theme inline`. No `tailwind.config.ts`. |
-| **CI/Build**      | `package.json`               | Managed via Turbo.                                    |
+After making changes, verify them using:
 
-## CONVENTIONS
-
-- **Package Manager**: `bun` ONLY. No `npm`/`yarn`.
-- **Monorepo**: Run commands from root via `turbo` or `bun --filter`.
-- **Styling**: Tailwind v4 CSS-first configuration.
-- **Environment**: `nix develop` provides the runtime.
-
-## COMMANDS
-
-```bash
-# Development
-nix develop          # Enter environment
-bun install          # Install all dependencies
-bun dev              # Start both apps (Web:3000, Blog:3001)
-
-# App Specific
-bun --filter web dev
-bun --filter blog dev
-
-# Quality
-bun run lint         # Run lint on all apps
-bun run test         # Run tests (currently web only)
-```
-
-## NOTES
-
-- **Browser Integration**: `apps/web` embeds `apps/blog` via iframe. Changes to blog URL must update `apps/web/src/components/apps/Browser.tsx`.
-- **Velite**: Blog content is compiled. If types fail, run `bun --filter blog dev` to regenerate `.velite`.
+- `bun run lint` - Check linting
+- `bun run test` - Run tests (web only)
+  If modifying the blog, run `bun --filter blog dev` to ensure `.velite` generates successfully without type errors.
