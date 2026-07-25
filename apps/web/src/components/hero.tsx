@@ -4,6 +4,7 @@ import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Github, Linkedin, Mail, FileText, ArrowDown } from 'lucide-react';
 import { FlipWords } from '@/components/ui/flip-words';
+import { TextGenerateEffect } from '@/components/ui/text-generate-effect';
 import { MovingBorderButton } from '@/components/ui/moving-border';
 
 const roles = [
@@ -49,15 +50,17 @@ export function Hero() {
             <FlipWords words={roles} duration={3000} />
           </motion.h2>
 
-          <motion.p
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.3 }}
-            className="text-lg text-muted-foreground max-w-2xl mb-8 leading-relaxed"
+            className="max-w-2xl mb-8"
           >
-            CS Engineer architecting the future of Agentic AI with Opencode, leveraging intelligent
-            subagents and skills to build production-grade LLM systems.
-          </motion.p>
+            <TextGenerateEffect
+              words="CS Engineer architecting the future of Agentic AI with Opencode, leveraging intelligent subagents and skills to build production-grade LLM systems."
+              className="text-lg text-muted-foreground leading-relaxed font-normal"
+            />
+          </motion.div>
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -107,7 +110,7 @@ export function Hero() {
 
       <motion.div
         style={{ opacity: arrowOpacity }}
-        className="fixed bottom-10 left-1/2 -translate-x-1/2 z-0 pointer-events-none"
+        className="hidden md:block fixed bottom-10 left-1/2 -translate-x-1/2 z-0 pointer-events-none"
       >
         <motion.div
           initial={{ opacity: 0 }}

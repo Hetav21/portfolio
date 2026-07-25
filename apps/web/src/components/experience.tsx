@@ -4,9 +4,19 @@ import { experience } from '../../.velite';
 import { Briefcase, GraduationCap, ExternalLink } from 'lucide-react';
 import { MDXContent } from './mdx-content';
 import { SectionReveal, RevealItem } from '@/components/ui/section-reveal';
+import { useRef } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
 
 export function Experience() {
   const sortedExperience = [...experience].sort((a, b) => b.order - a.order);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ['start 40%', 'end 80%'],
+  });
+
+  const heightTransform = useTransform(scrollYProgress, [0, 1], ['0%', '100%']);
+  const opacityTransform = useTransform(scrollYProgress, [0, 0.1], [0, 1]);
 
   const getIcon = (type: string) => {
     switch (type) {
@@ -30,7 +40,14 @@ export function Experience() {
         <SectionReveal delay={0.1}>
           <p className="text-muted-foreground">My professional journey and education.</p>
         </SectionReveal>
-        <div className="relative border-l border-border ml-3 space-y-12 pb-4">
+        <div ref={containerRef} className="relative ml-3 space-y-12 pb-4">
+          {/* Static background line */}
+          <div className="absolute left-[0.5px] top-4 bottom-4 w-[1px] bg-border/50" />
+          {/* Animated glowing line */}
+          <motion.div
+            style={{ height: heightTransform, opacity: opacityTransform }}
+            className="absolute left-0 top-4 w-[2px] bg-gradient-to-b from-transparent via-primary to-primary rounded-full"
+          />
           {sortedExperience.map((item, index) => (
             <RevealItem key={index} index={index} staggerDelay={0.12}>
               <div className="relative pl-8 group">

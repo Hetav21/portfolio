@@ -20,6 +20,8 @@ export function Certifications() {
         </SectionReveal>
 
         <div className="relative py-4 overflow-hidden md:overflow-visible">
+          {/* Mobile vertical timeline line */}
+          <div className="absolute left-[13px] top-8 bottom-8 w-[1px] bg-border md:hidden" />
           <div className="flex flex-col">
             {sortedCertifications.map((cert, index) => {
               const isEven = index % 2 === 0;
@@ -47,14 +49,47 @@ export function Certifications() {
 
               return (
                 <RevealItem key={index} index={index} staggerDelay={0.1}>
+                  {/* Mobile: left-aligned vertical timeline */}
+                  <div className="flex md:hidden relative pl-10 py-3">
+                    {/* Mobile dot */}
+                    <div className="absolute left-0 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-background border-2 border-primary flex items-center justify-center shadow-sm z-10">
+                      <Award size={12} className="text-primary" />
+                    </div>
+                    <div className="relative bg-card border border-border rounded-xl p-4 shadow-sm hover:border-primary/50 transition-all duration-300 w-full hover:shadow-lg hover:shadow-primary/5">
+                      {cert.link && (
+                        <a
+                          href={cert.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="absolute top-4 right-4 text-muted-foreground hover:text-primary transition-colors"
+                          aria-label="Verify credential"
+                        >
+                          <ExternalLink size={14} />
+                        </a>
+                      )}
+                      <div className="flex flex-col gap-0.5 mb-2">
+                        <span className="text-xs font-semibold text-primary uppercase tracking-wider">
+                          {cert.issuer}
+                        </span>
+                        <span className="text-xs font-medium text-muted-foreground">
+                          {cert.date}
+                        </span>
+                      </div>
+                      <h3 className="text-sm font-bold text-foreground leading-tight">
+                        {cert.title}
+                      </h3>
+                    </div>
+                  </div>
+
+                  {/* Desktop: alternating wavy timeline */}
                   <div
-                    className={`flex w-full relative min-h-[160px] ${isEven ? 'flex-row' : 'flex-row-reverse'}`}
+                    className={`hidden md:flex w-full relative min-h-[160px] ${isEven ? 'flex-row' : 'flex-row-reverse'}`}
                   >
                     {/* Card Side */}
                     <div
-                      className={`w-[calc(50%-24px)] md:w-[calc(50%-40px)] flex flex-col justify-center py-6 ${isEven ? 'items-end text-right pr-4 md:pr-6' : 'items-start text-left pl-4 md:pl-6'}`}
+                      className={`w-[calc(50%-40px)] flex flex-col justify-center py-6 ${isEven ? 'items-end text-right pr-6' : 'items-start text-left pl-6'}`}
                     >
-                      <div className="relative bg-card border border-border rounded-xl p-5 shadow-sm hover:border-primary/50 transition-all duration-300 w-full md:max-w-[400px] hover:shadow-lg hover:shadow-primary/5">
+                      <div className="relative bg-card border border-border rounded-xl p-5 shadow-sm hover:border-primary/50 transition-all duration-300 w-full max-w-[400px] hover:shadow-lg hover:shadow-primary/5">
                         {cert.link && (
                           <a
                             href={cert.link}
@@ -83,7 +118,7 @@ export function Certifications() {
                     </div>
 
                     {/* Center Wavy Timeline */}
-                    <div className="w-[48px] md:w-[80px] relative flex-shrink-0">
+                    <div className="w-[80px] relative flex-shrink-0">
                       <svg
                         className="absolute inset-0 w-full h-full text-border"
                         preserveAspectRatio="none"
@@ -107,7 +142,7 @@ export function Certifications() {
                     </div>
 
                     {/* Empty Side */}
-                    <div className="w-[calc(50%-24px)] md:w-[calc(50%-40px)]"></div>
+                    <div className="w-[calc(50%-40px)]"></div>
                   </div>
                 </RevealItem>
               );
