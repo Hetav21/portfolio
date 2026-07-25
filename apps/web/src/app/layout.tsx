@@ -15,12 +15,13 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://www.hetav.dev'),
   title: 'Hetav Shah | Associate AI Engineer & Agentic AI Specialist',
   description:
-    'Hetav Shah is an Associate AI Engineer at ProductSquads specializing in Agentic AI solutions, AWS cloud architecture, multi-modal RAG pipelines, and serverless AI.',
+    'Hetav Shah is an Associate AI Engineer at ProductSquads specializing in Agentic AI, AWS cloud architecture, multi-modal RAG, and serverless AI.',
   alternates: {
     canonical: 'https://www.hetav.dev/',
     types: {
       'text/markdown': [
         { url: '/llms.txt', title: 'LLM Summary' },
+        { url: '/llms-full.txt', title: 'Full LLM Documentation' },
       ],
     },
   },
@@ -38,17 +39,17 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Hetav Shah | Associate AI Engineer & Agentic AI Specialist',
     description:
-      'Hetav Shah is an Associate AI Engineer at ProductSquads specializing in Agentic AI solutions, AWS cloud architecture, multi-modal RAG pipelines, and serverless AI.',
+      'Hetav Shah is an Associate AI Engineer at ProductSquads specializing in Agentic AI, AWS cloud architecture, multi-modal RAG, and serverless AI.',
     url: 'https://www.hetav.dev/',
     siteName: 'Hetav Shah Portfolio',
     locale: 'en_US',
     type: 'website',
     images: [
       {
-        url: '/avatar.png',
-        width: 800,
-        height: 800,
-        alt: 'Hetav Shah - Associate AI Engineer',
+        url: '/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'Hetav Shah - Associate AI Engineer & Agentic AI Specialist',
       },
     ],
   },
@@ -56,8 +57,8 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Hetav Shah | Associate AI Engineer & Agentic AI Specialist',
     description:
-      'Hetav Shah is an Associate AI Engineer at ProductSquads specializing in Agentic AI solutions, AWS cloud architecture, multi-modal RAG pipelines, and serverless AI.',
-    images: ['/avatar.png'],
+      'Hetav Shah is an Associate AI Engineer at ProductSquads specializing in Agentic AI, AWS cloud architecture, multi-modal RAG, and serverless AI.',
+    images: ['/og-image.png'],
   },
   icons: {
     icon: [
@@ -103,6 +104,7 @@ export default function RootLayout({
                     name: 'Hetav Shah | Associate AI Engineer & Agentic AI Specialist',
                     description:
                       'Associate AI Engineer portfolio and experience of Hetav Shah.',
+                    author: { '@id': 'https://www.hetav.dev/#person' },
                     mainEntity: { '@id': 'https://www.hetav.dev/#person' },
                   },
                   {

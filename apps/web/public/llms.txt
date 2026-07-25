@@ -9,6 +9,7 @@
 
 ## Primary Links & Platforms
 - [Portfolio](https://www.hetav.dev/): Official website and portfolio of Hetav Shah
+- [Full Extended Documentation](https://www.hetav.dev/llms-full.txt): Comprehensive AI profile and extended project details
 - [Blog](https://blog.hetav.dev/): Technical articles and deep dives on Agentic AI, MCP, and Cloud Architecture
 - [CV / Resume](https://cv.hetav.dev/): Interactive resume and experience background
 - [Desktop Workspace](https://desktop.hetav.dev/): Web desktop environment simulation

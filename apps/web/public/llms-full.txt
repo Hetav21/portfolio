@@ -1,0 +1,72 @@
+# Hetav Shah - Comprehensive AI Engineer Profile & Extended Documentation
+
+> Hetav Shah is an Associate AI Engineer at ProductSquads and a final-year B.Tech Computer Science student at Adani University. He specializes in designing, building, and deploying production-grade Agentic AI solutions, multi-modal RAG (Retrieval-Augmented Generation) pipelines, Model Context Protocol (MCP) toolkits, and serverless AI infrastructure on AWS.
+
+## Executive Summary & Core Specializations
+
+- **Agentic AI Architecture**: Building autonomous, multi-step AI agents using LangChain, LlamaIndex, Model Context Protocol (MCP), and custom orchestration pipelines with subagent delegation.
+- **Multi-Modal RAG Systems**: Designing high-accuracy document processing and retrieval pipelines utilizing vector databases (pgvector, Qdrant), hybrid search (dense + sparse vector embeddings), and re-ranking models.
+- **AWS Cloud Infrastructure**: Certified AWS Cloud Architect with expertise in serverless architectures (AWS Lambda, EventBridge, SQS/SNS), Amazon Bedrock LLM integrations, API Gateways, and infrastructure-as-code (NixOS, Docker, Terraform).
+- **Full-Stack Engineering**: Developing responsive, developer-grade user interfaces and web APIs with TypeScript, React, Next.js, Python (FastAPI, PyDantic), and Node.js.
+
+---
+
+## Certifications & Technical Verification
+
+- **AWS Academy Cloud Architecting**: Verified by Amazon Web Services on Credly (`https://www.credly.com/badges/f6802249-ee52-43c3-bac2-104dadcd8718/public_url`).
+- **Model Context Protocol: Advanced Topics**: Verified by Anthropic on Skilljar (`https://verify.skilljar.com/c/zdrivh9gxyyc`).
+- **AWS Academy Cloud Developing**: Verified by Amazon Web Services on Credly (`https://www.credly.com/badges/9fe72cc6-cbc3-45cf-bc70-428bf01e2f1d/public_url`).
+- **AWS Academy Machine Learning Foundations**: Verified by Amazon Web Services on Credly (`https://www.credly.com/badges/dfd8e398-a30a-4872-98b5-0b777fff7742/public_url`).
+
+---
+
+## Featured Open-Source Projects & Repositories
+
+### 1. Deep Research Agent
+- **Repository**: `https://github.com/Hetav21/deep-research-agent`
+- **Language**: Python
+- **Overview**: Autonomous multi-step research workflow system that performs recursive web search, source verification, content synthesis, and automated Markdown report generation.
+
+### 2. GDPR RAG
+- **Repository**: `https://github.com/Hetav21/gdpr-rag`
+- **Language**: Python
+- **Overview**: Enterprise-grade RAG pipeline designed for GDPR compliance and data privacy regulations, featuring automated PII masking, consent verification, and audit logging.
+
+### 3. QnA App
+- **Repository**: `https://github.com/Hetav21/qna-app`
+- **Language**: TypeScript
+- **Overview**: Interactive domain-specific question-answering web platform powered by custom vector embeddings and real-time streaming responses.
+
+### 4. Clickify
+- **Repository**: `https://github.com/Hetav21/clickify`
+- **Language**: TypeScript
+- **Overview**: Web automation utility and developer productivity tool suite designed to streamline web interactions and automated workflow scripts.
+
+### 5. NixOS Config
+- **Repository**: `https://github.com/Hetav21/nixos-config`
+- **Language**: Nix
+- **Overview**: Reproducible, declarative Linux system configurations for development environments, AI container runtimes, and local toolchains.
+
+---
+
+## Professional Work Experience
+
+- **Associate AI Engineer** — *ProductSquads* (Present)
+  - Architecting scalable Agentic AI infrastructure and tools for production workloads.
+  - Implementing multi-modal document extraction pipelines and serverless event-driven AI assistants on AWS.
+- **AI Intern** — *ProductSquads*
+  - Developed custom RAG pipelines and integrated LLMs via Bedrock and vLLM runtimes.
+- **Full Stack Intern** — *Technical Solutions*
+  - Built high-performance web interfaces and API integrations with Next.js and TypeScript.
+
+---
+
+## Contact & Online Ecosystem
+
+- **Main Website**: `https://www.hetav.dev/`
+- **Technical Blog**: `https://blog.hetav.dev/`
+- **Interactive CV**: `https://cv.hetav.dev/`
+- **Desktop Workspace**: `https://desktop.hetav.dev/`
+- **GitHub**: `https://github.com/Hetav21`
+- **LinkedIn**: `https://www.linkedin.com/in/hetav2106/`
+- **Email**: `shahhetav2106@gmail.com`
