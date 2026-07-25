@@ -27,3 +27,17 @@ After making changes, verify them using:
 - `bun run lint` - Check linting
 - `bun run test` - Run tests (web only)
   If modifying the blog, run `bun --filter blog dev` to ensure `.velite` generates successfully without type errors.
+
+## Agent skills
+
+### Issue tracker
+
+Local markdown issue tracking under `.scratch/<feature>/`. See `docs/agents/issue-tracker.md`.
+
+### Triage labels
+
+Canonical triage label vocabulary mapping. See `docs/agents/triage-labels.md`.
+
+### Domain docs
+
+Multi-context domain docs layout with `CONTEXT-MAP.md` at root. See `docs/agents/domain.md`.
