@@ -124,7 +124,7 @@ export function Header() {
             href={process.env.NEXT_PUBLIC_DESKTOP_URL || 'https://desktop.hetav.dev'}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-xs text-muted-foreground hover:text-foreground transition-colors px-2.5 py-1.5 rounded-full hover:bg-secondary/50 flex items-center gap-1"
+            className="text-xs text-muted-foreground hover:text-foreground transition-colors px-2.5 py-1.5 rounded-full hover:bg-secondary/50 hidden md:flex items-center gap-1"
           >
             Desktop <ExternalLink size={10} />
           </a>
