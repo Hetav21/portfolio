@@ -74,6 +74,7 @@ export default function PdfViewer({ simplified = false }: PdfViewerProps) {
                 onClick={zoomOut}
                 className="p-2 hover:bg-[#555] rounded-md transition-colors"
                 title="Zoom Out"
+                aria-label="Zoom Out"
               >
                 <ZoomOut size={20} />
               </button>
@@ -84,6 +85,7 @@ export default function PdfViewer({ simplified = false }: PdfViewerProps) {
                 onClick={zoomIn}
                 className="p-2 hover:bg-[#555] rounded-md transition-colors"
                 title="Zoom In"
+                aria-label="Zoom In"
               >
                 <ZoomIn size={20} />
               </button>
@@ -93,6 +95,7 @@ export default function PdfViewer({ simplified = false }: PdfViewerProps) {
               href="/resume.pdf"
               download
               className="flex items-center gap-2 px-4 py-2 bg-[#eb6f92] text-white rounded-lg hover:bg-[#d46483] transition-colors"
+              aria-label="Download Resume PDF"
             >
               <Download size={18} />
               <span>Download</span>

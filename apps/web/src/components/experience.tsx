@@ -65,6 +65,7 @@ export function Experience() {
                           target="_blank"
                           rel="noopener noreferrer"
                           className="text-muted-foreground hover:text-primary transition-colors"
+                          aria-label={`Visit ${item.company} website`}
                         >
                           <ExternalLink size={14} />
                         </a>

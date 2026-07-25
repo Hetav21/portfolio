@@ -67,6 +67,7 @@ export function Header() {
         <Link
           href="/"
           className="flex items-center gap-2 pl-1 pr-2 hover:opacity-80 transition-opacity"
+          aria-label="Hetav Shah Homepage"
         >
           <div className="relative h-7 w-7 overflow-hidden rounded-full border border-border/60">
             <Image
