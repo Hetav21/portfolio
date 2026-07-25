@@ -60,7 +60,7 @@ export const TopBar = () => {
             className="p-1.5 opacity-80 hover:opacity-100 hover:bg-muted/50 rounded-full transition-all duration-150"
             title="GitHub"
           >
-            <Github width={16} height={16} strokeWidth={1.75} />
+            <Github width={15} height={15} strokeWidth={1.75} />
           </a>
           <a
             href="https://www.linkedin.com/in/hetav2106/"
@@ -69,7 +69,7 @@ export const TopBar = () => {
             className="p-1.5 opacity-80 hover:opacity-100 hover:bg-muted/50 rounded-full transition-all duration-150"
             title="LinkedIn"
           >
-            <Linkedin width={16} height={16} strokeWidth={1.75} />
+            <Linkedin width={15} height={15} strokeWidth={1.75} />
           </a>
         </div>
 
@@ -80,9 +80,9 @@ export const TopBar = () => {
           title="Toggle Theme"
         >
           {theme === 'dark' ? (
-            <Moon width={16} height={16} strokeWidth={1.75} />
+            <Moon width={15} height={15} strokeWidth={1.75} />
           ) : (
-            <Sun width={16} height={16} strokeWidth={1.75} />
+            <Sun width={15} height={15} strokeWidth={1.75} />
           )}
         </button>
 
@@ -91,9 +91,9 @@ export const TopBar = () => {
           className="flex items-center gap-2 md:gap-3 px-2 md:px-3 py-1 opacity-80 hover:opacity-100 hover:bg-muted/50 rounded-full transition-all duration-150"
           title="System Status"
         >
-          <NetworkWirelessSymbolic width={16} height={16} />
-          <AudioVolumeHighSymbolic width={16} height={16} />
-          <BatteryFullSymbolic width={16} height={16} />
+          <NetworkWirelessSymbolic width={14} height={14} />
+          <AudioVolumeHighSymbolic width={14} height={14} />
+          <BatteryFullSymbolic width={14} height={14} />
         </button>
 
         {/* Power Menu - GNOME symbolic icon */}
@@ -102,7 +102,7 @@ export const TopBar = () => {
             onClick={() => setIsPowerMenuOpen(!isPowerMenuOpen)}
             className="p-1.5 opacity-80 hover:opacity-100 hover:bg-muted/50 rounded-full transition-all duration-150"
           >
-            <SystemShutdownSymbolic width={16} height={16} />
+            <SystemShutdownSymbolic width={15} height={15} />
           </button>
 
           {isPowerMenuOpen && (
@@ -113,7 +113,7 @@ export const TopBar = () => {
                   onClick={() => setBooting(true)}
                   className="w-full text-left px-4 py-2 hover:bg-muted flex items-center gap-2 text-destructive"
                 >
-                  <SystemShutdownSymbolic width={16} height={16} />
+                  <SystemShutdownSymbolic width={14} height={14} />
                   Restart System
                 </button>
               </div>
