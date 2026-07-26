@@ -75,6 +75,9 @@ export const Window = ({ id, title, children, constraintsRef }: WindowProps) => 
     motionHeight,
   ]);
 
+  const activeWindowId = useSystemStore((state) => state.activeWindowId);
+  const isActive = activeWindowId === id;
+
   const style = useMemo(() => ({ colorScheme: theme }), [theme]);
 
   if (!windowState) return null;
@@ -111,12 +114,16 @@ export const Window = ({ id, title, children, constraintsRef }: WindowProps) => 
         zIndex,
       }}
       className={cn(
-        'flex flex-col overflow-hidden bg-card text-card-foreground shadow-2xl transition-shadow pointer-events-auto',
-        isMaximized ? 'rounded-none' : 'rounded-xl border border-border'
+        'flex flex-col overflow-hidden bg-card text-card-foreground shadow-2xl transition-all duration-200 pointer-events-auto',
+        isMaximized ? 'rounded-none border-none' : 'rounded-xl border border-border/60',
+        isActive ? 'ring-1 ring-primary/20 shadow-2xl' : 'opacity-95 shadow-lg'
       )}
     >
       <div
-        className="relative flex h-10 items-center bg-secondary px-3 select-none"
+        className={cn(
+          'relative flex h-10 items-center px-3.5 select-none transition-colors border-b border-border/40',
+          isActive ? 'bg-secondary/95 text-foreground' : 'bg-secondary/60 text-muted-foreground'
+        )}
         onPointerDown={(e) => {
           handleFocus();
           if (!isMaximized) dragControls.start(e);
@@ -128,14 +135,14 @@ export const Window = ({ id, title, children, constraintsRef }: WindowProps) => 
           }
         }}
       >
-        {/* Buttons Container */}
+        {/* Window Control Buttons (Traffic Lights) */}
         <div className="flex gap-2 items-center z-10">
           <button
             onClick={(e) => {
               e.stopPropagation();
               closeWindow(id);
             }}
-            className="group flex h-3 w-3 items-center justify-center rounded-full bg-[#eb6f92] text-[#4c0002] hover:bg-[#eb6f92]/80"
+            className="group flex h-3 w-3 items-center justify-center rounded-full bg-[#ff5f56] text-[#4c0002] hover:bg-[#ff5f56]/90 transition-all active:scale-90 shadow-sm"
             aria-label="Close window"
           >
             <X
@@ -149,7 +156,7 @@ export const Window = ({ id, title, children, constraintsRef }: WindowProps) => 
               e.stopPropagation();
               minimizeWindow(id);
             }}
-            className="group hidden md:flex h-3 w-3 items-center justify-center rounded-full bg-[#f6c177] text-[#4c2f00] hover:bg-[#f6c177]/80"
+            className="group hidden md:flex h-3 w-3 items-center justify-center rounded-full bg-[#ffbd2e] text-[#5c3d00] hover:bg-[#ffbd2e]/90 transition-all active:scale-90 shadow-sm"
             aria-label="Minimize window"
           >
             <Minus
@@ -163,7 +170,7 @@ export const Window = ({ id, title, children, constraintsRef }: WindowProps) => 
               e.stopPropagation();
               maximizeWindow(id);
             }}
-            className="group hidden md:flex h-3 w-3 items-center justify-center rounded-full bg-[#9ccfd8] text-[#004d16] hover:bg-[#9ccfd8]/80"
+            className="group hidden md:flex h-3 w-3 items-center justify-center rounded-full bg-[#27c93f] text-[#004d16] hover:bg-[#27c93f]/90 transition-all active:scale-90 shadow-sm"
             aria-label={isMaximized ? 'Restore window' : 'Maximize window'}
           >
             {isMaximized ? (
@@ -184,7 +191,14 @@ export const Window = ({ id, title, children, constraintsRef }: WindowProps) => 
 
         {/* Centered Title */}
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-          <span className="text-sm font-medium text-muted-foreground">{title}</span>
+          <span
+            className={cn(
+              'text-xs font-semibold tracking-tight transition-colors',
+              isActive ? 'text-foreground/90' : 'text-muted-foreground/60'
+            )}
+          >
+            {title}
+          </span>
         </div>
       </div>
 
