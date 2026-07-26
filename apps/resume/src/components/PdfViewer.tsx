@@ -61,40 +61,40 @@ export default function PdfViewer({ simplified = false }: PdfViewerProps) {
 
   return (
     <div
-      className={`flex flex-col items-center ${simplified ? 'w-full' : 'w-full min-h-screen bg-[#525252]'}`}
+      className={`flex flex-col items-center ${simplified ? 'w-full' : 'w-full min-h-screen bg-slate-900'}`}
     >
       {/* Toolbar - Only visible in full mode */}
       {!simplified && (
-        <div className="sticky top-0 z-50 w-full bg-[#333] text-white shadow-md p-4 flex justify-between items-center mb-8">
-          <div className="font-semibold text-lg">Resume.pdf</div>
+        <div className="sticky top-0 z-50 w-full bg-slate-950/90 backdrop-blur border-b border-slate-800 text-slate-100 shadow-md px-6 py-3 flex justify-between items-center mb-8">
+          <div className="font-medium text-sm tracking-wide text-slate-200">Resume.pdf</div>
 
           <div className="flex items-center gap-4">
-            <div className="flex items-center bg-[#444] rounded-lg p-1">
+            <div className="flex items-center bg-slate-800/80 border border-slate-700/60 rounded-lg p-1">
               <button
                 onClick={zoomOut}
-                className="p-2 hover:bg-[#555] rounded-md transition-colors"
+                className="p-1.5 hover:bg-slate-700 text-slate-300 hover:text-white rounded-md transition-colors"
                 title="Zoom Out"
               >
-                <ZoomOut size={20} />
+                <ZoomOut size={18} />
               </button>
-              <span className="px-3 text-sm min-w-[3rem] text-center">
+              <span className="px-3 text-xs font-medium min-w-[3.5rem] text-center text-slate-300">
                 {Math.round(scale * 100)}%
               </span>
               <button
                 onClick={zoomIn}
-                className="p-2 hover:bg-[#555] rounded-md transition-colors"
+                className="p-1.5 hover:bg-slate-700 text-slate-300 hover:text-white rounded-md transition-colors"
                 title="Zoom In"
               >
-                <ZoomIn size={20} />
+                <ZoomIn size={18} />
               </button>
             </div>
 
             <a
               href="/resume.pdf"
               download
-              className="flex items-center gap-2 px-4 py-2 bg-[#eb6f92] text-white rounded-lg hover:bg-[#d46483] transition-colors"
+              className="flex items-center gap-2 px-4 py-2 bg-indigo-600 text-white text-sm font-medium rounded-lg hover:bg-indigo-500 shadow-sm transition-colors"
             >
-              <Download size={18} />
+              <Download size={16} />
               <span>Download</span>
             </a>
           </div>
@@ -107,13 +107,13 @@ export default function PdfViewer({ simplified = false }: PdfViewerProps) {
         onLoadSuccess={onDocumentLoadSuccess}
         className={simplified ? 'w-full' : 'shadow-2xl'}
         loading={
-          <div className="flex flex-col items-center justify-center h-96 text-white gap-3">
-            <Loader2 size={32} className="animate-spin" />
+          <div className="flex flex-col items-center justify-center h-96 text-slate-300 gap-3">
+            <Loader2 size={32} className="animate-spin text-indigo-400" />
             <p>Loading PDF...</p>
           </div>
         }
         error={
-          <div className="flex items-center justify-center h-96 text-[#eb6f92]">
+          <div className="flex items-center justify-center h-96 text-rose-400 font-medium">
             Failed to load PDF.
           </div>
         }
