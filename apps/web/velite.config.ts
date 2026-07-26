@@ -29,7 +29,7 @@ export default defineConfig({
           tags: s.array(s.string()).default([]),
           link: s.string().url().optional(),
           order: s.number().default(0),
-          content: s.mdx(),
+          content: s.markdown(),
         })
         .transform((data) => ({
           ...data,
@@ -48,7 +48,7 @@ export default defineConfig({
         demoUrl: s.string().url().optional(),
         featured: s.boolean().default(false),
         order: s.number().default(0),
-        content: s.mdx(),
+        content: s.markdown(),
       }),
     },
     certifications: {
