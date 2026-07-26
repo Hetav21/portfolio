@@ -11,8 +11,8 @@ const config: NextConfig = {
             value: 'nosniff',
           },
           {
-            key: 'X-Frame-Options',
-            value: 'DENY',
+            key: 'Content-Security-Policy',
+            value: "frame-ancestors 'self' https://desktop.hetav.dev;",
           },
           {
             key: 'Referrer-Policy',
