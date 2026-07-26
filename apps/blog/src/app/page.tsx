@@ -21,21 +21,27 @@ export default function BlogIndex() {
         name: "Hetav's Blog",
         description: 'Writing about code, Linux, and web development.',
         publisher: {
-          '@id': `${siteUrl}/#person`,
+          '@id': 'https://www.hetav.dev/#person',
         },
         inLanguage: 'en-US',
       },
       {
         '@type': 'Person',
-        '@id': `${siteUrl}/#person`,
+        '@id': 'https://www.hetav.dev/#person',
         name: 'Hetav Shah',
-        url: siteUrl,
+        url: 'https://www.hetav.dev/',
         sameAs: [
           'https://github.com/Hetav21',
           'https://www.linkedin.com/in/hetav2106/',
           'https://x.com/Hetav_21',
+          'https://blog.hetav.dev',
+          'https://cv.hetav.dev',
         ],
         jobTitle: 'Associate AI Engineer',
+        worksFor: {
+          '@type': 'Organization',
+          name: 'ProductSquads',
+        },
       },
     ],
   };

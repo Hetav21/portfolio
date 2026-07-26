@@ -68,17 +68,25 @@ export default async function PostPage({ params }: PostPageProps) {
     '@type': 'BlogPosting',
     headline: post.title,
     description: post.description || `Read ${post.title} on Hetav's Blog.`,
+    image: {
+      '@type': 'ImageObject',
+      url: `${siteUrl}/${slug}/opengraph-image`,
+      width: 1200,
+      height: 630,
+    },
     datePublished: post.date,
     dateModified: post.date,
     url: postUrl,
     author: {
       '@type': 'Person',
+      '@id': 'https://www.hetav.dev/#person',
       name: 'Hetav Shah',
-      url: siteUrl,
+      url: 'https://www.hetav.dev/',
       sameAs: [
         'https://github.com/Hetav21',
         'https://www.linkedin.com/in/hetav2106/',
         'https://x.com/Hetav_21',
+        'https://blog.hetav.dev',
       ],
     },
     publisher: {

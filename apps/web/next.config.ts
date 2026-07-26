@@ -1,7 +1,6 @@
 import type { NextConfig } from 'next';
 
 const config: NextConfig = {
-  transpilePackages: ['react-pdf'],
   async headers() {
     return [
       {
@@ -43,14 +42,6 @@ const config: NextConfig = {
     formats: ['image/avif', 'image/webp'],
     deviceSizes: [640, 750, 828, 1080, 1200, 1920],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
-  },
-  webpack: (config) => {
-    // @ts-ignore - The webpack config type definition might be slightly different
-    if (config.resolve && config.resolve.alias) {
-      // @ts-ignore
-      config.resolve.alias.canvas = false;
-    }
-    return config;
   },
 };
 
