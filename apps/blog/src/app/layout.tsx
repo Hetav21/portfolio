@@ -15,7 +15,7 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://blog.hetav.dev';
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Hetav's Blog",
+    default: "Hetav's Blog | Software, AI & Web Development",
     template: "%s | Hetav's Blog",
   },
   description: 'Writing about code, Linux, and web development.',
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Hetav's Blog",
+    title: "Hetav's Blog | Software, AI & Web Development",
     description: 'Writing about code, Linux, and web development.',
     url: siteUrl,
     siteName: "Hetav's Blog",
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: "Hetav's Blog",
+    title: "Hetav's Blog | Software, AI & Web Development",
     description: 'Writing about code, Linux, and web development.',
   },
   robots: {
