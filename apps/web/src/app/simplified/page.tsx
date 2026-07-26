@@ -14,6 +14,7 @@ export default function SimplifiedResume() {
   // Simplified view: Native feel, no padding, just the PDF
   return (
     <div className="min-h-screen bg-[#525252] w-full overflow-y-auto">
+      <h1 className="sr-only">Hetav Shah — Resume & CV</h1>
       <PdfViewer simplified={true} />
     </div>
   );

@@ -41,6 +41,7 @@ export function Hero() {
               className="text-4xl md:text-5xl font-bold tracking-tight mb-4 text-foreground"
             >
               Hetav Shah
+              <span className="sr-only"> — Associate AI Engineer & Agentic AI Specialist</span>
             </motion.h1>
 
             <motion.p
