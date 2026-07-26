@@ -3,6 +3,7 @@ import { JetBrains_Mono } from 'next/font/google';
 import './globals.css';
 import { ThemeProvider } from '@/components/theme-provider';
 import { Header } from '@/components/header';
+import { Footer } from '@/components/footer';
 
 const jetbrainsMono = JetBrains_Mono({
   subsets: ['latin'],
@@ -42,6 +43,9 @@ export const metadata: Metadata = {
   robots: {
     index: true,
     follow: true,
+    'max-video-preview': -1,
+    'max-image-preview': 'large',
+    'max-snippet': -1,
     googleBot: {
       index: true,
       follow: true,
@@ -77,6 +81,7 @@ export default function RootLayout({
         >
           <Header />
           <main className="flex-1 w-full max-w-screen-md mx-auto py-10 px-4">{children}</main>
+          <Footer />
         </ThemeProvider>
       </body>
     </html>

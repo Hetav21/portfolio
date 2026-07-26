@@ -8,6 +8,10 @@ Hetav's Blog (hetav.dev) is a technical blog covering software engineering, Linu
 ## Featured Posts
 - [Hello World](https://blog.hetav.dev/hello-world): Overview of the blog system and tech stack.
 
+## Portfolio & Author Profile
+- [Hetav Shah Portfolio](https://www.hetav.dev/): Main portfolio, experience, and open-source projects
+- [Full LLM Profile](https://www.hetav.dev/llms.txt): Author bio and background details
+
 ## Feeds & Resources
 - RSS Feed: https://blog.hetav.dev/rss
 - Atom Feed: https://blog.hetav.dev/atom

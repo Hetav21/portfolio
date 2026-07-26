@@ -23,6 +23,12 @@ export default function BlogIndex() {
         publisher: {
           '@id': 'https://www.hetav.dev/#person',
         },
+        isPartOf: {
+          '@type': 'WebSite',
+          '@id': 'https://www.hetav.dev/#website',
+          name: 'Hetav Shah Portfolio',
+          url: 'https://www.hetav.dev/',
+        },
         inLanguage: 'en-US',
       },
       {
