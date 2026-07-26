@@ -7,12 +7,39 @@ export function RssCopyButton() {
   const [copied, setCopied] = useState(false);
 
   const handleCopy = async () => {
-    try {
-      await navigator.clipboard.writeText('https://blog.hetav.dev/rss');
+    const blogUrl = process.env.NEXT_PUBLIC_BLOG_URL || 'https://blog.hetav.dev';
+    const textToCopy = `${blogUrl}/rss`;
+    let success = false;
+
+    if (navigator.clipboard && typeof navigator.clipboard.writeText === 'function') {
+      try {
+        await navigator.clipboard.writeText(textToCopy);
+        success = true;
+      } catch {
+        // Fallback to execCommand if permission policy blocks writeText
+      }
+    }
+
+    if (!success) {
+      try {
+        const textArea = document.createElement('textarea');
+        textArea.value = textToCopy;
+        textArea.style.position = 'fixed';
+        textArea.style.left = '-999999px';
+        textArea.style.top = '-999999px';
+        document.body.appendChild(textArea);
+        textArea.focus();
+        textArea.select();
+        success = document.execCommand('copy');
+        document.body.removeChild(textArea);
+      } catch (err) {
+        console.error('Failed to copy text: ', err);
+      }
+    }
+
+    if (success) {
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
-    } catch (err) {
-      console.error('Failed to copy text: ', err);
     }
   };
 

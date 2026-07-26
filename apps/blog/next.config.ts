@@ -1,5 +1,10 @@
 import type { NextConfig } from 'next';
 
+const isDev = process.env.NODE_ENV === 'development';
+const frameAncestors = isDev
+  ? "'self' https://desktop.hetav.dev http://localhost:* http://127.0.0.1:*"
+  : "'self' https://desktop.hetav.dev";
+
 const config: NextConfig = {
   async headers() {
     return [
@@ -12,7 +17,7 @@ const config: NextConfig = {
           },
           {
             key: 'Content-Security-Policy',
-            value: "frame-ancestors 'self' https://desktop.hetav.dev;",
+            value: `frame-ancestors ${frameAncestors}`,
           },
           {
             key: 'Referrer-Policy',
@@ -20,7 +25,7 @@ const config: NextConfig = {
           },
           {
             key: 'Permissions-Policy',
-            value: 'camera=(), microphone=(), geolocation=()',
+            value: 'camera=(), microphone=(), geolocation=(), clipboard-write=*',
           },
         ],
       },
