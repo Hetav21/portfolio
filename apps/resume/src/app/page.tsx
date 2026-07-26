@@ -1,5 +1,5 @@
-import ResumeContent from '../components/ResumeContent';
+import PdfViewer from '../components/PdfViewer';
 
 export default function Page() {
-  return <ResumeContent />;
+  return <PdfViewer />;
 }
