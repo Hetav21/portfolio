@@ -49,6 +49,7 @@ export default function Home() {
 
   return (
     <main className="h-screen w-screen overflow-hidden bg-background font-sans">
+      <h1 className="sr-only">Hetav Shah | Associate AI Engineer Portfolio</h1>
       <AnimatePresence mode="wait">
         {isBooting ? <BootSequence key="boot" /> : <Desktop key="desktop" />}
       </AnimatePresence>
