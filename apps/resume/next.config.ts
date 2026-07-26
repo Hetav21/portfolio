@@ -2,6 +2,20 @@ import type { NextConfig } from 'next';
 
 const config: NextConfig = {
   transpilePackages: ['react-pdf'],
+  async redirects() {
+    return [
+      {
+        source: '/',
+        destination: '/resume.pdf',
+        permanent: false,
+      },
+      {
+        source: '/simplified',
+        destination: '/resume.pdf',
+        permanent: false,
+      },
+    ];
+  },
   async headers() {
     return [
       {
