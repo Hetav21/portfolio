@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <!-- Solid background — required for maskable icons (no transparency) -->
+  <rect width="512" height="512" fill="#191724"/>
+  <!-- >_ text centered within the safe zone (10% padding each side = 51.2px, so content fits in 409.6px area) -->
+  <text
+    x="256"
+    y="320"
+    text-anchor="middle"
+    font-family="'JetBrains Mono', monospace"
+    font-weight="bold"
+    font-size="240"
+    fill="#c4a7e7"
+  >&gt;_</text>
+</svg>

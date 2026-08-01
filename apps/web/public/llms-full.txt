@@ -69,4 +69,4 @@
 - **Desktop Workspace**: `https://desktop.hetav.dev/`
 - **GitHub**: `https://github.com/Hetav21`
 - **LinkedIn**: `https://www.linkedin.com/in/hetav2106/`
-- **Email**: `shahhetav2106@gmail.com`
+- **Email**: `hello@hetav.dev`

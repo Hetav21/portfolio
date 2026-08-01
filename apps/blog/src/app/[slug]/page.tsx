@@ -48,6 +48,8 @@ export async function generateMetadata({ params }: PostPageProps): Promise<Metad
       card: 'summary_large_image',
       title: post.title,
       description: post.description || `Read ${post.title} on Hetav's Blog.`,
+      creator: '@Hetav_21',
+      site: '@Hetav_21',
     },
   };
 }

@@ -25,6 +25,7 @@ export const metadata: Metadata = {
       'application/rss+xml': '/rss',
       'application/atom+xml': '/atom',
       'application/feed+json': '/feed.json',
+      'text/plain': [{ url: '/llms.txt', title: 'LLM Summary' }],
     },
   },
   openGraph: {
@@ -39,6 +40,8 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: "Hetav's Blog | Software, AI & Web Development",
     description: 'Writing about code, Linux, and web development.',
+    creator: '@Hetav_21',
+    site: '@Hetav_21',
   },
   robots: {
     index: true,
@@ -122,6 +125,12 @@ export default function RootLayout({
         className={`${jetbrainsMono.variable} font-mono bg-background text-foreground antialiased min-h-screen flex flex-col`}
         suppressHydrationWarning
       >
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[9999] focus:px-4 focus:py-2 focus:bg-primary focus:text-primary-foreground focus:rounded-lg focus:font-medium"
+        >
+          Skip to main content
+        </a>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
@@ -129,7 +138,9 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <Header />
-          <main className="flex-1 w-full max-w-screen-md mx-auto py-10 px-4">{children}</main>
+          <main id="main-content" className="flex-1 w-full max-w-screen-md mx-auto py-10 px-4">
+            {children}
+          </main>
           <Footer />
         </ThemeProvider>
       </body>

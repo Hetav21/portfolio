@@ -1,19 +1,20 @@
-# Hetav's Blog
+# Hetav's Blog - Technical Writing by Hetav Shah
 
-> Writing about code, Linux, and web development.
+> A technical blog by Hetav Shah (Associate AI Engineer at ProductSquads) covering Agentic AI, Model Context Protocol (MCP), AWS cloud architecture, NixOS, and full-stack web development.
 
-## About
-Hetav's Blog (hetav.dev) is a technical blog covering software engineering, Linux, web development, AI tooling, and modern frameworks.
+## About the Author
+- Full profile: https://www.hetav.dev/llms.txt
+- Portfolio: https://www.hetav.dev/
+- GitHub: https://github.com/Hetav21
 
-## Featured Posts
-- [Hello World](https://blog.hetav.dev/hello-world): Overview of the blog system and tech stack.
+## Blog Index
+- [All Posts](https://blog.hetav.dev/): Technical articles on AI, cloud, and web development
+- [RSS Feed](https://blog.hetav.dev/rss): Subscribe to new posts
+- [Atom Feed](https://blog.hetav.dev/atom): Alternate subscription format
 
-## Portfolio & Author Profile
-- [Hetav Shah Portfolio](https://www.hetav.dev/): Main portfolio, experience, and open-source projects
-- [Full LLM Profile](https://www.hetav.dev/llms.txt): Author bio and background details
-
-## Feeds & Resources
-- RSS Feed: https://blog.hetav.dev/rss
-- Atom Feed: https://blog.hetav.dev/atom
-- JSON Feed: https://blog.hetav.dev/feed.json
-- XML Sitemap: https://blog.hetav.dev/sitemap.xml
+## Topics Covered
+- Agentic AI & RAG pipelines
+- Model Context Protocol (MCP)
+- AWS serverless architecture
+- NixOS & Linux tooling
+- Next.js & TypeScript web development

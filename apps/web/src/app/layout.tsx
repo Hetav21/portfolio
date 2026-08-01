@@ -57,6 +57,8 @@ export const metadata: Metadata = {
     title: 'Hetav Shah | Associate AI Engineer & Agentic AI Specialist',
     description:
       'Hetav Shah is an Associate AI Engineer at ProductSquads specializing in Agentic AI, AWS cloud architecture, multi-modal RAG, and serverless AI.',
+    creator: '@Hetav_21',
+    site: '@Hetav_21',
   },
   icons: {
     icon: [
@@ -87,6 +89,12 @@ export default async function RootLayout({
         className={`${jetbrainsMono.variable} font-mono bg-background text-foreground antialiased min-h-screen flex flex-col`}
         suppressHydrationWarning
       >
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[9999] focus:px-4 focus:py-2 focus:bg-primary focus:text-primary-foreground focus:rounded-lg focus:font-medium"
+        >
+          Skip to main content
+        </a>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
@@ -213,7 +221,10 @@ export default async function RootLayout({
           </div>
 
           <Header />
-          <main className="relative z-10 flex-1 w-full max-w-5xl mx-auto px-6 py-12 space-y-32">
+          <main
+            id="main-content"
+            className="relative z-10 flex-1 w-full max-w-5xl mx-auto px-6 py-12 space-y-32"
+          >
             {children}
           </main>
           <Footer />
