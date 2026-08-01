@@ -28,7 +28,7 @@ All skills for this workflow are installed locally in the project repository und
 | **Phase 10**| GEO & SEO Optimization | `ai-seo`, `seo` | Optimizes post for Google SEO and Generative Answer Surfaces without losing the human voice. |
 | **Phase 11**| Chief Editor Review Loop (FSM Router) | `chief-editor` | Pre-final QA phase. Suggests changes (e.g., missing tables, weak flow) routing the orchestrator back to earlier phases (Drafting, Visuals) up to 3 times before approval. |
 | **Phase 12**| Technical Audit & Build | `seo`, `velite` | Validates Core Web Vitals, HTML semantic markup, verifies `.velite` MDX compilation, and ensures no broken links. |
-| **Phase 13**| Social Distribution & Selective Publishing | `copywriting`, `social`, `twitter-algorithm-optimizer` | Repurposes the blog post into X/LinkedIn posts and newsletters. Emphasizes serving current readers over pure virality (Tip 19) and selective publishing (Tip 21). |
+| **Phase 13**| Social Distribution & Selective Publishing | `copywriting`, `twitter-algorithm-optimizer` | Repurposes the blog post into X/LinkedIn posts and newsletters. Emphasizes serving current readers over pure virality (Tip 19) and selective publishing (Tip 21). |
 
 ---
 

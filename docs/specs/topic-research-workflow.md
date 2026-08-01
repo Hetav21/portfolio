@@ -18,13 +18,13 @@ Like the blog creation pipeline, this workflow uses an **Orchestrator-Subagent**
 
 All skills for this workflow are installed locally under `.agents/skills/`:
 
-| Phase       | Phase Name                  | Primary Local Skills (`.agents/skills/`)   | Description                                                                              |
-| :---------- | :-------------------------- | :----------------------------------------- | :--------------------------------------------------------------------------------------- |
-| **Phase 1** | Community Discussion Mining | `reddapi`, `github-trending`, `hackernews` | Scrapes Reddit pain points, GitHub trending repos, and Hacker News tech discussions.     |
-| **Phase 2** | Tech Signal Ingestion       | `news-aggregator-skill`                    | Ingests RSS feeds of engineering blogs to extract "weak signals" and technical depth.    |
-| **Phase 3** | Search Demand Validation    | `find-keywords`                            | Validates search intent, search volume spikes, and primary/secondary target terms.       |
-| **Phase 4** | GEO Competitor Gap Analysis | `competitor-analysis`                      | Audits top-ranking content using EEAT/CITE frameworks to find LLM citation gaps.         |
-| **Phase 5** | Angle & Hook Framing        | `marketing-ideas`                          | Packages research data into actionable blog titles, angles, hooks, and content outlines. |
+| Phase       | Phase Name                  | Primary Local Skills (`.agents/skills/`) | Description                                                                                                 |
+| :---------- | :-------------------------- | :--------------------------------------- | :---------------------------------------------------------------------------------------------------------- |
+| **Phase 1** | Community Discussion Mining | `reddapi`, `github-trending`             | Scrapes Reddit pain points and GitHub trending repos to extract real developer complaints and rising tools. |
+| **Phase 2** | Tech Signal Ingestion       | `research`                               | Searches engineering blogs and release notes to extract "weak signals" and technical depth.                 |
+| **Phase 3** | Search Demand Validation    | `find-keywords`                          | Validates search intent, search volume spikes, and primary/secondary target terms.                          |
+| **Phase 4** | GEO Competitor Gap Analysis | `competitor-analysis`                    | Audits top-ranking content using EEAT/CITE frameworks to find LLM citation gaps.                            |
+| **Phase 5** | Angle & Hook Framing        | `content-strategy`                       | Packages research data into actionable blog titles, angles, hooks, and content outlines.                    |
 
 ---
 
