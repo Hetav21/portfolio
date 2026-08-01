@@ -82,6 +82,7 @@ export default async function PostPage({ params }: PostPageProps) {
       '@id': 'https://www.hetav.dev/#person',
       name: 'Hetav Shah',
       url: 'https://www.hetav.dev/',
+      email: 'mailto:contact@hetav.dev',
       sameAs: [
         'https://github.com/Hetav21',
         'https://www.linkedin.com/in/hetav2106/',

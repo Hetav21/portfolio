@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { Send, Github, Linkedin, Mail } from 'lucide-react';
 
-const TARGET_EMAIL = 'shahhetav2106@gmail.com';
+const TARGET_EMAIL = 'hello@hetav.dev';
 
 export default function Contact() {
   const [subject, setSubject] = useState('');

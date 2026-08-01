@@ -90,7 +90,7 @@ export function Hero() {
                 <span>LinkedIn</span>
               </a>
               <a
-                href="mailto:shahhetav2106@gmail.com"
+                href="mailto:hello@hetav.dev"
                 className="flex items-center gap-2 bg-secondary/60 hover:bg-secondary text-secondary-foreground px-4 py-2 rounded-lg transition-all duration-300 font-medium border border-border/60 hover:border-border text-sm hover:shadow-lg hover:shadow-primary/5"
               >
                 <Mail size={16} />

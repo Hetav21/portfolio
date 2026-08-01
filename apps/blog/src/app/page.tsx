@@ -36,6 +36,7 @@ export default function BlogIndex() {
         '@id': 'https://www.hetav.dev/#person',
         name: 'Hetav Shah',
         url: 'https://www.hetav.dev/',
+        email: 'mailto:contact@hetav.dev',
         sameAs: [
           'https://github.com/Hetav21',
           'https://www.linkedin.com/in/hetav2106/',

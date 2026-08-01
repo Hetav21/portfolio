@@ -128,7 +128,7 @@ export default async function RootLayout({
                     },
                     url: 'https://www.hetav.dev/',
                     image: 'https://www.hetav.dev/avatar.png',
-                    email: 'mailto:shahhetav2106@gmail.com',
+                    email: 'mailto:contact@hetav.dev',
                     knowsLanguage: ['English', 'Gujarati', 'Hindi'],
                     sameAs: [
                       'https://github.com/Hetav21',

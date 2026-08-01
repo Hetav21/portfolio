@@ -80,7 +80,7 @@ const jsonLdData = {
       givenName: 'Hetav',
       familyName: 'Shah',
       url: 'https://hetav.dev',
-      email: 'mailto:shahhetav2106@gmail.com',
+      email: 'mailto:contact@hetav.dev',
       jobTitle: 'Associate AI Engineer',
       worksFor: {
         '@type': 'Organization',

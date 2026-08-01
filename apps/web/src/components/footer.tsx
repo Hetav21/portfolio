@@ -29,7 +29,7 @@ export function Footer() {
             LinkedIn
           </a>
           <a
-            href="mailto:shahhetav2106@gmail.com"
+            href="mailto:hello@hetav.dev"
             className="text-sm text-muted-foreground hover:text-primary transition-colors"
           >
             Email
