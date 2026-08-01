@@ -1,0 +1,46 @@
+# Hetav's Blog - Comprehensive AI Profile & Extended Documentation
+
+> A technical blog by Hetav Shah, Associate AI Engineer at ProductSquads. This blog covers deep-dive articles on Agentic AI, Model Context Protocol (MCP), AWS cloud architecture, NixOS, and full-stack web development. For the full author profile, see https://www.hetav.dev/llms-full.txt.
+
+## Author Profile
+
+- **Name**: Hetav Shah
+- **Role**: Associate AI Engineer at ProductSquads
+- **Education**: B.Tech Computer Science, Adani University
+- **Portfolio**: https://www.hetav.dev/
+- **CV / Resume**: https://cv.hetav.dev/
+- **GitHub**: https://github.com/Hetav21
+- **LinkedIn**: https://www.linkedin.com/in/hetav2106/
+- **X (Twitter)**: https://x.com/Hetav_21
+
+## Core Specializations
+
+- **Agentic AI Architecture**: Autonomous, multi-step AI agents using LangChain, LlamaIndex, Model Context Protocol (MCP), and custom orchestration pipelines.
+- **Multi-Modal RAG Systems**: High-accuracy document processing and retrieval with vector databases (pgvector, Qdrant), hybrid search, and re-ranking models.
+- **AWS Cloud Infrastructure**: AWS Cloud Architect with expertise in serverless architectures (Lambda, EventBridge, SQS/SNS), Amazon Bedrock, and infrastructure-as-code.
+- **Full-Stack Engineering**: TypeScript, React, Next.js, Python (FastAPI, PyDantic), and Node.js.
+
+## Blog Content
+
+### Index
+- [All Posts](https://blog.hetav.dev/): Browse all published articles
+- [RSS Feed](https://blog.hetav.dev/rss): Machine-readable feed of all posts
+- [Atom Feed](https://blog.hetav.dev/atom): Alternate subscription format
+- [JSON Feed](https://blog.hetav.dev/feed.json): JSON-format feed
+
+### Topics Covered
+- Agentic AI & RAG pipelines
+- Model Context Protocol (MCP) — tools, servers, advanced patterns
+- AWS serverless architecture — Lambda, Bedrock, EventBridge
+- NixOS & Linux tooling — reproducible configurations, dev environments
+- Next.js & TypeScript — full-stack web development patterns
+- Developer productivity — automation, workflows, tooling
+
+---
+
+## Contact & Online Ecosystem
+
+- **Email**: hello@hetav.dev
+- **Blog**: https://blog.hetav.dev/
+- **Portfolio**: https://www.hetav.dev/
+- **Full LLM Profile**: https://www.hetav.dev/llms-full.txt

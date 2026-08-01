@@ -25,7 +25,10 @@ export const metadata: Metadata = {
       'application/rss+xml': '/rss',
       'application/atom+xml': '/atom',
       'application/feed+json': '/feed.json',
-      'text/plain': [{ url: '/llms.txt', title: 'LLM Summary' }],
+      'text/plain': [
+        { url: '/llms.txt', title: 'LLM Summary' },
+        { url: '/llms-full.txt', title: 'Full LLM Documentation' },
+      ],
     },
   },
   openGraph: {
@@ -95,12 +98,23 @@ export default function RootLayout({
         '@id': 'https://www.hetav.dev/#person',
         name: 'Hetav Shah',
         url: 'https://www.hetav.dev/',
+        image: 'https://www.hetav.dev/avatar.png',
         email: 'mailto:contact@hetav.dev',
+        description:
+          'Associate AI Engineer specializing in Agentic AI, RAG pipelines, Model Context Protocol (MCP), and serverless AI on AWS.',
         jobTitle: 'Associate AI Engineer',
         worksFor: {
           '@type': 'Organization',
           name: 'ProductSquads',
         },
+        knowsAbout: [
+          'Agentic AI Solutions',
+          'AWS Cloud Architecture',
+          'Multi-modal RAG',
+          'Model Context Protocol (MCP)',
+          'Next.js',
+          'Python',
+        ],
         sameAs: [
           'https://github.com/Hetav21',
           'https://www.linkedin.com/in/hetav2106/',

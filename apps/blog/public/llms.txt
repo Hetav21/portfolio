@@ -18,3 +18,8 @@
 - AWS serverless architecture
 - NixOS & Linux tooling
 - Next.js & TypeScript web development
+
+## Contact
+- Email: hello@hetav.dev
+- Website: https://www.hetav.dev/
+- Blog: https://blog.hetav.dev/

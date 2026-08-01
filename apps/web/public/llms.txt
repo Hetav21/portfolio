@@ -23,4 +23,6 @@
 - [Clickify](https://github.com/Hetav21/clickify): Web automation & developer productivity utilities
 - [NixOS Config](https://github.com/Hetav21/nixos-config): Declarative system configurations
 
-
+## Contact
+- Email: hello@hetav.dev
+- Website: https://www.hetav.dev/
