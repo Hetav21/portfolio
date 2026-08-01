@@ -75,7 +75,7 @@ const jsonLdData = {
   '@graph': [
     {
       '@type': 'Person',
-      '@id': 'https://cv.hetav.dev/#person',
+      '@id': 'https://www.hetav.dev/#person',
       name: 'Hetav Shah',
       givenName: 'Hetav',
       familyName: 'Shah',
@@ -118,7 +118,7 @@ const jsonLdData = {
       description:
         'Official Curriculum Vitae of Hetav Shah, Associate AI Engineer specializing in Agentic AI and Full-Stack Engineering.',
       mainEntity: {
-        '@id': 'https://cv.hetav.dev/#person',
+        '@id': 'https://www.hetav.dev/#person',
       },
     },
   ],
