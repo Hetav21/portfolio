@@ -18,16 +18,19 @@ Phase 1: Brand Strategy Subagent (.agents/skills/product-marketing, content-stra
 Phase 2: Keyword Research Subagent (.agents/skills/keyword-research, keyword-clustering, find-keywords)
    │
    ▼
-Phase 3: Drafting Subagent (.agents/skills/blog, blog-writing-guide) ──> Writes apps/blog/content/posts/<slug>.mdx
+Phase 3: Content Drafting Subagent (.agents/skills/blog, blog-writing-guide, velite) ──> Drafts article text
    │
    ▼
-Phase 4: GEO & SEO Optimization Subagent (.agents/skills/ai-seo, seo)
+Phase 4: Visual Media & Diagram Subagent (.agents/skills/mermaid-diagrams, diagram-creator) ──> Inserts Mermaid diagrams, schematics & warning callouts
    │
    ▼
-Phase 5: Technical Audit & Velite Build Verification Subagent (.agents/skills/seo)
+Phase 5: GEO & SEO Optimization Subagent (.agents/skills/ai-seo, seo)
    │
    ▼
-Phase 6: Social Distribution Subagent (.agents/skills/copywriting, social)
+Phase 6: Technical Audit & Velite Build Verification Subagent (.agents/skills/seo, velite)
+   │
+   ▼
+Phase 7: Social Distribution Subagent (.agents/skills/copywriting, social, twitter-algorithm-optimizer)
 ```
 
 ---
@@ -57,36 +60,46 @@ Phase 6: Social Distribution Subagent (.agents/skills/copywriting, social)
 
 - **Tool**: `invoke_subagent` (Role: `Blog Post Drafter`)
 - **Skills to Consult**: `.agents/skills/blog/SKILL.md`, `.agents/skills/blog-writing-guide/SKILL.md`, `.agents/skills/velite/SKILL.md`
-- **Goal**: Draft the full long-form MDX article following the Velite schema defined in `apps/blog/velite.config.ts`.
+- **Goal**: Draft the full long-form MDX article text following the Velite schema defined in `apps/blog/velite.config.ts`.
 - **Target File**: `apps/blog/content/posts/<slug>.mdx`
-- **Frontmatter Requirements**:
-  ```yaml
-  ---
-  title: 'Title (Max 99 chars)'
-  description: 'Description summary (Max 999 chars)'
-  date: 'YYYY-MM-DD'
-  published: true
-  tags: ['Tech', 'AI']
-  ---
+
+### Step 5: Phase 4 — Visual Media & Diagram Architecture (Subagent 4) ⭐ **NEW**
+
+- **Tool**: `invoke_subagent` (Role: `Visual Media & Diagram Specialist`)
+- **Skills to Consult**: `.agents/skills/design-doc-mermaid/SKILL.md`, `.agents/skills/mermaid-diagrams/SKILL.md`, `.agents/skills/diagram-creator/SKILL.md`
+- **Goal**: Analyze the Phase 3 drafted MDX article text to **discover key concepts, data flows, and architecture steps that require visual representation**. Architect at least 1 mandatory, pedagogically relevant visual asset (architecture flowchart, sequence diagram, data pipeline schematic). Wrap every diagram/image with the AI Generation Warning callout:
+
+  ````mdx
+  > [!WARNING]
+  > **AI Asset Generation Required**: The diagram/image below is a conceptual placeholder designed to illustrate the system architecture. Use an AI image generation agent (e.g., DALL-E, Midjourney, Imagen) or Mermaid renderer to generate and place the final visual asset.
+
+  ```mermaid
+  graph TD
+      A[System Entry] --> B[Data Pipeline]
+  ```
+  ````
+
   ```
 
-### Step 5: Phase 4 — GEO & AI Answer Surface Optimization (Subagent 4)
+  ```
+
+### Step 6: Phase 5 — GEO & AI Answer Surface Optimization (Subagent 5)
 
 - **Tool**: `invoke_subagent` (Role: `GEO & Search Optimizer`)
 - **Skills to Consult**: `.agents/skills/ai-seo/SKILL.md`, `.agents/skills/seo/SKILL.md`
 - **Goal**: Optimize the draft for Perplexity, ChatGPT Search, and Google AI Overviews using EEAT principles, direct answer blocks, bullet summaries, and structured citations.
 
-### Step 6: Phase 5 — Technical Audit & Velite Build Verification (Subagent 5)
+### Step 7: Phase 6 — Technical Audit & Velite Build Verification (Subagent 6)
 
 - **Tool**: `invoke_subagent` (Role: `Build & QA Verifier`)
 - **Skills to Consult**: `.agents/skills/seo/SKILL.md`, `.agents/skills/velite/SKILL.md`
-- **Goal**: Run `bun --filter blog dev` or `bun run lint` to verify that Velite compiles `.velite` without type errors or missing frontmatter fields.
+- **Goal**: Run `bun --filter blog dev` or `bun run lint` to verify that Velite compiles `.velite` without type errors or missing frontmatter fields, and confirm at least 1 visual diagram callout is present.
 - **Verification Command**:
   ```bash
   bun --filter blog dev
   ```
 
-### Step 7: Phase 6 — Social Distribution & Repurposing (Subagent 6)
+### Step 8: Phase 7 — Social Distribution & Repurposing (Subagent 7)
 
 - **Tool**: `invoke_subagent` (Role: `Social Content Repurposer`)
 - **Skills to Consult**: `.agents/skills/copywriting/SKILL.md`, `.agents/skills/social/SKILL.md`, `.agents/skills/twitter-algorithm-optimizer/SKILL.md`
