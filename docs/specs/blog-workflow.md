@@ -17,15 +17,18 @@ To prevent context bloat and ensure high expertise at each step, the workflow us
 All skills for this workflow are installed locally in the project repository under `.agents/skills/` (no global installation required):
 
 | **Phase 1** | Audience Persona & Strategy (Understanding the Reader) | `product-marketing`, `content-strategy` | Deeply analyzes reader personas (Tip 9) and identifies core problems to solve (Tip 11). Grounds content in brand positioning. |
-| **Phase 2** | Ideation, Story & SEO Briefing | `keyword-research`, `keyword-clustering`, `find-keywords` | Combines keyword data with narrative journey mapping (Tip 17). Brainstorms (Tip 18) to create an editor-ready brief focused on solving specific problems. |
-| **Phase 3** | Human-Centric Drafting | `blog`, `blog-writing-guide`, `velite` | Drafts the MDX article focusing on storytelling (Tip 1), empathy (Tip 2), varied length (Tip 7), asking questions (Tip 16), and clear calls to action (Tip 10). |
-| **Phase 4** | Visual Media & Diagram Architecture | `design-doc-mermaid`, `mermaid-diagrams`, `diagram-creator` | Analyzes Phase 3 draft to architect mandatory educational Mermaid flowcharts, technical schematics, and AI generation callouts. |
-| **Phase 5** | Contextual Hyperlink Research & Verification | `research`, `search_web` | Identifies opportunities for solid, high-value hyperlinks. Researches and verifies each link to ensure it is accurate, relevant, and authoritative. Avoids excessive linking. |
-| **Phase 6** | Rigorous Editing & Quality Control | `blog-writing-guide`, `copywriting` | Dedicated editing phase (Tip 14) to refine flow, grammar, punctuation, and emotional resonance. QA checks all inserted hyperlinks for context and validity. |
-| **Phase 7** | GEO & SEO Optimization | `ai-seo`, `seo` | Optimizes post for Google SEO and Generative Answer Surfaces without losing the human voice. |
-| **Phase 8** | Chief Editor Review Loop (FSM Router) | `chief-editor` | Pre-final QA phase. Suggests changes (e.g., missing tables, weak flow) routing the orchestrator back to earlier phases (Drafting, Visuals) up to 3 times before approval. |
-| **Phase 9** | Technical Audit & Build | `seo`, `velite` | Validates Core Web Vitals, HTML semantic markup, verifies `.velite` MDX compilation, and ensures no broken links. |
-| **Phase 10**| Social Distribution & Selective Publishing | `copywriting`, `social`, `twitter-algorithm-optimizer` | Repurposes the blog post into X/LinkedIn posts and newsletters. Emphasizes serving current readers over pure virality (Tip 19) and selective publishing (Tip 21). |
+| **Phase 2** | Pre-Draft Competitor Gap Analysis | `competitor-analysis` | Analyzes top 3-5 ranking articles for the topic to identify missing angles and generate a Gap Report. |
+| **Phase 3** | Ideation, Story & SEO Briefing | `keyword-research`, `keyword-clustering`, `find-keywords` | Combines keyword data and Gap Report with narrative journey mapping (Tip 17). Brainstorms (Tip 18) to create an editor-ready brief focused on solving specific problems. |
+| **Phase 4** | Human-Centric Drafting | `blog`, `blog-writing-guide`, `velite` | Drafts the MDX article focusing on storytelling (Tip 1), empathy (Tip 2), varied length (Tip 7), asking questions (Tip 16), and clear calls to action (Tip 10). |
+| **Phase 5** | Visual Media & Diagram Architecture | `design-doc-mermaid`, `mermaid-diagrams`, `diagram-creator` | Analyzes Phase 4 draft to architect mandatory educational Mermaid flowcharts, technical schematics, and AI generation callouts. |
+| **Phase 6** | Contextual Hyperlink Research & Verification | `research`, `search_web` | Identifies opportunities for solid, high-value hyperlinks. Researches and verifies each link to ensure it is accurate, relevant, and authoritative. Avoids excessive linking. |
+| **Phase 7** | Fact-Checking & Claim Verification | `fact-checker` | Extracts technical claims and statistics from the draft, searching the web to verify authenticity and prevent hallucination. |
+| **Phase 8** | Rigorous Editing & Quality Control | `blog-writing-guide`, `copywriting` | Dedicated editing phase (Tip 14) to refine flow, grammar, punctuation, and emotional resonance. QA checks all inserted hyperlinks for context and validity. |
+| **Phase 9** | AI Slop Removal & Brand Voice | `content-deslop` | Scans the edited draft for known AI-isms ("delve", "tapestry") and forces rewrites for a punchier, authentic human brand voice. |
+| **Phase 10**| GEO & SEO Optimization | `ai-seo`, `seo` | Optimizes post for Google SEO and Generative Answer Surfaces without losing the human voice. |
+| **Phase 11**| Chief Editor Review Loop (FSM Router) | `chief-editor` | Pre-final QA phase. Suggests changes (e.g., missing tables, weak flow) routing the orchestrator back to earlier phases (Drafting, Visuals) up to 3 times before approval. |
+| **Phase 12**| Technical Audit & Build | `seo`, `velite` | Validates Core Web Vitals, HTML semantic markup, verifies `.velite` MDX compilation, and ensures no broken links. |
+| **Phase 13**| Social Distribution & Selective Publishing | `copywriting`, `social`, `twitter-algorithm-optimizer` | Repurposes the blog post into X/LinkedIn posts and newsletters. Emphasizes serving current readers over pure virality (Tip 19) and selective publishing (Tip 21). |
 
 ---
 
