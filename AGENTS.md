@@ -21,6 +21,7 @@ Always prioritize writing elegant, maintainable code. Use `bun` as the package m
 - [Portfolio Desktop](docs/specs/portfolio-desktop.md) — The UI/UX design and state management of the NixOS GNOME desktop simulation.
 - [Blog Agentic Workflow](docs/specs/blog-workflow.md) — End-to-end 6-phase subagent blog generation pipeline for apps/blog.
 - [Topic Research Workflow](docs/specs/topic-research-workflow.md) — Autonomous 5-stage subagent topic discovery and research pipeline.
+- [Identity Registry](docs/specs/identity.md) — Single source of truth for all personal identity data (JSON-LD, OG, emails, links, certs, projects).
 
 ## Verification
 
@@ -43,3 +44,7 @@ Canonical triage label vocabulary mapping. See `docs/agents/triage-labels.md`.
 ### Domain docs
 
 Multi-context domain docs layout with `CONTEXT-MAP.md` at root. See `docs/agents/domain.md`.
+
+### Identity sync
+
+Verify personal identity data is consistent across all apps. See `.agents/skills/identity-sync/SKILL.md` and the canonical registry at `docs/specs/identity.md`.
