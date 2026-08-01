@@ -20,10 +20,11 @@ All skills for this workflow are installed locally in the project repository und
 | **Phase 2** | Ideation, Story & SEO Briefing | `keyword-research`, `keyword-clustering`, `find-keywords` | Combines keyword data with narrative journey mapping (Tip 17). Brainstorms (Tip 18) to create an editor-ready brief focused on solving specific problems. |
 | **Phase 3** | Human-Centric Drafting | `blog`, `blog-writing-guide`, `velite` | Drafts the MDX article focusing on storytelling (Tip 1), empathy (Tip 2), varied length (Tip 7), asking questions (Tip 16), and clear calls to action (Tip 10). |
 | **Phase 4** | Visual Media & Diagram Architecture | `design-doc-mermaid`, `mermaid-diagrams`, `diagram-creator` | Analyzes Phase 3 draft to architect mandatory educational Mermaid flowcharts, technical schematics, and AI generation callouts. |
-| **Phase 5** | Rigorous Editing & Quality Control | `blog-writing-guide`, `copywriting` | Dedicated editing phase (Tip 14) to refine flow, grammar, punctuation, and emotional resonance, ensuring high quality before optimization. |
-| **Phase 6** | GEO & SEO Optimization | `ai-seo`, `seo` | Optimizes post for Google SEO and Generative Answer Surfaces without losing the human voice. |
-| **Phase 7** | Technical Audit & Build | `seo`, `velite` | Validates Core Web Vitals, HTML semantic markup, and verifies `.velite` MDX compilation. |
-| **Phase 8** | Social Distribution & Selective Publishing | `copywriting`, `social`, `twitter-algorithm-optimizer` | Repurposes the blog post into X/LinkedIn posts and newsletters. Emphasizes serving current readers over pure virality (Tip 19) and selective publishing (Tip 21). |
+| **Phase 5** | Contextual Hyperlink Research & Verification | `research`, `search_web` | Identifies opportunities for solid, high-value hyperlinks. Researches and verifies each link to ensure it is accurate, relevant, and authoritative. Avoids excessive linking. |
+| **Phase 6** | Rigorous Editing & Quality Control | `blog-writing-guide`, `copywriting` | Dedicated editing phase (Tip 14) to refine flow, grammar, punctuation, and emotional resonance. QA checks all inserted hyperlinks for context and validity. |
+| **Phase 7** | GEO & SEO Optimization | `ai-seo`, `seo` | Optimizes post for Google SEO and Generative Answer Surfaces without losing the human voice. |
+| **Phase 8** | Technical Audit & Build | `seo`, `velite` | Validates Core Web Vitals, HTML semantic markup, verifies `.velite` MDX compilation, and ensures no broken links. |
+| **Phase 9** | Social Distribution & Selective Publishing | `copywriting`, `social`, `twitter-algorithm-optimizer` | Repurposes the blog post into X/LinkedIn posts and newsletters. Emphasizes serving current readers over pure virality (Tip 19) and selective publishing (Tip 21). |
 
 ---
 

@@ -26,16 +26,19 @@ Phase 3: Human-Centric Drafting Subagent (.agents/skills/blog, blog-writing-guid
 Phase 4: Visual Media & Diagram Subagent (.agents/skills/design-doc-mermaid, mermaid-diagrams, diagram-creator)
    │
    ▼
-Phase 5: Rigorous Editing & Quality Control Subagent (.agents/skills/blog-writing-guide, copywriting)
+Phase 5: Contextual Hyperlink Research & Verification Subagent (.agents/skills/research, search_web)
    │
    ▼
-Phase 6: GEO & SEO Optimization Subagent (.agents/skills/ai-seo, seo)
+Phase 6: Rigorous Editing & Quality Control Subagent (.agents/skills/blog-writing-guide, copywriting)
    │
    ▼
-Phase 7: Technical Audit & Velite Build Verification Subagent (.agents/skills/seo, velite)
+Phase 7: GEO & SEO Optimization Subagent (.agents/skills/ai-seo, seo)
    │
    ▼
-Phase 8: Social Distribution Subagent (.agents/skills/copywriting, social, twitter-algorithm-optimizer)
+Phase 8: Technical Audit & Velite Build Verification Subagent (.agents/skills/seo, velite)
+   │
+   ▼
+Phase 9: Social Distribution Subagent (.agents/skills/copywriting, social, twitter-algorithm-optimizer)
 ```
 
 ---
@@ -94,29 +97,35 @@ Phase 8: Social Distribution Subagent (.agents/skills/copywriting, social, twitt
 
   ```
 
-### Step 6: Phase 5 — Rigorous Editing & Quality Control (Subagent 5) ⭐ **NEW**
+### Step 6: Phase 5 — Contextual Hyperlink Research & Verification (Subagent 5) ⭐ **NEW**
+
+- **Tool**: `invoke_subagent` (Role: `Hyperlink Researcher`)
+- **Skills to Consult**: `.agents/skills/research/SKILL.md` (or Web Search tools)
+- **Goal**: Identify opportunities for high-value external and internal hyperlinks within the drafted text. Do not over-link; limit links to truly helpful resources, citations, or references. Research and verify each link to ensure it is accurate, relevant, and points to authoritative sources.
+
+### Step 7: Phase 6 — Rigorous Editing & Quality Control (Subagent 6)
 
 - **Tool**: `invoke_subagent` (Role: `Copy Editor & QC`)
 - **Skills to Consult**: `.agents/skills/blog-writing-guide/SKILL.md`, `.agents/skills/copywriting/SKILL.md`
-- **Goal**: Put aside time to edit the post. Take it to the next level by refining flow, punctuation, and grammar. Ensure the narrative is cohesive, the tone is empathetic, and the call to action is powerful. Review against the philosophy: "Publish selectively."
+- **Goal**: Put aside time to edit the post. Take it to the next level by refining flow, punctuation, and grammar. QA all inserted hyperlinks to ensure they fit naturally in context and are not broken. Ensure the narrative is cohesive, the tone is empathetic, and the call to action is powerful. Review against the philosophy: "Publish selectively."
 
-### Step 7: Phase 6 — GEO & AI Answer Surface Optimization (Subagent 6)
+### Step 8: Phase 7 — GEO & AI Answer Surface Optimization (Subagent 7)
 
 - **Tool**: `invoke_subagent` (Role: `GEO & Search Optimizer`)
 - **Skills to Consult**: `.agents/skills/ai-seo/SKILL.md`, `.agents/skills/seo/SKILL.md`
 - **Goal**: Optimize the draft for Perplexity, ChatGPT Search, and Google AI Overviews using EEAT principles, direct answer blocks, bullet summaries, and structured citations. Ensure SEO doesn't compromise the human storytelling.
 
-### Step 8: Phase 7 — Technical Audit & Velite Build Verification (Subagent 7)
+### Step 9: Phase 8 — Technical Audit & Velite Build Verification (Subagent 8)
 
 - **Tool**: `invoke_subagent` (Role: `Build & QA Verifier`)
 - **Skills to Consult**: `.agents/skills/seo/SKILL.md`, `.agents/skills/velite/SKILL.md`
-- **Goal**: Run `bun --filter blog dev` or `bun run lint` to verify that Velite compiles `.velite` without type errors or missing frontmatter fields, and confirm at least 1 visual diagram callout is present.
+- **Goal**: Run `bun --filter blog dev` or `bun run lint` to verify that Velite compiles `.velite` without type errors or missing frontmatter fields, and confirm at least 1 visual diagram callout is present. Verify that no broken links exist.
 - **Verification Command**:
   ```bash
   bun --filter blog dev
   ```
 
-### Step 9: Phase 8 — Social Distribution & Repurposing (Subagent 8)
+### Step 10: Phase 9 — Social Distribution & Repurposing (Subagent 9)
 
 - **Tool**: `invoke_subagent` (Role: `Social Content Repurposer`)
 - **Skills to Consult**: `.agents/skills/copywriting/SKILL.md`, `.agents/skills/social/SKILL.md`, `.agents/skills/twitter-algorithm-optimizer/SKILL.md`
