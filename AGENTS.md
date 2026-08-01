@@ -19,6 +19,8 @@ Always prioritize writing elegant, maintainable code. Use `bun` as the package m
 - [Playwright Testing](docs/specs/testing-playwright.md) — Nix + Bun + Playwright integration details.
 - [Terminal Autocomplete](docs/specs/terminal-autocomplete.md) — Bash-style tab completion logic for the web terminal.
 - [Portfolio Desktop](docs/specs/portfolio-desktop.md) — The UI/UX design and state management of the NixOS GNOME desktop simulation.
+- [Blog Agentic Workflow](docs/specs/blog-workflow.md) — End-to-end 6-phase subagent blog generation pipeline for apps/blog.
+- [Topic Research Workflow](docs/specs/topic-research-workflow.md) — Autonomous 5-stage subagent topic discovery and research pipeline.
 
 ## Verification
 

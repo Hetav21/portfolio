@@ -1,0 +1,77 @@
+{
+  "version": 1,
+  "skills": {
+    "ai-seo": {
+      "source": "coreyhaines31/marketingskills",
+      "sourceType": "github",
+      "skillPath": "skills/ai-seo/SKILL.md",
+      "computedHash": "a6265a6c9451a25987a94453f638e07bef84eb3f1cd73366d703fee79151cf09"
+    },
+    "blog": {
+      "source": "agricidaniel/claude-blog",
+      "sourceType": "github",
+      "skillPath": "skills/blog/SKILL.md",
+      "computedHash": "98de009ecfcdb58fd1d62eae4ec6ebc13b6ff9eebb202ef8ca7ea20e37ffd8d6"
+    },
+    "blog-writing-guide": {
+      "source": "getsentry/skills",
+      "sourceType": "github",
+      "skillPath": "skills/blog-writing-guide/SKILL.md",
+      "computedHash": "f885b9890d8a1c43e8ed0386e2ef2c17e941a403aa354513d6b844e99229ffb7"
+    },
+    "content-strategy": {
+      "source": "coreyhaines31/marketingskills",
+      "sourceType": "github",
+      "skillPath": "skills/content-strategy/SKILL.md",
+      "computedHash": "13824c129ab70874c57d766c2d844f8dac7a0b366845f108a73527c9d094c4f6"
+    },
+    "copywriting": {
+      "source": "coreyhaines31/marketingskills",
+      "sourceType": "github",
+      "skillPath": "skills/copywriting/SKILL.md",
+      "computedHash": "c8d63b1f77be04fd54981720de65697988810bd28331097dbe0aaf3e166d638a"
+    },
+    "find-keywords": {
+      "source": "calm-north/seojuice-skills",
+      "sourceType": "github",
+      "skillPath": "skills/find-keywords/SKILL.md",
+      "computedHash": "57ee45205794397994320374741794bf8863419ec92e549fa56279ef871b8e53"
+    },
+    "github-trending": {
+      "source": "hoodini/ai-agents-skills",
+      "sourceType": "github",
+      "skillPath": "skills/github-trending/SKILL.md",
+      "computedHash": "7626ec0815bb396db7445761e020de16d81a69c70b294ec3ee7ce4055bf29c98"
+    },
+    "keyword-clustering": {
+      "source": "every-app/open-seo",
+      "sourceType": "github",
+      "skillPath": ".agents/skills/keyword-clustering/SKILL.md",
+      "computedHash": "968f0a36800e42d2a931f6877955209d1335687bdd55a14c4be2a825b1399951"
+    },
+    "keyword-research": {
+      "source": "every-app/open-seo",
+      "sourceType": "github",
+      "skillPath": ".agents/skills/keyword-research/SKILL.md",
+      "computedHash": "bbb7aeabe35c3a6f5925ee838c2d27e3d00c763bfb2f70ade3b5be32bb5d98c9"
+    },
+    "product-marketing": {
+      "source": "coreyhaines31/marketingskills",
+      "sourceType": "github",
+      "skillPath": "skills/product-marketing/SKILL.md",
+      "computedHash": "b8a9cd747705923a7a29cda12e478594e3a5062d8f7c7bfbf19d7fc0b24cee76"
+    },
+    "reddapi": {
+      "source": "lignertys/reddit-research-skill",
+      "sourceType": "github",
+      "skillPath": "skills/reddapi/SKILL.md",
+      "computedHash": "349714a65cb3fce23f941240a60fc2cef008eda8e2ca25d61eeeb971f2d8b314"
+    },
+    "seo": {
+      "source": "addyosmani/web-quality-skills",
+      "sourceType": "github",
+      "skillPath": "skills/seo/SKILL.md",
+      "computedHash": "1f1551c898c17a88a976b4f4aa84e17886f115f3887b62d1c4f8a1c040e4d1ef"
+    }
+  }
+}
