@@ -35,7 +35,7 @@ Phase 6: Rigorous Editing & Quality Control Subagent (.agents/skills/blog-writin
 Phase 7: GEO & SEO Optimization Subagent (.agents/skills/ai-seo, seo)
    │
    ▼
-Phase 8: Chief Editor Review Loop (FSM Router) (.agents/skills/code-review) ──> Loops back to Phase 3/4 if changes needed
+Phase 8: Chief Editor Review Loop (FSM Router) (.agents/skills/chief-editor) ──> Loops back to Phase 3/4 if changes needed
    │ (If Approved)
    ▼
 Phase 9: Technical Audit & Velite Build Verification Subagent (.agents/skills/seo, velite)
@@ -121,7 +121,7 @@ Phase 10: Social Distribution Subagent (.agents/skills/copywriting, social, twit
 ### Step 9: Phase 8 — Chief Editor Review Loop (FSM Router) (Subagent 8) ⭐ **NEW**
 
 - **Tool**: `invoke_subagent` (Role: `Chief Editor & FSM Router`)
-- **Skills to Consult**: `.agents/skills/code-review/SKILL.md` (or general critical reasoning)
+- **Skills to Consult**: `.agents/skills/chief-editor/SKILL.md`
 - **Goal**: Review the fully optimized draft for missing structural elements (tables, diagrams) or flow issues.
 - **Action**: Suggest specific revisions. The orchestrator will evaluate the feedback. If changes are suggested, the orchestrator routes back to the relevant phase (e.g., Phase 3 for rewriting, Phase 4 for a missing diagram). This loop can execute a maximum of 3 times. If the subagent determines the draft is complete and high-quality, they respond with "APPROVED", and the orchestrator exits the loop and proceeds to Phase 9.
 
