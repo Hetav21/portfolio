@@ -1,7 +1,8 @@
 import * as runtime from 'react/jsx-runtime';
+import { Mermaid } from './mermaid';
 
 const sharedComponents = {
-  // Add custom components here
+  Mermaid,
 };
 
 const useMDXComponent = (code: string) => {

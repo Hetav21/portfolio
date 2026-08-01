@@ -1,5 +1,6 @@
 import { defineConfig, defineCollection, s } from 'velite';
 import rehypePrettyCode from 'rehype-pretty-code';
+import { remarkMermaid } from './lib/remark-mermaid';
 
 const computedFields = <T extends { slug: string }>(data: T) => ({
   ...data,
@@ -40,6 +41,6 @@ export default defineConfig({
   collections: { posts },
   mdx: {
     rehypePlugins: [[rehypePrettyCode, rehypePrettyCodeOptions]],
-    remarkPlugins: [],
+    remarkPlugins: [remarkMermaid],
   },
 });
