@@ -37,9 +37,11 @@ All skills for this workflow are installed locally in the project repository und
 To ensure high output quality and prevent context rot, the workflow operates as a **Finite State Machine (FSM)** rather than a simple unidirectional flow:
 
 1. **Context Isolation**: Each phase subagent runs in its own context window.
-2. **Structured Handoff**: Each subagent returns a concise JSON or Markdown artifact to the main orchestrator.
-3. **Iterative Routing**: The orchestrator evaluates the Phase 8 (Chief Editor) feedback. If revisions are needed, it loops back to the appropriate prior phase (up to 3 times) before continuing.
-4. **No Direct State Mutation**: Subagents only edit files or write outputs under `apps/blog/content/posts/` when explicitly assigned in their designated phase.
+2. **Strict Zero Internal Knowledge Policy**: Subagents for research, drafting, fact-checking, and auditing MUST NOT rely on model parametric memory for facts, stats, or technical specs. They MUST execute web searches for all claims.
+3. **Official Documentation Citation Mandate**: Every factual or technical claim in the blog draft MUST be cited with an explicit Markdown link pointing to official documentation or a primary authoritative web source.
+4. **Structured Handoff**: Each subagent returns a concise JSON or Markdown artifact to the main orchestrator.
+5. **QC Rejection & Iterative Routing**: The Phase 11 (Chief Editor / QC) subagent checks every claim for official links. If any claim lacks an official link or appears made up from internal memory, it rejects the draft with `NEEDS REVISION`, routing back to Phase 4/6/7 (up to 3 times).
+6. **No Direct State Mutation**: Subagents only edit files or write outputs under `apps/blog/content/posts/` when explicitly assigned in their designated phase.
 
 ---
 
