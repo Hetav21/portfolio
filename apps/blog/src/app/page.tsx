@@ -9,56 +9,8 @@ export default function BlogIndex() {
       return new Date(b.date).getTime() - new Date(a.date).getTime();
     });
 
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://blog.hetav.dev';
-
-  const jsonLd = {
-    '@context': 'https://schema.org',
-    '@graph': [
-      {
-        '@type': 'WebSite',
-        '@id': `${siteUrl}/#website`,
-        url: siteUrl,
-        name: "Hetav's Blog",
-        description: 'Writing about code, Linux, and web development.',
-        publisher: {
-          '@id': 'https://www.hetav.dev/#person',
-        },
-        isPartOf: {
-          '@type': 'WebSite',
-          '@id': 'https://www.hetav.dev/#website',
-          name: 'Hetav Shah Portfolio',
-          url: 'https://www.hetav.dev/',
-        },
-        inLanguage: 'en-US',
-      },
-      {
-        '@type': 'Person',
-        '@id': 'https://www.hetav.dev/#person',
-        name: 'Hetav Shah',
-        url: 'https://www.hetav.dev/',
-        email: 'mailto:contact@hetav.dev',
-        sameAs: [
-          'https://github.com/Hetav21',
-          'https://www.linkedin.com/in/hetav2106/',
-          'https://x.com/Hetav_21',
-          'https://blog.hetav.dev',
-          'https://cv.hetav.dev',
-        ],
-        jobTitle: 'Associate AI Engineer',
-        worksFor: {
-          '@type': 'Organization',
-          name: 'ProductSquads',
-        },
-      },
-    ],
-  };
-
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, '\\u003c') }}
-      />
       <div className="space-y-8">
         <div className="space-y-2">
           <h1 className="text-3xl font-bold tracking-tight">Writing</h1>

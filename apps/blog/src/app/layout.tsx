@@ -67,8 +67,57 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'WebSite',
+        '@id': `${siteUrl}/#website`,
+        url: siteUrl,
+        name: "Hetav's Blog",
+        description: 'Writing about code, Linux, and web development.',
+        inLanguage: 'en-US',
+        publisher: {
+          '@id': 'https://www.hetav.dev/#person',
+        },
+        isPartOf: {
+          '@type': 'WebSite',
+          '@id': 'https://www.hetav.dev/#website',
+          name: 'Hetav Shah Portfolio',
+          url: 'https://www.hetav.dev/',
+        },
+      },
+      {
+        '@type': 'Person',
+        '@id': 'https://www.hetav.dev/#person',
+        name: 'Hetav Shah',
+        url: 'https://www.hetav.dev/',
+        email: 'mailto:contact@hetav.dev',
+        jobTitle: 'Associate AI Engineer',
+        worksFor: {
+          '@type': 'Organization',
+          name: 'ProductSquads',
+        },
+        sameAs: [
+          'https://github.com/Hetav21',
+          'https://www.linkedin.com/in/hetav2106/',
+          'https://x.com/Hetav_21',
+          'https://blog.hetav.dev',
+          'https://cv.hetav.dev',
+        ],
+      },
+    ],
+  };
+
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <script
+          type="application/ld+json"
+          suppressHydrationWarning
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
       <body
         className={`${jetbrainsMono.variable} font-mono bg-background text-foreground antialiased min-h-screen flex flex-col`}
         suppressHydrationWarning
