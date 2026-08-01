@@ -16,16 +16,14 @@ To prevent context bloat and ensure high expertise at each step, the workflow us
 
 All skills for this workflow are installed locally in the project repository under `.agents/skills/` (no global installation required):
 
-| Phase       | Phase Name                          | Primary Local Skills (`.agents/skills/`)                    | Description                                                                                                                                                                     |
-| :---------- | :---------------------------------- | :---------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| **Phase 1** | Brand Strategy & Context            | `product-marketing`, `content-strategy`                     | Grounds content in product positioning, target audience personas, and value propositions.                                                                                       |
-| **Phase 2** | Keyword Research & Briefing         | `keyword-research`, `keyword-clustering`, `find-keywords`   | Pulls search volume/intent data, clusters topics, and creates an editor-ready brief.                                                                                            |
-| **Phase 3** | Content Drafting                    | `blog`, `blog-writing-guide`, `velite`                      | Multi-agent drafting using built-in article templates and Velite MDX schema standards.                                                                                          |
-| **Phase 4** | Visual Media & Diagram Architecture | `design-doc-mermaid`, `mermaid-diagrams`, `diagram-creator` | Analyzes Phase 3 article text to identify visualization opportunities, architecting mandatory educational Mermaid flowcharts, technical schematics, and AI generation callouts. |
-
-| **Phase 5** | SEO & GEO Optimization | `ai-seo`, `seo` | Optimizes post for Google SEO and Generative Answer Surfaces (Perplexity, ChatGPT, AI Overviews). |
-| **Phase 6** | Technical Audit & Build | `seo`, `velite` | Validates Core Web Vitals, HTML semantic markup, and verifies `.velite` MDX compilation. |
-| **Phase 7** | Distribution | `copywriting`, `social`, `twitter-algorithm-optimizer` | Repurposes the blog post into X/LinkedIn posts, newsletters, and promotional copy. |
+| **Phase 1** | Audience Persona & Strategy (Understanding the Reader) | `product-marketing`, `content-strategy` | Deeply analyzes reader personas (Tip 9) and identifies core problems to solve (Tip 11). Grounds content in brand positioning. |
+| **Phase 2** | Ideation, Story & SEO Briefing | `keyword-research`, `keyword-clustering`, `find-keywords` | Combines keyword data with narrative journey mapping (Tip 17). Brainstorms (Tip 18) to create an editor-ready brief focused on solving specific problems. |
+| **Phase 3** | Human-Centric Drafting | `blog`, `blog-writing-guide`, `velite` | Drafts the MDX article focusing on storytelling (Tip 1), empathy (Tip 2), varied length (Tip 7), asking questions (Tip 16), and clear calls to action (Tip 10). |
+| **Phase 4** | Visual Media & Diagram Architecture | `design-doc-mermaid`, `mermaid-diagrams`, `diagram-creator` | Analyzes Phase 3 draft to architect mandatory educational Mermaid flowcharts, technical schematics, and AI generation callouts. |
+| **Phase 5** | Rigorous Editing & Quality Control | `blog-writing-guide`, `copywriting` | Dedicated editing phase (Tip 14) to refine flow, grammar, punctuation, and emotional resonance, ensuring high quality before optimization. |
+| **Phase 6** | GEO & SEO Optimization | `ai-seo`, `seo` | Optimizes post for Google SEO and Generative Answer Surfaces without losing the human voice. |
+| **Phase 7** | Technical Audit & Build | `seo`, `velite` | Validates Core Web Vitals, HTML semantic markup, and verifies `.velite` MDX compilation. |
+| **Phase 8** | Social Distribution & Selective Publishing | `copywriting`, `social`, `twitter-algorithm-optimizer` | Repurposes the blog post into X/LinkedIn posts and newsletters. Emphasizes serving current readers over pure virality (Tip 19) and selective publishing (Tip 21). |
 
 ---
 
