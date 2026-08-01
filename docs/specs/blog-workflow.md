@@ -23,18 +23,20 @@ All skills for this workflow are installed locally in the project repository und
 | **Phase 5** | Contextual Hyperlink Research & Verification | `research`, `search_web` | Identifies opportunities for solid, high-value hyperlinks. Researches and verifies each link to ensure it is accurate, relevant, and authoritative. Avoids excessive linking. |
 | **Phase 6** | Rigorous Editing & Quality Control | `blog-writing-guide`, `copywriting` | Dedicated editing phase (Tip 14) to refine flow, grammar, punctuation, and emotional resonance. QA checks all inserted hyperlinks for context and validity. |
 | **Phase 7** | GEO & SEO Optimization | `ai-seo`, `seo` | Optimizes post for Google SEO and Generative Answer Surfaces without losing the human voice. |
-| **Phase 8** | Technical Audit & Build | `seo`, `velite` | Validates Core Web Vitals, HTML semantic markup, verifies `.velite` MDX compilation, and ensures no broken links. |
-| **Phase 9** | Social Distribution & Selective Publishing | `copywriting`, `social`, `twitter-algorithm-optimizer` | Repurposes the blog post into X/LinkedIn posts and newsletters. Emphasizes serving current readers over pure virality (Tip 19) and selective publishing (Tip 21). |
+| **Phase 8** | Chief Editor Review Loop (FSM Router) | `code-review` (or similar reasoning) | Pre-final QA phase. Suggests changes (e.g., missing tables, weak flow) routing the orchestrator back to earlier phases (Drafting, Visuals) up to 3 times before approval. |
+| **Phase 9** | Technical Audit & Build | `seo`, `velite` | Validates Core Web Vitals, HTML semantic markup, verifies `.velite` MDX compilation, and ensures no broken links. |
+| **Phase 10**| Social Distribution & Selective Publishing | `copywriting`, `social`, `twitter-algorithm-optimizer` | Repurposes the blog post into X/LinkedIn posts and newsletters. Emphasizes serving current readers over pure virality (Tip 19) and selective publishing (Tip 21). |
 
 ---
 
-## 3. Subagent Execution Policy
+## 3. Subagent Execution Policy & Finite State Machine
 
-To ensure high output quality and prevent context rot, **subagents MUST be created for each task/phase**:
+To ensure high output quality and prevent context rot, the workflow operates as a **Finite State Machine (FSM)** rather than a simple unidirectional flow:
 
 1. **Context Isolation**: Each phase subagent runs in its own context window.
-2. **Structured Handoff**: Each subagent returns a concise JSON or Markdown artifact (Brief, Outline, Draft, Audit Report) to the main orchestrator.
-3. **No Direct State Mutation**: Subagents only edit files or write outputs under `apps/blog/content/posts/` when explicitly assigned in Phase 3 or Phase 4.
+2. **Structured Handoff**: Each subagent returns a concise JSON or Markdown artifact to the main orchestrator.
+3. **Iterative Routing**: The orchestrator evaluates the Phase 8 (Chief Editor) feedback. If revisions are needed, it loops back to the appropriate prior phase (up to 3 times) before continuing.
+4. **No Direct State Mutation**: Subagents only edit files or write outputs under `apps/blog/content/posts/` when explicitly assigned in their designated phase.
 
 ---
 

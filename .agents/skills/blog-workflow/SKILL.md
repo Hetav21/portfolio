@@ -35,10 +35,13 @@ Phase 6: Rigorous Editing & Quality Control Subagent (.agents/skills/blog-writin
 Phase 7: GEO & SEO Optimization Subagent (.agents/skills/ai-seo, seo)
    │
    ▼
-Phase 8: Technical Audit & Velite Build Verification Subagent (.agents/skills/seo, velite)
+Phase 8: Chief Editor Review Loop (FSM Router) (.agents/skills/code-review) ──> Loops back to Phase 3/4 if changes needed
+   │ (If Approved)
+   ▼
+Phase 9: Technical Audit & Velite Build Verification Subagent (.agents/skills/seo, velite)
    │
    ▼
-Phase 9: Social Distribution Subagent (.agents/skills/copywriting, social, twitter-algorithm-optimizer)
+Phase 10: Social Distribution Subagent (.agents/skills/copywriting, social, twitter-algorithm-optimizer)
 ```
 
 ---
@@ -115,7 +118,14 @@ Phase 9: Social Distribution Subagent (.agents/skills/copywriting, social, twitt
 - **Skills to Consult**: `.agents/skills/ai-seo/SKILL.md`, `.agents/skills/seo/SKILL.md`
 - **Goal**: Optimize the draft for Perplexity, ChatGPT Search, and Google AI Overviews using EEAT principles, direct answer blocks, bullet summaries, and structured citations. Ensure SEO doesn't compromise the human storytelling.
 
-### Step 9: Phase 8 — Technical Audit & Velite Build Verification (Subagent 8)
+### Step 9: Phase 8 — Chief Editor Review Loop (FSM Router) (Subagent 8) ⭐ **NEW**
+
+- **Tool**: `invoke_subagent` (Role: `Chief Editor & FSM Router`)
+- **Skills to Consult**: `.agents/skills/code-review/SKILL.md` (or general critical reasoning)
+- **Goal**: Review the fully optimized draft for missing structural elements (tables, diagrams) or flow issues.
+- **Action**: Suggest specific revisions. The orchestrator will evaluate the feedback. If changes are suggested, the orchestrator routes back to the relevant phase (e.g., Phase 3 for rewriting, Phase 4 for a missing diagram). This loop can execute a maximum of 3 times. If the subagent determines the draft is complete and high-quality, they respond with "APPROVED", and the orchestrator exits the loop and proceeds to Phase 9.
+
+### Step 10: Phase 9 — Technical Audit & Velite Build Verification (Subagent 9)
 
 - **Tool**: `invoke_subagent` (Role: `Build & QA Verifier`)
 - **Skills to Consult**: `.agents/skills/seo/SKILL.md`, `.agents/skills/velite/SKILL.md`
@@ -125,7 +135,7 @@ Phase 9: Social Distribution Subagent (.agents/skills/copywriting, social, twitt
   bun --filter blog dev
   ```
 
-### Step 10: Phase 9 — Social Distribution & Repurposing (Subagent 9)
+### Step 11: Phase 10 — Social Distribution & Repurposing (Subagent 10)
 
 - **Tool**: `invoke_subagent` (Role: `Social Content Repurposer`)
 - **Skills to Consult**: `.agents/skills/copywriting/SKILL.md`, `.agents/skills/social/SKILL.md`, `.agents/skills/twitter-algorithm-optimizer/SKILL.md`
