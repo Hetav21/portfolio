@@ -10,7 +10,7 @@ export function ThemeToggle() {
   return (
     <button
       onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
-      className="p-2 rounded-md hover:bg-muted transition-colors"
+      className="relative p-2 rounded-md hover:bg-muted transition-colors inline-flex items-center justify-center"
       aria-label="Toggle theme"
       suppressHydrationWarning
     >
@@ -19,7 +19,7 @@ export function ThemeToggle() {
         suppressHydrationWarning
       />
       <Moon
-        className="absolute h-5 w-5 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100 -translate-y-5"
+        className="absolute h-5 w-5 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100"
         suppressHydrationWarning
       />
     </button>

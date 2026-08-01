@@ -30,11 +30,11 @@ export default function BlogIndex() {
                     </time>
                   </div>
                   {post.description && <p className="text-muted-foreground">{post.description}</p>}
-                  <div className="flex gap-2 mt-2">
+                  <div className="flex flex-wrap gap-1.5 mt-3">
                     {post.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="text-xs font-medium px-2 py-0.5 rounded-full bg-secondary text-secondary-foreground"
+                        className="text-xs font-medium px-2.5 py-0.5 rounded-full bg-secondary text-secondary-foreground border border-border/40"
                       >
                         #{tag}
                       </span>

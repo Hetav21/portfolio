@@ -18,32 +18,32 @@ export function generateRssFeed() {
   const feedItems = publishedPosts
     .map((post) => {
       const url = `${siteUrl}/${post.slugAsParams}`;
-      const categories = post.tags.map((tag) => `\n          <category>${tag}</category>`).join('');
-      return `
-        <item>
-          <title><![CDATA[${post.title}]]></title>
-          <link>${url}</link>
-          <guid isPermaLink="true">${url}</guid>
-          <pubDate>${new Date(post.date).toUTCString()}</pubDate>
-          ${post.description ? `<description><![CDATA[${post.description}]]></description>` : ''}
-          <dc:creator><![CDATA[${author.name}]]></dc:creator>${categories}
-        </item>
-      `;
+      const categories = post.tags.map((tag) => `\n    <category>${tag}</category>`).join('');
+      const description = post.description
+        ? `\n    <description><![CDATA[${post.description}]]></description>`
+        : '';
+      return `  <item>
+    <title><![CDATA[${post.title}]]></title>
+    <link>${url}</link>
+    <guid isPermaLink="true">${url}</guid>
+    <pubDate>${new Date(post.date).toUTCString()}</pubDate>${description}
+    <dc:creator><![CDATA[${author.name}]]></dc:creator>${categories}
+  </item>`;
     })
-    .join('');
+    .join('\n');
 
   return `<?xml version="1.0" encoding="UTF-8"?>
-    <rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom">
-      <channel>
-        <title>Hetav's Blog</title>
-        <description>Writing about code, Linux, and web development.</description>
-        <link>${siteUrl}</link>
-        <atom:link href="${siteUrl}/rss" rel="self" type="application/rss+xml" />
-        <language>en-us</language>
-        <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>
-        ${feedItems}
-      </channel>
-    </rss>`;
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Hetav's Blog</title>
+    <description>Writing about code, Linux, and web development.</description>
+    <link>${siteUrl}</link>
+    <atom:link href="${siteUrl}/rss" rel="self" type="application/rss+xml" />
+    <language>en-us</language>
+    <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>
+${feedItems}
+  </channel>
+</rss>`;
 }
 
 export function generateAtomFeed() {
@@ -52,32 +52,32 @@ export function generateAtomFeed() {
   const feedItems = publishedPosts
     .map((post) => {
       const url = `${siteUrl}/${post.slugAsParams}`;
-      const categories = post.tags.map((tag) => `\n          <category term="${tag}" />`).join('');
-      return `
-        <entry>
-          <title><![CDATA[${post.title}]]></title>
-          <link href="${url}" />
-          <id>${url}</id>
-          <updated>${new Date(post.date).toISOString()}</updated>
-          ${post.description ? `<summary><![CDATA[${post.description}]]></summary>` : ''}${categories}
-        </entry>
-      `;
+      const categories = post.tags.map((tag) => `\n    <category term="${tag}" />`).join('');
+      const summary = post.description
+        ? `\n    <summary><![CDATA[${post.description}]]></summary>`
+        : '';
+      return `  <entry>
+    <title><![CDATA[${post.title}]]></title>
+    <link href="${url}" />
+    <id>${url}</id>
+    <updated>${new Date(post.date).toISOString()}</updated>${summary}${categories}
+  </entry>`;
     })
-    .join('');
+    .join('\n');
 
   return `<?xml version="1.0" encoding="utf-8"?>
-    <feed xmlns="http://www.w3.org/2005/Atom">
-      <title>Hetav's Blog</title>
-      <subtitle>Writing about code, Linux, and web development.</subtitle>
-      <link href="${siteUrl}/atom" rel="self" />
-      <link href="${siteUrl}" />
-      <id>${siteUrl}/</id>
-      <updated>${new Date().toISOString()}</updated>
-      <author>
-        <name>${author.name}</name>
-      </author>
-      ${feedItems}
-    </feed>`;
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Hetav's Blog</title>
+  <subtitle>Writing about code, Linux, and web development.</subtitle>
+  <link href="${siteUrl}/atom" rel="self" />
+  <link href="${siteUrl}" />
+  <id>${siteUrl}/</id>
+  <updated>${new Date().toISOString()}</updated>
+  <author>
+    <name>${author.name}</name>
+  </author>
+${feedItems}
+</feed>`;
 }
 
 export function generateJsonFeed() {

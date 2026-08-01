@@ -150,14 +150,14 @@ export default async function PostPage({ params }: PostPageProps) {
             Back to list
           </Link>
           <h1 className="text-4xl font-bold tracking-tight mb-4">{post.title}</h1>
-          <div className="flex items-center gap-4 text-muted-foreground text-sm">
+          <div className="flex flex-wrap items-center gap-x-3 gap-y-2 text-muted-foreground text-sm">
             <time dateTime={post.date}>{format(parseISO(post.date), 'MMMM d, yyyy')}</time>
             <span>•</span>
-            <div className="flex gap-2">
+            <div className="flex flex-wrap gap-1.5 items-center">
               {post.tags.map((tag) => (
                 <span
                   key={tag}
-                  className="bg-secondary text-secondary-foreground px-2 py-0.5 rounded-full font-medium"
+                  className="bg-secondary text-secondary-foreground text-xs px-2.5 py-0.5 rounded-full font-medium border border-border/40"
                 >
                   #{tag}
                 </span>
