@@ -8,7 +8,11 @@ Orchestrate a complete end-to-end blogging lifecycle using **subagents** for eac
 Reference documentation: [docs/specs/blog-workflow.md](file:///home/hetav/Desktop/Code/portfolio/docs/specs/blog-workflow.md)
 
 > [!IMPORTANT]
-> **Strict Zero Internal Knowledge & Citation Policy**: Subagents for research, drafting, fact-checking, and editing MUST NEVER rely on model parametric memory for facts, statistics, version numbers, or API details. Every subagent MUST perform web searches and cite official documentation URLs (`[Official Docs](https://...)`) for every claim. The QC Agent (Chief Editor) MUST REJECT any draft containing ungrounded claims.
+> **Strict Zero Internal Knowledge & Intent Preservation Policy**:
+>
+> 1. **Original User Query Payload**: The Orchestrator MUST pass the original user prompt/idea (`original_user_query`) to EVERY subagent invocation.
+> 2. **Zero Internal Knowledge**: Subagents for research, drafting, fact-checking, and editing MUST NEVER rely on model parametric memory for facts, statistics, version numbers, or API details. Every subagent MUST perform web searches and cite official documentation URLs (`[Official Docs](https://...)`) for every claim.
+> 3. **Topic Drift & Intent Rejection**: The QC Agent (Chief Editor) MUST compare the draft against `original_user_query` and REJECT any draft that has drifted away from the user's premise.
 
 ---
 
