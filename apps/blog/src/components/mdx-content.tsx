@@ -1,3 +1,6 @@
+'use client';
+
+import React, { useMemo } from 'react';
 import * as runtime from 'react/jsx-runtime';
 import { Mermaid } from './mermaid';
 
@@ -5,7 +8,7 @@ const sharedComponents = {
   Mermaid,
 };
 
-const useMDXComponent = (code: string) => {
+const getMDXComponent = (code: string) => {
   const fn = new Function(code);
   return fn({ ...runtime }).default;
 };
@@ -16,6 +19,6 @@ interface MDXProps {
 }
 
 export function MDXContent({ code, components }: MDXProps) {
-  const Component = useMDXComponent(code);
+  const Component = useMemo(() => getMDXComponent(code), [code]);
   return <Component components={{ ...sharedComponents, ...components }} />;
 }
