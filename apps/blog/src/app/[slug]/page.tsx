@@ -43,6 +43,14 @@ export async function generateMetadata({ params }: PostPageProps): Promise<Metad
       authors: ['Hetav Shah'],
       url: postUrl,
       tags: post.tags,
+      images: [
+        {
+          url: `${postUrl}/opengraph-image`,
+          width: 1200,
+          height: 630,
+          alt: post.title,
+        },
+      ],
     },
     twitter: {
       card: 'summary_large_image',
@@ -50,6 +58,7 @@ export async function generateMetadata({ params }: PostPageProps): Promise<Metad
       description: post.description || `Read ${post.title} on Hetav's Blog.`,
       creator: '@Hetav_21',
       site: '@Hetav_21',
+      images: [`${postUrl}/opengraph-image`],
     },
   };
 }

@@ -7,77 +7,118 @@ export const size = {
 };
 export const contentType = 'image/png';
 
-export async function generateImageMetadata() {
-  return posts.map((post) => ({
-    id: post.slugAsParams,
-    alt: post.title,
-  }));
-}
+export const alt = "Hetav's Blog";
 
 export default async function Image({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const post = posts.find((p) => p.slugAsParams === slug);
 
   const title = post ? post.title : "Hetav's Blog";
-  const description = post ? post.description : 'Writing about code, Linux, and web development.';
+  const description =
+    post?.description || 'Writing about code, Linux, Agentic AI, and web development.';
+  const tags =
+    post?.tags && post.tags.length > 0
+      ? post.tags.slice(0, 4)
+      : ['Software', 'Agentic AI', 'Web Dev'];
+
+  const titleFontSize = title.length > 60 ? '42px' : title.length > 40 ? '48px' : '54px';
 
   return new ImageResponse(
-    (
+    <div
+      style={{
+        height: '100%',
+        width: '100%',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'flex-start',
+        justifyContent: 'center',
+        backgroundColor: '#0f172a',
+        backgroundImage:
+          'radial-gradient(circle at 25px 25px, rgba(196, 167, 231, 0.15) 2px, transparent 0)',
+        backgroundSize: '50px 50px',
+        padding: '80px',
+        fontFamily: 'monospace',
+      }}
+    >
       <div
         style={{
-          background: '#09090b',
-          width: '100%',
-          height: '100%',
           display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'flex-start',
-          justifyContent: 'space-between',
-          padding: '80px',
-          fontFamily: 'monospace',
+          alignItems: 'center',
+          gap: '12px',
+          marginBottom: '24px',
         }}
       >
         <div
           style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: '12px',
+            width: '14px',
+            height: '14px',
+            borderRadius: '50%',
+            backgroundColor: '#c4a7e7',
+          }}
+        />
+        <span
+          style={{
+            color: '#c4a7e7',
+            fontSize: '24px',
+            fontWeight: 600,
+            letterSpacing: '1px',
           }}
         >
-          <span style={{ fontSize: 24, color: '#a1a1aa' }}>Hetav&apos;s Blog</span>
-        </div>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+          HETAV SHAH // BLOG
+        </span>
+      </div>
+
+      <h1
+        style={{
+          fontSize: titleFontSize,
+          fontWeight: 800,
+          color: '#f8fafc',
+          lineHeight: 1.15,
+          marginBottom: '20px',
+          maxWidth: '1040px',
+        }}
+      >
+        {title}
+      </h1>
+
+      <p
+        style={{
+          fontSize: '24px',
+          color: '#94a3b8',
+          maxWidth: '960px',
+          lineHeight: 1.4,
+          marginBottom: '36px',
+        }}
+      >
+        {description.length > 140 ? `${description.slice(0, 137)}...` : description}
+      </p>
+
+      <div
+        style={{
+          display: 'flex',
+          gap: '16px',
+          flexWrap: 'wrap',
+        }}
+      >
+        {tags.map((tag, i) => (
           <div
+            key={i}
             style={{
-              fontSize: 56,
-              fontWeight: 'bold',
-              color: '#fafafa',
-              lineHeight: 1.15,
+              display: 'flex',
+              backgroundColor: 'rgba(196, 167, 231, 0.12)',
+              border: '1px solid rgba(196, 167, 231, 0.3)',
+              color: '#e2e8f0',
+              padding: '8px 20px',
+              borderRadius: '8px',
+              fontSize: '20px',
+              fontWeight: 500,
             }}
           >
-            {title}
+            #{tag}
           </div>
-          {description && (
-            <div
-              style={{
-                fontSize: 26,
-                color: '#a1a1aa',
-                lineHeight: 1.4,
-              }}
-            >
-              {description}
-            </div>
-          )}
-        </div>
-        <div
-          style={{
-            fontSize: 20,
-            color: '#71717a',
-          }}
-        >
-          https://blog.hetav.dev/{slug}
-        </div>
+        ))}
       </div>
-    ),
+    </div>,
     {
       ...size,
     }

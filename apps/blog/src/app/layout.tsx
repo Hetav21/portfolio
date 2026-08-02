@@ -38,6 +38,14 @@ export const metadata: Metadata = {
     siteName: "Hetav's Blog",
     locale: 'en_US',
     type: 'website',
+    images: [
+      {
+        url: `${siteUrl}/opengraph-image`,
+        width: 1200,
+        height: 630,
+        alt: "Hetav's Blog",
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
@@ -45,6 +53,7 @@ export const metadata: Metadata = {
     description: 'Writing about code, Linux, and web development.',
     creator: '@Hetav_21',
     site: '@Hetav_21',
+    images: [`${siteUrl}/opengraph-image`],
   },
   robots: {
     index: true,
