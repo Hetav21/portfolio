@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import { MDXContent } from '@/components/mdx-content';
 import { format, parseISO } from 'date-fns';
 import Link from 'next/link';
+import Image from 'next/image';
 import { ArrowLeft } from 'lucide-react';
 import type { Metadata } from 'next';
 
@@ -173,6 +174,16 @@ export default async function PostPage({ params }: PostPageProps) {
               ))}
             </div>
           </div>
+          {post.cover && (
+            <Image
+              src={post.cover.src}
+              width={post.cover.width}
+              height={post.cover.height}
+              alt={post.title}
+              className="rounded-xl border border-border w-full object-cover max-h-[480px] shadow-sm mt-4"
+              priority
+            />
+          )}
         </div>
         <MDXContent code={post.body} />
       </article>
