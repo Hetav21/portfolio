@@ -45,30 +45,50 @@ Every completed Topic Research run generates a structured brief:
 ```markdown
 # Topic Research Brief: <Topic Title>
 
+**Generated**: <ISO date>
+**Status**: VALIDATED | LOW_DEMAND (use LOW_DEMAND if Phase 3 finds insufficient search volume)
+
 ## 1. Core Angle & Hook
 
 - **Recommended H1 Title**: "..."
 - **Target Audience**: ...
 - **Core Value Proposition / Hook**: ...
+- **Unique Differentiator**: What our post covers that top competitors missed.
 
-## 2. Source Signals & Data
+## 2. Community Pain Points (Phase 1)
 
-- **Reddit Pain Points**: ...
-- **Hacker News / GitHub Trends**: ...
-- **News / Engineering Blog Signals**: ...
+- **Reddit Signals**: Top complaints and questions found, with subreddit sources.
+- **GitHub Trending**: Relevant repos/tools gaining traction.
 
-## 3. SEO & GEO Keyword Target
+## 3. Tech Signal Context (Phase 2)
+
+- **Engineering Blog Signals**: Key articles, release notes, or announcements surfaced.
+- **Weak Signals**: Emerging patterns not yet widely covered.
+
+## 4. SEO & GEO Keyword Target (Phase 3)
 
 - **Primary Keyword**: `...`
 - **Secondary Keywords**: `...`, `...`
-- **Search Intent**: Information / Technical / How-To
-- **AI Citation Gap (GEO)**: What current top answers miss that our post will address.
+- **Search Intent**: Informational / Technical / How-To / Navigational
+- **Estimated Demand**: High / Medium / Low (with source)
+- **AI Citation Gap (GEO)**: What current top AI answers miss that our post will address.
 
-## 4. Proposed Article Structure (Outline)
+## 5. Competitor Gap Summary (Phase 4)
+
+- Top 3 ranking articles for the primary keyword.
+- Structural gaps: missing sections, weak explanations, outdated info.
+
+## 6. Proposed Article Outline
 
 - H2: ...
 - H2: ...
 - H2: ...
+- Estimated word count: ...
+
+## 7. Handoff Recommendation
+
+- Ready for `blog-workflow`: YES / NO
+- If NO, reason: ...
 ```
 
 ---

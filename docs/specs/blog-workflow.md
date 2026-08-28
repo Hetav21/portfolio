@@ -1,6 +1,6 @@
 # End-to-End Blog Workflow & Skills Architecture
 
-This document specifies the agentic blogging workflow for `apps/blog` in this monorepo. It details the 7-phase pipeline, local skill dependencies, subagent delegation model, and Velite MDX publication requirements.
+This document specifies the agentic blogging workflow for `apps/blog` in this monorepo. It details the 13-phase pipeline, local skill dependencies, subagent delegation model, and Velite MDX publication requirements.
 
 ---
 
@@ -8,7 +8,7 @@ This document specifies the agentic blogging workflow for `apps/blog` in this mo
 
 The target of this workflow is to produce high-quality, SEO/GEO-optimized blog posts target-hosted at `apps/blog/content/posts/<slug>.mdx`.
 
-To prevent context bloat and ensure high expertise at each step, the workflow uses an **Orchestrator-Subagent** model: a primary orchestrator spawns isolated subagents for each of the 7 sequential phases of content creation.
+To prevent context bloat and ensure high expertise at each step, the workflow uses an **Orchestrator-Subagent** model: a primary orchestrator spawns isolated subagents for each of the 13 sequential phases of content creation.
 
 ---
 
@@ -98,7 +98,7 @@ After creating or editing a post:
 
 ## 5. Workflow Command
 
-The entire 6-phase pipeline can be invoked via the `.agents/skills/blog-workflow` skill:
+The entire 13-phase pipeline can be invoked via the `.agents/skills/blog-workflow` skill:
 
 ```bash
 # Example invocation prompt for the AI agent

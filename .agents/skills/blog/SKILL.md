@@ -61,6 +61,9 @@ separate discipline.
 | `/blog flow [find\|optimize\|win\|prompts\|sync]` | FLOW framework prompts (evidence-led, 30 blog-applicable)                                                        |
 | `/blog style learn <paths>`                       | Learn author voice profile from 5-10 posts (feeds blog-write and blog-persona)                                   |
 | `/blog decay <current-gsc> <previous-gsc>`        | Detect content decay: flag 20%+ QoQ traffic decline from GSC exports                                             |
+| `/blog idea <thought>`                            | Capture a raw blog idea to the backlog                                                                           |
+| `/blog research <topic>`                          | Run 5-phase topic research and validation pipeline                                                               |
+| `/blog workflow <topic>`                          | Run full 13-phase blog creation pipeline (strategy → draft → edit → publish)                                     |
 
 ## Orchestration Logic
 
@@ -98,6 +101,9 @@ separate discipline.
    - `localize` / `cultural-adaptation` → `blog-localize` (cultural deep-adaptation)
    - `locale-audit` / `translation-audit` → `blog-locale-audit` (multilingual QA)
    - `flow` / `find-leverage-optimize-win` → `blog-flow` (FLOW framework prompts)
+   - `idea` / `capture` → `.agents/skills/capture-blog-idea` (Phase 0: instant idea capture to backlog)
+   - `research` / `topic` / `discover` → `.agents/skills/topic-research-workflow` (5-phase topic validation pipeline)
+   - `workflow` / `pipeline` / `full` → `.agents/skills/blog-workflow` (full 13-phase blog creation pipeline)
    - `style` → `blog-style` (learn author voice profile from existing posts)
    - `decay` → `blog-decay` (content-decay detection from GSC exports)
 
