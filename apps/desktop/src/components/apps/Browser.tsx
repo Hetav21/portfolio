@@ -248,7 +248,8 @@ export default function Browser() {
             className="border-0 w-full h-full bg-card"
             style={iframeStyle}
             allow="clipboard-write; clipboard-read"
-            sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox"
+            // Disallow top navigation and omit allow-popups-to-escape-sandbox to prevent iframe frame-busting or window.opener hijacking
+            sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
             title="Browser"
           />
         </div>
