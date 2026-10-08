@@ -13,6 +13,11 @@ Reference documentation: [docs/specs/blog-workflow.md](file:///home/hetav/Deskto
 > 1. **Original User Query Payload**: The Orchestrator MUST pass the original user prompt/idea (`original_user_query`) to EVERY subagent invocation. Never let subagents infer the topic from context alone.
 > 2. **Zero Internal Knowledge**: Subagents for research, drafting, fact-checking, and editing MUST NEVER rely on model parametric memory for facts, statistics, version numbers, or API details. Every subagent MUST perform web searches and cite official documentation URLs (`[Official Docs](https://...)`) for every claim.
 > 3. **Topic Drift & Intent Rejection**: The QC Agent (Chief Editor) MUST compare the draft against `original_user_query` and REJECT any draft that has drifted away from the user's premise.
+> 4. **Perspective & Attribution Policy**: The blog is written by Hetav Shah, an individual developer — not by the teams behind the technologies being discussed. Subagents MUST:
+>    - **Never use "we" to describe decisions made by third parties** (e.g., "Why did we ditch DCR?" is wrong; "Why did the MCP team ditch DCR?" is correct). This is the "false ownership we" and it misleads readers into thinking the author made those decisions.
+>    - **Use "community we" sparingly** and only when the author genuinely shares the experience with the reader (e.g., "a mistake most of us made" when referring to a common developer practice).
+>    - **Prefer "you" for instructional/tutorial sections** to make the reader the protagonist.
+>    - **Attribute third-party actions to the actual actor** by name (e.g., "the MCP team", "Vercel", "the Rust team") rather than using anonymous "they" or false "we".
 
 ---
 
@@ -109,11 +114,14 @@ Phase 13: Social Distribution & Repurposing   (.agents/skills/copywriting, twitt
 
 - If the user did not provide a topic, ask: the blog topic or idea, target primary keyword, and intended audience.
 - Capture the exact user input as `original_user_query` — this string is immutable and passed to every subagent.
+- Check if a Topic Research Brief exists at `.scratch/topics/<slug>.md`. If so, set `topic_brief_path` to this file path.
+- If `topic_brief_path` is set, read the brief and extract: Recommended H1, Target Audience, Primary/Secondary Keywords, Competitor Gap Summary, Community Pain Points, and Proposed Outline. These will be passed directly to Phases 1–3 to avoid redundant research.
 - Derive a URL-safe `<slug>` from the topic (lowercase, hyphen-separated).
 - Confirm the destination path: `apps/blog/content/posts/<slug>.mdx`.
 
 ### Step 2: Phase 1 — Audience Persona & Strategy (Subagent 1)
 
+- **Brief Import Shortcut**: If `topic_brief_path` is set, import the Target Audience and Community Pain Points (Sections 1-2 of the brief) directly as the persona card. Skip the web research — the topic-research-workflow already validated this. Only run the full subagent if no brief exists.
 - **Tool**: `invoke_subagent` (Role: `Audience Persona Specialist`)
 - **Skills to Consult**: `.agents/skills/product-marketing/SKILL.md`, `.agents/skills/content-strategy/SKILL.md`
 - **Pass**: `original_user_query`
@@ -122,6 +130,7 @@ Phase 13: Social Distribution & Repurposing   (.agents/skills/copywriting, twitt
 
 ### Step 3: Phase 2 — Pre-Draft Competitor Gap Analysis (Subagent 2)
 
+- **Brief Import Shortcut**: If `topic_brief_path` is set, import the Competitor Gap Summary (Section 5 of the brief) directly. Skip redundant competitor web searches. Only run the full subagent if no brief exists.
 - **Tool**: `invoke_subagent` (Role: `Competitor Analyst`)
 - **Skills to Consult**: `.agents/skills/competitor-analysis/SKILL.md`
 - **Pass**: `original_user_query`, Phase 1 persona summary
@@ -130,6 +139,7 @@ Phase 13: Social Distribution & Repurposing   (.agents/skills/copywriting, twitt
 
 ### Step 4: Phase 3 — Ideation, Story & SEO Briefing (Subagent 3)
 
+- **Brief Import Shortcut**: If `topic_brief_path` is set, import the SEO & GEO Keyword Target and Proposed Outline (Sections 4 and 6 of the brief) directly into the Content Brief. Augment with any additional keyword clustering if needed, but do not re-research from scratch. Only run the full subagent if no brief exists.
 - **Tool**: `invoke_subagent` (Role: `Ideation & SEO Specialist`)
 - **Skills to Consult**: `.agents/skills/keyword-research/SKILL.md`, `.agents/skills/keyword-clustering/SKILL.md`, `.agents/skills/find-keywords/SKILL.md`
 - **Pass**: `original_user_query`, Phase 1 persona, Phase 2 Gap Report
@@ -144,6 +154,7 @@ Phase 13: Social Distribution & Repurposing   (.agents/skills/copywriting, twitt
 - **Goal**: Draft the full long-form MDX article directly to `apps/blog/content/posts/<slug>.mdx`. Focus on storytelling, empathy, varied sentence length, and asking the reader questions. Every technical claim MUST be accompanied by a search-verified hyperlink — no parametric memory.
 - **Velite Rules**: Use the exact frontmatter schema above. All code blocks must have language identifiers. Diagrams go in ` ```mermaid ``` ` blocks.
 - **Output**: MDX file written to disk. Return the file path + slug (Handoff format).
+- **Early Validation**: After writing the MDX file, immediately run `bun run lint` to verify the frontmatter is valid. Fix any schema errors before proceeding to Phase 5. Do not wait until Phase 12 to discover frontmatter issues.
 
 ### Step 6: Phase 5 — Visual Media & Diagram Architecture (Subagent 5)
 
@@ -152,6 +163,7 @@ Phase 13: Social Distribution & Repurposing   (.agents/skills/copywriting, twitt
 - **Pass**: `original_user_query`, full MDX file content from Phase 4
 - **Goal**: Analyze the draft to identify concepts that need visual representation. Insert at least 1 mandatory Mermaid diagram (architecture, flow, or sequence) directly into the MDX. The diagram must be pedagogically relevant — no decorative filler.
 - **Callout requirement**: Wrap each diagram in an `> [!NOTE]` callout explaining what it illustrates.
+- **Cover Image**: If the post does not already have a `cover` field in frontmatter, use the `generate_image` tool to create a hero image relevant to the article topic. Save it as `apps/blog/content/posts/<slug>-cover.jpg` and add `cover: './<slug>-cover.jpg'` to the frontmatter.
 - **Output**: Updated MDX file on disk with diagrams inserted. Return the updated file path (Handoff format).
 
 ### Step 7: Phase 6 — Contextual Hyperlink Research & Verification (Subagent 6)
@@ -204,6 +216,10 @@ Phase 13: Social Distribution & Repurposing   (.agents/skills/copywriting, twitt
   - If the verdict is **`APPROVED`**: exit the loop and proceed to Phase 12.
   - If the verdict is **`NEEDS REVISION`**: route the specific directives back to the appropriate subagent (Phase 4 for content issues, Phase 5 for visuals, Phase 8 for editing). Re-run that phase and return here.
   - **Maximum 3 revision loops**. After 3 rejections, proceed with a `[CONDITIONALLY APPROVED - MAX LOOPS REACHED]` note.
+  - **Re-entrancy cascade**: When routing back to a phase, the following downstream phases MUST also re-run on the modified content:
+    - Route to Phase 4 (Drafting) → must re-run Phases 5, 6, 7, 8, 9, 10 on new sections.
+    - Route to Phase 5 (Visuals) → must re-run Phase 6 (may need new hyperlinks for diagram context).
+    - Route to Phase 8 (Editing) → must re-run Phase 9 (deslop the edited text).
 - **Output**: `APPROVED` or `NEEDS REVISION` verdict with bulleted directives (Handoff format).
 
 ### Step 13: Phase 12 — Technical Audit & Velite Build Verification (Subagent 12)
