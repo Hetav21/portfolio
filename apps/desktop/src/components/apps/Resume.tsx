@@ -4,9 +4,7 @@ import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { RotateCw, ExternalLink, Download, FileText } from 'lucide-react';
 import { useSystemStore } from '@/lib/store';
 
-const FALLBACK_RESUME_URL =
-  process.env.NODE_ENV === 'development' ? 'http://localhost:3002' : 'https://cv.hetav.dev';
-const RESUME_URL = process.env.NEXT_PUBLIC_RESUME_URL || FALLBACK_RESUME_URL;
+const RESUME_URL = process.env.NEXT_PUBLIC_RESUME_URL || 'http://localhost:3002';
 const LOAD_TIMEOUT_MS = 7000;
 
 export default function Resume() {
