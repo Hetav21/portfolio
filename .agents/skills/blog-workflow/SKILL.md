@@ -114,9 +114,9 @@ Phase 13: Social Distribution & Repurposing   (.agents/skills/copywriting, twitt
 
 - If the user did not provide a topic, ask: the blog topic or idea, target primary keyword, and intended audience.
 - Capture the exact user input as `original_user_query` — this string is immutable and passed to every subagent.
+- Derive a URL-safe `<slug>` from the topic (lowercase, hyphen-separated).
 - Check if a Topic Research Brief exists at `.scratch/topics/<slug>.md`. If so, set `topic_brief_path` to this file path.
 - If `topic_brief_path` is set, read the brief and extract: Recommended H1, Target Audience, Primary/Secondary Keywords, Competitor Gap Summary, Community Pain Points, and Proposed Outline. These will be passed directly to Phases 1–3 to avoid redundant research.
-- Derive a URL-safe `<slug>` from the topic (lowercase, hyphen-separated).
 - Confirm the destination path: `apps/blog/content/posts/<slug>.mdx`.
 
 ### Step 2: Phase 1 — Audience Persona & Strategy (Subagent 1)
@@ -219,7 +219,7 @@ Phase 13: Social Distribution & Repurposing   (.agents/skills/copywriting, twitt
   - **Re-entrancy cascade**: When routing back to a phase, the following downstream phases MUST also re-run on the modified content:
     - Route to Phase 4 (Drafting) → must re-run Phases 5, 6, 7, 8, 9, 10 on new sections.
     - Route to Phase 5 (Visuals) → must re-run Phase 6 (may need new hyperlinks for diagram context).
-    - Route to Phase 8 (Editing) → must re-run Phase 9 (deslop the edited text).
+    - Route to Phase 8 (Editing) → must re-run Phase 9 (deslop the edited text) and Phase 10 (GEO/SEO optimization).
 - **Output**: `APPROVED` or `NEEDS REVISION` verdict with bulleted directives (Handoff format).
 
 ### Step 13: Phase 12 — Technical Audit & Velite Build Verification (Subagent 12)

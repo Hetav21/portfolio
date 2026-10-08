@@ -128,8 +128,10 @@ Launch both subagents simultaneously via `invoke_subagent` in a single call.
 
 - **Subagent 2 (Tech Signal Ingestor)**:
   - **Skills to Consult**: `.agents/skills/research/SKILL.md`
-  - **Goal**: Search engineering blogs (Vercel, Cloudflare, the GitHub blog, Kent C. Dodds, Josh W. Comeau, etc.), official changelogs, and release notes for recent articles related to the topic. Surface "weak signals" — topics being discussed in niche circles but not yet covered by major publications. Cross-reference with Phase 1 findings to confirm signal strength.
+  - **Goal**: Search engineering blogs (Vercel, Cloudflare, the GitHub blog, Kent C. Dodds, Josh W. Comeau, etc.), official changelogs, and release notes for recent articles related to the topic. Surface "weak signals" — topics being discussed in niche circles but not yet covered by major publications.
   - **Output**: Technical Signal Briefing with source URLs and a "signal strength" rating (Strong / Emerging / Niche) for the topic.
+
+- **Orchestrator Synthesis**: Once both subagent handoffs return, cross-reference Phase 1 community findings with the Phase 2 technical briefing to confirm signal strength before launching Phase 3.
 
 ### Step 3: Phase 3 — Search Demand Validation (Subagent 3)
 
@@ -139,7 +141,10 @@ Launch both subagents simultaneously via `invoke_subagent` in a single call.
 - **Output**: Search Volume & Intent Map with primary keyword, secondary keywords, intent classification, and demand rating.
 - **Abort Gate**: If Phase 3 flags the topic as `LOW_DEMAND`, present the user with an explicit choice before continuing:
   - "Search demand is low for this topic. Continue to Phase 4 anyway (the post may still work as thought leadership), or abort and try a different angle?"
-  - If the user chooses to abort, write the brief with `Status: LOW_DEMAND` and `Handoff Recommendation: NO` and stop.
+  - If the user chooses to abort:
+    - Write the brief with `Status: LOW_DEMAND` and `Handoff Recommendation: NO` to `.scratch/topics/<topic-slug>.md`.
+    - If the topic originated from `.scratch/topics/IDEA_BACKLOG.md`, update the entry's status from `CAPTURED` to `LOW_DEMAND` and append `- **Brief**: .scratch/topics/<topic-slug>.md`.
+    - Stop execution.
 
 ### Step 4: Phase 4 — GEO & EEAT Competitor Gap Analysis (Subagent 4)
 

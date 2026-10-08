@@ -1,6 +1,6 @@
 # Product Marketing Context
 
-> Auto-generated from [docs/specs/identity.md](file:///home/hetav/Desktop/Code/portfolio/docs/specs/identity.md). Update the identity registry first, then regenerate this file.
+> Auto-generated from [docs/specs/identity.md](../docs/specs/identity.md). Update the identity registry first, then regenerate this file.
 
 ## Author Profile
 

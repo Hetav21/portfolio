@@ -61,8 +61,8 @@ If the user provides multiple ideas in a single prompt:
 
 1. Parse each distinct idea as a separate entry.
 2. Run the **Duplicate Check** (Step 3) for each entry individually.
-3. Append all entries to `.scratch/topics/IDEA_BACKLOG.md` as separate `###` blocks, each with its own date, title, and fields.
-4. Confirm the total number of ideas saved and list their titles.
+3. For each entry, honor the duplicate decision: update the existing block when selected, or append as a separate `###` block with its own date, title, and fields when saving separately.
+4. Confirm the total number of ideas saved or updated and list their titles.
 
 ## Positioning in the Pipeline
 
