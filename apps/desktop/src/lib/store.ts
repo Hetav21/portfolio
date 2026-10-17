@@ -20,6 +20,7 @@ export interface SystemState {
   minimizeWindow: (id: AppId) => void;
   maximizeWindow: (id: AppId) => void;
   focusWindow: (id: AppId) => void;
+  toggleActivities: () => void;
   updateWindowPosition: (id: AppId, pos: { x: number; y: number }) => void;
   updateWindowSize: (id: AppId, size: { width: number; height: number }) => void;
 }
@@ -141,18 +142,31 @@ export const useSystemStore = create<SystemState>((set) => ({
 
   openWindow: (id) =>
     set((state) => {
+      const win = state.windows[id];
       const newZ = state.maxZIndex + 1;
       const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+
+      // If already open and active on desktop, clicking dock icon toggles minimize
+      if (win.isOpen && !win.isMinimized && state.activeWindowId === id) {
+        const nextWindows = {
+          ...state.windows,
+          [id]: { ...win, isMinimized: true },
+        };
+        return {
+          windows: nextWindows,
+          activeWindowId: getNextFocusId(nextWindows, id),
+        };
+      }
 
       return {
         windows: {
           ...state.windows,
           [id]: {
-            ...state.windows[id],
+            ...win,
             isOpen: true,
             zIndex: newZ,
             isMinimized: false,
-            isMaximized: isMobile ? true : state.windows[id].isMaximized,
+            isMaximized: isMobile ? true : win.isMaximized,
           },
         },
         activeWindowId: id,
@@ -203,6 +217,33 @@ export const useSystemStore = create<SystemState>((set) => ({
         },
         activeWindowId: id,
         maxZIndex: newZ,
+      };
+    }),
+
+  toggleActivities: () =>
+    set((state) => {
+      const openWins = Object.values(state.windows).filter((w) => w.isOpen);
+      if (openWins.length === 0) return {};
+
+      // If any window is currently maximized, restore them
+      const hasMaximized = openWins.some((w) => w.isMaximized && !w.isMinimized);
+      if (hasMaximized) {
+        const updated = { ...state.windows };
+        openWins.forEach((w) => {
+          if (w.isMaximized) updated[w.id] = { ...w, isMaximized: false };
+        });
+        return { windows: updated };
+      }
+
+      // Otherwise, toggle minimize all / restore all
+      const hasVisible = openWins.some((w) => !w.isMinimized);
+      const updated = { ...state.windows };
+      openWins.forEach((w) => {
+        updated[w.id] = { ...w, isMinimized: hasVisible };
+      });
+      return {
+        windows: updated,
+        activeWindowId: hasVisible ? null : state.activeWindowId,
       };
     }),
 

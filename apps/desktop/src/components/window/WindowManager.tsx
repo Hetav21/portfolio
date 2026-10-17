@@ -5,6 +5,7 @@ import { useSystemStore } from '@/lib/store';
 import { Window } from './Window';
 import dynamic from 'next/dynamic';
 import { AppId } from '@/lib/types';
+import { AnimatePresence } from 'framer-motion';
 
 const Terminal = dynamic(() => import('@/components/apps/Terminal'), { ssr: false });
 const Files = dynamic(() => import('@/components/apps/Files'), { ssr: false });
@@ -51,13 +52,15 @@ export const WindowManager = () => {
 
   return (
     <div ref={containerRef} className="absolute inset-0 pointer-events-none overflow-hidden">
-      {openWindows.map((window) => (
-        <Window key={window.id} id={window.id} title={window.title} constraintsRef={containerRef}>
-          <div className="h-full w-full bg-card text-foreground overflow-hidden">
-            <WindowContent id={window.id} />
-          </div>
-        </Window>
-      ))}
+      <AnimatePresence>
+        {openWindows.map((window) => (
+          <Window key={window.id} id={window.id} title={window.title} constraintsRef={containerRef}>
+            <div className="h-full w-full bg-card text-foreground overflow-hidden">
+              <WindowContent id={window.id} />
+            </div>
+          </Window>
+        ))}
+      </AnimatePresence>
     </div>
   );
 };

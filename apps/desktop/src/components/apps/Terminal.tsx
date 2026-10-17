@@ -293,7 +293,7 @@ export default function TerminalApp() {
     const resizeObserver = new ResizeObserver(() => {
       if (!isInitializedRef.current) return;
       clearTimeout(resizeTimeout);
-      resizeTimeout = setTimeout(safeFit, 50);
+      resizeTimeout = setTimeout(safeFit, 100);
     });
 
     resizeObserver.observe(container);
@@ -301,7 +301,7 @@ export default function TerminalApp() {
     const handleResize = () => {
       if (!isInitializedRef.current) return;
       clearTimeout(resizeTimeout);
-      resizeTimeout = setTimeout(safeFit, 50);
+      resizeTimeout = setTimeout(safeFit, 100);
     };
     window.addEventListener('resize', handleResize);
 
@@ -331,7 +331,7 @@ export default function TerminalApp() {
       const timeout = setTimeout(() => {
         safeFit();
         focusTerminal();
-      }, 100);
+      }, 300);
       return () => clearTimeout(timeout);
     }
   }, [windowState.size, windowState.isOpen, windowState.isMaximized, safeFit, focusTerminal]);
