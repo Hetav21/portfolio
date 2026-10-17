@@ -1,88 +1,100 @@
 'use client';
 
-import React, { useState, useRef, useEffect, useCallback } from 'react';
-import { RotateCw, ExternalLink, Download, FileText } from 'lucide-react';
-import { useSystemStore } from '@/lib/store';
+import React, { useState, useEffect, useRef } from 'react';
+import { ZoomIn, ZoomOut, Download, ExternalLink, RotateCw, Loader2, FileText } from 'lucide-react';
+import { Document, Page, pdfjs } from 'react-pdf';
 
-const RESUME_URL = process.env.NEXT_PUBLIC_RESUME_URL || 'http://localhost:3002';
-const LOAD_TIMEOUT_MS = 7000;
+// Configure pdfjs worker to use local public asset
+pdfjs.GlobalWorkerOptions.workerSrc = '/pdf.worker.min.mjs';
+
+const RESUME_DOWNLOAD_URL = '/resume.pdf';
+const EXTERNAL_RESUME_URL = process.env.NEXT_PUBLIC_RESUME_URL || 'https://cv.hetav.dev';
 
 export default function Resume() {
-  const [isLoading, setIsLoading] = useState(true);
-  const [loadFailed, setLoadFailed] = useState(false);
-  const iframeRef = useRef<HTMLIFrameElement>(null);
-  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
-  const theme = useSystemStore((state) => state.theme);
+  const [numPages, setNumPages] = useState<number | null>(null);
+  const [scale, setScale] = useState(1.0);
+  const containerRef = useRef<HTMLDivElement>(null);
 
-  const clearLoadTimeout = useCallback(() => {
-    if (timeoutRef.current) {
-      clearTimeout(timeoutRef.current);
-      timeoutRef.current = null;
-    }
+  // Auto-fit initial scale on mobile/small viewports
+  useEffect(() => {
+    const updateScale = () => {
+      if (containerRef.current) {
+        const width = containerRef.current.clientWidth;
+        if (width < 650) {
+          setScale(Math.max(0.55, Math.min(1.0, (width - 40) / 600)));
+        }
+      }
+    };
+
+    updateScale();
+    window.addEventListener('resize', updateScale);
+    return () => window.removeEventListener('resize', updateScale);
   }, []);
 
-  const startLoadTimeout = useCallback(() => {
-    clearLoadTimeout();
-    timeoutRef.current = setTimeout(() => {
-      if (isLoading) {
-        setIsLoading(false);
-        setLoadFailed(true);
-      }
-    }, LOAD_TIMEOUT_MS);
-  }, [clearLoadTimeout, isLoading]);
-
-  useEffect(() => {
-    startLoadTimeout();
-    return clearLoadTimeout;
-  }, [startLoadTimeout, clearLoadTimeout]);
-
-  const refresh = () => {
-    if (iframeRef.current) {
-      setIsLoading(true);
-      setLoadFailed(false);
-      startLoadTimeout();
-      iframeRef.current.src = iframeRef.current.src;
-    }
-  };
-
-  const handleIframeLoad = () => {
-    clearLoadTimeout();
-    setIsLoading(false);
-    setLoadFailed(false);
-  };
+  const zoomIn = () => setScale((prev) => Math.min(prev + 0.15, 2.5));
+  const zoomOut = () => setScale((prev) => Math.max(prev - 0.15, 0.5));
+  const resetZoom = () => setScale(1.0);
 
   const openInNewTab = () => {
-    window.open(RESUME_URL, '_blank', 'noopener,noreferrer');
+    window.open(EXTERNAL_RESUME_URL, '_blank', 'noopener,noreferrer');
   };
 
   return (
     <div className="flex flex-col h-full bg-card text-foreground">
       {/* Toolbar */}
-      <div className="flex items-center justify-between p-3 bg-background border-b border-border">
+      <div className="flex items-center justify-between p-3 bg-background border-b border-border select-none">
         <div className="flex items-center space-x-2">
-          <span className="font-medium px-2">Resume</span>
+          <span className="font-medium px-2 text-sm">Resume.pdf</span>
+          {numPages && (
+            <span className="text-xs text-muted-foreground">
+              ({numPages} {numPages === 1 ? 'page' : 'pages'})
+            </span>
+          )}
         </div>
 
-        <div className="flex items-center space-x-2">
+        <div className="flex items-center space-x-1.5">
           <button
-            onClick={refresh}
-            className="p-1.5 hover:bg-muted rounded-full transition-colors"
-            title="Refresh"
+            onClick={zoomOut}
+            className="p-1.5 hover:bg-muted text-muted-foreground hover:text-foreground rounded-md transition-colors cursor-pointer"
+            title="Zoom Out"
+            aria-label="Zoom Out"
           >
-            <RotateCw size={16} className={isLoading ? 'animate-spin' : ''} />
+            <ZoomOut size={16} />
+          </button>
+          <span className="text-xs text-muted-foreground min-w-[3rem] text-center font-mono">
+            {Math.round(scale * 100)}%
+          </span>
+          <button
+            onClick={zoomIn}
+            className="p-1.5 hover:bg-muted text-muted-foreground hover:text-foreground rounded-md transition-colors cursor-pointer"
+            title="Zoom In"
+            aria-label="Zoom In"
+          >
+            <ZoomIn size={16} />
           </button>
           <button
+            onClick={resetZoom}
+            className="p-1.5 hover:bg-muted text-muted-foreground hover:text-foreground rounded-md transition-colors cursor-pointer"
+            title="Reset Zoom"
+            aria-label="Reset Zoom"
+          >
+            <RotateCw size={16} />
+          </button>
+          <div className="h-4 w-px bg-border mx-1" />
+          <button
             onClick={openInNewTab}
-            className="p-1.5 hover:bg-muted rounded-full transition-colors"
+            className="p-1.5 hover:bg-muted text-muted-foreground hover:text-foreground rounded-md transition-colors cursor-pointer"
             title="Open in new tab"
+            aria-label="Open in new tab"
           >
             <ExternalLink size={16} />
           </button>
           <a
-            href={`${RESUME_URL}/resume.pdf`}
-            download="resume.pdf"
-            className="p-1.5 hover:bg-muted rounded-full transition-colors"
+            href={RESUME_DOWNLOAD_URL}
+            download="Hetav_Shah_Resume.pdf"
+            className="p-1.5 hover:bg-muted text-muted-foreground hover:text-foreground rounded-md transition-colors cursor-pointer"
             title="Download PDF"
+            aria-label="Download PDF"
           >
             <Download size={16} />
           </a>
@@ -90,61 +102,57 @@ export default function Resume() {
       </div>
 
       {/* Content */}
-      <div className="flex-1 relative overflow-hidden bg-card" style={{ colorScheme: theme }}>
-        {/* Loading State */}
-        {isLoading && !loadFailed && (
-          <div className="absolute inset-0 flex items-center justify-center bg-card z-10">
-            <div className="flex flex-col items-center gap-3">
-              <RotateCw size={32} className="animate-spin text-muted-foreground" />
-              <span className="text-sm text-muted-foreground">Loading Resume...</span>
+      <div
+        ref={containerRef}
+        className="flex-1 overflow-auto bg-muted/30 p-6 flex flex-col items-center gap-6"
+      >
+        <Document
+          file="/resume.pdf"
+          onLoadSuccess={({ numPages: total }) => setNumPages(total)}
+          loading={
+            <div className="flex flex-col items-center justify-center py-20 gap-3 text-muted-foreground">
+              <Loader2 size={32} className="animate-spin text-primary" />
+              <p className="text-sm">Loading Resume...</p>
             </div>
-          </div>
-        )}
-
-        {/* Blocked/Failed State */}
-        {loadFailed && (
-          <div className="absolute inset-0 flex items-center justify-center bg-card z-10">
-            <div className="flex flex-col items-center gap-4 max-w-md text-center px-6">
-              <div className="w-16 h-16 rounded-full bg-secondary flex items-center justify-center">
-                <FileText size={32} className="text-muted-foreground" />
-              </div>
-              <h3 className="text-lg font-medium text-foreground">Resume Preview Unavailable</h3>
-              <p className="text-sm text-muted-foreground">
-                The embedded resume viewer could not be loaded directly. You can view the full CV in
-                a new tab or download the PDF.
-              </p>
-              <div className="flex items-center gap-3">
+          }
+          error={
+            <div className="flex flex-col items-center justify-center py-20 gap-3 text-destructive max-w-sm text-center">
+              <FileText size={36} />
+              <p className="text-sm font-medium">Failed to load Resume PDF.</p>
+              <div className="flex items-center gap-3 mt-2">
                 <button
                   onClick={openInNewTab}
-                  className="flex items-center gap-2 px-4 py-2 bg-primary text-primary-foreground rounded-lg hover:opacity-90 transition-opacity text-sm font-medium"
+                  className="px-3 py-1.5 bg-primary text-primary-foreground text-xs font-medium rounded-md hover:opacity-90"
                 >
-                  <ExternalLink size={16} />
                   Open in New Tab
                 </button>
                 <a
-                  href={`${RESUME_URL}/resume.pdf`}
-                  download="resume.pdf"
-                  className="flex items-center gap-2 px-4 py-2 bg-secondary text-secondary-foreground hover:bg-muted rounded-lg transition-colors text-sm font-medium"
+                  href={RESUME_DOWNLOAD_URL}
+                  download="Hetav_Shah_Resume.pdf"
+                  className="px-3 py-1.5 bg-secondary text-secondary-foreground text-xs font-medium rounded-md hover:bg-muted"
                 >
-                  <Download size={16} />
                   Download PDF
                 </a>
               </div>
             </div>
-          </div>
-        )}
-
-        <div className="absolute inset-0 overflow-hidden" style={{ colorScheme: theme }}>
-          <iframe
-            ref={iframeRef}
-            src={`${RESUME_URL}/simplified`}
-            onLoad={handleIframeLoad}
-            className="w-full h-full border-0"
-            style={{ colorScheme: theme }}
-            sandbox="allow-scripts allow-same-origin allow-forms"
-            title="Resume"
-          />
-        </div>
+          }
+        >
+          {numPages &&
+            Array.from(new Array(numPages), (_, i) => (
+              <div
+                key={`page_${i + 1}`}
+                className="shadow-xl rounded overflow-hidden border border-border/40 bg-white"
+              >
+                <Page
+                  pageNumber={i + 1}
+                  scale={scale}
+                  renderTextLayer={false}
+                  renderAnnotationLayer={false}
+                  className="bg-white"
+                />
+              </div>
+            ))}
+        </Document>
       </div>
     </div>
   );
