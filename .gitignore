@@ -45,3 +45,7 @@ next-env.d.ts
 # monorepo
 .turbo
 .velite
+
+# generated build-time assets
+apps/desktop/public/projects/
+apps/desktop/src/data/projects.json
