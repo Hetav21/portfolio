@@ -19,23 +19,21 @@ export const BootSequence = () => {
         }
         return prev + 2;
       });
-    }, 50); // 2.5s total roughly
+    }, 50); // ~2.5s total
     return () => clearInterval(interval);
   }, [isBooting, setBooting]);
-
-  if (!isBooting) return null;
 
   return (
     <motion.div
       initial={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
+      exit={{ opacity: 0, transition: { duration: 0.45, ease: 'easeOut' } }}
       className="fixed inset-0 bg-black z-50 flex flex-col items-center justify-center text-white"
       onClick={() => setBooting(false)} // Skip
     >
       <motion.div
         initial={{ scale: 0.8, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
-        transition={{ duration: 0.5 }}
+        transition={{ duration: 0.5, ease: 'easeOut' }}
         className="mb-8"
       >
         <Image
@@ -51,7 +49,7 @@ export const BootSequence = () => {
       <div className="w-64 h-2 bg-gray-800 rounded-full overflow-hidden">
         <motion.div className="h-full bg-primary" style={{ width: `${progress}%` }} />
       </div>
-      <p className="mt-4 font-mono text-sm text-muted-foreground">
+      <p className="mt-4 font-mono text-sm text-muted-foreground select-none">
         Starting Hetav&apos;s Portfolio...
       </p>
     </motion.div>

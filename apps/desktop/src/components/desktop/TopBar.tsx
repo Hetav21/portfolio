@@ -11,7 +11,7 @@ import {
 } from '@/components/icons/GnomeIcons';
 
 export const TopBar = () => {
-  const { toggleTheme, theme, setBooting } = useSystemStore();
+  const { toggleTheme, theme, setBooting, toggleActivities } = useSystemStore();
   const [time, setTime] = useState<string>('');
   const [date, setDate] = useState<string>('');
   const [isPowerMenuOpen, setIsPowerMenuOpen] = useState(false);
@@ -38,9 +38,12 @@ export const TopBar = () => {
   return (
     <div className="fixed top-0 left-0 right-0 h-8 bg-card/95 text-foreground flex items-center justify-between px-2 md:px-4 z-50 select-none backdrop-blur-sm border-b border-border shadow-md text-sm font-medium">
       {/* Left: Activities */}
-      <button className="px-3 py-1 rounded-full hover:bg-muted transition-colors duration-200">
-        <span className="hidden md:inline">Activities</span>
-        <span className="md:hidden font-bold">Activities</span>
+      <button
+        onClick={toggleActivities}
+        className="px-3 py-1 rounded-full hover:bg-muted active:scale-95 transition-all duration-150 cursor-pointer text-xs md:text-sm font-medium"
+        title="Toggle Activities (Show Desktop / Unmaximize)"
+      >
+        <span>Activities</span>
       </button>
 
       {/* Center: Clock */}
@@ -76,7 +79,7 @@ export const TopBar = () => {
         {/* Theme Toggle - lucide-react icons */}
         <button
           onClick={toggleTheme}
-          className="p-1.5 opacity-80 hover:opacity-100 hover:bg-muted/50 rounded-full transition-all duration-150"
+          className="p-1.5 opacity-80 hover:opacity-100 hover:bg-muted/50 rounded-full transition-all duration-150 cursor-pointer"
           title="Toggle Theme"
         >
           {theme === 'dark' ? (
@@ -88,7 +91,7 @@ export const TopBar = () => {
 
         {/* Status Icons Group - GNOME symbolic icons with grouped hover */}
         <button
-          className="flex items-center gap-2 md:gap-3 px-2 md:px-3 py-1 opacity-80 hover:opacity-100 hover:bg-muted/50 rounded-full transition-all duration-150"
+          className="flex items-center gap-2 md:gap-3 px-2 md:px-3 py-1 opacity-80 hover:opacity-100 hover:bg-muted/50 rounded-full transition-all duration-150 cursor-pointer"
           title="System Status"
         >
           <NetworkWirelessSymbolic width={14} height={14} />
@@ -100,7 +103,7 @@ export const TopBar = () => {
         <div className="relative">
           <button
             onClick={() => setIsPowerMenuOpen(!isPowerMenuOpen)}
-            className="p-1.5 opacity-80 hover:opacity-100 hover:bg-muted/50 rounded-full transition-all duration-150"
+            className="p-1.5 opacity-80 hover:opacity-100 hover:bg-muted/50 rounded-full transition-all duration-150 cursor-pointer"
           >
             <SystemShutdownSymbolic width={15} height={15} />
           </button>
@@ -111,7 +114,7 @@ export const TopBar = () => {
               <div className="absolute right-0 top-full mt-2 w-48 bg-popover border border-border rounded-lg shadow-xl overflow-hidden z-50 py-1">
                 <button
                   onClick={() => setBooting(true)}
-                  className="w-full text-left px-4 py-2 hover:bg-muted flex items-center gap-2 text-destructive"
+                  className="w-full text-left px-4 py-2 hover:bg-muted flex items-center gap-2 text-destructive cursor-pointer"
                 >
                   <SystemShutdownSymbolic width={14} height={14} />
                   Restart System
