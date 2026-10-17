@@ -1,27 +1,47 @@
 import { FileSystemNode } from './types';
 import { projects } from '../data/projects';
 
-// Helper to convert project title to directory-friendly name
-const toDirName = (title: string) => title.toLowerCase().replace(/\s+/g, '-');
+// Helper to convert project to directory-friendly name
+const toDirName = (title: string, slug?: string) =>
+  slug || title.toLowerCase().replace(/\s+/g, '-');
+
+// Canonical about.txt content with full socials and profile links
+export const ABOUT_TXT_CONTENT = `Name: Hetav Shah
+Role: Associate AI Engineer
+Email: hello@hetav.dev
+GitHub: https://github.com/Hetav21
+LinkedIn: https://www.linkedin.com/in/hetav2106/
+X: https://x.com/Hetav_21
+Website: https://www.hetav.dev
+Blog: https://blog.hetav.dev
+Resume: https://cv.hetav.dev`;
 
 // Generate project nodes from data source
 const projectNodes: FileSystemNode[] = projects.map((p) => ({
-  name: toDirName(p.title),
+  name: toDirName(p.title, p.slug),
   type: 'directory',
   children: [
     {
       name: 'README.md',
       type: 'file',
-      content: `# ${p.title}
-
-${p.description}
-
-Stack: ${p.tags.join(', ')}
-
-Links:
-- Repo: ${p.links.repo}
-${p.links.demo ? `- Demo: ${p.links.demo}` : ''}
-`,
+      content:
+        p.readme ||
+        `# ${p.title}\n\n${p.description}\n\nStack: ${p.tags.join(', ')}\n\nLinks:\n- Repo: ${p.links.repo}\n${p.links.demo ? `- Demo: ${p.links.demo}` : ''}\n`,
+    },
+    {
+      name: 'info.json',
+      type: 'file',
+      content: JSON.stringify(
+        {
+          title: p.title,
+          description: p.description,
+          tags: p.tags,
+          image: p.image,
+          links: p.links,
+        },
+        null,
+        2
+      ),
     },
   ],
 }));
@@ -39,6 +59,11 @@ const fileSystem: FileSystemNode = {
           name: 'hetav',
           type: 'directory',
           children: [
+            {
+              name: 'about.txt',
+              type: 'file',
+              content: ABOUT_TXT_CONTENT,
+            },
             {
               name: 'projects',
               type: 'directory',
@@ -62,8 +87,7 @@ const fileSystem: FileSystemNode = {
                 {
                   name: 'about.txt',
                   type: 'file',
-                  content:
-                    'Name: Hetav Shah\nRole: Associate AI Engineer\nGitHub: github.com/Hetav21',
+                  content: ABOUT_TXT_CONTENT,
                 },
               ],
             },
