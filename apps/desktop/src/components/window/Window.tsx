@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect, useRef, useMemo, useState } from 'react';
-import { motion, useDragControls, useMotionValue, animate } from 'framer-motion';
+import { motion, useMotionValue, animate } from 'framer-motion';
 import { Minus, X, Maximize2, Minimize2 } from 'lucide-react';
 import { useSystemStore } from '@/lib/store';
 import { AppId } from '@/lib/types';
@@ -17,7 +17,7 @@ interface WindowProps {
 const TOPBAR_HEIGHT = 32;
 const ANIM_EASE = [0.16, 1, 0.3, 1] as const;
 
-export const Window = ({ id, title, children, constraintsRef }: WindowProps) => {
+export const Window = ({ id, title, children }: WindowProps) => {
   const windowState = useSystemStore((state) => state.windows[id]);
   const focusWindow = useSystemStore((state) => state.focusWindow);
   const updateWindowPosition = useSystemStore((state) => state.updateWindowPosition);
@@ -27,7 +27,8 @@ export const Window = ({ id, title, children, constraintsRef }: WindowProps) => 
   const theme = useSystemStore((state) => state.theme);
 
   const [isDragging, setIsDragging] = useState(false);
-  const dragControls = useDragControls();
+  const isDraggingRef = useRef(false);
+  const dragStartPos = useRef({ pointerX: 0, pointerY: 0, winX: 0, winY: 0 });
 
   const motionX = useMotionValue(windowState?.position.x ?? 0);
   const motionY = useMotionValue(windowState?.position.y ?? 0);
@@ -55,11 +56,17 @@ export const Window = ({ id, title, children, constraintsRef }: WindowProps) => 
       animate(motionWidth, window.innerWidth, { duration, ease: ANIM_EASE });
       animate(motionHeight, window.innerHeight - TOPBAR_HEIGHT, { duration, ease: ANIM_EASE });
     } else if (prevMaximized.current) {
-      // Only animate on restoration from maximized
+      // Animate on restoration from maximized
       animate(motionX, position.x, { duration, ease: ANIM_EASE });
       animate(motionY, position.y, { duration, ease: ANIM_EASE });
       animate(motionWidth, size.width, { duration, ease: ANIM_EASE });
       animate(motionHeight, size.height, { duration, ease: ANIM_EASE });
+    } else if (!isDraggingRef.current) {
+      // Keep motion values in sync with state if not actively dragging
+      motionX.set(position.x);
+      motionY.set(position.y);
+      motionWidth.set(size.width);
+      motionHeight.set(size.height);
     }
 
     prevMaximized.current = isMaximized;
@@ -97,33 +104,68 @@ export const Window = ({ id, title, children, constraintsRef }: WindowProps) => 
     focusWindow(id);
   };
 
-  const handleDragEnd = () => {
-    setIsDragging(false);
-    if (!isMaximized) {
-      // Clamp to screen boundaries so the window never gets pushed offscreen
-      const currentX = motionX.get();
-      const currentY = motionY.get();
-      const clampedX = Math.max(0, Math.min(currentX, Math.max(0, window.innerWidth - 120)));
-      const clampedY = Math.max(
-        TOPBAR_HEIGHT,
-        Math.min(currentY, Math.max(TOPBAR_HEIGHT, window.innerHeight - 80))
-      );
+  const handlePointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
+    // Only drag with primary mouse button
+    if (e.button !== 0 || isMaximized) return;
 
-      updateWindowPosition(id, { x: clampedX, y: clampedY });
-      motionX.set(clampedX);
-      motionY.set(clampedY);
-    }
+    // Do not initiate drag if user clicked window control buttons
+    if ((e.target as HTMLElement).closest('button')) return;
+
+    handleFocus();
+
+    isDraggingRef.current = true;
+    setIsDragging(true);
+
+    dragStartPos.current = {
+      pointerX: e.clientX,
+      pointerY: e.clientY,
+      winX: motionX.get(),
+      winY: motionY.get(),
+    };
+
+    try {
+      e.currentTarget.setPointerCapture(e.pointerId);
+    } catch {}
+  };
+
+  const handlePointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
+    if (!isDraggingRef.current) return;
+
+    const dx = e.clientX - dragStartPos.current.pointerX;
+    const dy = e.clientY - dragStartPos.current.pointerY;
+
+    const nextX = dragStartPos.current.winX + dx;
+    const nextY = dragStartPos.current.winY + dy;
+
+    // Clamp window to screen boundaries in real time
+    const clampedX = Math.max(0, Math.min(nextX, Math.max(0, window.innerWidth - 120)));
+    const clampedY = Math.max(
+      TOPBAR_HEIGHT,
+      Math.min(nextY, Math.max(TOPBAR_HEIGHT, window.innerHeight - 80))
+    );
+
+    motionX.set(clampedX);
+    motionY.set(clampedY);
+  };
+
+  const handlePointerUp = (e: React.PointerEvent<HTMLDivElement>) => {
+    if (!isDraggingRef.current) return;
+    isDraggingRef.current = false;
+    setIsDragging(false);
+
+    try {
+      if (e.currentTarget.hasPointerCapture(e.pointerId)) {
+        e.currentTarget.releasePointerCapture(e.pointerId);
+      }
+    } catch {}
+
+    const finalX = motionX.get();
+    const finalY = motionY.get();
+    updateWindowPosition(id, { x: finalX, y: finalY });
   };
 
   return (
     <motion.div
-      drag={!isMaximized}
-      dragConstraints={constraintsRef}
-      dragMomentum={false}
-      dragListener={false}
-      dragControls={dragControls}
-      onDragStart={() => setIsDragging(true)}
-      onDragEnd={handleDragEnd}
       onPointerDown={handleFocus}
       initial={{ opacity: 0, scale: 0.95 }}
       animate={{ opacity: 1, scale: 1 }}
@@ -143,14 +185,11 @@ export const Window = ({ id, title, children, constraintsRef }: WindowProps) => 
       )}
     >
       <div
-        className="relative flex h-10 items-center bg-secondary px-3 select-none cursor-move"
-        onPointerDown={(e) => {
-          handleFocus();
-          if (!isMaximized) {
-            setIsDragging(true);
-            dragControls.start(e);
-          }
-        }}
+        className="relative flex h-10 items-center bg-secondary px-3 select-none cursor-move touch-none"
+        onPointerDown={handlePointerDown}
+        onPointerMove={handlePointerMove}
+        onPointerUp={handlePointerUp}
+        onPointerCancel={handlePointerUp}
         onDoubleClick={() => {
           // Disable double-click maximize on mobile
           if (window.innerWidth >= 768) {
