@@ -189,7 +189,7 @@ export default function Browser() {
             <ExternalLink size={16} />
           </button>
           <div className="relative w-8 h-8 rounded-full overflow-hidden border border-border/80 bg-secondary/50">
-            <Image src="/avatar.png" alt="Profile" fill className="object-cover" />
+            <Image src="/avatar.png" alt="Profile" fill sizes="2rem" className="object-cover" />
           </div>
         </div>
       </div>

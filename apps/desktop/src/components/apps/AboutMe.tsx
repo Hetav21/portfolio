@@ -10,7 +10,7 @@ export default function AboutMe() {
       {/* Header */}
       <div className="flex flex-col items-center mb-8">
         <div className="relative w-24 h-24 rounded-full overflow-hidden shadow-lg mb-4 ring-2 ring-border/80 bg-secondary/50">
-          <Image src="/avatar.png" alt="Hetav Shah" fill className="object-cover" priority />
+          <Image src="/avatar.png" alt="Hetav Shah" fill sizes="6rem" className="object-cover" priority />
         </div>
         <h1 className="text-2xl font-bold mb-1">Hetav Shah</h1>
         <p className="text-muted-foreground">Associate AI Engineer</p>
