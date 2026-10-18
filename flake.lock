@@ -1,13 +1,29 @@
 {
   "nodes": {
+    "merrkry-nur": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1792318631,
+        "narHash": "sha256-+dSs7EQ88gmJ3fYde/6iFYYuv4bThjXArtnfAHlaGu8=",
+        "owner": "merrkry",
+        "repo": "nur-packages",
+        "rev": "e1c9ca6436db04d5537d7e842d77767201db1cc7",
+        "type": "github"
+      },
+      "original": {
+        "owner": "merrkry",
+        "repo": "nur-packages",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1768127708,
-        "narHash": "sha256-1Sm77VfZh3mU0F5OqKABNLWxOuDeHIlcFjsXeeiPazs=",
-        "rev": "ffbc9f8cbaacfb331b6017d5a5abb21a492c9a38",
-        "revCount": 925861,
+        "lastModified": 1792094642,
+        "narHash": "sha256-zp8ToDMnqZcu4o4IH9pdwXFXGp7yLm/M0dEnNWnyd7I=",
+        "rev": "fe13242281a67641c0102cdb1087f0ebe586c7df",
+        "revCount": 1093333,
         "type": "tarball",
-        "url": "https://api.flakehub.com/f/pinned/NixOS/nixpkgs/0.1.925861%2Brev-ffbc9f8cbaacfb331b6017d5a5abb21a492c9a38/019baf06-737a-74e9-a5cd-6f56469bd2c9/source.tar.gz"
+        "url": "https://api.flakehub.com/f/pinned/NixOS/nixpkgs/0.1.1093333%2Brev-fe13242281a67641c0102cdb1087f0ebe586c7df/01a14d86-b070-7642-b725-b7d23ba17f85/source.tar.gz"
       },
       "original": {
         "type": "tarball",
@@ -16,6 +32,7 @@
     },
     "root": {
       "inputs": {
+        "merrkry-nur": "merrkry-nur",
         "nixpkgs": "nixpkgs"
       }
     }
