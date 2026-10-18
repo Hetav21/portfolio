@@ -1,0 +1,5 @@
+# GitHub Linguist Overrides
+# Exclude compiled third-party worker bundles and minified assets from repository language stats
+*.min.js linguist-vendored linguist-detectable=false
+*.min.mjs linguist-vendored linguist-detectable=false
+apps/*/public/pdf.worker.min.mjs linguist-vendored linguist-detectable=false
