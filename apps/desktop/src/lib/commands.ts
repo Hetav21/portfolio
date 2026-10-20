@@ -129,7 +129,7 @@ export const executeCommand = (input: string, store: SystemState): string => {
           const children = node.children || [];
           const entries: FileSystemNode[] = showAll
             ? [{ name: '.', type: 'directory' }, { name: '..', type: 'directory' }, ...children]
-            : children;
+            : children.filter((child) => !child.name.startsWith('.'));
           output = entries.map(formatNode).join('  ');
         }
 
