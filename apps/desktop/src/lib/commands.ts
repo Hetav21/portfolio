@@ -1,6 +1,6 @@
 import { SystemState } from './store';
-import { currentPath, setCurrentPath, listDirectory, getFileContent, getNode } from './filesystem';
-import { AppId } from './types';
+import { currentPath, setCurrentPath, getNode, resolvePath } from './filesystem';
+import { AppId, FileSystemNode } from './types';
 
 export let isNixShell = false;
 const HISTORY_KEY = 'terminal_history';
@@ -84,8 +84,9 @@ const reset = '\x1b[0m';
 const bold = '\x1b[1m';
 
 export const executeCommand = (input: string, store: SystemState): string => {
-  const parts = input.trim().split(' ');
-  const command = parts[0];
+  const trimmed = input.trim();
+  const parts = trimmed ? trimmed.split(/\s+/) : [];
+  const command = parts[0] || '';
   const args = parts.slice(1);
 
   if (command !== '') {
@@ -105,18 +106,49 @@ export const executeCommand = (input: string, store: SystemState): string => {
     case 'microfetch':
       return FASTFETCH_OUTPUT;
 
-    case 'ls':
-      const files = listDirectory(currentPath);
-      if (!files) return `Error: Cannot access '${currentPath}'`;
-      return files
-        .map((f) => {
-          if (f.type === 'directory') return `${foam}${f.name}${reset}`;
-          return f.name;
-        })
-        .join('  ');
+    case 'ls': {
+      const targets = args.filter((arg) => !arg.startsWith('-'));
+      const flags = args.filter((arg) => arg.startsWith('-'));
+      const showAll = flags.some((f) => f.includes('a'));
 
-    case 'cd':
-      if (args.length === 0) {
+      const formatNode = (node: FileSystemNode) => {
+        if (node.type === 'directory') return `${foam}${node.name}${reset}`;
+        return node.name;
+      };
+
+      const listTarget = (targetPath: string, showHeader = false): string => {
+        const node = getNode(targetPath);
+        if (!node) {
+          return `ls: cannot access '${targetPath}': No such file or directory`;
+        }
+
+        let output = '';
+        if (node.type === 'file') {
+          output = formatNode(node);
+        } else {
+          const children = node.children || [];
+          const entries: FileSystemNode[] = showAll
+            ? [{ name: '.', type: 'directory' }, { name: '..', type: 'directory' }, ...children]
+            : children;
+          output = entries.map(formatNode).join('  ');
+        }
+
+        return showHeader ? `${targetPath}:\n${output}` : output;
+      };
+
+      if (targets.length === 0) {
+        return listTarget(currentPath);
+      }
+
+      if (targets.length === 1) {
+        return listTarget(targets[0]);
+      }
+
+      return targets.map((t) => listTarget(t, true)).join('\n\n');
+    }
+
+    case 'cd': {
+      if (args.length === 0 || args[0] === '~') {
         setCurrentPath('/home/hetav');
         return '';
       }
@@ -125,30 +157,23 @@ export const executeCommand = (input: string, store: SystemState): string => {
       if (!node) return `cd: no such file or directory: ${targetPath}`;
       if (node.type !== 'directory') return `cd: not a directory: ${targetPath}`;
 
-      let newPath = targetPath.startsWith('/') ? targetPath : `${currentPath}/${targetPath}`;
-      const pathParts = newPath.split('/').filter((p) => p && p !== '.');
-      const stack: string[] = [];
-      for (const p of pathParts) {
-        if (p === '..') {
-          if (stack.length > 0) stack.pop();
-        } else {
-          stack.push(p);
-        }
-      }
-      newPath = '/' + stack.join('/');
-
-      setCurrentPath(newPath);
+      setCurrentPath(resolvePath(targetPath));
       return '';
+    }
 
-    case 'cat':
+    case 'cat': {
       if (args.length === 0) return 'cat: missing file operand';
-      const content = getFileContent(args[0]);
-      if (content === null) return `cat: ${args[0]}: No such file or directory`;
+      const targetPath = args[0];
+      const node = getNode(targetPath);
+      if (!node) return `cat: ${targetPath}: No such file or directory`;
+      if (node.type === 'directory') return `cat: ${targetPath}: Is a directory`;
+      const content = node.content || '';
       if (content === '__PDF_RESUME__') {
         store.openWindow('resume');
         return 'Opening PDF Viewer...';
       }
       return content;
+    }
 
     case 'clear':
       return '__CLEAR__';
