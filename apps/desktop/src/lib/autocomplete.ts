@@ -1,4 +1,4 @@
-import { listDirectory, currentPath } from './filesystem';
+import { listDirectory, currentPath, resolvePath } from './filesystem';
 import { COMMANDS, VALID_APPS } from './commands';
 
 export const getSuggestions = (input: string): string[] => {
@@ -24,10 +24,7 @@ export const getSuggestions = (input: string): string[] => {
     const lastSlash = lastPart.lastIndexOf('/');
     const pathDir = lastPart.slice(0, lastSlash) || '/';
     prefix = lastPart.slice(lastSlash + 1);
-    dirToSearch = pathDir.startsWith('/') ? pathDir : `${currentPath}/${pathDir}`;
-
-    // Normalize path to remove double slashes if any, although simple concat usually works for this virtual FS
-    // A more robust path resolution would be better, but this fits existing patterns
+    dirToSearch = resolvePath(pathDir);
   }
 
   const entries = listDirectory(dirToSearch);

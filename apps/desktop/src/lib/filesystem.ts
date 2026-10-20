@@ -105,16 +105,26 @@ export const setCurrentPath = (path: string) => {
 };
 
 // Helper to resolve path
-const resolvePath = (path: string): string => {
-  if (path === '/') return '/';
+export const resolvePath = (path: string): string => {
+  if (!path) return currentPath;
+
+  let normalized = path.trim();
+  if (normalized === '~' || normalized === '~/') {
+    return '/home/hetav';
+  }
+  if (normalized.startsWith('~/')) {
+    normalized = '/home/hetav/' + normalized.slice(2);
+  }
+
+  if (normalized === '/') return '/';
 
   let parts: string[];
 
-  if (path.startsWith('/')) {
-    parts = path.split('/').filter((p) => p);
+  if (normalized.startsWith('/')) {
+    parts = normalized.split('/').filter((p) => p);
   } else {
     const currentParts = currentPath.split('/').filter((p) => p);
-    const pathParts = path.split('/').filter((p) => p);
+    const pathParts = normalized.split('/').filter((p) => p);
     parts = [...currentParts, ...pathParts];
   }
 
