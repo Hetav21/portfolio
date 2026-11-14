@@ -1,52 +1,62 @@
 # Hetav Shah - Curriculum Vitae
 
-> Associate AI Engineer & Full Stack Engineer
-> Website: https://hetav.dev | CV: https://cv.hetav.dev | GitHub: https://github.com/Hetav21 | LinkedIn: https://www.linkedin.com/in/hetav2106/
-> Email: shahhetav2106@gmail.com | Location: Ahmedabad, India
-
-## Professional Summary
-Associate AI Engineer specializing in Agentic AI architectures, LLM Integrations, Multi-Agent Orchestration, RAG Pipelines, and Model Context Protocol (MCP). Experienced in building high-performance full-stack web applications, backend microservices, and automated document intelligence platforms.
+> AI Engineer and Full-Stack Software Engineer specializing in agentic AI, hybrid RAG systems, and serverless cloud architectures on AWS. Track record building multi-agent systems, Model Context Protocol (MCP) data services, OpenSearch Serverless hybrid search pipelines, and server-side persistence across distributed streaming BFFs.
+> Website: https://hetav.dev | CV: https://cv.hetav.dev | GitHub: https://github.com/Hetav21 | LinkedIn: https://www.linkedin.com/in/hetav2106/ | Location: Ahmedabad, Gujarat, India (Open to Remote Worldwide / Relocation)
 
 ## Core Technical Skills
-- **Languages:** Python, TypeScript, JavaScript, SQL
-- **Agentic AI & ML:** LLM Integration (OpenSource & Proprietary), Agent-to-Agent (A2A), RAG Pipelines, Dense & Sparse Embeddings, MCP, Multi-Agent Orchestration
-- **Frameworks:** React, Next.js, FastAPI, Express.js, Hono, Electron.js, Tailwind CSS, Zod
-- **Data & Vector Databases:** PostgreSQL, pgvector, Redis, BM25, Vector Search
-- **Cloud & Infrastructure:** AWS (Lambda, S3, CloudWatch), Docker, CI/CD, Cloudflare, NixOS, Git
+
+- **Agentic AI & Orchestration:** Model Context Protocol (MCP), Multi-Agent Orchestration (Agent-to-Agent / A2A), OpenAI Agents SDK, Claude Agent SDK, Multi-Agent Systems & Hierarchical Architectures, Tool/Function Calling, Structured Outputs (Pydantic)
+- **RAG & Search Systems:** Hybrid Search (Vector + Keyword BM25), Amazon OpenSearch Serverless, FAISS, LlamaIndex, Sentence-Window Retrieval, Embeddings (Matryoshka, Dense)
+- **Backend & Distributed Systems:** Python, FastAPI, Node.js, WebSockets, gRPC & Protocol Buffers, REST APIs
+- **Databases & State Management:** PostgreSQL (Neon, Aurora), Amazon DocumentDB, SQL
+- **Cloud, Serverless & DevOps:** AWS (Lambda, EKS, API Gateway, S3, CloudWatch), Docker, Argo CD, Jenkins, Linux, Langfuse
+- **Frontend & Desktop:** TypeScript, React, Next.js, Electron.js, Web Components (Shadow DOM), Tailwind CSS, OAuth2 + PKCE
 
 ## Work Experience
 
-### ProductSquads — Associate AI Engineer
-*Apr 2026 – Present | Remote / Ahmedabad*
-- Won Jury Special Award at Praveg × ProductSquads Codeathon for an A2A-compatible Intelligent Document Processing (IDP) Agent.
-- Productionized IDP agent on AWS Lambda using GPT-4V for automated OCR, document classification, and metadata extraction.
-- Built a containerized financial data-extraction pipeline (Python, FastAPI) with a taxonomy-mapping engine reconstructing complex tables into semantic HTML (90%+ field-level accuracy across 200+ accounting concepts).
-- Implemented server-side persistence across distributed streaming Lambda agents powering the AI Assistant micro-frontend and BFF.
+### ProductSquads | Ahmedabad, India
+**Associate AI Engineer** (November 2025 – Present)
+- Maintained an OpenSearch Serverless hybrid RAG pipeline (Matryoshka embeddings, Sentence-Window retrieval) over 400M+ documents, sustaining 16ms keyword and 43ms vector p50 latency across ~50K-70K daily queries (~2M+ monthly).
+- Operated AWS Lambda MCP services handling 45K+ monthly tool calls across 60+ tables and 700+ fields via allowlisted schema registries and injected tenant ACL joins.
+- Eliminated midstream answer loss across 100K+ messages by moving chat history persistence and title generation from the browser to Python BFF Lambdas and Amazon DocumentDB.
+- Rearchitected multi-turn prompt clarification from browser state to a server-driven state machine (Python BFF and DocumentDB), unblocking SME testing on schedule and preventing state corruption on client disconnects.
+- Eliminated peak-hour missed prompt runs by diagnosing a rush-hour queue bottleneck and splitting discovery checkers and execution jobs into separate dedicated queues.
+- Built a multi-agent release verification system demoed directly to the CTO that automated 90%+ of release checks, cutting triage from 20+ minutes to <30 seconds and catching unhardened ECS tasks.
 
-### ProductSquads — AI Intern
-*Nov 2025 – Apr 2026 | Remote / Ahmedabad*
-- Developed custom RAG pipelines and integrated LLMs via Bedrock and vLLM runtimes.
-- Built vector search interfaces with LangChain and custom embedding pipelines.
+### Meru Technosoft | Ahmedabad, India
+**Full-Stack Intern** (June 2025 – July 2025)
+- Built a cross-platform Electron/TypeScript desktop sync runner that queried on-premise Tally instances via local HTTP/XML and synced data to cloud databases, eliminating manual CSV exports across 2 pilot clients.
+- Engineered a Node.js gRPC and Protocol Buffers microservice to stream desktop payloads, parse Tally XML schemas, and persist normalized accounting ledgers into PostgreSQL.
+- Implemented OAuth2 with PKCE in the API Gateway using custom OS deep-link callbacks, enabling browser-based desktop login without hardcoding API secrets in the client binary.
+- Automated Jenkins CI/CD release pipelines to compile desktop installers, run Windows executable code signing, and publish versioned artifacts to AWS S3 for twice-weekly client deployments.
 
-### Meru Technosoft — Full Stack Intern
-*Jun 2025 – Jul 2025 | Remote / Ahmedabad*
-- Engineered a full-stack Tally integration solution with a desktop application (Electron.js) and backend microservice (gRPC, TypeScript, React).
-- Architected custom OAuth2-like authentication framework with PKCE for secure cross-client communication.
-- Established CI/CD pipeline with automated builds and developer CLI tools.
+## Projects
 
-## Key Projects
+### Noesis: Autonomous Multi-Agent Research Engine
+- **Website:** https://noesis.hetav.dev
+- **Tech Stack:** Next.js, React, FastAPI, Python, OpenAI Agents SDK, PostgreSQL
+- Built a 4-agent research pipeline that summarizes scraped pages before synthesis, analyzing up to 60 sources per query without context window overflow.
+- Shipped a real-time streaming interface that renders live agent reasoning steps and citation-linked reports via adaptive client polling over durable event logs.
 
-### Deep Research Agent
-- *Tech Stack:* Autonomous Multi-Agent System, OpenAI Agents SDK, Python, FastAPI, Recursive Loops.
-- *GitHub:* https://github.com/Hetav21/deep-research-agent
-- *Description:* Autonomous multi-agent system executing recursive web research and synthesis with configurable depth/breadth controls and asynchronous query/synthesis agents.
+## Education
 
-### GDPR Compliance Intelligence Platform
-- *Tech Stack:* Hybrid Retrieval (Dense pgvector + Sparse BM25), RRF, Multi-Query Expansion, Redis, GPT-4o Vision.
-- *GitHub:* https://github.com/Hetav21/gdpr-rag
-- *Description:* Multi-Modal RAG system combining dense vector search and sparse BM25 retrieval with Reciprocal Rank Fusion for legal compliance queries.
+### Adani University | Ahmedabad, Gujarat, India
+**Bachelor of Technology (B.Tech), Computer Science Engineering** (2022 – 2026)
+- **CGPA:** 8.3 / 10.0 (Graduated)
+- **Relevant Coursework:** Data Structures & Algorithms, Database Management Systems (DBMS), Operating Systems, Machine Learning, Computer Networks
 
-## Education & Certifications
-- **B.Tech in Computer Science Engineering** — Adani University, Ahmedabad (Expected Jun 2026, CGPA: 8.30/10)
-- **Anthropic Model Context Protocol (Intro & Advanced)** — Dec 2025
-- **AWS Academy Graduate - AWS Academy Cloud Developing** — Nov 2024
+## Certifications
+
+- **Introduction to Model Context Protocol & Advanced Topics** | Anthropic (Dec 2025) — https://verify.skilljar.com/c/zdrivh9gxyyc
+- **AWS Academy Graduate: AWS Academy Cloud Developing** | Amazon Web Services (Nov 2024) — https://www.credly.com/badges/9fe72cc6-cbc3-45cf-bc70-428bf01e2f1d/public_url
+- **AWS Academy Cloud Architecting** | Amazon Web Services (May 2025) — https://www.credly.com/badges/f6802249-ee52-43c3-bac2-104dadcd8718/public_url
+- **AWS Academy Machine Learning Foundations** | Amazon Web Services (Nov 2024) — https://www.credly.com/badges/dfd8e398-a30a-4872-98b5-0b777fff7742/public_url
+- **AI Engineering Launchpad (Level 1 Foundation & Level 2 Practitioner)** | ProductSquads (Nov – Dec 2025)
+
+## Contact
+
+- **Email:** hello@hetav.dev
+- **Portfolio:** https://www.hetav.dev/
+- **CV / Resume:** https://cv.hetav.dev/
+- **GitHub:** https://github.com/Hetav21
+- **LinkedIn:** https://www.linkedin.com/in/hetav2106/
