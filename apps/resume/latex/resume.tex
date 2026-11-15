@@ -7,22 +7,26 @@
 \documentclass[letterpaper,10pt]{article}
 
 \usepackage{latexsym}
-\usepackage[top=0.22in, bottom=0.22in, left=0.25in, right=0.25in]{geometry}
+\usepackage[top=0.38in, bottom=0.38in, left=0.42in, right=0.42in]{geometry}
 \usepackage{titlesec}
-\usepackage{marvosym}
 \usepackage[usenames,dvipsnames]{color}
-\usepackage{verbatim}
 \usepackage{enumitem}
 \usepackage{fancyhdr}
 \usepackage[english]{babel}
-\usepackage{tabularx}
-\usepackage{multicol}
+\usepackage{iftex}
+
+%----------ATS UNICODE CONFIGURATION----------
+\ifpdftex
+  \input{glyphtounicode}
+  \pdfgentounicode=1
+\fi
 
 %----------HYPERLINK OPTIONS----------
-\usepackage[hidelinks]{hyperref}
+\definecolor{linkblue}{RGB}{0, 102, 204}
+\usepackage[colorlinks=true, linkcolor=linkblue, urlcolor=linkblue, citecolor=linkblue]{hyperref}
 
 %----------FONT OPTIONS----------
-\usepackage[sfdefault]{FiraSans}
+\usepackage[sfdefault,lining]{FiraSans}
 
 \pagestyle{fancy}
 \fancyhf{} 
@@ -35,48 +39,44 @@
 \raggedright
 \setlength{\tabcolsep}{0in}
 
-% Sections formatting
+% Sections formatting - clean, prominent, ATS friendly
 \titleformat{\section}{
-	\vspace{-8pt}\scshape\raggedright\normalsize\bfseries
-}{}{0em}{}[\color{black}\titlerule \vspace{-4pt}]
+	\vspace{-4pt}\scshape\raggedright\large\bfseries
+}{}{0em}{}[\color{black}\titlerule \vspace{-3pt}]
 
 % Custom commands
 \newcommand{\resumeItem}[1]{
-	\item\footnotesize{
-		{#1 \vspace{-2.5pt}}
+	\item\small{
+		{#1 \vspace{-1.5pt}}
 	}
 }
 
-\newcommand{\resumeSubheading}[4]{
-	\vspace{-5pt}\item
-	\begin{tabular*}{0.98\textwidth}[t]{l@{\extracolsep{\fill}}r}
-		\textbf{\small #1} & \footnotesize #2 \\
-		\textit{\footnotesize #3} & \textit{\footnotesize #4} \\
-	\end{tabular*}\vspace{-7pt}
+\newcommand{\resumeRoleHeading}[5]{
+	\vspace{-2pt}\item
+	{\textbf{\normalsize #1} \hfill \small #2} \\
+	{\textbf{\small #3} \hfill \textit{\small #4}} \\
+	{\textit{\footnotesize #5}} \vspace{-3pt}
 }
 
-\newcommand{\resumeSubheadingSmall}[4]{
-	\vspace{-5pt}\item
-	\begin{tabular*}{0.98\textwidth}[t]{l@{\extracolsep{\fill}}r}
-		\textbf{\footnotesize #1} & \footnotesize #2 \\
-		\textit{\footnotesize #3} & \textit{\footnotesize #4} \\
-	\end{tabular*}\vspace{-7pt}
+\newcommand{\resumeProjectHeading}[3]{
+	\vspace{-2pt}\item
+	{\textbf{\normalsize #1} \hfill \small #2} \\
+	{\textit{\footnotesize #3}} \vspace{-3pt}
 }
 
-\newcommand{\resumeCertItem}[3]{
-	\vspace{-5pt}\item
-	\begin{tabular*}{0.98\textwidth}[t]{l@{\extracolsep{\fill}}r}
-		\textbf{\footnotesize #1} $|$ \textit{\footnotesize #2} & \footnotesize #3 \\
-	\end{tabular*}\vspace{-7pt}
+\newcommand{\resumeEducationHeading}[4]{
+	\vspace{-2pt}\item
+	{\textbf{\normalsize #1} \hfill \small #2} \\
+	{\textbf{\small #3} \hfill \textit{\small #4}} \vspace{-3pt}
 }
 
 \renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
 
-\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
-\newcommand{\resumeSubHeadingListEnd}{\end{itemize}\vspace{-5pt}}
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}\vspace{-4pt}}
 
-\newcommand{\resumeItemListStart}{\begin{itemize}[leftmargin=0.15in, itemsep=0.5pt, parsep=0pt, topsep=1pt]}
-\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-3pt}}
+\newcommand{\resumeItemListStart}{\begin{itemize}[leftmargin=0.15in, itemsep=1.5pt, parsep=0pt, topsep=1.5pt]}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-2pt}}
 
 %-------------------------------------------
 %%%%%%  RESUME STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -84,99 +84,99 @@
 \begin{document}
 
 	%----------HEADING----------
-	\begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
-		\textbf{\Large Hetav Shah} & \href{https://hetav.dev}{hetav.dev} \\
-		Ahmedabad, Gujarat, India (Open to Remote Worldwide / Relocation) & \href{https://www.linkedin.com/in/hetav2106/}{linkedin.com/in/hetav2106} \\
-		+91 8780031872 $|$ \href{mailto:shahhetav2106@gmail.com}{shahhetav2106@gmail.com} & \href{https://github.com/Hetav21}{github.com/Hetav21} \\
-	\end{tabular*}
-	\vspace{-6pt}
+	\begin{center}
+		{\Huge \textbf{Hetav Shah}} \\[3pt]
+		\small
+		Ahmedabad, Gujarat, India (Open to Remote Worldwide / Relocation) \\[2pt]
+		\href{tel:+918780031872}{+91 8780031872} \ $|$ \ 
+		\href{mailto:shahhetav2106@gmail.com}{shahhetav2106@gmail.com} \ $|$ \ 
+		\href{https://www.hetav.dev/}{hetav.dev} \ $|$ \ 
+		\href{https://www.linkedin.com/in/hetav2106/}{linkedin.com/in/hetav2106} \ $|$ \ 
+		\href{https://github.com/Hetav21}{github.com/Hetav21}
+	\end{center}
+	\vspace{-7pt}
 
 	%-----------SUMMARY-----------
 	\section{Professional Summary}
-	\begin{itemize}[leftmargin=0.15in, label={}]
-		\footnotesize{\item{
-			AI Engineer and Full Stack Software Engineer specializing in agentic AI, hybrid RAG systems, and serverless cloud architectures on AWS. Track record building multi agent systems, Model Context Protocol (MCP) data services, OpenSearch Serverless hybrid search pipelines, and server side persistence across distributed streaming BFFs. Experienced across Python, TypeScript, FastAPI, Next.js, PostgreSQL, DocumentDB, and event driven cloud systems.
-		}}
-	\end{itemize}
-	\vspace{-4pt}
+	\vspace{2pt}
+	\small{
+		\textbf{AI and Backend Engineer} shipping \textbf{production RAG pipelines}, \textbf{MCPs}, and \textbf{distributed backend systems} in \textit{Python, TypeScript, and AWS}. Currently scaling enterprise regulatory intelligence and \textbf{agentic workflows} across \textbf{hundreds of millions of documents}.
+	}
+	\vspace{2pt}
 
 	%-----------EXPERIENCE-----------
 	\section{Work Experience}
 	\resumeSubHeadingListStart
-		\resumeSubheading
-		{ProductSquads}{Ahmedabad, India}
+		\resumeRoleHeading
+		{ProductSquads (Client: 3E)}{Ahmedabad, India}
 		{Associate AI Engineer}{November 2025 -- Present}
+		{Python, FastAPI, RAG, Hybrid Search (BM25 + Vector), Model Context Protocol (MCP), Claude Agent SDK, WebSockets, OpenSearch, Langfuse, AWS (Lambda, EKS / Kubernetes), DocumentDB}
 		\resumeItemListStart
-			\resumeItem{Maintained an \textbf{OpenSearch Serverless hybrid RAG pipeline} over \textbf{400M+ documents}, sustaining \textbf{16ms keyword and 43ms vector p50 latency} across \textbf{$\sim$50K to 70K daily queries ($\sim$2M+ monthly)}.}
-			\resumeItem{Operated \textbf{AWS Lambda MCP services} handling \textbf{45K+ monthly tool calls} across \textbf{60+ tables and 700+ fields} via allowlisted schema registries and \textbf{injected tenant ACL joins}.}
-			\resumeItem{\textbf{Eliminated midstream answer loss across 100K+ messages} by moving chat history persistence and title generation from the browser to \textbf{Python BFF Lambdas} and \textbf{Amazon DocumentDB}.}
-			\resumeItem{Rearchitected multiturn prompt clarification from browser state to a \textbf{server driven state machine}, unblocking SME testing on schedule and \textbf{preventing state corruption on client disconnects}.}
-			\resumeItem{\textbf{Eliminated peak hour missed prompt runs} by diagnosing a rush hour queue bottleneck and \textbf{splitting discovery checkers and execution jobs into dedicated queues}.}
-			\resumeItem{Built a \textbf{multi agent release verification system} demoed directly to the CTO that \textbf{automated 90\%+ of release checks}, cutting triage from \textbf{20+ minutes to $<$30 seconds} and catching unhardened ECS tasks.}
+			\resumeItem{Maintained and scaled a hybrid OpenSearch RAG pipeline over \textbf{400M+ compliance documents}, holding \textbf{p50 latency to 16ms keyword and 43ms vector} across \textbf{$\sim$50K to 70K daily queries ($\sim$2M+ monthly)}.}
+			\resumeItem{Maintained MCP data services handling \textbf{45K+ monthly tool calls} across \textbf{60+ tables and 700+ fields}.}
+			\resumeItem{\textbf{Eliminated lost responses on tab closes across 100K+ messages} by moving chat persistence and title generation from the browser to the server, resolving our \textit{top reported customer issue}.}
+			\resumeItem{\textbf{Eliminated missed scheduled prompts during peak traffic} by diagnosing a shared queue bottleneck and \textbf{splitting discovery checkers and execution workers into separate queues}, preventing customer impact as recurring prompt volume scaled.}
+			\resumeItem{Built a release verification agent \textit{demoed to the CTO} that \textbf{automated 90\%+ of pre release checks}, \textbf{cutting triage from 20+ minutes to $<$30 seconds} and catching unhardened ECS tasks.}
 		\resumeItemListEnd
 
-		\resumeSubheading
+		\resumeRoleHeading
 		{Meru Technosoft}{Ahmedabad, India}
-		{Full Stack Intern}{June 2025 -- July 2025}
+		{Full-Stack Intern}{June 2025 -- July 2025}
+		{TypeScript, Node.js, gRPC \& Protocol Buffers, Microservice architecture, Electron.js, OAuth 2.0 (PKCE)}
 		\resumeItemListStart
-			\resumeItem{Built a cross platform \textbf{Electron/TypeScript desktop sync runner} that queried on premise Tally instances via local HTTP/XML and synced data to cloud databases, \textbf{eliminating manual CSV exports across 2 pilot clients}.}
-			\resumeItem{Engineered a \textbf{Node.js gRPC and Protocol Buffers microservice} to stream desktop payloads, parse Tally XML schemas, and persist normalized accounting ledgers into \textbf{PostgreSQL}.}
-			\resumeItem{Implemented \textbf{OAuth2 with PKCE} in the API Gateway using custom OS deep link callbacks, enabling browser based desktop login \textbf{without hardcoding API secrets in the client binary}.}
-			\resumeItem{Automated \textbf{Jenkins CI/CD release pipelines} to compile desktop installers, run \textbf{Windows executable code signing}, and publish versioned artifacts to \textit{AWS S3} for \textbf{twice weekly client deployments}.}
+			\resumeItem{Built an Electron desktop app that queried local Tally instances over HTTP/XML and synced ledgers to the cloud, \textbf{delivering the MVP in 6 weeks for 2 pilot clients}.}
+			\resumeItem{Developed a \textbf{gRPC and Protobuf ingestion microservice} to parse incoming Tally XML payloads and sync normalized accounting ledgers to the main Hellobooks service.}
+			\resumeItem{Implemented \textbf{OAuth2 with PKCE} so desktop users could log in via their browser session.}
 		\resumeItemListEnd
 	\resumeSubHeadingListEnd
 
 	%-----------PROJECTS-----------
 	\section{Projects}
 	\resumeSubHeadingListStart
-		\resumeSubheading
-		{Noesis: Autonomous Multi Agent Research Engine}{\href{https://noesis.hetav.dev}{noesis.hetav.dev}}
-		{Next.js, React, FastAPI, Python, OpenAI Agents SDK, PostgreSQL}{}
+		\resumeProjectHeading
+		{Noesis -- Autonomous Multi-Agent Research Engine}{\href{https://noesis.hetav.dev}{noesis.hetav.dev}}
+		{Python, TypeScript, FastAPI, Next.js, React, OpenAI Agents SDK, Multi-Agent Systems, Docker}
 		\resumeItemListStart
-			\resumeItem{Built a \textbf{4 agent research pipeline} that summarizes scraped pages before synthesis, \textbf{analyzing up to 60 sources per query without context window overflow}.}
-			\resumeItem{Shipped a \textbf{real time streaming interface} that renders live agent reasoning steps and citation linked reports via \textbf{adaptive client polling over durable event logs}.}
+			\resumeItem{Built a 4 agent research engine that \textbf{summarizes each scraped page before synthesis}, using a \textbf{critic agent across iterative search rounds} to fill knowledge gaps and compile cited reports.}
+			\resumeItem{Streamed \textbf{live agent reasoning steps and cited reports} to the browser via client polling over DB's event logs.}
 		\resumeItemListEnd
-	\resumeSubHeadingListEnd
-
-	%-----------EDUCATION-----------
-	\section{Education}
-	\resumeSubHeadingListStart
-		\resumeSubheading
-		{Adani University}{Ahmedabad, Gujarat, India}
-		{Bachelor of Technology (B.Tech), Computer Science Engineering (CGPA: 8.3 / 10.0 -- Graduated)}{2022 -- 2026}
-		\resumeItemListStart
-			\resumeItem{\textbf{Relevant Coursework:} Data Structures \& Algorithms, Database Management Systems (DBMS), Operating Systems, Machine Learning, Computer Networks}
-		\resumeItemListEnd
-		\resumeSubheadingSmall
-		{New Tulip International School}{Ahmedabad, Gujarat, India}
-		{Senior Secondary (Class 12) $|$ CBSE}{}
-		\resumeSubheadingSmall
-		{Udgam School}{Ahmedabad, Gujarat, India}
-		{Secondary School (Class 10) $|$ CBSE}{}
 	\resumeSubHeadingListEnd
 
 	%-----------TECHNICAL SKILLS-----------
 	\section{Technical Skills}
-	\begin{itemize}[leftmargin=0.15in, label={}]
-		\footnotesize{\item{
-			\textbf{Agentic AI \& Orchestration:} Model Context Protocol (MCP), Multi Agent Orchestration (Agent to Agent / A2A), OpenAI Agents SDK, Claude Agent SDK, Multi Agent Systems \& Hierarchical Architectures, Tool/Function Calling, Structured Outputs (Pydantic) \\
-			\textbf{RAG \& Search Systems:} Hybrid Search (Vector + Keyword BM25), Amazon OpenSearch Serverless, FAISS, LlamaIndex, Sentence Window Retrieval, Embeddings (Matryoshka, Dense) \\
-			\textbf{Backend \& Distributed Systems:} Python, FastAPI, Node.js, WebSockets, gRPC \& Protocol Buffers, REST APIs \\
-			\textbf{Databases \& State Management:} PostgreSQL (Neon, Aurora), Amazon DocumentDB, SQL \\
-			\textbf{Cloud, Serverless \& DevOps:} AWS (Lambda, EKS, API Gateway, S3, CloudWatch), Docker, Argo CD, Jenkins, Linux, Langfuse \\
-			\textbf{Frontend \& Desktop:} TypeScript, React, Next.js, Electron.js, Web Components (Shadow DOM), Tailwind CSS, OAuth2 + PKCE
-		}}
+	\begin{itemize}[leftmargin=0in, label={}, itemsep=1.5pt, parsep=0pt, topsep=1.5pt]
+		\small{
+			\item \textbf{Agentic AI \& Orchestration:} Model Context Protocol (MCP), Multi Agent Orchestration (Agent to Agent / A2A), OpenAI Agents SDK, Claude Agent SDK, Multi Agent Systems \& Hierarchical Architectures, Tool/Function Calling, Structured Outputs (Pydantic)
+			\item \textbf{RAG \& Search Systems:} Hybrid Search (Vector + Keyword BM25), Amazon OpenSearch Serverless, FAISS, LlamaIndex, Sentence Window Retrieval, Embeddings (Matryoshka, Dense)
+			\item \textbf{Backend \& Distributed Systems:} Python, FastAPI, Node.js, WebSockets, gRPC \& Protocol Buffers, REST APIs
+			\item \textbf{Databases \& State Management:} PostgreSQL (Neon, Aurora), Amazon DocumentDB, SQL
+			\item \textbf{Cloud, Serverless \& DevOps:} AWS (Lambda, EKS, API Gateway, S3, CloudWatch), Docker, Argo CD, Jenkins, Linux, Langfuse
+			\item \textbf{Frontend \& Desktop:} TypeScript, React, Next.js, Electron.js, Web Components (Shadow DOM), Tailwind CSS, OAuth2 + PKCE
+		}
 	\end{itemize}
-	\vspace{-4pt}
+	\vspace{-3pt}
+
+	%-----------EDUCATION-----------
+	\section{Education}
+	\resumeSubHeadingListStart
+		\resumeEducationHeading
+		{Adani University}{Ahmedabad, Gujarat, India}
+		{Bachelor of Technology (B.Tech), Computer Science Engineering}{2022 -- 2026}
+		\resumeItemListStart
+			\resumeItem{\textbf{CGPA:} 8.3 / 10.0 (Graduated)}
+		\resumeItemListEnd
+	\resumeSubHeadingListEnd
 
 	%-----------CERTIFICATIONS-----------
 	\section{Certifications}
-	\resumeSubHeadingListStart
-		\resumeCertItem{\href{https://verify.skilljar.com/c/cv2j6y9bcckw}{Introduction to Model Context Protocol} \& \href{https://verify.skilljar.com/c/zdrivh9gxyyc}{Advanced Topics}}{Anthropic}{Dec 2025}
-		\resumeCertItem{\href{https://www.credly.com/badges/9fe72cc6-cbc3-45cf-bc70-428bf01e2f1d/public_url}{AWS Academy Graduate: AWS Academy Cloud Developing}}{Amazon Web Services}{Nov 2024}
-		\resumeCertItem{\href{https://www.credly.com/badges/f6802249-ee52-43c3-bac2-104dadcd8718/public_url}{AWS Academy Cloud Architecting}}{Amazon Web Services}{May 2025}
-		\resumeCertItem{\href{https://www.credly.com/badges/dfd8e398-a30a-4872-98b5-0b777fff7742/public_url}{AWS Academy Machine Learning Foundations}}{Amazon Web Services}{Nov 2024}
-		\resumeCertItem{AI Engineering Launchpad (Level 1 Foundation \& Level 2 Practitioner)}{ProductSquads}{Nov -- Dec 2025}
-	\resumeSubHeadingListEnd
+	\begin{itemize}[leftmargin=0.15in, label=$\vcenter{\hbox{\tiny$\bullet$}}$, itemsep=1.5pt, parsep=0pt, topsep=1.5pt]
+		\small{
+			\item \textbf{Introduction to Model Context Protocol \& Advanced Topics} $|$ Anthropic (Dec 2025)
+			\item \textbf{AI Engineering Launchpad (Level 1 Foundation \& Level 2 Practitioner)} $|$ ProductSquads (Nov -- Dec 2025)
+			\item \textbf{AWS Academy Cloud Architecting} $|$ Amazon Web Services (May 2025)
+			\item \textbf{AWS Academy Graduate: AWS Academy Cloud Developing} $|$ Amazon Web Services (Nov 2024)
+			\item \textbf{AWS Academy Machine Learning Foundations} $|$ Amazon Web Services (Nov 2024)
+		}
+	\end{itemize}
 
 \end{document}
