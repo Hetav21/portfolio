@@ -46,22 +46,23 @@
 
 % Custom commands
 \newcommand{\resumeItem}[1]{
-	\item\small{
-		{#1 \vspace{-1.5pt}}
-	}
+	\item\small{#1}
 }
 
 \newcommand{\resumeRoleHeading}[5]{
 	\vspace{-2pt}\item
 	{\textbf{\normalsize #1} \hfill \small #2} \\
 	{\textbf{\small #3} \hfill \textit{\small #4}} \\
-	{\textit{\footnotesize #5}} \vspace{-3pt}
+	\vspace{1pt}
+	{\footnotesize\textit{#5}\par}
+	\vspace{-2pt}
 }
 
 \newcommand{\resumeProjectHeading}[3]{
 	\vspace{-2pt}\item
 	{\textbf{\normalsize #1} \hfill \small #2} \\
-	{\textit{\footnotesize #3}} \vspace{-3pt}
+	{\footnotesize\textit{#3}\par}
+	\vspace{-2pt}
 }
 
 \newcommand{\resumeEducationHeading}[4]{
@@ -75,8 +76,8 @@
 \newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0in, label={}]}
 \newcommand{\resumeSubHeadingListEnd}{\end{itemize}\vspace{-4pt}}
 
-\newcommand{\resumeItemListStart}{\begin{itemize}[leftmargin=0.15in, itemsep=1.5pt, parsep=0pt, topsep=1.5pt]}
-\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-2pt}}
+\newcommand{\resumeItemListStart}{\begin{itemize}[leftmargin=0.15in, itemsep=2pt, parsep=0pt, topsep=2pt]}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-1pt}}
 
 %-------------------------------------------
 %%%%%%  RESUME STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -110,7 +111,7 @@
 		\resumeRoleHeading
 		{ProductSquads (Client: 3E)}{Ahmedabad, India}
 		{Associate AI Engineer}{November 2025 -- Present}
-		{Python, FastAPI, RAG, Hybrid Search (BM25 + Vector), Model Context Protocol (MCP), Claude Agent SDK, WebSockets, OpenSearch, Langfuse, AWS (Lambda, EKS / Kubernetes), DocumentDB}
+		{Python, FastAPI, Hybrid OpenSearch RAG, MCP, Claude Agent SDK, WebSockets, Langfuse, AWS (Lambda, EKS), DocumentDB}
 		\resumeItemListStart
 			\resumeItem{Maintained and scaled a hybrid OpenSearch RAG pipeline over \textbf{400M+ compliance documents}, holding \textbf{p50 latency to 16ms keyword and 43ms vector} across \textbf{$\sim$50K to 70K daily queries ($\sim$2M+ monthly)}.}
 			\resumeItem{Maintained MCP data services handling \textbf{45K+ monthly tool calls} across \textbf{60+ tables and 700+ fields}.}
@@ -118,7 +119,7 @@
 			\resumeItem{\textbf{Eliminated missed scheduled prompts during peak traffic} by diagnosing a shared queue bottleneck and \textbf{splitting discovery checkers and execution workers into separate queues}, preventing customer impact as recurring prompt volume scaled.}
 			\resumeItem{Built a release verification agent \textit{demoed to the CTO} that \textbf{automated 90\%+ of pre release checks}, \textbf{cutting triage from 20+ minutes to $<$30 seconds} and catching unhardened ECS tasks.}
 		\resumeItemListEnd
-
+		\vspace{5pt}
 		\resumeRoleHeading
 		{Meru Technosoft}{Ahmedabad, India}
 		{Full-Stack Intern}{June 2025 -- July 2025}
@@ -146,12 +147,11 @@
 	\section{Technical Skills}
 	\begin{itemize}[leftmargin=0in, label={}, itemsep=1.5pt, parsep=0pt, topsep=1.5pt]
 		\small{
-			\item \textbf{Agentic AI \& Orchestration:} Model Context Protocol (MCP), Multi Agent Orchestration (Agent to Agent / A2A), OpenAI Agents SDK, Claude Agent SDK, Multi Agent Systems \& Hierarchical Architectures, Tool/Function Calling, Structured Outputs (Pydantic)
-			\item \textbf{RAG \& Search Systems:} Hybrid Search (Vector + Keyword BM25), Amazon OpenSearch Serverless, FAISS, LlamaIndex, Sentence Window Retrieval, Embeddings (Matryoshka, Dense)
-			\item \textbf{Backend \& Distributed Systems:} Python, FastAPI, Node.js, WebSockets, gRPC \& Protocol Buffers, REST APIs
-			\item \textbf{Databases \& State Management:} PostgreSQL (Neon, Aurora), Amazon DocumentDB, SQL
-			\item \textbf{Cloud, Serverless \& DevOps:} AWS (Lambda, EKS, API Gateway, S3, CloudWatch), Docker, Argo CD, Jenkins, Linux, Langfuse
-			\item \textbf{Frontend \& Desktop:} TypeScript, React, Next.js, Electron.js, Web Components (Shadow DOM), Tailwind CSS, OAuth2 + PKCE
+			\item \textbf{AI \& Agentic Systems:} Model Context Protocol (MCP), Multi-Agent Systems, Claude Agent SDK, OpenAI Agents SDK, Tool Calling / Function Calling, Langfuse, Structured Outputs (Pydantic)
+			\item \textbf{RAG \& Search:} Retrieval-Augmented Generation (RAG), Hybrid Search (BM25 + Vector), Vector Search \& Embeddings, Amazon OpenSearch, FAISS, LlamaIndex
+			\item \textbf{Backend \& Distributed Systems:} Python, TypeScript, FastAPI, Node.js, gRPC \& Protocol Buffers, WebSockets, REST APIs
+			\item \textbf{Databases \& Cloud:} SQL, PostgreSQL, Amazon DocumentDB, AWS (Lambda, EKS, API Gateway, S3, CloudWatch), Docker, Linux
+			\item \textbf{Frontend:} React, Next.js, Electron.js, Tailwind CSS
 		}
 	\end{itemize}
 	\vspace{-3pt}
@@ -171,11 +171,10 @@
 	\section{Certifications}
 	\begin{itemize}[leftmargin=0.15in, label=$\vcenter{\hbox{\tiny$\bullet$}}$, itemsep=1.5pt, parsep=0pt, topsep=1.5pt]
 		\small{
-			\item \textbf{Introduction to Model Context Protocol \& Advanced Topics} $|$ Anthropic (Dec 2025)
-			\item \textbf{AI Engineering Launchpad (Level 1 Foundation \& Level 2 Practitioner)} $|$ ProductSquads (Nov -- Dec 2025)
+			\item \textbf{Introduction to Model Context Protocol} $|$ Anthropic (Dec 2025)
+			\item \textbf{Model Context Protocol: Advanced Topics} $|$ Anthropic (Dec 2025)
 			\item \textbf{AWS Academy Cloud Architecting} $|$ Amazon Web Services (May 2025)
 			\item \textbf{AWS Academy Graduate: AWS Academy Cloud Developing} $|$ Amazon Web Services (Nov 2024)
-			\item \textbf{AWS Academy Machine Learning Foundations} $|$ Amazon Web Services (Nov 2024)
 		}
 	\end{itemize}
 
